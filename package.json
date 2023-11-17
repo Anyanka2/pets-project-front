@@ -1,7 +1,8 @@
 {
-  "name": "pets-project",
+  "name": "pets-project-front",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://anyanka2.github.io/pets-project-front/",
   "dependencies": {
     "@csstools/normalize.css": "^12.0.0",
     "@emotion/styled": "^11.11.0",
@@ -18,14 +19,14 @@
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
     "redux-persist": "^6.0.0",
-    "styled-components": "^6.1.1",
-    "web-vitals": "^2.1.4"
+    "styled-components": "^6.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint:js": "eslint src/**/*.{js,jsx}"
   },
   "eslintConfig": {
     "extends": [
