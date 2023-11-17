@@ -7,7 +7,7 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename='pets-project-front'>
+    <BrowserRouter basename='/pets-project-front'>
       <App />
     </BrowserRouter>
   </React.StrictMode>
