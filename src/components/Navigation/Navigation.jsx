@@ -1,12 +1,12 @@
-import React from 'react';
-import { NavigationContainer, NavLink } from '../Navigation/Navigation.styled';
+import { NavigationContainer } from '../Navigation/Navigation.styled';
+import { NavLink } from 'react-router-dom'; 
 
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <NavLink href="#">News</NavLink>
-      <NavLink href="#">Find Pet</NavLink>
-      <NavLink href="#">Our Friends</NavLink>
+      <NavLink to="news">News</NavLink>
+      <NavLink to="/">Find Pet</NavLink>
+      <NavLink to="friends">Our Friends</NavLink>
     </NavigationContainer>
   );
 };
