@@ -1,4 +1,4 @@
-import "@csstools/normalize.css";
+
 import ManropeRegular from "../fonts/Manrope-Regular.ttf";
 import ManropeSemiBold from "../fonts/Manrope-SemiBold.ttf";
 import ManropeBold from "../fonts/Manrope-Bold.ttf";
