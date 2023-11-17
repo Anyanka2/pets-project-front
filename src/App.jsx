@@ -18,19 +18,19 @@ const App = () => {
     <Routes>
       <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />
-          <Route path="/notices" element={<NoticesPage />} />
-          <Route path="/friends" element={<OurFriendsPage />} />
+          <Route path="notices" element={<NoticesPage />} />
+          <Route path="friends" element={<OurFriendsPage />} />
           <Route element={<PublicRoute />}>
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
+            <Route path="register" element={<RegisterPage />} />
+            <Route path="login" element={<LoginPage />} />
           </Route>
           
           <Route element={<PrivateRoute />}>
-            <Route path="/user" element={<UserPage />} />
-            <Route path="/add-pet" element={<AddPetPage />} />
+            <Route path="user" element={<UserPage />} />
+            <Route path="add-pet" element={<AddPetPage />} />
           </Route>
 
-          <Route path="/news" element={<NewsPage />} />
+          <Route path="news" element={<NewsPage />} />
           <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
