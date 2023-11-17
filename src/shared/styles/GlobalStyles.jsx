@@ -1,7 +1,7 @@
 import "@csstools/normalize.css";
 import { createGlobalStyle } from "styled-components";
 
- const GlobalStyle = createGlobalStyle`
+ export const GlobalStyle = createGlobalStyle`
 
 html {
   scroll-behavior: smooth;
