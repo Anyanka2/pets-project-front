@@ -1,11 +1,11 @@
-//import ManropeRegular from "../fonts/Manrope-Regular.ttf";
+import ManropeRegular from "../fonts/Manrope-Regular.ttf";
 import ManropeSemiBold from "../fonts/Manrope-SemiBold.ttf";
-// import ManropeBold from "../fonts/Manrope-Bold.ttf";
-// import ManropeExtraBold from "../fonts/Manrope-ExtraBold.ttf";
-// import ManropeMedium from "../fonts/Manrope-Medium.ttf";
-// import InterRegular from "../fonts/Inter-Regular.ttf";
-// import InterMedium from "../fonts/Inter-Medium.ttf";
-// import PoppinsRegular from "../fonts/Poppins-Regular.ttf";
+import ManropeBold from "../fonts/Manrope-Bold.ttf";
+import ManropeExtraBold from "../fonts/Manrope-ExtraBold.ttf";
+import ManropeMedium from "../fonts/Manrope-Medium.ttf";
+import InterRegular from "../fonts/Inter-Regular.ttf";
+import InterMedium from "../fonts/Inter-Medium.ttf";
+import PoppinsRegular from "../fonts/Poppins-Regular.ttf";
 
 export const fonts = [
   {
@@ -14,58 +14,44 @@ export const fonts = [
     fontUrl: `${ManropeSemiBold}`,
   },
 
-  // {
-  //   fontFamily: "Manrope-Regular",
-  //   fontStyle: regular,
-  //   fontWeight: 400,
-  //   fontDisplay: swap,
-  //   src: url(`${ManropeRegular}`),
-  // },
-  // {
-  //   fontFamily: "Manrope-Bold",
-  //   fontStyle: bold,
-  //   fontWeight: 700,
-  //   fontDisplay: swap,
-  //   src: url(`${ManropeBold}`),
-  // },
+  {
+    fontFamily: "Manrope-Regular",
+    fontWeight: 400,
+    fontUrl: `${ManropeRegular}`,
+  },
+  {
+    fontFamily: "Manrope-Bold",
+    fontWeight: 700,
+    fontUrl: `${ManropeBold}`,
+  },
 
-  // {
-  //   fontFamily: "Manrope-ExtraBold",
-  //   fontStyle: extraBold,
-  //   fontWeight: 800,
-  //   fontDisplay: swap,
-  //   src: url(`${ManropeExtraBold}`),
-  // },
+  {
+    fontFamily: "Manrope-ExtraBold",
+    fontWeight: 800,
+    fontUrl: `${ManropeExtraBold}`,
+  },
 
-  // {
-  //   fontFamily: "Manrope-Medium",
-  //   fontStyle: medium,
-  //   fontWeight: 500,
-  //   fontDisplay: swap,
-  //   src: url(`${ManropeMedium}`),
-  // },
+  {
+    fontFamily: "Manrope-Medium",
+    fontWeight: 500,
+    fontUrl: `${ManropeMedium}`,
+  },
 
-  // {
-  //   fontFamily: "Inter-Regular",
-  //   fontStyle: regular,
-  //   fontWeight: 400,
-  //   fontDisplay: swap,
-  //   src: url(`${InterRegular}`),
-  // },
+  {
+    fontFamily: "Inter-Regular",
+    fontWeight: 400,
+    fontUrl: `${InterRegular}`,
+  },
 
-  // {
-  //   fontFamily: "Inter-Medium",
-  //   fontStyle: medium,
-  //   fontWeight: 500,
-  //   fontDisplay: swap,
-  //   src: url(`${InterMedium}`),
-  // },
+  {
+    fontFamily: "Inter-Medium",
+    fontWeight: 500,
+    fontUrl: `${InterMedium}`,
+  },
 
-  // {
-  //   fontFamily: "Poppins-Regular",
-  //   fontStyle: regular,
-  //   fontWeight: 400,
-  //   fontDisplay: swap,
-  //   src: url(`${PoppinsRegular}`),
-  // },
+  {
+    fontFamily: "Poppins-Regular",
+    fontWeight: 400,
+    fontUrl: `${PoppinsRegular}`,
+  },
 ];
