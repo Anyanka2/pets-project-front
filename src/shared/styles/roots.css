@@ -1,0 +1,13 @@
+:root {
+  --white: #ffffff;
+  --black: #111111;
+  --accent: #ff8356;
+  --yellow: #ffc107;
+  --blue-gradient: linear-gradient(290deg, #419ef1 100%, #9bd0ff 100%);
+  --orange-gradient: linear-gradient(290deg, #ff984e 100%, #ffdf48 100%);
+  --blue-link: #54adff;
+  --light-blue: #cce4fb;
+  --green: #00c3ad;
+  --red: #f43f5e;
+  --grey: #888888;
+}
