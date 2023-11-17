@@ -1,10 +1,10 @@
-
-
-export default function RegisterPage () {
+const RegisterPage = () => {
 
     return (
         <>
-            <p>Register page</p>
+        <div>This is the Our Register Page!</div>
         </>
     )
 }
+
+export default RegisterPage;

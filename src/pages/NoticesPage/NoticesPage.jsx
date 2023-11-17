@@ -1,10 +1,8 @@
-
-
-function NoticesPage (){
+const NoticesPage = () => {
 
     return (
         <>
-        <p>This is the Notices Page</p>
+        <div>This is the Not Notices Page!</div>
         </>
     )
 }

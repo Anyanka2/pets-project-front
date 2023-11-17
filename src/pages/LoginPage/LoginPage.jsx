@@ -1,8 +1,10 @@
-export default function LoginPage () {
+const LoginPage = () => {
 
     return (
         <>
-            <p>Login page</p>
+        <div>This is the Login Page!</div>
         </>
     )
 }
+
+export default LoginPage;

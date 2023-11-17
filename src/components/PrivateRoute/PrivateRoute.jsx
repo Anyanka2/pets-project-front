@@ -1,11 +1,11 @@
 import { Outlet } from "react-router";
 
 
-export default function PublicRoute () {
+export default function PrivateRoute () {
 
     return (
         <>
-            <p>Public page</p>
+            <p>Privat page</p>
             <Outlet/>
         </>
     )
