@@ -8,7 +8,7 @@ import InterRegular from "../fonts/Inter-Regular.ttf";
 import InterMedium from "../fonts/Inter-Medium.ttf";
 import PoppinsRegular from "../fonts/Poppins-Regular.ttf";
 
-const fonts = [
+export const fonts = [
   {
     fontFamily: "Manrope-SemiBold",
     fontStyle: semiBold,
