@@ -1,8 +1,9 @@
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
-import {HeaderContainer, Logo, ButtonsContainer, Button, Image} from './Header.styled';
+import {HeaderContainer, Logo, ButtonsContainer, Image} from './Header.styled';
 import svg from '../../icons/logo.svg';
 import pawprint from '../../icons/pawprint.svg';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -12,11 +13,13 @@ const Header = () => {
         </Logo>
         <Navigation/>
         <ButtonsContainer>
-            <Button>
+            <Link to='login'>
               LOG IN
               <Image src = {`${pawprint}`} />
-            </Button>
-            <Button>Registration</Button>
+            </Link>
+            <Link to='register'>
+            Registration
+            </Link>
         </ButtonsContainer>
     </HeaderContainer>
   );

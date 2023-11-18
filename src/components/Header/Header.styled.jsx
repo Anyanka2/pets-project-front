@@ -27,7 +27,7 @@ export const ButtonsContainer = styled.div`
  
 `;
 
-export const Button = styled.button`
+export const Link = styled.button`
   padding: 8px 20px 8px 20px;
   border: 2px solid #FFC107;
   cursor: pointer;
