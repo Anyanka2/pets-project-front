@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkpets_project_front=self.webpackChunkpets_project_front||[]).push([[852],{852:(e,r,s)=>{s.r(r),s.d(r,{default:()=>c});var t=s(184);const c=()=>(0,t.jsx)(t.Fragment,{children:(0,t.jsx)("div",{children:(0,t.jsx)("h1",{children:"Take good care of your small pets"})})})}}]);
+//# sourceMappingURL=852.0673ee83.chunk.js.map
