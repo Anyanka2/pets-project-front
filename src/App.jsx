@@ -5,6 +5,7 @@ import { PublicRoute } from "../src/routes/PublicRoute";
 import { PrivateRoute } from "../src/routes/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
 import { GlobalStyle } from "./shared/styles/GlobalStyles";
+
 //import MainPage from "../pages/MainPage/MainPage";
 //import NoticesPage from "../pages/NoticesPage/NoticesPage";
 //import OurFriendsPage from "../pages/OurFriendsPage/OurFriendsPage";
