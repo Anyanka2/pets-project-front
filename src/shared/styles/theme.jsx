@@ -14,7 +14,7 @@
   --shadow-hover: 7px 13px 14px rgba(116, 177, 232, 0.24);
   --transition-regular: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 } */
-export const roots = {
+export const theme = {
   colors: {
     white: "#FFFFFF",
     black: "#111111",
