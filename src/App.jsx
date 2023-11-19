@@ -6,16 +6,6 @@ import PrivateRoute from "../src/routes/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
 import { GlobalStyle } from "./shared/styles/GlobalStyles";
 
-//import MainPage from "../pages/MainPage/MainPage";
-//import NoticesPage from "../pages/NoticesPage/NoticesPage";
-//import OurFriendsPage from "../pages/OurFriendsPage/OurFriendsPage";
-//import RegisterPage from "../pages/RegisterPage/RegisterPage";
-//import LoginPage from "../pages/LoginPage/LoginPage";
-//import UserPage from "../pages/UserPage/UserPage";
-//import AddPetPage from "../pages/AddPetPage/AddPetPage";
-//import NewsPage from "../pages/NewsPage/NewsPage";
-//import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
-
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage"));
 const OurFriendsPage = lazy(() =>
@@ -31,7 +21,7 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 const App = () => {
   return (
     <>
-      <GlobalStyle/>
+      <GlobalStyle />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
