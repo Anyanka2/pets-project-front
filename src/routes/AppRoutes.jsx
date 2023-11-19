@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import SharedLayout from "../components/SharedLayout/SharedLayout";
 import { PublicRoute } from "./PublicRoute";
 import { PrivateRoute } from "./PrivateRoute";
-import { Loader } from "../components/Loader/Loader.jsx";
+import { Loader } from "../components/Loader/Loader";
 //import MainPage from "../pages/MainPage/MainPage";
 //import NoticesPage from "../pages/NoticesPage/NoticesPage";
 //import OurFriendsPage from "../pages/OurFriendsPage/OurFriendsPage";

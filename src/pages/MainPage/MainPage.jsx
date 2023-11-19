@@ -2,7 +2,10 @@ const MainPage = () => {
 
     return (
         <>
-        <div>This is the Main Page!</div>
+            <div>
+                <h1>Take good care of your small pets</h1>
+                
+        </div>
         </>
     )
 }
