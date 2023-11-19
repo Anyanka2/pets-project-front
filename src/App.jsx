@@ -1,8 +1,8 @@
 import { Suspense, lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
-import { PublicRoute } from "../src/routes/PublicRoute";
-import { PrivateRoute } from "../src/routes/PrivateRoute";
+import PublicRoute from "../src/routes/PublicRoute";
+import PrivateRoute from "../src/routes/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
 import { GlobalStyle } from "./shared/styles/GlobalStyles";
 
