@@ -1,7 +1,17 @@
-import styled from '@emotion/styled';
+import styled from 'styled-components';
+
+export const ImgLoader = styled.img`
+  position: absolute;
+  top: calc(50% - 90px);
+  left: calc(50% - 160px);
+`;
 
 export const Loading = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  z-index: 999;
 `;
