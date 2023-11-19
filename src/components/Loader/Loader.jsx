@@ -1,18 +1,10 @@
-import { Dna } from 'react-loader-spinner';
-import { Loading } from './Loader.styled';
+import LoaderImg from '../../images/loader/loader.gif';
+import { Loading, ImgLoader } from './Loader.styled';
 
 export const Loader = () => {
-    
   return (
     <Loading>
-      <Dna
-        visible={true}
-        height="200"
-        width="300"
-        ariaLabel="dna-loading"
-        wrapperStyle={{}}
-        wrapperClass="dna-wrapper"
-      />
+      <ImgLoader src={LoaderImg} alt="Loading....." />
     </Loading>
   );
 };
