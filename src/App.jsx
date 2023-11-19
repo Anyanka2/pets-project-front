@@ -4,6 +4,7 @@ import SharedLayout from "./components/SharedLayout/SharedLayout";
 import { PublicRoute } from "../src/routes/PublicRoute";
 import { PrivateRoute } from "../src/routes/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
+import { GlobalStyle } from "./shared/styles/GlobalStyles";
 //import MainPage from "../pages/MainPage/MainPage";
 //import NoticesPage from "../pages/NoticesPage/NoticesPage";
 //import OurFriendsPage from "../pages/OurFriendsPage/OurFriendsPage";
@@ -29,6 +30,7 @@ const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
 const App = () => {
   return (
     <>
+      <GlobalStyle/>
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
