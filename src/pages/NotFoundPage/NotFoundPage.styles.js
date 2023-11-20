@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export const NotFoundPageContainer = styled.div`
   display: flex;
@@ -16,7 +17,7 @@ export const Image = styled.img`
   border-radius: 4px;
 `;
 
-export const Button = styled.button`
+export const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,16 +26,16 @@ export const Button = styled.button`
   margin: 24px 0 40px 0;
   width: 248px;
   height: 40px;
-  background: #54adff;  
+  background: #54adff;
   border: 1px solid #54adff;
   border-radius: 40px;
   color: #fef9f9;
   transform: scale(1);
   transition: transform 0.3s;
-  font-family: 'Manrope';
+  font-family: "Manrope";
   font-weight: 700;
   font-size: 16px;
-  line-height: 22px; 
+  line-height: 22px;
   cursor: pointer;
   gap: 12px;
   position: relative;
@@ -46,5 +47,5 @@ export const Button = styled.button`
   }
   &:hover:before {
     left: 100%;
-  } 
+  }
 `;
