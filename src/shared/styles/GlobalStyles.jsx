@@ -19,6 +19,7 @@ body {
   line-height: normal;
   color: #111111;
   background-color: #FEF9F9;
+  /* background-color: tomato; //УБРАТЬ И СДЕЛАТЬ НОРМАЛЬНЫЙ БГ */
 }
 
 code {
