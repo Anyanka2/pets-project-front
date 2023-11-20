@@ -13,7 +13,7 @@ export const LogInFormTitle = styled.h1`
   font-weight: 500;
   font-size: 36px;
   line-height: 1.36;
-  color: var(--black);
+  color: ${({ theme }) => theme.colors.black};
   margin-bottom: 40px;
 
   @media screen and (max-width: 767px) {
@@ -64,7 +64,7 @@ export const LogInFormPasswordInputContainer = styled.div`
   padding: 2px 16px;
   width: 100%;
 
-  border: 1px solid var(--blue-link);
+  border: 1px solid ${({ theme }) => theme.colors.blueLink};
   border-radius: 40px;
 `;
 
@@ -88,14 +88,14 @@ export const ErrorIcon = styled.span`
   cursor: pointer;
 
   & svg {
-    stroke: var(--red);
+    stroke: ${({ theme }) => theme.colors.red};
   }
 `;
 
 export const ErrorMessage = styled.div`
   padding-left: 16px;
   margin-top: 4px;
-  color: var(--red);
+  color: ${({ theme }) => theme.colors.red};
 
   
   font-weight: 400;
@@ -118,13 +118,12 @@ export const EyeIcon = styled.span`
   cursor: pointer;
 
   & svg {
-  stroke: ${({ error }) =>
-    error ? 'var(--red)' : 'var(--blue-link)'};
+  stroke: ${({ theme, error }) =>
+      error ? theme.colors.red : theme.colors.blue};
 }
 `;
 
 export const LogInBtn = styled.button`
-  /* margin-top: 13px; */
   margin-bottom: 20px;
   width: 100%;
 
@@ -140,7 +139,7 @@ export const LogInBtn = styled.button`
 
   letter-spacing: 0.04em;
 
-  color: #ffffff;
+  color: ${({ theme }) => theme.colors.white};
 
   @media screen and (max-width: 767px) {
     margin-bottom: 8px;
@@ -152,7 +151,7 @@ export const RegisterText = styled.p`
   font-size: 12px;
   line-height: 1.3;
   letter-spacing: 0.04em;
-  color: var(--grey);
+  color: ${({ theme }) => theme.colors.grey};
 `;
 
 export const RegisterLink = styled(Link)`
