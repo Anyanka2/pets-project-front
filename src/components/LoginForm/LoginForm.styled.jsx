@@ -42,7 +42,7 @@ export const LogInFormEmailInputContainer = styled.div`
   padding: 2px 16px;
   width: 100%;
 
-  border: 1px solid var(--blue-link);
+  border: 1px solid ${({ theme }) => theme.colors.blueLink};
   border-radius: 40px;
 `;
 
