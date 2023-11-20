@@ -12,7 +12,7 @@ export const LogInPage = styled.div`
   justify-content: center;
   padding-top: 80px;
   height: 100vh;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-size: contain;
   background-image: url('${desktop_1x}');
 
@@ -20,21 +20,21 @@ export const LogInPage = styled.div`
     (-webkit-min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background-image: url('${desktop_2x}');
-  }
+    background-image: url('${desktop_2x}'); 
+  } 
 
-  @media screen and (max-width: 1279px) {
-    background-image: url('${tablet_1x}');
+   @media screen and (max-width: 1279px) {
+    background-image: url('${tablet_1x}'); 
 
-    @media (min-device-pixel-ratio: 2),
+     @media (min-device-pixel-ratio: 2),
       (-webkit-min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
       background-image: url('${tablet_2x}');
-    }
-  }
+    } 
+   } 
 
-  @media screen and (max-width: 767px) {
+    @media screen and (max-width: 767px) {
     padding-top: 44px;
     background-image: url('${mobile_1x}');
 
@@ -44,8 +44,8 @@ export const LogInPage = styled.div`
       (min-resolution: 2dppx) {
       background-image: url('${mobile_2x}');
     }
-  }`;
-
+  } */
+  `; 
 export const LoginFormWrapper = styled.div`
   padding: 60px 75px;
   width: 608px;
