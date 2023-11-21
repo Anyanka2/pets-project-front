@@ -2,19 +2,19 @@ import {
   NotFoundPageContainer,
   Title,
   Image,
-  Button,
+  StyledLink,
 } from "./NotFoundPage.styles";
-import notFoundImage from "../../images/404/desktop@1x.png";
-import pawprintIcon from "../../icons/pawprint.svg";
+import notFoundImage from "../../assets/images/404/desktop@1x.png";
+import pawprintIcon from "../../assets/icons/pawprint.svg";
 
 export const NotFoundPage = () => {
   return (
     <NotFoundPageContainer>
       <Title>Ooops! This page not found :(</Title>
       <Image src={notFoundImage} alt="" />
-      <Button to="/main">
+      <StyledLink to="/main">
         To main page <img src={pawprintIcon} alt="" />
-      </Button>
+      </StyledLink>
     </NotFoundPageContainer>
   );
 };

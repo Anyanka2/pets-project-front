@@ -1,8 +1,16 @@
+import { Container } from "../../shared/components/Container";
+import UserProfile from "../../components/UserProfile/UserProfile";
+import MyPets from "../../components/MyPets/MyPets";
+
 const UserPage = () => {
 
     return (
         <>
-        <div>This is the User Page!</div>
+        <Container>
+            <UserProfile />
+            <MyPets />
+            <div>This is the User Page!</div>
+        </Container>
         </>
     )
 }

@@ -1,19 +1,19 @@
-import { NavigationContainer } from '../Navigation/Navigation.styled';
-import { NavLink } from 'react-router-dom'; 
+import { NavigationContainer, StylesLink} from '../Navigation/Navigation.styled';
+/* import { NavLink } from 'react-router-dom';  */
 
 
 const Navigation = () => {
   return (
     <NavigationContainer>
-      <NavLink to="news">
+      <StylesLink to="news">
         News
-      </NavLink>
-      <NavLink to="/">
+      </StylesLink>
+      <StylesLink to="/">
         Find Pet
-      </NavLink>
-      <NavLink to="friends">
+      </StylesLink>
+      <StylesLink to="friends">
         Our Friends
-      </NavLink>
+      </StylesLink>
     </NavigationContainer>
   );
 };

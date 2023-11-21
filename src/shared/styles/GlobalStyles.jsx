@@ -1,7 +1,7 @@
 import "@csstools/normalize.css";
 import { createGlobalStyle } from "styled-components";
 
- export const GlobalStyle = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
 
 html {
   scroll-behavior: smooth;
@@ -17,9 +17,8 @@ body {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  color: #111111;
-  background-color: #FEF9F9;
-  /* background-color: tomato; //УБРАТЬ И СДЕЛАТЬ НОРМАЛЬНЫЙ БГ */
+  color: ${({ theme }) => theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.bgColorPage};
 }
 
 code {

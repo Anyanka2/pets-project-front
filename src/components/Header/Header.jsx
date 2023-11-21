@@ -1,22 +1,22 @@
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
-import {HeaderContainer, Logo, ButtonsContainer, Link, Image, ImgLogin} from './Header.styled';
-import svg from '../../icons/logo.svg';
-import pawprint from '../../icons/pawprint.svg';
+import {HeaderContainer, LogoLink, ButtonsContainer, Image, ImgLogin, LinkReg, LinkLogin} from './Header.styled';
+import svg from '../../assets/icons/logo.svg';
+import pawprint from '../../assets/icons/pawprint.svg';
 
 const Header = () => {
   return (
     <HeaderContainer>
-        <Logo>
+        <LogoLink to='/'>
         <Image src ={`${svg}`}/>
-        </Logo>
+        </LogoLink>
         <Navigation/>
         <ButtonsContainer>
-            <Link to='login'>
+            <LinkLogin to='login'>
               LOG IN
               <ImgLogin src = {`${pawprint}`} />
-            </Link>
-            <Link to='register'>Registration</Link>
+            </LinkLogin>
+            <LinkReg to='register'>Registration</LinkReg>
         </ButtonsContainer>
     </HeaderContainer>
   );

@@ -1,8 +1,10 @@
+import { TitlePage } from "../../shared/components/TitlePage.styled";
+
 const NoticesPage = () => {
 
     return (
         <>
-        <div>This is the Not Notices Page!</div>
+        <TitlePage>This is the Notices Page!</TitlePage>
         </>
     )
 }

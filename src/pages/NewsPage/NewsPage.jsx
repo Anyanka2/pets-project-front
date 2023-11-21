@@ -1,8 +1,10 @@
+import { TitlePage } from "../../shared/components/TitlePage.styled";
+
 const NewsPage = () => {
 
     return (
         <>
-        <div>This is the News Page!</div>
+        <TitlePage>This is the News Page!</TitlePage>
         </>
     )
 }
