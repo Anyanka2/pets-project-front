@@ -1,5 +1,6 @@
-import styled from "@emotion/styled";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { theme } from "../../shared/styles/theme.jsx";
 
 export const NotFoundPageContainer = styled.div`
   display: flex;
@@ -8,13 +9,22 @@ export const NotFoundPageContainer = styled.div`
   margin-top: 60px;
 `;
 
-export const Title = styled.h2`
+export const StyledTitle = styled.h2`
   margin-bottom: 24px;
 `;
 
-export const Image = styled.img`
+export const StyledPicture = styled.picture`
   max-width: 100%;
   border-radius: 4px;
+  margin: 0;
+
+  @media only screen and (min-width: 768px) {
+    max-width: 768px;
+  }
+
+  @media only screen and (min-width: 1280px) {
+    max-width: 1280px;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -26,16 +36,16 @@ export const StyledLink = styled(Link)`
   margin: 24px 0 40px 0;
   width: 248px;
   height: 40px;
-  background: #54adff;
-  border: 1px solid #54adff;
+  background: ${theme.colors.blueLink};
+  border: 1px solid ${theme.colors.blueLink};
   border-radius: 40px;
-  color: #fef9f9;
+  color: ${theme.colors.bgColorPage};
   transform: scale(1);
   transition: transform 0.3s;
-  font-family: "Manrope";
-  font-weight: 700;
+  font-family: ${theme.fonts.manrope.regular};
+  font-weight: ${theme.fontWeights.bold};
   font-size: 16px;
-  line-height: 22px;
+  line-height: 21.86px;
   cursor: pointer;
   gap: 12px;
   position: relative;
