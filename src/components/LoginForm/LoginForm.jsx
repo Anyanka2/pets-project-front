@@ -5,9 +5,9 @@ import { Formik } from 'formik';
 
 // import { selectError } from '../../redux/auth/selectors';
 
-import { ReactComponent as OpenEyeIcon } from '../../icons/eye-open.svg';
-import { ReactComponent as CloseEyeIcon } from '../../icons/eye-closed.svg';
-import { ReactComponent as CrossIcon } from '../../icons/cross-small.svg';
+import { ReactComponent as OpenEyeIcon } from '../../assets/icons/eye-open.svg';
+import { ReactComponent as CloseEyeIcon } from '../../assets/icons/eye-closed.svg';
+import { ReactComponent as CrossIcon } from '../../assets/icons/cross-small.svg';
 
 import {
   LogInForm,

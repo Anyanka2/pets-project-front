@@ -1,10 +1,10 @@
 import { StyledPicture, StyledTittle, Wrapper } from "./MainPage.styled";
-import mainImgMobile from "../../images/mainPage/main-img-mobile@1x.png";
-import mainImgMobileRetina from "../../images/mainPage/main-img-mobile@2x.png";
-import mainImgTab from "../../images/mainPage/main-img-tablet@1x.png";
-import mainImgTabRetina from "../../images/mainPage/main-img-tablet@2x.png";
-import mainImgDesc from "../../images/mainPage/main-img-desktop@1x.png";
-import mainImgDescRetina from "../../images/mainPage/main-img-desktop@1x.png";
+import mainImgMobile from "../../assets/images/mainPage/main-img-mobile@1x.png";
+import mainImgMobileRetina from "../../assets/images/mainPage/main-img-mobile@2x.png";
+import mainImgTab from "../../assets/images/mainPage/main-img-tablet@1x.png";
+import mainImgTabRetina from "../../assets/images/mainPage/main-img-tablet@2x.png";
+import mainImgDesc from "../../assets/images/mainPage/main-img-desktop@1x.png";
+import mainImgDescRetina from "../../assets/images/mainPage/main-img-desktop@1x.png";
 
 const MainPage = () => {
   return (
