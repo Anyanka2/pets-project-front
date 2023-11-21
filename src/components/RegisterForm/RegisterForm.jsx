@@ -81,7 +81,7 @@ const RegisterForm = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [emailAvailable, setEmailAvailable] = useState(true);
+  const [emailAvailable] = useState(true);
 
   const navigate = useNavigate();
 
@@ -99,11 +99,11 @@ const RegisterForm = () => {
     }
 
     setLoading(true);
-    const credentials = {
-      email: values.email,
-      password: values.password,
-      username: values.username,
-    };
+    // const credentials = {
+    //   email: values.email,
+    //   password: values.password,
+    //   username: values.username,
+    // };
 
     try {
 
