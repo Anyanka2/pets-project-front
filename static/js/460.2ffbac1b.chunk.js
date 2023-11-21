@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkpets_project_front=self.webpackChunkpets_project_front||[]).push([[460],{460:(e,t,s)=>{s.r(t),s.d(t,{default:()=>c});var r=s(184);const c=()=>(0,r.jsx)(r.Fragment,{children:(0,r.jsx)("div",{children:"This is the Add Pet Page!"})})}}]);
-//# sourceMappingURL=460.2ffbac1b.chunk.js.map
