@@ -1,4 +1,4 @@
-import { Container } from "../../shared/styles/Container";
+import { Container } from "../../shared/components/Container";
 import UserProfile from "../../components/UserProfile/UserProfile";
 import MyPets from "../../components/MyPets/MyPets";
 

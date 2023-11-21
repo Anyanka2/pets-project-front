@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import bgTab from "../../images/backgroundImg/bg-tablet@1x.png";
-import bgTabRetina from "../../images/backgroundImg/bg-tablet@2x.png";
-import bgDesk from "../../images/backgroundImg/bg-desktop@1x.png";
-import bgDeskRetina from "../../images/backgroundImg/bg-desktop@2x.png";
+import bgTab from "../../assets/images/backgroundImg/bg-tablet@1x.png";
+import bgTabRetina from "../../assets/images/backgroundImg/bg-tablet@2x.png";
+import bgDesk from "../../assets/images/backgroundImg/bg-desktop@1x.png";
+import bgDeskRetina from "../../assets/images/backgroundImg/bg-desktop@2x.png";
 
 export const BackgroundImg = styled.div`
   min-height: 100vh;

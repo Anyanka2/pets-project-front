@@ -1,8 +1,8 @@
 import React from 'react';
 import Navigation from '../Navigation/Navigation';
 import {HeaderContainer, LogoLink, ButtonsContainer, Image, ImgLogin, LinkReg, LinkLogin} from './Header.styled';
-import svg from '../../icons/logo.svg';
-import pawprint from '../../icons/pawprint.svg';
+import svg from '../../assets/icons/logo.svg';
+import pawprint from '../../assets/icons/pawprint.svg';
 
 const Header = () => {
   return (

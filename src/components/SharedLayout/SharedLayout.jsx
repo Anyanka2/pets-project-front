@@ -1,6 +1,6 @@
 import Header from "../Header/Header.jsx";
 import { Outlet } from "react-router-dom";
-import { BackgroundImg } from "../../shared/styles/BackgroundImg.styled.jsx";
+import { BackgroundImg } from "../../shared/components/BackgroundImg.styled.jsx";
 function SharedLayout() {
   return (
     <>
