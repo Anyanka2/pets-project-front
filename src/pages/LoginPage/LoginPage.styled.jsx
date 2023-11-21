@@ -7,7 +7,7 @@ export const LogInPage = styled.div`
   height: 100vh;
  
   @media screen and (max-width: 767px) {
-    padding-top: 44px;
+    padding-top: 40px;
   };
   `;
 
