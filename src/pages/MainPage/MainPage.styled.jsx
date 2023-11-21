@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../shared/styles/theme";
 
 export const Wrapper = styled.div`
   position: relative;
@@ -22,30 +23,27 @@ export const StyledPicture = styled.picture`
 
 export const StyledTittle = styled.h1`
   margin-left: 20px;
-  margin-bottom: 20px;
+  //margin-bottom: 27px;
   font-size: 32px;
-
-  /* font-family: ;
-  font-weight: ; */
-
+  font-family: "Manrope", sans-serif;
+  font-weight: ${theme.fontWeights.bold};
   line-height: 1.375;
 
   @media only screen and (min-width: 768px) {
     max-width: 588px;
     margin-left: 32px;
+    margin-bottom: 27px;
+    font-weight: ${theme.fontWeights.bold};
     font-size: 68px;
-    line-height: 1.48;
+    line-height: 1.47;
   }
 
   @media only screen and (min-width: 1280px) {
     position: absolute;
-    max-width: 500px;
+    //max-width: 501px;
     top: 25%;
     margin-left: 16px;
-
-    /* font-family: ;
-  font-weight: ; */
-
+    font-weight: ${theme.fontWeights.extraBold};
     line-height: 1.3;
   }
 `;
