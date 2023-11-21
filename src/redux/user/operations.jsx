@@ -1,6 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+
 axios.defaults.baseURL = 'https://pet-web-server.onrender.com/';
+
+
 export const listMyPets = createAsyncThunk(
   'api/user/pets',
   async (_, thunkAPI) => {
