@@ -1,10 +1,17 @@
-const RegisterPage = () => {
+import RegisterForm from '../../components/RegisterForm/RegisterForm';
+import {
+  RegisterPageWrapper,
+  RegisterFormWrapper,
+} from './RegisterPage.styled';
 
-    return (
-        <>
-        <div>This is the Our Register Page!</div>
-        </>
-    )
-}
+const RegisterPage = () => {
+  return (
+    <RegisterPageWrapper>
+      <RegisterFormWrapper>
+        <RegisterForm />
+      </RegisterFormWrapper>
+    </RegisterPageWrapper>
+  );
+};
 
 export default RegisterPage;

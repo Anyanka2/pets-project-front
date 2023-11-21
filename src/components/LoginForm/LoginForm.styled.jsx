@@ -11,16 +11,16 @@ export const LogInForm = styled.form`
 
 export const LogInFormTitle = styled.h1`
   font-weight: 500;
-  font-size: 36px;
-  line-height: 1.36;
+  font-size: 24px;
+  line-height: 1.38;
   color: ${({ theme }) => theme.colors.black};
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 
-  @media screen and (max-width: 767px) {
-    font-size: 24px;
-    line-height: 1.38;
+  @media screen and (min-width: 768px) {
+    font-size: 36px;
+    line-height: 1.36;
 
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 `;
 
@@ -29,10 +29,10 @@ export const LogInFormEmailContainer = styled.div`
   flex-direction: column;
   width: 100%;
 
-  margin-bottom: ${({ error }) => (error ? '10px' : '32px')};
+  margin-bottom: ${({ error }) => (error ? '1px' : '14px')};
 
-  @media screen and (max-width: 767px) {
-    margin-bottom: ${({ error }) => (error ? '7px' : '24px')};
+  @media screen and (min-width: 768px) {
+    margin-bottom: ${({ error }) => (error ? '10px' : '32px')};
   }
 `;
 
@@ -51,10 +51,10 @@ export const LogInFormPasswordContainer = styled.div`
   flex-direction: column;
   width: 100%;
 
-  margin-bottom: ${({ error }) => (error ? '37.6px' : '60px')};
+  margin-bottom: ${({ error, secure }) => (error || secure ? '97px' : '110px')};
 
-  @media screen and (max-width: 767px) {
-    margin-bottom: ${({ error }) => (error ? '93px' : '110px')};
+  @media screen and (min-width: 768px) {
+    margin-bottom: ${({ error, secure }) => (error || secure ? '37.6px' : '60px')};
   }
 `;
 
@@ -94,13 +94,15 @@ export const ErrorIcon = styled.span`
 
 export const ErrorMessage = styled.div`
   padding-left: 16px;
-  margin-top: 4px;
+  margin-top: 1px;
   color: ${({ theme }) => theme.colors.red};
 
-  
+  font-size: 10px;
   font-weight: 400;
-  @media screen and (max-width: 767px) {
-    font-size: 11px;;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    margin-top: 4px;
   }
 `;
 
@@ -124,7 +126,7 @@ export const EyeIcon = styled.span`
 `;
 
 export const LogInBtn = styled.button`
-  margin-bottom: 20px;
+  margin-bottom: 8px;
   width: 100%;
 
   padding: 10px 0 10px 0;
@@ -141,8 +143,8 @@ export const LogInBtn = styled.button`
 
   color: ${({ theme }) => theme.colors.white};
 
-  @media screen and (max-width: 767px) {
-    margin-bottom: 8px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 20px;
   }
 `;
 
