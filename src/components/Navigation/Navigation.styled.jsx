@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 
 export const NavigationContainer = styled.nav`
@@ -7,11 +8,9 @@ export const NavigationContainer = styled.nav`
   gap: 40px;
 `;
 
-export const NavLink = styled.a`
-  margin-right: 20px;
+export const StylesLink = styled(NavLink)`
   color: #111;
   text-decoration: none;
-  font-weight: bold;
   font-size: 20px;
 
   &:hover {
