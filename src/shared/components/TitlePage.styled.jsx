@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { theme } from "../styles/theme";
 
 export const TitlePage = styled.h2`
-  color: ${({ theme }) => theme.colors.black};
-  font-family: ${({ theme }) => theme.fonts.manrope.bold};
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  color: ${theme.colors.black};
+  font-family: ${theme.fonts.manrope.bold};
+  font-weight: ${theme.fontWeights.bold};
   font-size: 24px;
   text-align: center;
   line-height: 1.45;
