@@ -28,7 +28,9 @@ export const UserProfileContainer = styled.div`
     @media screen and (min-width: 768px) {
       max-width: 704px;
       flex-direction: row-reverse;
-      justify-content: space-between;
+      justify-content: flex-end;
+      gap: 71px;
+      padding: 20px;
       
     }
 
@@ -55,6 +57,9 @@ export const UserPhotoBox = styled.div`
 
     @media screen and (min-width: 768px) {
       margin: 0;
+      &::after{
+        right: -34px;
+      }
       
     }
 
@@ -100,6 +105,16 @@ export const Label = styled.label`
     display: flex;
     justify-content: space-between;
 
+    @media screen and (min-width: 768px) {
+      gap: 16px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      font-family: ${theme.fonts.manrope.semiBold};
+      font-size: 18px;
+      letter-spacing: 0.72px;
+      
+    }
     
 `;
 export const Input = styled.input`
@@ -115,6 +130,16 @@ export const Input = styled.input`
   font-weight: 400;
   letter-spacing: 0.48px;
   color: ${theme.colors.black};
+  @media screen and (min-width: 768px) {
+    width: 255px;
+    font-size: 16px;
+    letter-spacing: 0.64px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    
+    
+  }
 `;
 
 export const SubmitBtn = styled.button`

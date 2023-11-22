@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Formik } from "formik";
 
 import UserPhotoDefault from "../../assets/icons/user_photo_default.svg";
@@ -17,6 +17,7 @@ import {
 
 export default function UserProfile() {
   const [editable, setEditable] = useState(false);
+  const [userData, setUserData] = useState();
 
   const editHandler = (e) => {
     if (e.target.nodeName === "IMG") {
@@ -24,6 +25,15 @@ export default function UserProfile() {
     }
     setEditable((pervState) => !pervState);
   };
+
+  useEffect(()=>{
+          setUserData({name:'andrey'});
+  },[]) 
+
+  // const handleChange = (e)=>{
+  //   console.log(e);
+  //   console.log('tut');
+  // }
 
   return (
     <>
@@ -35,13 +45,11 @@ export default function UserProfile() {
           {editable ? <EditImg>Edit photo</EditImg> : "" }
         </UserPhotoBox>
         <Formik
-          initialValues={{
-            name: "jared",
-            email: "anna00@gmail.com",
-            birthday: "11.09.2001",
-            phone: +3800000000000,
-            city: "Kyiv",
-          }}
+          initialValues={{name: "jared",
+          email: "anna00@gmail.com",
+          birthday: "11.09.2001",
+          phone: +3800000000000,
+          city: "Kyiv",}}
           onSubmit={(values, actions) => {
             //  setTimeout(() => {
             //    alert(JSON.stringify(values, null, 2));
@@ -49,7 +57,14 @@ export default function UserProfile() {
             //  }, 1000);
             console.log("this is submit");
           }}
-          onChange={(values, actions) => {}}
+
+          onChange={(values, actions) => {
+            console.log(actions);
+            console.log("onchange")
+          }}
+
+          handleChange={(e)=>{console.log(e)}}
+
         >
           {(props) => (
             <Form onSubmit={props.handleSubmit}>
@@ -57,40 +72,40 @@ export default function UserProfile() {
                 <div>Name:</div>
                 <Input
                   type="text"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
+                  onChange={props.onChange}
                   value={props.values.name}
                   name="name"
+                  disabled={!editable}
                 />
               </Label>
               <Label>
                 <div>Email:</div>
                 <Input
                   type="text"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
+                  onChange={handleChange}
                   value={props.values.email}
                   name="email"
+                  disabled={!editable}
                 />
               </Label>
               <Label>
                 <div>Birthday:</div>
                 <Input
                   type="text"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
+                  onChange={handleChange}
                   value={props.values.birthday}
                   name="birthday"
+                  disabled={!editable}
                 />
               </Label>
               <Label>
                 <div>Phone:</div>
                 <Input
                   type="text"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
+                  onChange={handleChange}
                   value={props.values.phone}
                   name="phone"
+                  disabled={!editable}
                 />
               </Label>
               <Label>
@@ -101,6 +116,7 @@ export default function UserProfile() {
                   onBlur={props.handleBlur}
                   value={props.values.city}
                   name="city"
+                  disabled={!editable}
                 />
               </Label>
               {props.errors.name && (
