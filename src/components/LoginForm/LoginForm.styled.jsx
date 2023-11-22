@@ -125,6 +125,11 @@ export const EyeIcon = styled.span`
 }
 `;
 
+export const LoginErrorMessage = styled.div`
+  padding: 0px 16px 15px 16px;
+  color: ${({ theme }) => theme.colors.red};
+`;
+
 export const LogInBtn = styled.button`
   margin-bottom: 8px;
   width: 100%;
