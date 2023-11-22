@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { theme } from "../../shared/styles/theme.jsx";
-import { Formik } from "formik";
 
 export const UserProfileSection = styled.div`
   

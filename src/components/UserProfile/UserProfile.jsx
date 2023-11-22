@@ -26,112 +26,120 @@ export default function UserProfile() {
     setEditable((pervState) => !pervState);
   };
 
-  useEffect(()=>{
-          setUserData({name:'andrey'});
-  },[]) 
+  useEffect(() => {
+    setUserData({
+      name: "andrey",
+      email: "aa@22m.com",
+      birthday: "00.00.0000",
+      phone: "+380",
+      city: "Kyiv",
+    });
+  }, []);
 
-  // const handleChange = (e)=>{
-  //   console.log(e);
-  //   console.log('tut');
-  // }
+  const handleChange = (e) => {
+    console.log(e);
+    console.log("tut");
+    console.log(userData);
+  };
 
   return (
     <>
-    <UserProfileSection>
-      <h2>My information:</h2>
-      <UserProfileContainer>
-        <UserPhotoBox onClick={editHandler}>
-          <UserImg src={UserPhotoDefault} alt="User profile" />
-          {editable ? <EditImg>Edit photo</EditImg> : "" }
-        </UserPhotoBox>
-        <Formik
-          initialValues={{name: "jared",
-          email: "anna00@gmail.com",
-          birthday: "11.09.2001",
-          phone: +3800000000000,
-          city: "Kyiv",}}
-          onSubmit={(values, actions) => {
-            //  setTimeout(() => {
-            //    alert(JSON.stringify(values, null, 2));
-            //    actions.setSubmitting(false);
-            //  }, 1000);
-            console.log("this is submit");
-          }}
-
-          onChange={(values, actions) => {
-            console.log(actions);
-            console.log("onchange")
-          }}
-
-          handleChange={(e)=>{console.log(e)}}
-
-        >
-          {(props) => (
-            <Form onSubmit={props.handleSubmit}>
-              <Label>
-                <div>Name:</div>
-                <Input
-                  type="text"
-                  onChange={props.onChange}
-                  value={props.values.name}
-                  name="name"
-                  disabled={!editable}
-                />
-              </Label>
-              <Label>
-                <div>Email:</div>
-                <Input
-                  type="text"
-                  onChange={handleChange}
-                  value={props.values.email}
-                  name="email"
-                  disabled={!editable}
-                />
-              </Label>
-              <Label>
-                <div>Birthday:</div>
-                <Input
-                  type="text"
-                  onChange={handleChange}
-                  value={props.values.birthday}
-                  name="birthday"
-                  disabled={!editable}
-                />
-              </Label>
-              <Label>
-                <div>Phone:</div>
-                <Input
-                  type="text"
-                  onChange={handleChange}
-                  value={props.values.phone}
-                  name="phone"
-                  disabled={!editable}
-                />
-              </Label>
-              <Label>
-                <div>City:</div>
-                <Input
-                  type="text"
-                  onChange={props.handleChange}
-                  onBlur={props.handleBlur}
-                  value={props.values.city}
-                  name="city"
-                  disabled={!editable}
-                />
-              </Label>
-              {props.errors.name && (
-                <div id="feedback">{props.errors.name}</div>
-              )}
-              {editable ? (
-                <SubmitBtn type="submit">Submit</SubmitBtn>
-              ) : (
-                <LogoutBtn type="button">Log Out</LogoutBtn>
-              )}
-            </Form>
-          )}
-        </Formik>
-      </UserProfileContainer>
-    </UserProfileSection>
+      <UserProfileSection>
+        <h2>My information:</h2>
+        <UserProfileContainer>
+          <UserPhotoBox onClick={editHandler}>
+            <UserImg src={UserPhotoDefault} alt="User profile" />
+            {editable ? <EditImg>Edit photo</EditImg> : ""}
+          </UserPhotoBox>
+          <Formik
+            initialValues={{
+              name: "andrey",
+              email: "aa@22m.com",
+              birthday: "00.00.0000",
+              phone: "+380",
+              city: "Kyiv",
+            }}
+            onSubmit={(values, actions) => {
+              //  setTimeout(() => {
+              //    alert(JSON.stringify(values, null, 2));
+              //    actions.setSubmitting(false);
+              //  }, 1000);
+              console.log("this is submit");
+            }}
+            onChange={(values, actions) => {
+              console.log(actions);
+              console.log("onchange");
+            }}
+            handleChange={(e) => {
+              console.log(e);
+            }}
+          >
+            {(props) => (
+              <Form onSubmit={props.handleSubmit}>
+                <Label>
+                  <div>Name:</div>
+                  <Input
+                    type="text"
+                    onChange={props.onChange}
+                    value={props.values.name}
+                    name="name"
+                    disabled={!editable}
+                  />
+                </Label>
+                <Label>
+                  <div>Email:</div>
+                  <Input
+                    type="text"
+                    onChange={handleChange}
+                    value={props.values.email}
+                    name="email"
+                    disabled={!editable}
+                  />
+                </Label>
+                <Label>
+                  <div>Birthday:</div>
+                  <Input
+                    type="text"
+                    onChange={handleChange}
+                    value={props.values.birthday}
+                    name="birthday"
+                    disabled={!editable}
+                  />
+                </Label>
+                <Label>
+                  <div>Phone:</div>
+                  <Input
+                    type="text"
+                    onChange={handleChange}
+                    value={props.values.phone}
+                    name="phone"
+                    disabled={!editable}
+                  />
+                </Label>
+                <Label>
+                  <div>City:</div>
+                  <Input
+                    type="text"
+                    onChange={props.handleChange}
+                    onBlur={props.handleBlur}
+                    value={props.values.city}
+                    name="city"
+                    disabled={!editable}
+                  />
+                </Label>
+                {props.errors.name && (
+                  <div id="feedback">{props.errors.name}</div>
+                )}
+                {editable ? (
+                  <SubmitBtn type="submit">Submit</SubmitBtn>
+                ) : (
+                  <LogoutBtn type="button">Log Out</LogoutBtn>
+                )}
+              </Form>
+            )}
+          </Formik>
+        </UserProfileContainer>
+      </UserProfileSection>
     </>
   );
 }
