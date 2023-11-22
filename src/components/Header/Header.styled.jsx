@@ -55,6 +55,7 @@ export const LinkLogin = styled(Link)`
     letter-spacing: 1px;
     box-shadow: ${({theme}) => theme.shadows.shadowHover};
     transition: all 0.4s ease 0s;
+  }
 `;
 
 
