@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-// import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Formik } from 'formik';
 
-// import { selectError } from '../../redux/auth/selectors';
+import { logIn } from '../../redux/auth/operation';
+import { selectError } from '../../redux/auth/selectors';
 
 import { ReactComponent as OpenEyeIcon } from '../../assets/icons/eye-open.svg';
 import { ReactComponent as CloseEyeIcon } from '../../assets/icons/eye-closed.svg';
@@ -26,6 +27,7 @@ import {
   ErrorMessage,
   PasswordIcon,
   EyeIcon,
+  LoginErrorMessage,
   LogInBtn,
   RegisterText,
   RegisterLink,
@@ -58,18 +60,19 @@ const fieldValidation = values => {
 };
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
 
-  // const loginError = useSelector(selectError);
+  const loginError = useSelector(selectError);
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = async (values, { setSubmitting }) => {
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     if (loading) {
       return;
     }
@@ -77,27 +80,15 @@ const LoginForm = () => {
     setLoading(true);
 
     try {
-
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      });
-  
-      if (response.ok) {
-        const data = await response.json();
-        if (data.success) {
-          navigate('/');
-        } else {
-          console.error('Ошибка входа:', data.error);
-        }
+      const response = await dispatch(logIn(values));
+      if (!response.error) {
+        console.log("loginError:", loginError)
+        navigate('/user');
       } else {
-        console.error('Ошибка HTTP:', response.statusText);
+        navigate ('/login');
       }
     } catch (error) {
-      console.error('Ошибка:', error);
+      console.log(error);
     } finally {
       setLoading(false);
       setSubmitting(false);
@@ -221,6 +212,11 @@ const isPasswordValid = values.password && values.password.length >= 8 && /[A-Za
                 </InfoMessage>
               )}
             </LogInFormPasswordContainer>  
+
+            {loginError && (
+              <LoginErrorMessage>{loginError.message}</LoginErrorMessage>
+            )}
+
             <LogInBtn type="submit" disabled={isSubmitting || loading}>
               Log In
             </LogInBtn>

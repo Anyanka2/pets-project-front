@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 
+import { register } from '../../redux/auth/operation';
 
 import { ReactComponent as OpenEyeIcon } from '../../assets/icons/eye-open.svg';
 import { ReactComponent as CloseEyeIcon } from '../../assets/icons/eye-closed.svg';
@@ -77,11 +78,11 @@ const fieldValidation = values => {
 };
 
 const RegisterForm = () => {
-//   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [emailAvailable] = useState(true);
+  const [emailAvailable, setEmailAvailable] = useState(true);
 
   const navigate = useNavigate();
 
@@ -99,39 +100,30 @@ const RegisterForm = () => {
     }
 
     setLoading(true);
-    // const credentials = {
-    //   email: values.email,
-    //   password: values.password,
-    //   username: values.username,
-    // };
+    const credentials = {
+      name: values.username,
+      email: values.email,
+      password: values.password,
+    };
 
-    try {
-
-        const response = await fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(values),
-        });
-    
-        if (response.ok) {
-          const data = await response.json();
-          if (data.success) {
-            navigate('/');
-          } else {
-            console.error('Ошибка входа:', data.error);
-          }
-        } else {
-          console.error('Ошибка HTTP:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Ошибка:', error);
-      } finally {
-        setLoading(false);
-        setSubmitting(false);
-      }
-  };
+  try {
+    const response = await dispatch(register(credentials));
+    if (response.error) {
+      setEmailAvailable(false);
+    } else {
+      setEmailAvailable(true);
+      navigate('/user');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+    if (error.response) {
+      console.error('Server response:', error.response.data);
+    }
+  } finally {
+    setLoading(false);
+    setSubmitting(false);
+  }
+};
 
   return (
     <Formik
