@@ -6,12 +6,10 @@ export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
   padding: 30px 16px;
-  color: #111;
+  justify-content: space-between;
 `;
 
 export const LogoLink = styled(Link)`
-  font-size: 24px;
-  font-weight: bold;
   margin-right: 159px;
 `;
 
@@ -38,12 +36,12 @@ export const ButtonsContainer = styled.div`
 
 export const LinkLogin = styled(Link)`
   padding: 8px 20px 8px 20px;
-  border: 2px solid #FFC107;
+  border: 2px solid ${({theme}) => theme.colors.yellow};
   cursor: pointer;
-  color: #fff;
+  color: ${({theme}) => theme.colors.white};
   width: 165px;
   border-radius: 40px;
-  background-color: #FFC107;
+  background-color: ${({theme}) => theme.colors.yellow};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -51,21 +49,23 @@ export const LinkLogin = styled(Link)`
   line-height: 1.5;
   gap: 8px;
 
-  &:hover {
-    background-color: #FFC107;
-    color: #fff;
-  }
+&:hover {
+    background: ${({theme}) => theme.colors.orangeGradient};
+    border:none;
+    letter-spacing: 1px;
+    box-shadow: ${({theme}) => theme.shadows.shadowHover};
+    transition: all 0.4s ease 0s;
 `;
 
 
 export const LinkReg = styled(Link)`
 padding: 8px 20px 8px 20px;
-border: 2px solid #FFC107;
+border: 2px solid ${({theme}) => theme.colors.yellow};
 cursor: pointer;
-color: #FFC107;
+color: ${({theme}) => theme.colors.yellow};
 width: 165px;
 border-radius: 40px;
-background-color: #FFF;
+background-color: ${({theme}) => theme.colors.white};
 display: flex;
 align-items: center;
 justify-content: center;
@@ -74,7 +74,11 @@ line-height: 1.5;
 gap: 8px;
 
 &:hover {
-  background-color: #FFC107;
-  color: #fff;
+  background: ${({theme}) => theme.colors.orangeGradient};
+  color: ${({theme}) => theme.colors.white};
+  border:none;
+  letter-spacing: 1px;
+  box-shadow: ${({theme}) => theme.shadows.shadowHover};
+  transition: all 0.4s ease 0s;
 }
 `;
