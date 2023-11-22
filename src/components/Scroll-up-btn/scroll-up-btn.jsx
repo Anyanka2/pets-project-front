@@ -12,7 +12,6 @@ const ScrollToTopButton = () => {
             iconName={'icon-arrow-left'}
             width={'42px'}
             height={'42px'}
-            // fill={'#FFFFFF'}
           />
           </IconContainet>
         </ContainerScroll>

@@ -14,7 +14,6 @@ const PublicRoute = () => {
   if (isLoggedIn && token) {
     return <Navigate to="/user" />;
   }
-
   return <Outlet />;
 };
 
