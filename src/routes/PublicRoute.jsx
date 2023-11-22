@@ -11,10 +11,9 @@ const PublicRoute = () => {
     return <Loader />;
   }
 
-  if (isLoggedIn) {
+  if (isLoggedIn && token) {
     return <Navigate to="/user" />;
   }
-
   return <Outlet />;
 };
 
