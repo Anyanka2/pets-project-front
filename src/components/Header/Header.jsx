@@ -7,7 +7,7 @@ import pawprint from '../../assets/icons/pawprint.svg';
 const Header = () => {
   return (
     <HeaderContainer>
-        <LogoLink to='/'>
+        <LogoLink to='/main'>
         <Image src ={`${svg}`}/>
         </LogoLink>
         <Navigation/>

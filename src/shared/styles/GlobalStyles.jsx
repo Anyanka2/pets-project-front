@@ -1,5 +1,6 @@
 import "@csstools/normalize.css";
 import { createGlobalStyle } from "styled-components";
+import { theme } from "./theme";
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -15,10 +16,10 @@ body {
   font-family: 'Manrope', sans-serif;
   font-size: 16px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: ${theme.fontWeights.bold};
   line-height: normal;
-  color: ${({ theme }) => theme.colors.black};
-  background-color: ${({ theme }) => theme.colors.bgColorPage};
+  color: ${theme.colors.black};
+  background-color: ${theme.colors.bgColorPage};
 }
 
 code {

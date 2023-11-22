@@ -5,6 +5,7 @@ import PublicRoute from "../src/routes/PublicRoute";
 import PrivateRoute from "../src/routes/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
 import { GlobalStyle } from "./shared/styles/GlobalStyles";
+import { SearchBar } from "./shared/components/SearchBar/SearchBar";
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage"));
@@ -36,6 +37,10 @@ const App = () => {
             <Route element={<PrivateRoute />}>
               <Route path="user" element={<UserPage />} />
               <Route path="add-pet" element={<AddPetPage />} />
+            </Route>
+
+            <Route element={<PrivateRoute />}>
+              <Route path="" element={<SearchBar />} />
             </Route>
 
             <Route path="news" element={<NewsPage />} />

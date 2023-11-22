@@ -8,7 +8,12 @@ import { Formik } from 'formik';
 import { ReactComponent as OpenEyeIcon } from '../../assets/icons/eye-open.svg';
 import { ReactComponent as CloseEyeIcon } from '../../assets/icons/eye-closed.svg';
 import { ReactComponent as CrossIcon } from '../../assets/icons/cross-small.svg';
+import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg';
 
+import {
+  CheckMarkIcon,
+  InfoMessage,
+} from '../RegisterForm/RegisterForm.styled';
 import {
   LogInForm,
   LogInFormTitle,
@@ -41,8 +46,8 @@ const fieldValidation = values => {
 
   if (!values.password) {
     errors.password = 'This field is required';
-  } else if (values.password.length < 6) {
-    errors.password = 'Password must be at least 6 characters long';
+  } else if (values.password.length < 8) {
+    errors.password = 'Password must be at least 8 characters long';
   } else if (!/[A-Za-z]/.test(values.password)) {
     errors.password = 'Password must contain at least one letter';
   } else if (!/\d/.test(values.password)) {
@@ -117,6 +122,9 @@ const LoginForm = () => {
         isSubmitting,
         resetForm,
       }) => {
+
+const isPasswordValid = values.password && values.password.length >= 8 && /[A-Za-z]/.test(values.password) && /\d/.test(values.password);
+
         const handleFieldChange = e => {
           const { name } = e.target;
           setErrors({ ...errors, [name]: '' });
@@ -143,6 +151,11 @@ const LoginForm = () => {
                   onBlur={handleBlur}
                   disabled={loading}
                 />
+                {values.email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email) && (
+                    <CheckMarkIcon>
+                    <CheckIcon />
+                    </CheckMarkIcon>
+                )}
                 {errors.email && touched.email && values.email && (
                   <ErrorIcon
                     onClick={() => {
@@ -161,9 +174,11 @@ const LoginForm = () => {
 
             <LogInFormPasswordContainer
               error={errors.password && touched.password}
+              secure={isPasswordValid}
             >
               <LogInFormPasswordInputContainer
                 error={errors.password && touched.password}
+                secure={isPasswordValid}
                 style={{
                   borderColor:
                     errors.password && touched.password ? '#F43F5E' : '#54ADFF',
@@ -179,14 +194,31 @@ const LoginForm = () => {
                   disabled={loading}
                 />
                 <PasswordIcon onClick={togglePasswordVisibility}>
-                  <EyeIcon error={errors.password && touched.password}>
+                  <EyeIcon error={errors.password && touched.password}
+                  secure={isPasswordValid}>
                     {showPassword ? <OpenEyeIcon /> : <CloseEyeIcon />}
                   </EyeIcon>
+                  {isPasswordValid && (
+                    <CheckMarkIcon>
+                      <CheckIcon />
+                    </CheckMarkIcon>
+                  )}
+                  {errors.password && touched.password && values.password && (
+                    <ErrorIcon
+                      onClick={() => {
+                        resetForm({ values: { ...values, password: '' } });}}>
+                      <CrossIcon />
+                    </ErrorIcon>
+                  )}
                 </PasswordIcon>
               </LogInFormPasswordInputContainer>
-
               {errors.password && touched.password && (
                 <ErrorMessage name="password">{errors.password}</ErrorMessage>
+              )}
+              {isPasswordValid && (
+                <InfoMessage valid={isPasswordValid}>
+                  Password is secure
+                </InfoMessage>
               )}
             </LogInFormPasswordContainer>  
             <LogInBtn type="submit" disabled={isSubmitting || loading}>

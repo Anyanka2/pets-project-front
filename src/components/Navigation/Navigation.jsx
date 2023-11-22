@@ -8,7 +8,7 @@ const Navigation = () => {
       <StylesLink to="news">
         News
       </StylesLink>
-      <StylesLink to="/">
+      <StylesLink to="notices">
         Find Pet
       </StylesLink>
       <StylesLink to="friends">
