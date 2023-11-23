@@ -12,7 +12,6 @@ export const NavigationContainer = styled.nav`
   @media only screen and (min-width: 1280px) {
     max-width: 1280px;
     display: flex;
-    margin-right: 250px;
     gap: 40px;
   }
 `;
