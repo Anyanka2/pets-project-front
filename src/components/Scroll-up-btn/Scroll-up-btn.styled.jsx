@@ -11,7 +11,7 @@ export const ContainerScroll = styled.div`
   justify-content: center;
   transform: rotate(90deg);
 `;
-export const IconContainet = styled.div`
+export const IconContainer = styled.div`
   height: 42px;
 
   fill: white;
