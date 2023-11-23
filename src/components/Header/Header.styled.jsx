@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 30px 16px;
+  padding: 30px 16px 0px 16px;
   justify-content: space-between;
 `;
 
@@ -14,8 +14,15 @@ export const LogoLink = styled(Link)`
 `;
 
 export const Image = styled.img`
+  width: 116px;
+  height: 20px;
+  max-width: none;
+
+@media screen and (min-width: 768px) {
   width: 162px;
   height: 28px;
+}
+
 `;
 
 
@@ -28,8 +35,14 @@ export const ImgLogin = styled.img`
 
 
 export const ButtonsContainer = styled.div`
+  min-width: 320px;
+  display: none;
+
+@media screen and (min-width: 768px){
   display: flex;
   gap: 20px;
+}
+
 
  
 `;
