@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
 import { ReactComponent as CloseIcon } from "../../../assets/icons/close.svg";
 import {
