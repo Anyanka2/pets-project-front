@@ -1,6 +1,5 @@
 import { useState } from "react";
 import {
-  Search,
   SearchButton,
   SearchForm,
   SearchInput,

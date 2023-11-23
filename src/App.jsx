@@ -6,7 +6,7 @@ import PrivateRoute from "../src/routes/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
 import { GlobalStyle } from "./shared/styles/GlobalStyles";
 import { SearchBar } from "./shared/components/SearchBar/SearchBar";
-//import { ScrollToTopButton } from "./components/Scroll-up-btn/Scroll-up-btn";
+import ScrollToTopButton from "./components/Scroll-up-btn/ScrollBtnUp";
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage"));
@@ -24,7 +24,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-      {/* <ScrollToTopButton /> */}
+      <ScrollToTopButton />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
