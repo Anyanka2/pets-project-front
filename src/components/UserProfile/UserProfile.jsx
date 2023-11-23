@@ -1,23 +1,40 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Formik } from "formik";
+import { object, string, number, date, InferType } from "yup";
 
 import UserPhotoDefault from "../../assets/icons/user_photo_default.svg";
 import {
   UserProfileContainer,
   UserPhotoBox,
-  Form,
   LogoutBtn,
   UserImg,
   Label,
-  Input,
   SubmitBtn,
   EditImg,
   UserProfileSection,
+  StyledForm,
+  StyledField,
 } from "./UserProfile.styled";
 
 export default function UserProfile() {
   const [editable, setEditable] = useState(false);
-  const [userData, setUserData] = useState();
+  const [anketa, setAnketa] = useState({
+    name: "",
+    email: "",
+    birthday: "",
+    phone: "",
+    city: "",
+  });
+
+  const yupSchema = object().shape({
+    name: string().required("Name is required"),
+    email: string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    birthday: string(),
+    phone: string(),
+    city: string(),
+  });
 
   const editHandler = (e) => {
     if (e.target.nodeName === "IMG") {
@@ -26,20 +43,8 @@ export default function UserProfile() {
     setEditable((pervState) => !pervState);
   };
 
-  useEffect(() => {
-    setUserData({
-      name: "andrey",
-      email: "aa@22m.com",
-      birthday: "00.00.0000",
-      phone: "+380",
-      city: "Kyiv",
-    });
-  }, []);
-
-  const handleChange = (e) => {
-    console.log(e);
-    console.log("tut");
-    console.log(userData);
+  const handleLogout = async (e) => {
+    console.log("logout");
   };
 
   return (
@@ -52,90 +57,47 @@ export default function UserProfile() {
             {editable ? <EditImg>Edit photo</EditImg> : ""}
           </UserPhotoBox>
           <Formik
-            initialValues={{
-              name: "andrey",
-              email: "aa@22m.com",
-              birthday: "00.00.0000",
-              phone: "+380",
-              city: "Kyiv",
-            }}
+            initialValues={anketa}
+            validationSchema={yupSchema}
             onSubmit={(values, actions) => {
               //  setTimeout(() => {
               //    alert(JSON.stringify(values, null, 2));
               //    actions.setSubmitting(false);
               //  }, 1000);
               console.log("this is submit");
-            }}
-            onChange={(values, actions) => {
-              console.log(actions);
-              console.log("onchange");
-            }}
-            handleChange={(e) => {
-              console.log(e);
+              actions.setSubmitting(false)
             }}
           >
             {(props) => (
-              <Form onSubmit={props.handleSubmit}>
+              <StyledForm onSubmit={props.onSubmit}>
                 <Label>
-                  <div>Name:</div>
-                  <Input
-                    type="text"
-                    onChange={props.onChange}
-                    value={props.values.name}
-                    name="name"
-                    disabled={!editable}
-                  />
+                  Name:
+                  <StyledField disabled={!editable} type="text" name="name" />
                 </Label>
                 <Label>
-                  <div>Email:</div>
-                  <Input
-                    type="text"
-                    onChange={handleChange}
-                    value={props.values.email}
-                    name="email"
-                    disabled={!editable}
-                  />
+                  Email:
+                  <StyledField disabled={!editable} type="text" name="email" />
                 </Label>
                 <Label>
-                  <div>Birthday:</div>
-                  <Input
-                    type="text"
-                    onChange={handleChange}
-                    value={props.values.birthday}
-                    name="birthday"
-                    disabled={!editable}
-                  />
+                  Birthday:
+                  <StyledField disabled={!editable} type="text" name="birthday" />
                 </Label>
                 <Label>
-                  <div>Phone:</div>
-                  <Input
-                    type="text"
-                    onChange={handleChange}
-                    value={props.values.phone}
-                    name="phone"
-                    disabled={!editable}
-                  />
+                  Phone:
+                  <StyledField disabled={!editable} type="text" name="phone" />
                 </Label>
                 <Label>
-                  <div>City:</div>
-                  <Input
-                    type="text"
-                    onChange={props.handleChange}
-                    onBlur={props.handleBlur}
-                    value={props.values.city}
-                    name="city"
-                    disabled={!editable}
-                  />
+                  City:
+                  <StyledField disabled={!editable} type="text" name="city" />
                 </Label>
-                {props.errors.name && (
-                  <div id="feedback">{props.errors.name}</div>
-                )}
                 {editable ? (
                   <SubmitBtn type="submit">Submit</SubmitBtn>
                 ) : (
-                  <LogoutBtn type="button">Log Out</LogoutBtn>
+                  <LogoutBtn type="button" onClick={handleLogout}>
+                    Log Out
+                  </LogoutBtn>
                 )}
-              </Form>
+              </StyledForm>
             )}
           </Formik>
         </UserProfileContainer>
