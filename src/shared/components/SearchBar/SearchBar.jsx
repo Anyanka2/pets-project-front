@@ -1,5 +1,10 @@
 import { useState } from "react";
-import { Search } from "./SearchBar.styled";
+import {
+  Search,
+  SearchButton,
+  SearchForm,
+  SearchInput,
+} from "./SearchBar.styled";
 import PropTypes from "prop-types";
 
 export const SearchBar = (props) => {
@@ -23,18 +28,17 @@ export const SearchBar = (props) => {
     setValue("");
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <Search
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search"
-          onChange={handleValueChange}
-          value={value}
-        />
-      </form>
-    </div>
+    <SearchForm onSubmit={handleSubmit}>
+      <SearchInput
+        type="text"
+        autoComplete="off"
+        autoFocus
+        placeholder="Search"
+        onChange={handleValueChange}
+        value={value}
+      ></SearchInput>
+      <SearchButton type="submit">S</SearchButton>
+    </SearchForm>
   );
 };
 
