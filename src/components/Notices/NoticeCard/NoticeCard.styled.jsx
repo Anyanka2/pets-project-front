@@ -1,13 +1,12 @@
 import { styled } from "styled-components";
 //import { StyledContainer } from "../../../shared/styles/media";
-import { theme } from "../../shared/styles/theme";
+import { theme } from "../../../shared/styles/theme";
 
 export const List = styled.ul`
   display: flex;
   align-items: center;
   flex-direction: column;
   width: 100%;
-
   gap: 24px;
 
   @media screen and (min-width: 768px) {
@@ -31,7 +30,7 @@ export const Item = styled.li`
   padding-bottom: 24px;
   border-radius: 0 0 40px 40px;
   box-shadow: ${theme.shadows.shadowDefault};
-  background-color: ${(props) => props.theme.colors.bgdColorAuth};
+  background-color: ${theme.colors.white};
 
   @media screen and (min-width: 768px) {
     width: 336px;
@@ -39,13 +38,14 @@ export const Item = styled.li`
 
   @media screen and (min-width: 1280px) {
     width: 288px;
+    height: 456px;
   }
 
-  transition: transform ${({ theme }) => theme.transitionHover};
+  transition: transform ${theme.transitions.transitionRegular};
 
   &:hover {
     transform: scale(1.02);
-    transition: transform ${({ theme }) => theme.transitionHover};
+    transition: transform ${theme.transitions.transitionRegular};
   }
 `;
 
@@ -80,12 +80,12 @@ export const TextStatus = styled.p`
   height: 32px;
   padding: 11px 17px;
   border-radius: 0 16px 16px 0;
-  font-size: ${(props) => props.theme.fontSizes.sm};
-  font-family: ${(props) => props.theme.fonts.main.medium};
+  font-size: 14px;
+  font-family: ${theme.fonts.manrope.medium};
   line-height: 19px;
 
-  background-color: ${(props) => props.theme.colors.blueLight};
-  color: ${(props) => props.theme.colors.black};
+  background-color: ${theme.colors.lightBlue};
+  color: ${theme.colors.black};
 `;
 
 export const ContainerButton = styled.div`
@@ -106,12 +106,12 @@ export const Button = styled.button`
   border: none;
   border-radius: 50%;
   line-height: 0;
-  background-color: ${(props) => props.theme.colors.blueLight};
-  transition: transform ${({ theme }) => theme.transitionHover};
+  background-color: ${theme.colors.lightBlue};
+  transition: transform ${theme.transitions.transitionRegular};
 
   &:hover {
     transform: scale(1.2);
-    transition: transform ${({ theme }) => theme.transitionHover};
+    transition: transform ${theme.transitions.transitionRegular};
   }
 `;
 
@@ -143,16 +143,16 @@ export const ItemPetInfo = styled.li`
   height: 28px;
   padding: 5px 5px;
   border-radius: 16px;
-  background-color: ${(props) => props.theme.colors.blueLight};
-  color: ${(props) => props.theme.colors.black};
-  stroke: ${(props) => props.theme.colors.blue};
+  background-color: ${theme.colors.lightBlue};
+  color: ${theme.colors.black};
+  stroke: ${theme.colors.blueLink};
   cursor: pointer;
-  transition: ${({ theme }) => theme.transitionHover};
+  transition: ${theme.transitions.transitionRegular};
 `;
 
 export const SpanPetText = styled.span`
-  font-family: ${(props) => props.theme.fonts.main.semiBold};
-  font-size: ${(props) => props.theme.fontSizes.xs};
+  font-family: ${theme.fonts.manrope.semiBold};
+  font-size: 12px;
   text-align: center;
   letter-spacing: 0.48px;
 `;
@@ -160,8 +160,26 @@ export const SpanPetText = styled.span`
 export const TextPetName = styled.p`
   display: flex;
   padding: 20px;
-  font-family: ${(props) => props.theme.fonts.main.bold};
-  font-size: ${(props) => props.theme.fontSizes.xl};
+  font-family: ${theme.fonts.manrope.bold};
+  font-size: 24px;
   line-height: 33px;
   word-break: break-word;
+`;
+
+export const LearnMoreBtn = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 248px;
+  height: 38px;
+  padding: 8px 28px;
+  border-radius: 40px;
+  border: 2px solid ${theme.colors.blueLink};
+  background-color: transparent;
+  
+
+  &:hover {
+    transform: scale(1.02);
+    transition: transform ${theme.transitions.transitionRegular};
+  }
 `;

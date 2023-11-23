@@ -1,14 +1,16 @@
-
+import { NoticeCard } from "../NoticeCard/NoticeCard";
+import { NoticeListWrapper } from "../NoticesList/NoticesList.styled";
 
 export const NoticesList = () => {
   return (
     <>
-      <ul>
-        <li>Notice card</li>
-        <li>Notice card</li>
-        <li>Notice card</li>
-        <li>Notice card</li>
-      </ul>
+      <NoticeListWrapper>
+        <NoticeCard />
+        <NoticeCard />
+        <NoticeCard />
+        <NoticeCard />
+        <NoticeCard />
+      </NoticeListWrapper>
     </>
   );
 };

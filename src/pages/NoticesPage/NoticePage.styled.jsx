@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
-export const NoticeListWrapper = styled.ul`
+export const NoticeCategoryPanel = styled.ul`
   display: flex;
   flex-wrap: wrap;
-  gap: 32px;
+  gap: 16px;
 `;
