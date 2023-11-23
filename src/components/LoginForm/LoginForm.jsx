@@ -1,20 +1,20 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import { useDispatch, useSelector } from 'react-redux';
-import { Formik } from 'formik';
+import { useState } from "react";
+import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { Formik } from "formik";
 
-import { logIn } from '../../redux/auth/operation';
-import { selectError } from '../../redux/auth/selectors';
+import { logIn } from "../../redux/auth/operation";
+import { selectError } from "../../redux/auth/selectors";
 
-import { ReactComponent as OpenEyeIcon } from '../../assets/icons/eye-open.svg';
-import { ReactComponent as CloseEyeIcon } from '../../assets/icons/eye-closed.svg';
-import { ReactComponent as CrossIcon } from '../../assets/icons/cross-small.svg';
-import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg';
+import { ReactComponent as OpenEyeIcon } from "../../assets/icons/eye-open.svg";
+import { ReactComponent as CloseEyeIcon } from "../../assets/icons/eye-closed.svg";
+import { ReactComponent as CrossIcon } from "../../assets/icons/cross-small.svg";
+import { ReactComponent as CheckIcon } from "../../assets/icons/check.svg";
 
 import {
   CheckMarkIcon,
   InfoMessage,
-} from '../RegisterForm/RegisterForm.styled';
+} from "../RegisterForm/RegisterForm.styled";
 import {
   LogInForm,
   LogInFormTitle,
@@ -31,29 +31,29 @@ import {
   LogInBtn,
   RegisterText,
   RegisterLink,
-} from './LoginForm.styled';
+} from "./LoginForm.styled";
 
 const initialValues = {
-  email: '',
-  password: '',
+  email: "",
+  password: "",
 };
 
-const fieldValidation = values => {
+const fieldValidation = (values) => {
   const errors = {};
   if (!values.email) {
-    errors.email = 'This field is required';
+    errors.email = "This field is required";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = 'Enter a valid Email';
+    errors.email = "Enter a valid Email";
   }
 
   if (!values.password) {
-    errors.password = 'This field is required';
+    errors.password = "This field is required";
   } else if (values.password.length < 8) {
-    errors.password = 'Password must be at least 8 characters long';
+    errors.password = "Password must be at least 8 characters long";
   } else if (!/[A-Za-z]/.test(values.password)) {
-    errors.password = 'Password must contain at least one letter';
+    errors.password = "Password must contain at least one letter";
   } else if (!/\d/.test(values.password)) {
-    errors.password = 'Password must contain at least one digit';
+    errors.password = "Password must contain at least one digit";
   }
 
   return errors;
@@ -82,10 +82,10 @@ const LoginForm = () => {
     try {
       const response = await dispatch(logIn(values));
       if (!response.error) {
-        console.log("loginError:", loginError)
-        navigate('/user');
+        console.log("loginError:", loginError);
+        navigate("/user");
       } else {
-        navigate ('/login');
+        navigate("/login");
       }
     } catch (error) {
       console.log(error);
@@ -102,7 +102,7 @@ const LoginForm = () => {
       validateOnChange={false}
       onSubmit={handleSubmit}
     >
-       {({
+      {({
         values,
         errors,
         setErrors,
@@ -113,12 +113,15 @@ const LoginForm = () => {
         isSubmitting,
         resetForm,
       }) => {
+        const isPasswordValid =
+          values.password &&
+          values.password.length >= 8 &&
+          /[A-Za-z]/.test(values.password) &&
+          /\d/.test(values.password);
 
-const isPasswordValid = values.password && values.password.length >= 8 && /[A-Za-z]/.test(values.password) && /\d/.test(values.password);
-
-        const handleFieldChange = e => {
+        const handleFieldChange = (e) => {
           const { name } = e.target;
-          setErrors({ ...errors, [name]: '' });
+          setErrors({ ...errors, [name]: "" });
           handleChange(e);
         };
 
@@ -130,7 +133,7 @@ const isPasswordValid = values.password && values.password.length >= 8 && /[A-Za
                 error={errors.email && touched.email}
                 style={{
                   borderColor:
-                    errors.email && touched.email ? '#F43F5E' : '#54ADFF',
+                    errors.email && touched.email ? "#F43F5E" : "#54ADFF",
                 }}
               >
                 <LogInFormInput
@@ -142,15 +145,18 @@ const isPasswordValid = values.password && values.password.length >= 8 && /[A-Za
                   onBlur={handleBlur}
                   disabled={loading}
                 />
-                {values.email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email) && (
+                {values.email &&
+                  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+                    values.email
+                  ) && (
                     <CheckMarkIcon>
-                    <CheckIcon />
+                      <CheckIcon />
                     </CheckMarkIcon>
-                )}
+                  )}
                 {errors.email && touched.email && values.email && (
                   <ErrorIcon
                     onClick={() => {
-                      resetForm({ values: { ...values, email: '' } });
+                      resetForm({ values: { ...values, email: "" } });
                     }}
                   >
                     <CrossIcon />
@@ -172,11 +178,11 @@ const isPasswordValid = values.password && values.password.length >= 8 && /[A-Za
                 secure={isPasswordValid}
                 style={{
                   borderColor:
-                    errors.password && touched.password ? '#F43F5E' : '#54ADFF',
+                    errors.password && touched.password ? "#F43F5E" : "#54ADFF",
                 }}
               >
                 <LogInFormInput
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
                   value={values.password}
@@ -185,8 +191,10 @@ const isPasswordValid = values.password && values.password.length >= 8 && /[A-Za
                   disabled={loading}
                 />
                 <PasswordIcon onClick={togglePasswordVisibility}>
-                  <EyeIcon error={errors.password && touched.password}
-                  secure={isPasswordValid}>
+                  <EyeIcon
+                    error={errors.password && touched.password}
+                    secure={isPasswordValid}
+                  >
                     {showPassword ? <OpenEyeIcon /> : <CloseEyeIcon />}
                   </EyeIcon>
                   {isPasswordValid && (
@@ -197,7 +205,9 @@ const isPasswordValid = values.password && values.password.length >= 8 && /[A-Za
                   {errors.password && touched.password && values.password && (
                     <ErrorIcon
                       onClick={() => {
-                        resetForm({ values: { ...values, password: '' } });}}>
+                        resetForm({ values: { ...values, password: "" } });
+                      }}
+                    >
                       <CrossIcon />
                     </ErrorIcon>
                   )}
@@ -211,7 +221,7 @@ const isPasswordValid = values.password && values.password.length >= 8 && /[A-Za
                   Password is secure
                 </InfoMessage>
               )}
-            </LogInFormPasswordContainer>  
+            </LogInFormPasswordContainer>
 
             {loginError && (
               <LoginErrorMessage>{loginError.message}</LoginErrorMessage>
@@ -221,8 +231,8 @@ const isPasswordValid = values.password && values.password.length >= 8 && /[A-Za
               Log In
             </LogInBtn>
             <RegisterText>
-              Don't have an account?{' '}
-              <RegisterLink to={'/register'}>Register</RegisterLink>
+              Don't have an account?{" "}
+              <RegisterLink to={"/register"}>Register</RegisterLink>
             </RegisterText>
           </LogInForm>
         );
