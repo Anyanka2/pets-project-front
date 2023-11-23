@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import { theme } from "../../shared/styles/theme.jsx";
 
 export const NotFoundPageContainer = styled.div`
@@ -55,6 +55,7 @@ export const StyledLink = styled(Link)`
     transform: scale(1.05);
     transition: transform 0.3s;
   }
+
   &:hover:before {
     left: 100%;
   }
