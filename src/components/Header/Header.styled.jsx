@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import {theme} from '../../shared/styles/theme';
 
 // Стилизация Header
 export const HeaderContainer = styled.div`
   display: flex;
   align-items: center;
-  padding: 30px 16px 0px 16px;
+  padding: 0px 16px 0px 16px;
   justify-content: space-between;
 `;
 
@@ -26,11 +27,10 @@ export const Image = styled.img`
 `;
 
 
-export const ImgLogin = styled.img`
+export const CustomSvg = styled.svg`
+  fill: ${({theme}) => theme.colors.yellow};
   width: 24px;
   height: 24px;
-  padding:0;
-  margin: 0;
 `;
 
 
@@ -51,10 +51,10 @@ export const LinkLogin = styled(Link)`
   padding: 8px 20px 8px 20px;
   border: 2px solid ${({theme}) => theme.colors.yellow};
   cursor: pointer;
-  color: ${({theme}) => theme.colors.white};
+  color: ${({theme}) => theme.colors.yellow};
   width: 165px;
   border-radius: 40px;
-  background-color: ${({theme}) => theme.colors.yellow};
+  background-color: ${({theme}) => theme.colors.white};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -63,12 +63,16 @@ export const LinkLogin = styled(Link)`
   gap: 8px;
 
 &:hover {
-    background: ${({theme}) => theme.colors.orangeGradient};
+    background: ${({theme}) => theme.colors.yellow};
+    color : ${theme.colors.white};
     border:none;
-    letter-spacing: 1px;
+  /*   letter-spacing: 1px;
     box-shadow: ${({theme}) => theme.shadows.shadowHover};
-    transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s; */
   }
+&:hover svg {
+  fill:${theme.colors.white};
+}
 `;
 
 
@@ -88,11 +92,8 @@ line-height: 1.5;
 gap: 8px;
 
 &:hover {
-  background: ${({theme}) => theme.colors.orangeGradient};
-  color: ${({theme}) => theme.colors.white};
+  background: ${({theme}) => theme.colors.yellow};
+  color : ${theme.colors.white};
   border:none;
-  letter-spacing: 1px;
-  box-shadow: ${({theme}) => theme.shadows.shadowHover};
-  transition: all 0.4s ease 0s;
 }
 `;
