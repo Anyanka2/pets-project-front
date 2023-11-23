@@ -4,10 +4,20 @@ import {theme} from '../../shared/styles/theme';
 
 // Стилизация Header
 export const HeaderContainer = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+@media screen and (min-width: 768px){
+
+}
+
+@media screen and (min-width: 1280px){
   display: flex;
   align-items: center;
-  padding: 0px 16px 0px 16px;
   justify-content: space-between;
+}
+
 `;
 
 export const LogoLink = styled(Link)`
