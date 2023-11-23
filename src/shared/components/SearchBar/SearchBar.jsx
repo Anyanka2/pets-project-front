@@ -1,8 +1,14 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
+import { ReactComponent as CloseIcon } from "../../../assets/icons/close.svg";
 import {
   SearchButton,
   SearchForm,
   SearchInput,
+  SearchAndCloseIcon,
+  SearchIconStyle,
+  CloseIconStyle,
 } from "./SearchBar.styled";
 import PropTypes from "prop-types";
 
@@ -36,7 +42,20 @@ export const SearchBar = (props) => {
         onChange={handleValueChange}
         value={value}
       ></SearchInput>
-      <SearchButton type="submit">S</SearchButton>
+      <SearchAndCloseIcon>
+        <SearchButton type="submit">
+          <SearchIconStyle>
+            <SearchIcon />
+          </SearchIconStyle>
+        </SearchButton>
+        {value.length > 0 && (
+          <SearchButton onClick={() => {}}>
+            <CloseIconStyle>
+              <CloseIcon />
+            </CloseIconStyle>
+          </SearchButton>
+        )}
+      </SearchAndCloseIcon>
     </SearchForm>
   );
 };

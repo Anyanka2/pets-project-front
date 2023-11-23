@@ -1,12 +1,16 @@
 import styled from "styled-components";
 
 export const SearchForm = styled.form`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  display: flex;
   padding-left: 20px;
   position: relative;
   max-width: 608px;
   height: 44px;
   @media screen and (max-width: 479px) {
-    max-width: 280px;
+    min-width: 280px;
   }
 `;
 
@@ -29,17 +33,34 @@ export const SearchInput = styled.input`
 `;
 
 export const SearchButton = styled.button`
+  display: flex;
+  align-items: center;
   position: absolute;
   height: 24px;
   width: 24px;
   top: 10px;
   right: 20px;
   padding: 0;
-
-  background-color: #f7b75d;
-  color: #fff;
   font-size: 16px;
   @media screen and (max-width: 479px) {
     right: 12px;
   }
+`;
+
+export const SearchAndCloseIcon = styled.span`
+  display: flex;
+  align-items: center;
+`;
+
+export const SearchIconStyle = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: #54adff;
+`;
+
+export const CloseIconStyle = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
