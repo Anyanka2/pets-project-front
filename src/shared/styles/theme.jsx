@@ -22,7 +22,7 @@ export const theme = {
     yellow: "#FFC107",
     bgColorPage: "#FEF9F9",
     blueGradient: "linear-gradient(290deg, #419EF1 0%, #9BD0FF 107.89%)",
-    orangeGradient: "linear-gradient(290deg, #ff984e 0%, #ffdf48 108%)",
+    orangeGradient: "linear-gradient(290deg, #ff984e 0%, #ffdf48 107.89%)",
     blueLink: "#54ADFF",
     lightBlue: "#CCE4FB",
     green: "#00C3AD",
