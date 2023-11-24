@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-//import { StyledContainer } from "../../../shared/styles/media";
 import { theme } from "../../../shared/styles/theme";
 
 export const List = styled.ul`
@@ -46,6 +45,7 @@ export const Item = styled.li`
   &:hover {
     transform: scale(1.02);
     transition: transform ${theme.transitions.transitionRegular};
+    box-shadow: ${theme.shadows.shadowHover};
   }
 `;
 
@@ -78,12 +78,9 @@ export const TextStatus = styled.p`
   justify-content: center;
   width: 126px;
   height: 32px;
-  padding: 11px 17px;
   border-radius: 0 16px 16px 0;
   font-size: 14px;
   font-family: ${theme.fonts.manrope.medium};
-  line-height: 19px;
-
   background-color: ${theme.colors.lightBlue};
   color: ${theme.colors.black};
 `;
