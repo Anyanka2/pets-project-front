@@ -1,5 +1,14 @@
 import { useState } from "react";
-import { Search } from "./SearchBar.styled";
+import { ReactComponent as SearchIcon } from "../../../assets/icons/search.svg";
+import { ReactComponent as CloseIcon } from "../../../assets/icons/close.svg";
+import {
+  SearchButton,
+  SearchForm,
+  SearchInput,
+  SearchAndCloseIcon,
+  SearchIconStyle,
+  CloseIconStyle,
+} from "./SearchBar.styled";
 import PropTypes from "prop-types";
 
 export const SearchBar = (props) => {
@@ -23,18 +32,30 @@ export const SearchBar = (props) => {
     setValue("");
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <Search
-          type="text"
-          autoComplete="off"
-          autoFocus
-          placeholder="Search"
-          onChange={handleValueChange}
-          value={value}
-        />
-      </form>
-    </div>
+    <SearchForm onSubmit={handleSubmit}>
+      <SearchInput
+        type="text"
+        autoComplete="off"
+        autoFocus
+        placeholder="Search"
+        onChange={handleValueChange}
+        value={value}
+      ></SearchInput>
+      <SearchAndCloseIcon>
+        <SearchButton type="submit">
+          <SearchIconStyle>
+            <SearchIcon />
+          </SearchIconStyle>
+        </SearchButton>
+        {value.length > 0 && (
+          <SearchButton onClick={() => {}}>
+            <CloseIconStyle>
+              <CloseIcon />
+            </CloseIconStyle>
+          </SearchButton>
+        )}
+      </SearchAndCloseIcon>
+    </SearchForm>
   );
 };
 
