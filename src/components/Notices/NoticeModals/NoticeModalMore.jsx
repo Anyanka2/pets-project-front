@@ -14,6 +14,7 @@ import {
   BtnContainer,
 } from "./NoticeModal.styled";
 import { ReactComponent as HeartIcon } from "../../../assets/icons/heart.svg";
+import { ReactComponent as IconClose } from "../../../assets/icons/close.svg";
 import PetPhoto from "../../../assets/images/petsImages/cat1.jpg";
 import { theme } from "../../../shared/styles/theme";
 
@@ -21,22 +22,23 @@ export const NoticeModalMore = ({
   //avatar,
   title,
   location,
-  petBirthday,
+  birthday,
   sex,
   name,
-  breed,
+  type,
   price,
   //owner,
-  description,
+  comments,
   category,
 }) => {
   return (
     <>
       <Content>
         <ContainerInfo>
+          <IconClose />
           <ImageContainer>
             <Image src={PetPhoto} alt="dog" />
-            <Type>{category}in good hands</Type>
+            <Type>{category}sell</Type>
           </ImageContainer>
           <div style={{ width: "321px", padding: "0 12px" }}>
             <Title>{title}Cute pet looking for a home</Title>
@@ -44,7 +46,7 @@ export const NoticeModalMore = ({
               <List>
                 <Item>Name: </Item>
                 <Item>Birthday: </Item>
-                <Item>Breed: </Item>
+                <Item>Type: </Item>
                 {price !== "0$" && price !== "0" && <Item>Price: </Item>}
                 <Item>Place: </Item>
                 <Item>The sex: </Item>
@@ -53,8 +55,8 @@ export const NoticeModalMore = ({
               </List>
               <List>
                 <ItemWrap>{name}Rich</ItemWrap>
-                <ItemWrap>{petBirthday}21.09.2020</ItemWrap>
-                <ItemWrap>{breed}Pomeranian</ItemWrap>
+                <ItemWrap>{birthday}21.09.2020</ItemWrap>
+                <ItemWrap>{type}Pomeranian</ItemWrap>
                 {price !== "0$" && price !== "0" && (
                   <ItemWrap>{price}1mln</ItemWrap>
                 )}
@@ -65,7 +67,7 @@ export const NoticeModalMore = ({
                     user@mail.com
                   </a>
                 </ItemWrap>
-                <ItemWrap style={{ color: "#FFC107" }}>
+                <ItemWrap>
                   <a style={{ color: "#FFC107" }} href={`tel:+380971234567`}>
                     +380971234567
                   </a>
@@ -75,8 +77,8 @@ export const NoticeModalMore = ({
           </div>
         </ContainerInfo>
         <Comment>
-          {description}Rich would be the perfect addition to an active family
-          that loves to play and go on walks. I bet he would love having a doggy
+          {comments}Rich would be the perfect addition to an active family that
+          loves to play and go on walks. I bet he would love having a doggy
           playmate too!
         </Comment>
         <BtnContainer>
@@ -85,7 +87,7 @@ export const NoticeModalMore = ({
             <HeartIcon
               width={"20px"}
               height={"20px"}
-              stroke={theme.colors.white}
+              fill={theme.colors.white}
             />
           </AddToFavBtn>
           <ContactLink href={`tel:+380971234567`}>Contact</ContactLink>
