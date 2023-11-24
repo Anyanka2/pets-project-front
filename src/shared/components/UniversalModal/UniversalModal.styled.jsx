@@ -7,23 +7,26 @@ export const ModalBackdrop = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 1000;
 `;
 
 export const ModalBox = styled.div`
   border-radius: 40px;
   background-color: white;
-  min-width: 200px;
-  min-height: 150px;
+  /* min-width: 200px;
+  min-height: 150px; */
   padding: 24px;
   display: flex;
   align-items: start;
   justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const ModalBody = styled.div`
 //comment
-width: 100%;
-text-align: center;
+/* width: 100%; */
+/* text-align: center; */
 `;
 
 export const CloseModalBtn = styled.button`
