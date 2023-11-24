@@ -30,7 +30,7 @@ useEffect(()=>{
             break;
     }
     
-}, [props.evt])
+}, [props.evt, props.children])
 
   return (
     <>
