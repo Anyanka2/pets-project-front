@@ -8,9 +8,10 @@ import crossSmallBlue from "../../../assets/icons/cross-small-blue.svg";
 import LogoutModalContent from "./LogoutModalContent.jsx";
 import CongratsModalContent from "./CongratsModalContent.jsx";
 import { useEffect, useState } from "react";
+
 export default function UniversalModal(props) {
 
-const [targetComponetn, setTargetComponent ] = useState();
+const [targetComponent, setTargetComponent ] = useState();
 
 
 useEffect(()=>{
@@ -21,7 +22,11 @@ useEffect(()=>{
         case "congrats":
             setTargetComponent(<CongratsModalContent />);
           break;
+        case "learnmore":
+          setTargetComponent(props.children);
+        break;
         default:
+            setTargetComponent("Nothing to do!");
             break;
     }
     
@@ -34,7 +39,7 @@ useEffect(()=>{
           <ModalBox>
             <ModalBody >
                 
-                {targetComponetn}
+                {targetComponent}
             </ModalBody>
             <CloseModalBtn onClick={props.onClick}>
               <img src={crossSmallBlue} alt="close button" />
