@@ -1,11 +1,14 @@
 import styled from "styled-components";
 import { theme } from "../../../shared/styles/theme.jsx";
-import {Form, Field, ErrorMessage} from 'formik';
+import {Form, Field} from 'formik';
 
 export const StyledForm = styled(Form)`
     display: flex;
     flex-direction: column;
     gap: 16px;
+    @media screen and (min-width: 768px) {
+        gap: 10px;
+    }
 `;
 
 export const StyledField = styled(Field)`
@@ -63,12 +66,12 @@ export const StyledLabel = styled.label`
 
     @media screen and (min-width: 768px) {
       gap: 16px;
+      font-size: 18px;
+      letter-spacing: 0.72px;
+      font-family: ${theme.fonts.manrope.semiBold};
     }
 
     @media screen and (min-width: 1280px) {
-      font-family: ${theme.fonts.manrope.semiBold};
-      font-size: 18px;
-      letter-spacing: 0.72px;
       
     }
     
@@ -79,13 +82,30 @@ export const StyledInputWrapper = styled.div`
 `;
 
 export const StyledSubmitBtn = styled.button`
-    
-    width: 100%;
+    align-self: center;
+    width: 248px;
     height: 31px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-top: 10px;
     border-radius: 40px;
     background-color: ${theme.colors.blueLink};
-
+    color: ${theme.colors.white};
     text-align: center;
+    font-family: ${theme.fonts.manrope.bold};
+    font-weight: 700;
+    letter-spacing: 0.56px;
+    font-size: 14px;
+    
+
+    @media screen and (min-width: 768px) {
+      width: 255px;
+      align-self: end;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      margin-top: 0;
+      font-size: 16px;
+    }
 
 `;
 
