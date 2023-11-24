@@ -1,7 +1,7 @@
 import { useState } from "react";
 import crossSmallBlue from "../../assets/icons/cross-small-blue.svg";
-import crossSmallRed from "../../assets/icons/cross-small-red.svg";
-import greenCheck from "../../assets/icons/check.svg";
+// import crossSmallRed from "../../assets/icons/cross-small-red.svg";
+// import greenCheck from "../../assets/icons/check.svg";
 import edit from "../../assets/icons/edit.svg";
 import UserPhotoDefault from "../../assets/icons/user_photo_default.svg";
 

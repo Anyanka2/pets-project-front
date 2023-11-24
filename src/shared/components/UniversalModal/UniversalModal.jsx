@@ -17,9 +17,10 @@ useEffect(()=>{
     switch (props.evt) {
         case "logout":
             setTargetComponent(<LogoutModalContent />);
-            break;
+          break;
         case "congrats":
             setTargetComponent(<CongratsModalContent />);
+          break;
         default:
             break;
     }
