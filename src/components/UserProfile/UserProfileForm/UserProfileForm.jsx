@@ -10,6 +10,7 @@ import {
 import { ErrorMessage, Formik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
+import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal.jsx";
 
 export default function UserProfileForm(props) {
   const [userData, setUserData] = useState({
@@ -19,12 +20,15 @@ export default function UserProfileForm(props) {
                 phone: "+380972548888",
                 city: "Kyiv"
         });
+  const [isModal, setIsModal] = useState(false);
 
   const handleLogout = async (e) => {
-    console.log("logout");
+    // console.log("logout");
+    setIsModal(prev => !prev);
   };
 
   return (
+    <>
     <Formik
       initialValues={userData}
       validationSchema={Yup.object({
@@ -124,5 +128,9 @@ export default function UserProfileForm(props) {
         }
       </StyledForm>
     </Formik>
+     <UniversalModal isModalOpen={isModal} evt="logout" onClick={handleLogout} >
+      
+     </UniversalModal>
+    </>
   );
 }
