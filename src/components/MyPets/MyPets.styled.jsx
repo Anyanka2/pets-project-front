@@ -84,6 +84,19 @@ export const Text = styled.p`
 `;
 
 export const DeleteIcon = styled.button`
-    
+    display: block;
+    position: absolute;
+    right: 7%;
+    cursor: pointer;
+
+    @media screen and (min-width: 768px) {
+        top: 8%;
+        right: 2%;
+    }
+
+    &:hover {
+        background: #FFC107;
+    }
+
 `;
 
