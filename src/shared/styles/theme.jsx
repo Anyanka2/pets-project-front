@@ -28,6 +28,7 @@ export const theme = {
     green: "#00C3AD",
     red: "#F43F5E",
     grey: "#888888",
+    backdrop: "rgba(97, 97, 97, 0.6)",
   },
 
   shadows: {
