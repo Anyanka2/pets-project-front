@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-//import { StyledContainer } from "../../../shared/styles/media";
 import { theme } from "../../../shared/styles/theme";
 
 export const List = styled.ul`
@@ -46,6 +45,7 @@ export const Item = styled.li`
   &:hover {
     transform: scale(1.02);
     transition: transform ${theme.transitions.transitionRegular};
+    box-shadow: ${theme.shadows.shadowHover};
   }
 `;
 
@@ -78,12 +78,9 @@ export const TextStatus = styled.p`
   justify-content: center;
   width: 126px;
   height: 32px;
-  padding: 11px 17px;
   border-radius: 0 16px 16px 0;
   font-size: 14px;
   font-family: ${theme.fonts.manrope.medium};
-  line-height: 19px;
-
   background-color: ${theme.colors.lightBlue};
   color: ${theme.colors.black};
 `;
@@ -170,16 +167,19 @@ export const LearnMoreBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: inherit;
+  color: ${theme.colors.blueLink};
   width: 248px;
   height: 38px;
   padding: 8px 28px;
   border-radius: 40px;
   border: 2px solid ${theme.colors.blueLink};
-  background-color: transparent;
-  
+  background: transparent;
+  margin: 0 auto;
 
-  &:hover {
-    transform: scale(1.02);
-    transition: transform ${theme.transitions.transitionRegular};
+  &:hover,
+  &:focus {
+    background: ${theme.colors.blueGradient};
+    color: ${theme.colors.white};
   }
 `;
