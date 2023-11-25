@@ -4,8 +4,8 @@ import { ReactComponent as CloseIcon } from "../../../assets/icons/close.svg";
 import {
   SearchButton,
   SearchForm,
+  SearchLabel,
   SearchInput,
-  SearchAndCloseIcon,
   SearchIconStyle,
   CloseIconStyle,
 } from "./SearchBar.styled";
@@ -33,15 +33,15 @@ export const SearchBar = (props) => {
   };
   return (
     <SearchForm onSubmit={handleSubmit}>
-      <SearchInput
-        type="text"
-        autoComplete="off"
-        autoFocus
-        placeholder="Search"
-        onChange={handleValueChange}
-        value={value}
-      ></SearchInput>
-      <SearchAndCloseIcon>
+      <SearchLabel>
+        <SearchInput
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search"
+          onChange={handleValueChange}
+          value={value}
+        ></SearchInput>
         <SearchButton type="submit">
           <SearchIconStyle>
             <SearchIcon />
@@ -54,7 +54,7 @@ export const SearchBar = (props) => {
             </CloseIconStyle>
           </SearchButton>
         )}
-      </SearchAndCloseIcon>
+      </SearchLabel>
     </SearchForm>
   );
 };
