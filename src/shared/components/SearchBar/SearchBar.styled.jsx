@@ -1,16 +1,21 @@
 import styled from "styled-components";
 
-export const SearchForm = styled.form`
+export const SearchForm = styled.form``;
+
+export const SearchLabel = styled.label`
   display: flex;
   align-items: center;
-  gap: 10px;
-  display: flex;
-  padding-left: 20px;
-  position: relative;
+  justify-content: end;
   max-width: 608px;
+  gap: 10px;
+  border-radius: 20px;
   height: 44px;
+  padding-left: 20px;
+  padding-right: 10px;
+  background-color: #ffffff;
+  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   @media screen and (max-width: 479px) {
-    min-width: 280px;
+    border-radius: 24px;
   }
 `;
 
@@ -19,15 +24,10 @@ export const SearchInput = styled.input`
   font-weight: 400;
   font-size: 20px;
   color: #888888;
-  padding-left: 20px;
-  height: 44px;
   width: 100%;
-  background-color: #ffffff;
-  border-radius: 20px;
-  border: 0;
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  border: none;
   @media screen and (max-width: 479px) {
-    border-radius: 24px;
+    min-width: 280px;
     font-size: 14px;
   }
 `;
@@ -35,7 +35,7 @@ export const SearchInput = styled.input`
 export const SearchButton = styled.button`
   display: flex;
   align-items: center;
-  position: absolute;
+  justify-self: end;
   height: 24px;
   width: 24px;
   top: 10px;
@@ -45,11 +45,6 @@ export const SearchButton = styled.button`
   @media screen and (max-width: 479px) {
     right: 12px;
   }
-`;
-
-export const SearchAndCloseIcon = styled.span`
-  display: flex;
-  align-items: center;
 `;
 
 export const SearchIconStyle = styled.span`
