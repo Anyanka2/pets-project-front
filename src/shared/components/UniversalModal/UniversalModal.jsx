@@ -11,26 +11,26 @@ import { useEffect, useState } from "react";
 
 export default function UniversalModal(props) {
 
-const [targetComponent, setTargetComponent ] = useState();
+// const [targetComponent, setTargetComponent ] = useState();
 
 
-useEffect(()=>{
-    switch (props.evt) {
-        case "logout":
-            setTargetComponent(<LogoutModalContent />);
-          break;
-        case "congrats":
-            setTargetComponent(<CongratsModalContent />);
-          break;
-        case "learnmore":
-          setTargetComponent(props.children);
-        break;
-        default:
-            setTargetComponent("Nothing to do!");
-            break;
-    }
+// useEffect(()=>{
+//     switch (props.evt) {
+//         case "logout":
+//             setTargetComponent(<LogoutModalContent />);
+//           break;
+//         case "congrats":
+//             setTargetComponent(<CongratsModalContent />);
+//           break;
+//         case "learnmore":
+//           setTargetComponent(props.children);
+//         break;
+//         default:
+//             setTargetComponent("Nothing to do!");
+//             break;
+//     }
     
-}, [props.evt, props.children])
+// }, [props.evt, props.children])
 
   return (
     <>
@@ -39,7 +39,7 @@ useEffect(()=>{
           <ModalBox>
             <ModalBody >
                 
-                {targetComponent}
+                {props.children}
             </ModalBody>
             <CloseModalBtn onClick={props.onClick}>
               <img src={crossSmallBlue} alt="close button" />

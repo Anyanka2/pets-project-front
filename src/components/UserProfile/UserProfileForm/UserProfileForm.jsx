@@ -11,6 +11,7 @@ import { ErrorMessage, Formik } from "formik";
 import { useState } from "react";
 import * as Yup from "yup";
 import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal.jsx";
+import { ModalAlreaadyLeaving } from "../ModalAlreadyLeaving/ModalAlreadyLeaving.jsx"
 
 export default function UserProfileForm(props) {
   const [userData, setUserData] = useState({
@@ -22,10 +23,9 @@ export default function UserProfileForm(props) {
         });
   const [isModal, setIsModal] = useState(false);
 
-  const handleLogout = async (e) => {
-    // console.log("logout");
-    setIsModal(prev => !prev);
-  };
+  const modalHandler = ()=>{
+  setIsModal(prev => !prev);
+}
 
   return (
     <>
@@ -124,12 +124,12 @@ export default function UserProfileForm(props) {
         </StyledLabel>
         { props.editable ? 
             <StyledSubmitBtn type="submit">Save</StyledSubmitBtn> :
-            <LogoutBtn type="button" onClick={handleLogout}>Log Out</LogoutBtn>
+            <LogoutBtn type="button" onClick={modalHandler}>Log Out</LogoutBtn>
         }
       </StyledForm>
     </Formik>
-     <UniversalModal isModalOpen={isModal} evt="logout" onClick={handleLogout} >
-      
+     <UniversalModal isModalOpen={isModal} onClick={modalHandler} >
+      <ModalAlreaadyLeaving />
      </UniversalModal>
     </>
   );

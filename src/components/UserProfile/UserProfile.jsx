@@ -21,7 +21,6 @@ import UserProfileForm from "./UserProfileForm/UserProfileForm";
 
 export default function UserProfile() {
   const [editable, setEditable] = useState(false);
-  const [isModal, setIsModal] = useState(false);
 
   
 
@@ -29,9 +28,7 @@ export default function UserProfile() {
     
     setEditable((pervState) => !pervState);
   };
-const modalHandler = ()=>{
-  setIsModal(prev => !prev);
-}
+
   
 
   return (
@@ -52,9 +49,7 @@ const modalHandler = ()=>{
           }
             {editable ? <EditImg>Edit photo</EditImg> : ""}
           </UserPhotoBox>
-          {isModal? <Modal>Modal<button onClick={modalHandler}>X</button></Modal>: ""}
           <UserProfileForm editable={editable} />
-          <button type="button" onClick={modalHandler}>Open modal</button>
         </UserProfileContainer>
       </UserProfileSection>
     </>
