@@ -103,7 +103,7 @@ export const NoticeCard = (item) => {
         <TextPetName>Cute pet looking for a home</TextPetName>
         <LearnMoreBtn aria-label="show more options" onClick={handleModal} >Learn more</LearnMoreBtn>
       </Item>
-      <UniversalModal isModalOpen={isModal} evt="learnmore" onClick={handleModal} >
+      <UniversalModal isModalOpen={isModal} evt="children" onClick={handleModal} >
           <NoticeModalMore />
       </UniversalModal>
     </>
