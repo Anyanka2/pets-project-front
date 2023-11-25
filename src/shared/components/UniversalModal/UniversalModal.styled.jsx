@@ -1,18 +1,23 @@
 import styled from "styled-components";
+import { theme } from "../../styles/theme";
 
 export const ModalBackdrop = styled.div`
-  background-color: #51515199;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1000;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: ${theme.colors.backdrop};
+  backdrop-filter: blur(4px);
+  overflow: hidden;
 `;
 
 export const ModalBox = styled.div`
   border-radius: 40px;
-  background-color: white;
+  background-color: ${theme.colors.white};
   /* min-width: 200px;
   min-height: 150px; */
   padding: 24px;
