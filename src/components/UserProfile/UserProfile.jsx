@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Formik } from "formik";
 
 import UserPhotoDefault from "../../assets/icons/user_photo_default.svg";
@@ -14,32 +14,42 @@ import {
   EditImg,
   UserProfileSection,
 } from "./UserProfile.styled";
+import {  useDispatch, useSelector } from "react-redux";
+
+import { useEffect } from "react";
+import {  userInfo } from "../../redux/auth/selectors";
 
 export default function UserProfile() {
   const [editable, setEditable] = useState(false);
-  const [userData, setUserData] = useState();
-
+  const  currentUserInfo  = useSelector(userInfo);
+  console.log(currentUserInfo)
   const editHandler = (e) => {
     if (e.target.nodeName === "IMG") {
       return;
     }
-    setEditable((pervState) => !pervState);
+    setEditable((prevState) => !prevState);
   };
 
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    setUserData({
-      name: "andrey",
-      email: "aa@22m.com",
-      birthday: "00.00.0000",
-      phone: "+380",
-      city: "Kyiv",
-    });
-  }, []);
+    const fetchData = () => {
+      try {
+       
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+      fetchData();
+    
+  }, [dispatch]);
+
+
 
   const handleChange = (e) => {
     console.log(e);
     console.log("tut");
-    console.log(userData);
   };
 
   return (
@@ -53,8 +63,8 @@ export default function UserProfile() {
           </UserPhotoBox>
           <Formik
             initialValues={{
-              name: "andrey",
-              email: "aa@22m.com",
+              name: currentUserInfo?.name || "",
+              email: currentUserInfo?.email || "",
               birthday: "00.00.0000",
               phone: "+380",
               city: "Kyiv",
