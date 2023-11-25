@@ -112,13 +112,11 @@ const RegisterForm = () => {
       setEmailAvailable(false);
     } else {
       setEmailAvailable(true);
-      navigate('/user');
+      navigate('/login');
     }
   } catch (error) {
     console.error('Error:', error);
-    if (error.response) {
-      console.error('Server response:', error.response.data);
-    }
+   
   } finally {
     setLoading(false);
     setSubmitting(false);
