@@ -22,8 +22,11 @@ import { ReactComponent as FemaleIcon } from "../../../assets/icons/female.svg";
 import { ReactComponent as MaleIcon } from "../../../assets/icons/male.svg";
 import PetPhoto from "../../../assets/images/petsImages/cat1.jpg"; 
 import { theme } from "../../../shared/styles/theme";
-
+import { useState } from "react";
+import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal";
+import {NoticeModalMore} from "../NoticeModals/NoticeModalMore.jsx";
 export const NoticeCard = (item) => {
+  const [isModal, setIsModal] = useState(false);
   //   const [isFavorite, setIsFavorite] = useState(item.isFavorite);
   // const [card] = useState({});
   //   const { user } = useAuth();
@@ -39,6 +42,11 @@ export const NoticeCard = (item) => {
   //       return;
   //     }
   //   });
+
+  const handleModal = ()=>{
+    console.log(isModal);
+    setIsModal(prev=>!prev);
+  }
 
   return (
     <>
@@ -93,8 +101,11 @@ export const NoticeCard = (item) => {
           </ListPetInfo>
         </ContainerPetInfo>
         <TextPetName>Cute pet looking for a home</TextPetName>
-        <LearnMoreBtn aria-label="show more options">Learn more</LearnMoreBtn>
+        <LearnMoreBtn aria-label="show more options" onClick={handleModal} >Learn more</LearnMoreBtn>
       </Item>
+      <UniversalModal isModalOpen={isModal} evt="children" onClick={handleModal} >
+          <NoticeModalMore />
+      </UniversalModal>
     </>
   );
 };

@@ -27,6 +27,12 @@ export const StyledPicture = styled.picture`
   }
 `;
 
+export const CustomSvg = styled.svg`
+  fill: ${theme.colors.white};
+  width: 24px;
+  height: 24px;
+`;
+
 export const StyledLink = styled(Link)`
   display: flex;
   justify-content: center;
@@ -37,9 +43,8 @@ export const StyledLink = styled(Link)`
   width: 248px;
   height: 40px;
   background: ${theme.colors.blueLink};
-  border: 1px solid ${theme.colors.blueLink};
   border-radius: 40px;
-  color: ${theme.colors.bgColorPage};
+  color: ${theme.colors.white};
   transform: scale(1);
   transition: transform 0.3s;
   font-family: ${theme.fonts.manrope.regular};
@@ -54,6 +59,9 @@ export const StyledLink = styled(Link)`
   &:focus {
     transform: scale(1.05);
     transition: transform 0.3s;
+    background: ${theme.colors.blueGradient};
+    color: ${theme.colors.white};
+    fill: ${theme.colors.white};
   }
 
   &:hover:before {
