@@ -15,7 +15,6 @@ import {
   UserProfileSection,
   EditBtn,
   CancelEditBtn,
-  Modal
 } from "./UserProfile.styled";
 import UserProfileForm from "./UserProfileForm/UserProfileForm";
 

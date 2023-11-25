@@ -5,9 +5,9 @@ import {
   ModalBox,
 } from "./UniversalModal.styled.jsx";
 import crossSmallBlue from "../../../assets/icons/cross-small-blue.svg";
-import LogoutModalContent from "./LogoutModalContent.jsx";
-import CongratsModalContent from "./CongratsModalContent.jsx";
-import { useEffect, useState } from "react";
+// import LogoutModalContent from "./LogoutModalContent.jsx";
+// import CongratsModalContent from "./CongratsModalContent.jsx";
+// import { useEffect, useState } from "react";
 
 export default function UniversalModal(props) {
 
