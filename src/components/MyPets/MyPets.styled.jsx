@@ -1,9 +1,20 @@
 import styled from 'styled-components';
 
 
+export const AllCardsPet = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @media screen and (min-width: 768px) {
+
+    }
+`;
+
 
 export const ContainerItem = styled.div`
-    background-color: #ffffff;
+    background-color: white;
+    border: 2px dashed blue;
     box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
     padding: 20px;
     border-radius: 40px;
@@ -13,17 +24,28 @@ export const ContainerItem = styled.div`
         align-items: flex-start;
         gap: 20px;
 
-        &:not(:last-child) {
-            margin-bottom: 20px;
-        }
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1280px) {
         width: 821px;
 
-        &:not(:last-child) {
-            margin-bottom: 24px;
-        }
+       
+    }
+`;
+
+export const TitlePet = styled.h2`
+    color: #111111;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.36;
+    margin-bottom: 31px;
+
+    @media screen and (min-width: 768px) {
+        margin-bottom: 22px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        margin-bottom: 0;
     }
 `;
 
@@ -56,6 +78,7 @@ export const InfoContainer = styled.div`
 export const Text = styled.p`
     color: #000;
     font-family: Manrope;
+    font-weight: 400;
     font-size: 14px;
     line-height: 1.57;
     letter-spacing: 0.56px;
@@ -100,3 +123,13 @@ export const DeleteIcon = styled.button`
 
 `;
 
+export const ContainerUser = styled.div`
+   
+    @media screen and (min-width: 768px) {
+    
+    }
+
+    @media screen and (min-width: 1280px) {
+        display: flex;
+    }
+`;
