@@ -61,14 +61,8 @@ export default function UserProfileForm(props) {
           city: Yup.string(),
         })}
         onSubmit={(values) => {
-          console.log(values);
-          setUserData({
-            name: "Ann",
-            email: "aaaa@gmail.com",
-            birthday: "00.00.0000",
-            phone: "+380972548888",
-            city: "Kyiv",
-          });
+          // console.log(values);
+          setUserData(values);
         }}
       >
         <StyledForm>
