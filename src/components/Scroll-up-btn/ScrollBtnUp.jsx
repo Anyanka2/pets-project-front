@@ -5,7 +5,7 @@ import { ReactComponent as Icon } from "../../assets/icons/circle-up.svg";
 const ScrollToTopButton = () => {
   return (
     <div>
-      <ScrollToTop showUnder={16}>
+      <ScrollToTop showUnder={16} style={{ zIndex: 999 }}>
         <ContainerScroll>
           <IconContainer>
             <Icon iconName={"icon-arrow-left"} width={"42px"} height={"42px"} />
