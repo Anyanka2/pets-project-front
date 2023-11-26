@@ -3,6 +3,8 @@ import { SearchBar } from "../../shared/components/SearchBar/SearchBar";
 import { NoticesList } from "../../components/Notices/NoticesList/NoticesList";
 import { Container } from "../../shared/components/Container";
 import { NoticeCategoryPanel } from "./NoticePage.styled";
+import { AddPetBtn } from "../../components/AddPetBtn/AddPetBtn";
+
 const NoticesPage = () => {
   return (
     <>
@@ -21,7 +23,7 @@ const NoticesPage = () => {
           
             <NoticeCategoryPanel>
               <li>Filter</li>
-              <li>Add Pet</li>
+              <AddPetBtn />
             </NoticeCategoryPanel>
           </div>
           <div>
