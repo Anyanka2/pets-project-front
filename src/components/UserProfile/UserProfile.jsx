@@ -32,33 +32,33 @@ export default function UserProfile() {
 
   return (
     <>
-    <UserProfileSection>
-      <h2>My information:</h2>
-      <UserProfileContainer>
-        <UserPhotoBox >
-          <UserImg src={userPhotoUrl ?
-                userPhotoUrl :
-                UserPhotoDefault} 
-          alt="User profile" />
-          
-          {editable ?
-            <CancelEditBtn onClick={editHandler} >
-              <img src={crossSmallBlue} alt="cross small blue" />
-            </CancelEditBtn>
-          :
-            <EditBtn onClick={editHandler}>
-              <img src={edit} alt="Pencil" />
-            </EditBtn>
-          }
-          {editable ? 
-              <UserProfilePhotoEdit 
-                  photoUrlHandler={photoUrlHandler} 
-                /> 
-          : ""}
-        </UserPhotoBox>
-        <UserProfileForm editable={editable} />
-      </UserProfileContainer>
-    </UserProfileSection>
+      <UserProfileSection>
+        <h2>My information:</h2>
+        <UserProfileContainer>
+          <UserPhotoBox>
+            <UserImg
+              src={userPhotoUrl ? userPhotoUrl : UserPhotoDefault}
+              alt="User profile"
+            />
+
+            {editable ? (
+              <CancelEditBtn onClick={editHandler}>
+                <img src={crossSmallBlue} alt="cross small blue" />
+              </CancelEditBtn>
+            ) : (
+              <EditBtn onClick={editHandler}>
+                <img src={edit} alt="Pencil" />
+              </EditBtn>
+            )}
+            {editable ? (
+              <UserProfilePhotoEdit photoUrlHandler={photoUrlHandler} />
+            ) : (
+              ""
+            )}
+          </UserPhotoBox>
+          <UserProfileForm editable={editable} editHandler={editHandler} />
+        </UserProfileContainer>
+      </UserProfileSection>
     </>
   );
 }

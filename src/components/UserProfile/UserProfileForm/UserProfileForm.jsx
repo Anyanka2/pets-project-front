@@ -12,45 +12,43 @@ import { useState } from "react";
 import * as Yup from "yup";
 import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal.jsx";
 import { ModalAlreaadyLeaving } from "../ModalAlreadyLeaving/ModalAlreadyLeaving.jsx";
-import {  useSelector } from "react-redux";
-import {  userInfo } from "../../../redux/auth/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { userInfo } from "../../../redux/auth/selectors";
+import { updateCurrentUser } from "../../../redux/auth/operation.js";
 
 export default function UserProfileForm(props) {
-  
-  const  currentUserInfo  = useSelector(userInfo);
-  const [userData, setUserData] = useState({
+  const currentUserInfo = useSelector(userInfo);
+
+  const [isModal, setIsModal] = useState(false);
+  const initialValues = {
     name: currentUserInfo.name,
     email: currentUserInfo.email,
-    birthday: "00.00.0000",
-    phone: "+380972548888",
-    city: "Kyiv",
-  });
-  const [isModal, setIsModal] = useState(false);
+    birthday: currentUserInfo.birthday,
+    phone: currentUserInfo.phone,
+    city: currentUserInfo.city,
+  };
 
   const modalHandler = () => {
     setIsModal((prev) => !prev);
   };
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const fetchData = () => {
-  //     try {
-       
-  //     } catch (error) {
-  //       console.error("Error fetching user data:", error);
-  //     }
-  //   };
-
-  //     fetchData();
-    
-  // }, [dispatch]);
-
+  const handleSubmit = async (values) => {
+    try {
+      const response = await dispatch(updateCurrentUser(values));
+      console.log(response);
+      props.editHandler((prev) => !prev);
+      return response;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
       <Formik
-        initialValues={userData}
+        initialValues={initialValues}
         validationSchema={Yup.object({
           name: Yup.string().required("Name is required"),
           email: Yup.string()
@@ -60,10 +58,7 @@ export default function UserProfileForm(props) {
           phone: Yup.string(),
           city: Yup.string(),
         })}
-        onSubmit={(values) => {
-          // console.log(values);
-          setUserData(values);
-        }}
+        onSubmit={handleSubmit}
       >
         <StyledForm>
           <StyledLabel htmlFor="name">

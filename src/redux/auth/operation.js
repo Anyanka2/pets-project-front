@@ -105,7 +105,7 @@ export const getCurrentUser = createAsyncThunk(
   "api/users/current",
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const token = state.auth.token; // Assuming the token is stored in the state
+    const token = state.auth.token;
 
     try {
       const response = await axios.get("api/users/current", {
@@ -114,6 +114,25 @@ export const getCurrentUser = createAsyncThunk(
         },
       });
 
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const updateCurrentUser = createAsyncThunk(
+  "api/users/update",
+  async (credentials, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+
+    try {
+      const response = await axios.put("api/users/current", credentials, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
