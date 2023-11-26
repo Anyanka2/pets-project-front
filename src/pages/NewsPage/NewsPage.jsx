@@ -25,7 +25,7 @@ const NewsPage = () => {
                 </NewsBody>
             </NewsCard>
         </NewsBox>
-        <Pagination allPages="" currentPage="" />
+        <Pagination totalPages="" currentPage="" />
       </StyledContainer>
     </>)
 }
