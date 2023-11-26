@@ -13,8 +13,8 @@ BurgerButton,
 CloseIcon
 } from './Header.styled';
 import svg from '../../assets/icons/logo.svg';
-import { Container } from "../../shared/components/Container";
 
+import { Container } from "../../shared/components/Container";
 
 const Header = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
@@ -26,10 +26,10 @@ const Header = () => {
   return (
     <Container>
       <HeaderContainer>
-        <LogoLink to='/main'>
-        <Image src ={`${svg}`}/>
+        <LogoLink to="/main">
+          <Image src={`${svg}`} />
         </LogoLink>
-        <Navigation/>
+        <Navigation />
         <ButtonsContainer>
             <LinkLogin to='login'>
               LOG IN
@@ -47,8 +47,10 @@ const Header = () => {
         {isMenuOpen ? <Burger toggleMenu={toggleMenu} /> : <Navigation />}
         {isMenuOpen && <CloseIcon onClick={toggleMenu}>X</CloseIcon>}
         </HeaderContainer>
+
     </Container>
   );
 };
 
 export default Header;
+

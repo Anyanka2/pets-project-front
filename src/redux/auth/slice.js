@@ -1,137 +1,46 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import {
-  register,
-  logIn,
-  logOut,
-  getCurrentUser,
-  updateUser,
-  getUserInfo,
-  deletePet,
-  changeUser,
-  changeStatus,
-} from './operation';
+import { createSlice } from "@reduxjs/toolkit";
+import { logIn, logOut, refreshUser, register } from "./operation";
 
 const initialState = {
-  user: { name: null, email: null, id: '' },
   token: null,
-  isLoading: false,
-  error: null,
-  isLoggedIn: true,
+  isLoggedIn: false,
   isRefreshing: false,
 };
 
-const authSlice = createSlice({
-  name: 'auth',
+const authenticate = createSlice({
+  name: "auth",
   initialState,
-  extraReducers: builder => {
-    //register
+  reducers: {},
+  extraReducers: (builder) => {
     builder
-      .addCase(register.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.accessToken;
+      .addCase(register.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(logIn.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.accessToken;
+      .addCase(logIn.fulfilled, (state, action) => {
+        state.user = action.payload.user;
+        state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(logOut.fulfilled, (state, { payload }) => {
-        state.user = {
-          name: null,
-          email: null,
-        };
+      .addCase(logOut.fulfilled, (state) => {
+        state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
-        state.isRefreshing = false;
-        localStorage.removeItem('refreshToken');
       })
-      .addCase(getCurrentUser.pending, state => {
+      .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;
       })
-      .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
-        state.user = payload.data;
-        state.token = payload.token;
+      .addCase(refreshUser.fulfilled, (state, action) => {
+        state.user = action.payload.user;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(getCurrentUser.rejected, (state, { payload }) => {
+      .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
-        state.token = null;
       })
-      .addCase(updateUser.fulfilled, (state, { payload }) => {
-        state.user = payload;
-      })
-      .addCase(getUserInfo.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-      })
-      .addCase(deletePet.fulfilled, (state, { payload }) => {
-        const index = state.user.pet.findIndex(pet => pet._id === payload.id);
-        state.user.pet.splice(index, 1);
-      })
-      .addCase(changeUser.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-      })
-      .addCase(changeStatus.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-      })
-      .addMatcher(
-        isAnyOf(
-          register.pending,
-          logIn.pending,
-          logOut.pending,
-          getCurrentUser.pending,
-          updateUser.pending,
-          getUserInfo.pending,
-          deletePet.pending,
-          changeUser.pending,
-          changeStatus.pending
-        ),
-        state => {
-          state.isLoading = true;
-        }
-      )
-      .addMatcher(
-        isAnyOf(
-          register.fulfilled,
-          logIn.fulfilled,
-          logOut.fulfilled,
-          getCurrentUser.fulfilled,
-          updateUser.fulfilled,
-          getUserInfo.fulfilled,
-          deletePet.fulfilled,
-          changeUser.fulfilled,
-          changeStatus.fulfilled
-        ),
-        state => {
-          state.isLoading = false;
-          state.error = null;
-        }
-      )
-      .addMatcher(
-        isAnyOf(
-          register.rejected,
-          logIn.rejected,
-          logOut.rejected,
-          getCurrentUser.rejected,
-          updateUser.rejected,
-          getUserInfo.rejected,
-          deletePet.rejected,
-          changeUser.rejected,
-          changeStatus.rejected
-        ),
-        (state, { payload }) => {
-          state.isLoading = false;
-          state.error = payload;
-        }
-      )
-      .addMatcher(
-        isAnyOf(register.rejected, logIn.rejected, getCurrentUser.rejected),
-        (state, { payload }) => {
-          state.isLoggedIn = false;
-        }
-      );
+      
   },
 });
 
-export const authReducer = authSlice.reducer;
+export const authReducer = authenticate.reducer;

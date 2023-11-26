@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 
-import { logIn } from "../../redux/auth/operation";
-import { selectError } from "../../redux/auth/selectors";
+import { getCurrentUser, logIn } from "../../redux/auth/operation";
 
 import { ReactComponent as OpenEyeIcon } from "../../assets/icons/eye-open.svg";
 import { ReactComponent as CloseEyeIcon } from "../../assets/icons/eye-closed.svg";
@@ -27,7 +26,6 @@ import {
   ErrorMessage,
   PasswordIcon,
   EyeIcon,
-  LoginErrorMessage,
   LogInBtn,
   RegisterText,
   RegisterLink,
@@ -66,8 +64,6 @@ const LoginForm = () => {
 
   const navigate = useNavigate();
 
-  const loginError = useSelector(selectError);
-
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -81,11 +77,11 @@ const LoginForm = () => {
 
     try {
       const response = await dispatch(logIn(values));
-      if (!response.error) {
-        console.log("loginError:", loginError);
-        navigate("/user");
-      } else {
+      if (!response) {
         navigate("/login");
+      } else {
+        await dispatch(getCurrentUser());
+        navigate("/user");
       }
     } catch (error) {
       console.log(error);
@@ -222,10 +218,6 @@ const LoginForm = () => {
                 </InfoMessage>
               )}
             </LogInFormPasswordContainer>
-
-            {loginError && (
-              <LoginErrorMessage>{loginError.message}</LoginErrorMessage>
-            )}
 
             <LogInBtn type="submit" disabled={isSubmitting || loading}>
               Log In

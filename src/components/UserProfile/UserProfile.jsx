@@ -11,50 +11,52 @@ import {
   UserProfileContainer,
   UserPhotoBox,
   UserImg,
-  EditImg,
   UserProfileSection,
   EditBtn,
   CancelEditBtn,
-  Modal
 } from "./UserProfile.styled";
 import UserProfileForm from "./UserProfileForm/UserProfileForm";
+import UserProfilePhotoEdit from "./UserProfilePhotoEdit/UserProfilePhotoEdit.jsx";
 
 export default function UserProfile() {
   const [editable, setEditable] = useState(false);
-  const [isModal, setIsModal] = useState(false);
+  const [userPhotoUrl, setUserPhotoUrl] = useState("");
 
-  
-
-  const editHandler = (e) => {
-    
+  const editHandler = () => {  
     setEditable((pervState) => !pervState);
   };
-const modalHandler = ()=>{
-  setIsModal(prev => !prev);
-}
-  
+
+  const photoUrlHandler = (url) => {
+      setUserPhotoUrl(url);
+  }
 
   return (
     <>
       <UserProfileSection>
         <h2>My information:</h2>
         <UserProfileContainer>
-          <UserPhotoBox >
-            <UserImg src={UserPhotoDefault} alt="User profile" />
-            {editable ?
-            <CancelEditBtn onClick={editHandler} >
-              <img src={crossSmallBlue} alt="cross small blue" />
-            </CancelEditBtn>
-            :
-            <EditBtn onClick={editHandler}>
-              <img src={edit} alt="Pencil" />
-            </EditBtn>
-          }
-            {editable ? <EditImg>Edit photo</EditImg> : ""}
+          <UserPhotoBox>
+            <UserImg
+              src={userPhotoUrl ? userPhotoUrl : UserPhotoDefault}
+              alt="User profile"
+            />
+
+            {editable ? (
+              <CancelEditBtn onClick={editHandler}>
+                <img src={crossSmallBlue} alt="cross small blue" />
+              </CancelEditBtn>
+            ) : (
+              <EditBtn onClick={editHandler}>
+                <img src={edit} alt="Pencil" />
+              </EditBtn>
+            )}
+            {editable ? (
+              <UserProfilePhotoEdit photoUrlHandler={photoUrlHandler} />
+            ) : (
+              ""
+            )}
           </UserPhotoBox>
-          {isModal? <Modal>Modal<button onClick={modalHandler}>X</button></Modal>: ""}
-          <UserProfileForm editable={editable} />
-          <button type="button" onClick={modalHandler}>Open modal</button>
+          <UserProfileForm editable={editable} editHandler={editHandler} />
         </UserProfileContainer>
       </UserProfileSection>
     </>

@@ -28,6 +28,8 @@ export const StyledField = styled(Field)`
     width: 255px;
     font-size: 16px;
     letter-spacing: 0.64px;
+
+    height: 30px;
   }
 
   @media screen and (min-width: 1280px) {

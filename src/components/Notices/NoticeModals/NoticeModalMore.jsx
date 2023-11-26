@@ -14,7 +14,7 @@ import {
   BtnContainer,
 } from "./NoticeModal.styled";
 import { ReactComponent as HeartIcon } from "../../../assets/icons/heart.svg";
-import { ReactComponent as IconClose } from "../../../assets/icons/close.svg";
+//import { ReactComponent as IconClose } from "../../../assets/icons/close.svg";
 import PetPhoto from "../../../assets/images/petsImages/cat1.jpg";
 import { theme } from "../../../shared/styles/theme";
 
@@ -35,7 +35,8 @@ export const NoticeModalMore = ({
     <>
       <Content>
         <ContainerInfo>
-          <IconClose />
+         
+                  
           <ImageContainer>
             <Image src={PetPhoto} alt="dog" />
             <Type>{category}sell</Type>
