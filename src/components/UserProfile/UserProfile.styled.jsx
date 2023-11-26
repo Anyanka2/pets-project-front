@@ -84,6 +84,7 @@ export const UserImg = styled.img`
   width: 182px;
   height: 182px;
   object-fit: cover;
+  border-radius: 40px;
 `;
 
 export const EditBtn = styled.button`
