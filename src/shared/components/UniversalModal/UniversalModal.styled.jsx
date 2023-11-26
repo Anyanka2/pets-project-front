@@ -3,13 +3,12 @@ import { theme } from "../../styles/theme";
 
 export const ModalBackdrop = styled.div`
   position: fixed;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
+ 
   background-color: ${theme.colors.backdrop};
   backdrop-filter: blur(4px);
   overflow: hidden;

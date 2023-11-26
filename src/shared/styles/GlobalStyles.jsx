@@ -57,6 +57,7 @@ a {
 button {
   padding: 0;
   border: none;
+  background-color: transparent;
   font-family: 'Manrope', sans-serif;
   cursor: pointer;
   color: inherit;
