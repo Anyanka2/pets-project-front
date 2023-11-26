@@ -24,7 +24,7 @@ export const AddFormWrapper = styled.div`
   height: fit-content;
   min-height: 496px;
   background: ${({ theme }) => theme.colors.white};
-  box-shadow: ${({ theme }) => theme.shadowDefault};
+  box-shadow: ${({ theme }) => theme.shadows.shadowDefault};
   border-radius: 40px;
 
   @media screen and (min-width: 768px) {
