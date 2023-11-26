@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
-  getCurrentUser,
+  getCurrentUser, updateCurrentUser,
  
 } from "./operation";
 
@@ -20,6 +20,10 @@ const userInfo = createSlice({
         state.user = payload[0];
         state.isLoggedIn = true;
         state.isRefreshing = false;
+      })
+      .addCase(updateCurrentUser.fulfilled, (state, action) => {
+        state.user = action.payload;
+        
       });
   },
 });
