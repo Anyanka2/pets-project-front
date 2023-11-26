@@ -3,7 +3,7 @@ import { styled } from "styled-components";
 export const CloseButton = styled.button`
 `;
 
-export const CloseIcon = styled.svg`
+export const CloseIconSVG = styled.img`
 `;
 
 export const Modal = styled.div`
@@ -21,5 +21,5 @@ export const LogoutButton = styled.button`
 export const LogoutButtonText = styled.p`
 `;
 
-export const LogoutIcon = styled.svg`
+export const LogoutIconSVG = styled.svg`
 `;

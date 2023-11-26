@@ -1,22 +1,22 @@
 import {
   CloseButton,
-  CloseIcon,
+  CloseIconSVG,
   Modal,
   TitleText,
   CancelButton,
   LogoutButton,
   LogoutButtonText,
-  LogoutIcon,
+  LogoutIconSVG,
 } from "./ModalAlreadyLeaving.styled";
 
-import { ReactComponent as CloseIcon } from "../../../assets/icons/cross-small-blue.svg";
-import { ReactComponent as LogoutIcon } from "../../../assets/icons/logout.svg";
+import CloseIcon from "../../../assets/icons/cross-small-blue.svg";
+// import LogoutIcon from "../../../assets/icons/logout.svg";
 
 export const ModalAlreaadyLeaving = () => {
     return (
         <>
             <CloseButton>
-                <CloseIcon />
+                <CloseIconSVG src={CloseIcon} />
             </CloseButton>
 
             <Modal>
@@ -24,7 +24,7 @@ export const ModalAlreaadyLeaving = () => {
                 <CancelButton>Cancel</CancelButton>
                 <LogoutButton>
                     <LogoutButtonText>Yes</LogoutButtonText>
-                    <LogoutIcon />
+                    <LogoutIconSVG />
                 </LogoutButton>
             </Modal>
         </>
