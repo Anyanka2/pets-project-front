@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {theme} from '../../shared/styles/theme';
 
-// Стилизация Header
+
 export const HeaderContainer = styled.div`
 display: flex;
 align-items: center;
@@ -76,9 +76,6 @@ export const LinkLogin = styled(Link)`
     background: ${({theme}) => theme.colors.yellow};
     color : ${theme.colors.white};
     border:none;
-  /*   letter-spacing: 1px;
-    box-shadow: ${({theme}) => theme.shadows.shadowHover};
-    transition: all 0.4s ease 0s; */
   }
 &:hover svg {
   fill:${theme.colors.white};
@@ -107,3 +104,14 @@ gap: 8px;
   border:none;
 }
 `;
+
+export const BurgerButton = styled.button`
+`;
+
+export const CloseIcon = styled.div`
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 24px;
+color: black;
+`
