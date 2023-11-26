@@ -28,7 +28,7 @@ export default function Pagination ({totalPages = 0, currentPage = 0}) {
 
 
       setCounter(); 
-    },[props.totalPages, props.currentPage]);
+    },[totalPages, currentPage]);
 
     return (<>
         <PaginationContainer>
