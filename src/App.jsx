@@ -29,6 +29,7 @@ const App = () => {
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
+            <Route path="/" element={<MainPage />} />
             <Route path="main" element={<MainPage />} />
             <Route path="notices" element={<NoticesPage />}>
               <Route path="add-pet" element={<AddPetPage />} />

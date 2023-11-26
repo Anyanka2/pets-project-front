@@ -9,10 +9,9 @@ export const TitlePage = styled.h2`
   text-align: center;
   line-height: 1.45;
   margin: auto;
-  padding: 40px 0;
 
   @media screen and (min-width: 767px) {
     font-size: 48px;
-    padding: 80px 0;
+    padding-top: 80px;
   }
 `;
