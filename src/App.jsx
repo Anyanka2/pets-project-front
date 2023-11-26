@@ -31,7 +31,9 @@ const App = () => {
           <Route path="/" element={<SharedLayout />}>
             <Route path="/" element={<MainPage />} />
             <Route path="main" element={<MainPage />} />
-            <Route path="notices" element={<NoticesPage />} />
+            <Route path="notices" element={<NoticesPage />}>
+              <Route path="add-pet" element={<AddPetPage />} />
+            </Route>
             <Route path="friends" element={<OurFriendsPage />} />
             <Route element={<PublicRoute />}>
               <Route path="register" element={<RegisterPage />} />
