@@ -24,7 +24,7 @@ const AddPetPageForm = () => {
     name: '',
     title: '',
     birthday: '',
-    breed: '',
+    type: '',
     location: '',
     comments: '',
     petPhoto: null,
