@@ -15,7 +15,7 @@ export const SearchLabel = styled.label`
   padding-left: 20px;
   padding-right: 10px;
   background-color: ${theme.colors.white};
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  box-shadow: ${theme.shadows.shadowDefault};
   @media screen and (max-width: 479px) {
     min-width: 280px;
     border-radius: 24px;

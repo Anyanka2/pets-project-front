@@ -5,8 +5,9 @@ import PublicRoute from "../src/routes/PublicRoute";
 import PrivateRoute from "../src/routes/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
 import { GlobalStyle } from "./shared/styles/GlobalStyles";
-// import { SearchBar } from "./shared/components/SearchBar/SearchBar";
-// import { Button } from "./shared/components/Buttons/Button";
+
+import { SearchBar } from "./shared/components/SearchBar/SearchBar";
+import ScrollToTopButton from "./components/Scroll-up-btn/ScrollBtnUp";
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage"));
@@ -24,11 +25,15 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
+      <ScrollToTopButton />
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
+            <Route path="/" element={<MainPage />} />
             <Route path="main" element={<MainPage />} />
-            <Route path="notices" element={<NoticesPage />} />
+            <Route path="notices" element={<NoticesPage />}>
+              <Route path="add-pet" element={<AddPetPage />} />
+            </Route>
             <Route path="friends" element={<OurFriendsPage />} />
             <Route element={<PublicRoute />}>
               <Route path="register" element={<RegisterPage />} />
@@ -41,8 +46,7 @@ const App = () => {
             </Route>
 
             <Route element={<PrivateRoute />}>
-              {/* <Route path="" element={<SearchBar />} /> */}
-              {/* <Route path="" element={<Button />} /> */}
+              <Route path="" element={<SearchBar />} />
             </Route>
 
             <Route path="news" element={<NewsPage />} />
