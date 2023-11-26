@@ -5,6 +5,8 @@ import {
   LogoutButton,
   LogoutButtonText,
   LogoutIconSVG,
+  ButtonContainer,
+  
 } from "./ModalAlreadyLeaving.styled";
 
 // import LogoutIcon from "../../../assets/icons/logout.svg";
@@ -15,14 +17,16 @@ export const ModalAlreaadyLeaving = () => {
         <>
             <Modal>
                 <TitleText>Already leaving?</TitleText>
-                <CancelButton>Cancel</CancelButton>
-                <LogoutButton>
-                    <LogoutButtonText>Yes</LogoutButtonText>
-                    <LogoutIconSVG>
-                        <LogoutIcon />
-                    </LogoutIconSVG>
-                        
-                </LogoutButton>
+                <ButtonContainer>
+                    <CancelButton>Cancel</CancelButton>
+                    <LogoutButton>
+                        <LogoutButtonText>Yes</LogoutButtonText>
+                        <LogoutIconSVG>
+                            <LogoutIcon />
+                        </LogoutIconSVG>
+                    </LogoutButton>
+                </ButtonContainer>
+
             </Modal>
         </>
     )
