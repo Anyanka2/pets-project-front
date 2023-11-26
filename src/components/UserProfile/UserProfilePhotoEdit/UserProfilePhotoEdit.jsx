@@ -9,21 +9,33 @@ import {
 
 export default function UserProfilePhotoEdit (props) {
     const [openDownload, setOpenDownload] = useState(false);
-    const openPhotoHandler = () => {
-        setOpenDownload(prev => !prev)
+    const [objUrl, setObjUrl] = useState({});
+    const openPhotoHandler = (event) => {
+        console.log(event);
+        const file = event.target.files[0];
+        const obj = window.URL.createObjectURL(file);
+        props.photoUrlHandler(obj);
+
+        setOpenDownload(prev => !prev);
+    }
+
+    const handleDecline = () => {
+        setOpenDownload(false);
+        props.photoUrlHandler("");
     }
 
     return (<>
-            <HiddenInputFile type="file" id="hiddenInputFile" accept="image/*" />
+            
             {openDownload ?
             <ImgAcceptBox>
-                <ImgBtnAccept /> 
+                <ImgBtnAccept type="button" /> 
                 <p>Confirm</p>
-                <ImgBtnDecline />
+                <ImgBtnDecline type="button" onClick={handleDecline}/>
             </ImgAcceptBox>
             :
-            <LableForHiddenInput htmlFor="hiddenInputFile" onClick={openPhotoHandler}>
+            <LableForHiddenInput htmlFor="hiddenInputFile" onChange={openPhotoHandler}>
                 <p>Edit photo</p>
+                <HiddenInputFile type="file" id="hiddenInputFile" accept="image/*" />
             </LableForHiddenInput>}
     </>);
 }

@@ -27,7 +27,7 @@ export const UserProfileSection = styled.div`
 
 export const UserProfileContainer = styled.div`
   max-width: 280px;
-  border-radius: 20px;
+  border-radius: 40px;
   background-color: white;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
   padding: 20px 8px 25px 8px;
@@ -93,6 +93,13 @@ export const EditBtn = styled.button`
   top: -6px;
   right: -29px;
 
+  @media screen and (min-width: 768px) {
+    right: -52px;
+  }
+  @media screen and (min-width: 1280px) {
+    top: 0;
+    right: -86px;
+  }
 `;
 
 export const CancelEditBtn = styled.button`
@@ -102,6 +109,13 @@ export const CancelEditBtn = styled.button`
   top: -6px;
   right: -29px;
   
+  @media screen and (min-width: 768px) {
+    right: -52px;
+  }
+  @media screen and (min-width: 1280px) {
+    top: 0;
+    right: -86px;
+  }
 `;
 
 export const Modal = styled.div`

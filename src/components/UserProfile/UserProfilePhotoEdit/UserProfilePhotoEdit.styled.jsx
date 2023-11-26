@@ -26,6 +26,13 @@ export const LableForHiddenInput = styled.label`
     width: 24px;
     height: 24px;
   }
+
+  @media screen and (min-width: 768px) {
+    bottom: 14px;
+  }
+  @media screen and (min-width: 1280px) {
+    bottom: -34px;
+  }
 `;
 
 export const HiddenInputFile = styled.input`
@@ -64,4 +71,12 @@ export const ImgAcceptBox = styled.button`
   line-height: 1.83;
   letter-spacing: 0.48px;
   color: ${theme.colors.black};
+
+  @media screen and (min-width: 768px) {
+    bottom: 14px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    bottom: -34px;
+  }
 `;
