@@ -1,12 +1,23 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import {theme} from '../../shared/styles/theme';
 
-// Стилизация Header
+
 export const HeaderContainer = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+@media screen and (min-width: 768px){
+
+}
+
+@media screen and (min-width: 1280px){
   display: flex;
   align-items: center;
-  padding: 30px 16px;
   justify-content: space-between;
+}
+
 `;
 
 export const LogoLink = styled(Link)`
@@ -14,22 +25,34 @@ export const LogoLink = styled(Link)`
 `;
 
 export const Image = styled.img`
+  width: 116px;
+  height: 20px;
+  max-width: none;
+
+@media screen and (min-width: 768px) {
   width: 162px;
   height: 28px;
+}
+
 `;
 
 
-export const ImgLogin = styled.img`
+export const CustomSvg = styled.svg`
+  fill: ${({theme}) => theme.colors.yellow};
   width: 24px;
   height: 24px;
-  padding:0;
-  margin: 0;
 `;
 
 
 export const ButtonsContainer = styled.div`
+  min-width: 320px;
+  display: none;
+
+@media screen and (min-width: 768px){
   display: flex;
   gap: 20px;
+}
+
 
  
 `;
@@ -38,10 +61,10 @@ export const LinkLogin = styled(Link)`
   padding: 8px 20px 8px 20px;
   border: 2px solid ${({theme}) => theme.colors.yellow};
   cursor: pointer;
-  color: ${({theme}) => theme.colors.white};
+  color: ${({theme}) => theme.colors.yellow};
   width: 165px;
   border-radius: 40px;
-  background-color: ${({theme}) => theme.colors.yellow};
+  background-color: ${({theme}) => theme.colors.white};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,12 +73,13 @@ export const LinkLogin = styled(Link)`
   gap: 8px;
 
 &:hover {
-    background: ${({theme}) => theme.colors.orangeGradient};
+    background: ${({theme}) => theme.colors.yellow};
+    color : ${theme.colors.white};
     border:none;
-    letter-spacing: 1px;
-    box-shadow: ${({theme}) => theme.shadows.shadowHover};
-    transition: all 0.4s ease 0s;
   }
+&:hover svg {
+  fill:${theme.colors.white};
+}
 `;
 
 
@@ -75,11 +99,19 @@ line-height: 1.5;
 gap: 8px;
 
 &:hover {
-  background: ${({theme}) => theme.colors.orangeGradient};
-  color: ${({theme}) => theme.colors.white};
+  background: ${({theme}) => theme.colors.yellow};
+  color : ${theme.colors.white};
   border:none;
-  letter-spacing: 1px;
-  box-shadow: ${({theme}) => theme.shadows.shadowHover};
-  transition: all 0.4s ease 0s;
 }
 `;
+
+export const BurgerButton = styled.button`
+`;
+
+export const CloseIcon = styled.div`
+position: absolute;
+top: 10px;
+right: 10px;
+font-size: 24px;
+color: black;
+`
