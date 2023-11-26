@@ -16,6 +16,7 @@ export const SearchLabel = styled.label`
   background-color: ${theme.colors.white};
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   @media screen and (max-width: 479px) {
+    min-width: 280px;
     border-radius: 24px;
   }
 `;
@@ -28,7 +29,6 @@ export const SearchInput = styled.input`
   width: 100%;
   border: none;
   @media screen and (max-width: 479px) {
-    min-width: 280px;
     font-size: 14px;
   }
 `;
