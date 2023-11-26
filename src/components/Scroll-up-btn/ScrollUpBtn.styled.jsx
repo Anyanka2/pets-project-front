@@ -2,14 +2,10 @@ import styled from "styled-components";
 import { theme } from "../../shared/styles/theme";
 
 export const ContainerScroll = styled.div`
-  background: radial-gradient(
-    183.6% 183.01% at 59.76% -23.42%,
-    #419ef1 0%,
-    #9bd0ff 107.89%
-  );
+  background: radial-gradient(circle at 50% 50%, #419ef1 30%, #9bd0ff 50%);
   border: none;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -50,7 +46,6 @@ export const IconContainer = styled.div`
 
   &:hover,
   :focus {
-    fill: ${theme.colors.lightBlue};
     animation: none;
     cursor: pointer;
   }
