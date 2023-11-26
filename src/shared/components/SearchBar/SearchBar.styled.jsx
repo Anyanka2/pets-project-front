@@ -11,10 +11,10 @@ export const SearchLabel = styled.label`
   gap: 10px;
   border-radius: 20px;
   height: 44px;
-  padding-left: 20px;
-  padding-right: 10px;
+  padding-left: 10px;
+  padding-right: 20px;
   background-color: ${theme.colors.white};
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+  box-shadow: ${theme.shadows.shadowDefault};
   @media screen and (max-width: 479px) {
     border-radius: 24px;
   }

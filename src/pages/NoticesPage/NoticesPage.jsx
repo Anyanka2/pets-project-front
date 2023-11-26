@@ -2,7 +2,7 @@ import { TitlePage } from "../../shared/components/TitlePage.styled";
 import { SearchBar } from "../../shared/components/SearchBar/SearchBar";
 import { NoticesList } from "../../components/Notices/NoticesList/NoticesList";
 import { Container } from "../../shared/components/Container";
-import { NoticeCategoryPanel } from "./NoticePage.styled";
+import { NoticeCategoryPanel, StaledDiv } from "./NoticePage.styled";
 import { AddPetBtn } from "../../components/AddPetBtn/AddPetBtn";
 
 const NoticesPage = () => {
@@ -10,7 +10,9 @@ const NoticesPage = () => {
     <>
       <Container>
         <TitlePage>Find your favorite pet</TitlePage>
-        <SearchBar />
+        <StaledDiv>
+          <SearchBar />
+          </StaledDiv>
         <>
           <div>
             <NoticeCategoryPanel>

@@ -1,15 +1,20 @@
 import { TitlePage } from "../../shared/components/TitlePage.styled";
 import { OurFriends } from "../../components/OurFriends/OurFriends";
 import { infoFriends } from "../../components/OurFriends/infoFriends";
+import { StaledDiv } from "../OurFriendsPage/OurFriendsPage.styled";
+import { Container } from "../../shared/components/Container";
 
 const OurFriendsPage = () => {
-
-    return (
-      <>
-        <TitlePage>This is the Our Friends Page!</TitlePage>
+  return (
+    <>
+      <Container>
+      <StaledDiv>
+        <TitlePage>Our Friends</TitlePage>
+      </StaledDiv>
         <OurFriends ourFriends={infoFriends} />
-      </>
-    );
-}
+        </Container>
+    </>
+  );
+};
 
 export default OurFriendsPage;
