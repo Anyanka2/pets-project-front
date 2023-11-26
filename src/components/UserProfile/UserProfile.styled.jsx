@@ -83,7 +83,7 @@ export const UserPhotoBox = styled.div`
 export const UserImg = styled.img`
   width: 182px;
   height: 182px;
-  
+  object-fit: cover;
 `;
 
 export const EditBtn = styled.button`

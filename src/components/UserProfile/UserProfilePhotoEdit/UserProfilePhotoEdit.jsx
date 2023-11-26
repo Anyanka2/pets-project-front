@@ -11,9 +11,10 @@ export default function UserProfilePhotoEdit (props) {
     const [openDownload, setOpenDownload] = useState(false);
     const [objUrl, setObjUrl] = useState({});
     const openPhotoHandler = (event) => {
-        console.log(event);
+        
         const file = event.target.files[0];
         const obj = window.URL.createObjectURL(file);
+        setObjUrl(obj);
         props.photoUrlHandler(obj);
 
         setOpenDownload(prev => !prev);
@@ -24,11 +25,34 @@ export default function UserProfilePhotoEdit (props) {
         props.photoUrlHandler("");
     }
 
+    const handleAccept = () => {
+        console.log(objUrl);
+        
+        // Пасхалка для Володимира
+
+        // const sendObjUrlToServer = async (objUrl) => {
+        //     try {
+        //       const response = await fetch('http://your-server-url/api/upload', {
+        //         method: 'POST',
+        //         headers: {
+        //           'Content-Type': 'application/json', // або 'multipart/form-data', залежно від вашого випадку
+        //         },
+        //         body: JSON.stringify({ objUrl }),
+        //       });
+          
+        //       const result = await response.json();
+        //       console.log(result);
+        //     } catch (error) {
+        //       console.error('Error sending objUrl to server:', error);
+        //     }
+        //   };
+    }
+
     return (<>
             
             {openDownload ?
             <ImgAcceptBox>
-                <ImgBtnAccept type="button" /> 
+                <ImgBtnAccept type="button" onClick={handleAccept} /> 
                 <p>Confirm</p>
                 <ImgBtnDecline type="button" onClick={handleDecline}/>
             </ImgAcceptBox>
