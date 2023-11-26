@@ -11,46 +11,54 @@ import {
   UserProfileContainer,
   UserPhotoBox,
   UserImg,
-  EditImg,
   UserProfileSection,
   EditBtn,
   CancelEditBtn,
 } from "./UserProfile.styled";
 import UserProfileForm from "./UserProfileForm/UserProfileForm";
+import UserProfilePhotoEdit from "./UserProfilePhotoEdit/UserProfilePhotoEdit.jsx";
 
 export default function UserProfile() {
   const [editable, setEditable] = useState(false);
+  const [userPhotoUrl, setUserPhotoUrl] = useState("");
 
-  
-
-  const editHandler = (e) => {
-    
+  const editHandler = () => {  
     setEditable((pervState) => !pervState);
   };
 
-  
+  const photoUrlHandler = (url) => {
+      setUserPhotoUrl(url);
+  }
 
   return (
     <>
-      <UserProfileSection>
-        <h2>My information:</h2>
-        <UserProfileContainer>
-          <UserPhotoBox >
-            <UserImg src={UserPhotoDefault} alt="User profile" />
-            {editable ?
+    <UserProfileSection>
+      <h2>My information:</h2>
+      <UserProfileContainer>
+        <UserPhotoBox >
+          <UserImg src={userPhotoUrl ?
+                userPhotoUrl :
+                UserPhotoDefault} 
+          alt="User profile" />
+          
+          {editable ?
             <CancelEditBtn onClick={editHandler} >
               <img src={crossSmallBlue} alt="cross small blue" />
             </CancelEditBtn>
-            :
+          :
             <EditBtn onClick={editHandler}>
               <img src={edit} alt="Pencil" />
             </EditBtn>
           }
-            {editable ? <EditImg>Edit photo</EditImg> : ""}
-          </UserPhotoBox>
-          <UserProfileForm editable={editable} />
-        </UserProfileContainer>
-      </UserProfileSection>
+          {editable ? 
+              <UserProfilePhotoEdit 
+                  photoUrlHandler={photoUrlHandler} 
+                /> 
+          : ""}
+        </UserPhotoBox>
+        <UserProfileForm editable={editable} />
+      </UserProfileContainer>
+    </UserProfileSection>
     </>
   );
 }
