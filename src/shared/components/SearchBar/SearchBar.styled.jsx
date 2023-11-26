@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { theme } from "../../styles/theme";
 
-export const SearchForm = styled.form``;
+export const SearchForm = styled.form`
+`;
 
 export const SearchLabel = styled.label`
   display: flex;
@@ -13,12 +14,17 @@ export const SearchLabel = styled.label`
   height: 44px;
   margin: 0 auto;
   padding-left: 20px;
-  padding-right: 10px;
+  padding-right: 20px;
   background-color: ${theme.colors.white};
   box-shadow: ${theme.shadows.shadowDefault};
-  @media screen and (max-width: 479px) {
+
+    @media screen and (max-width: 479px) {
     min-width: 280px;
     border-radius: 24px;
+  }
+  &:hover,
+  &:focus {
+    box-shadow: ${theme.shadows.shadowHover};
   }
 `;
 
