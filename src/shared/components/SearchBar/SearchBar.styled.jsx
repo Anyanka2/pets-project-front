@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../styles/theme";
 
 export const SearchForm = styled.form``;
 
@@ -12,7 +13,7 @@ export const SearchLabel = styled.label`
   height: 44px;
   padding-left: 20px;
   padding-right: 10px;
-  background-color: #ffffff;
+  background-color: ${theme.colors.white};
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   @media screen and (max-width: 479px) {
     border-radius: 24px;
@@ -23,7 +24,7 @@ export const SearchInput = styled.input`
   font: Inter;
   font-weight: 400;
   font-size: 20px;
-  color: #888888;
+  color: ${theme.colors.grey};
   width: 100%;
   border: none;
   @media screen and (max-width: 479px) {
@@ -51,7 +52,7 @@ export const SearchIconStyle = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  fill: #54adff;
+  fill: ${theme.colors.blueLink};
 `;
 
 export const CloseIconStyle = styled.span`
