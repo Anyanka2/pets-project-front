@@ -11,6 +11,7 @@ export const SearchLabel = styled.label`
   gap: 10px;
   border-radius: 20px;
   height: 44px;
+  margin: 0 auto;
   padding-left: 20px;
   padding-right: 10px;
   background-color: ${theme.colors.white};
