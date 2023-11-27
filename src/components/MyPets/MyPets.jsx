@@ -15,13 +15,13 @@ import imgFon from "../../assets/images/petsImages/cat6.jpg"
 import { userInfo } from "../../redux/auth/selectors";
 
 export default function MyPets() {
-  const { petsData } = useSelector(userInfo);
+  const { petsData = [] } = useSelector(userInfo);
   return (
     <>
       <AllCardsPet>
         <TitlePet>My Pets:</TitlePet>
         {petsData.length === 0 ? <ImageFon src={imgFon}></ImageFon> : ""}
-        {petsData.map((info) => (
+        {petsData?.map((info) => (
           <ContainerItem key={info.id}>
             <Image src={ImgPet} alt="photo pets" width={240} height={240} />
             <InfoContainer>

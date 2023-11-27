@@ -114,10 +114,11 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
   const dispatch = useDispatch ();
 
   const submit = async () => {
-    if(collectedData.category === 'my-ads') {
-    await dispatch (addMyPet(collectedData))
-    await dispatch (getCurrentUser());
-  }
+    console.log(collectedData);
+    if (collectedData.category === "my-pet") {
+      await dispatch(addMyPet(collectedData));
+      await dispatch(getCurrentUser());
+    }
   console.log(`Працює тільки your-pet`)
   };
 
