@@ -8,7 +8,9 @@ export const TitlePage = styled.h2`
   font-size: 24px;
   text-align: center;
   line-height: 1.45;
-  margin: auto;
+  margin-left: auto;
+  margin-right:auto;
+  padding-top: 40px;
 
   @media screen and (min-width: 767px) {
     font-size: 48px;

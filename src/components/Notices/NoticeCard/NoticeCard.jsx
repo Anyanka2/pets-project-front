@@ -87,6 +87,7 @@ export const NoticeCard = (item) => {
                     />
                   </Button>
 
+
                   <Button aria-label="delete from favorites">
                     <TrashIcon
                       width={"24px"}
@@ -127,6 +128,15 @@ export const NoticeCard = (item) => {
       ) : (
         <div></div>
       )}
+
+                <HeartIcon
+                  width={"24px"}
+                  height={"24px"}
+                  fill={theme.colors.blueLink}
+                  stroke={theme.colors.blueLink}
+                />
+              </Button>
+
 
       <UniversalModal
         isModalOpen={isModal}

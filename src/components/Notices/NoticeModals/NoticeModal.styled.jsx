@@ -14,17 +14,13 @@ export const Backdrop = styled.div`
 `;
 
 export const Content = styled.div`
-  /* position: relative;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   min-height: 300px;
   width: 280px;
   background-color: ${theme.colors.white};
   border-radius: 20px;
   padding-top: 40px;
   padding-bottom: 16px;
-  overflow: auto;
+  overflow: 0;
 
   @media screen and (min-width: 768px) {
     top: 50%;
@@ -164,6 +160,12 @@ export const ItemWrap = styled.li`
     font-size: 16px;
     line-height: 1.37;
   }
+  a {
+    color: ${theme.colors.yellow};
+    &:hover {
+      color: ${theme.colors.blueLink};
+    }
+  }
 `;
 
 export const Comment = styled.p`
@@ -211,8 +213,10 @@ export const ContactLink = styled.a`
 
   &:hover,
   &:focus {
+    transform: scale(1.07);
     background: ${theme.colors.blueGradient};
     color: ${theme.colors.white};
+    border: none;
   }
 
   @media screen and (min-width: 768px) {
@@ -244,13 +248,17 @@ export const AddToFavBtn = styled.button`
     stroke-width: 0.3px;
   }
 
-  /* :hover,
-  :focus {
-    
-  } */
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    background: ${theme.colors.blueGradient};
+    transform: scale(1.07);
+  }
 
   @media screen and (min-width: 768px) {
     width: 129px;
+    
   }
 `;
 
@@ -269,4 +277,9 @@ export const BtnContainer = styled.div`
     padding-right: 31px;
     padding-bottom: 24px;
   }
+`;
+export const HeartIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+  stroke: ${theme.colors.white};
 `;
