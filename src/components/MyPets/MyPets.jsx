@@ -16,6 +16,7 @@ import { userInfo } from "../../redux/auth/selectors";
 
 export default function MyPets() {
   const { petsData = [] } = useSelector(userInfo);
+  
   return (
     <>
       <AllCardsPet>

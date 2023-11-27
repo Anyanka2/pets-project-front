@@ -1,4 +1,3 @@
-//import { useEffect, useState } from "react";
 //import { useAuth } from "../../../hooks/useAuth";
 import {
   Item,
@@ -20,91 +19,121 @@ import { ReactComponent as LocationIcon } from "../../../assets/icons/location.s
 import { ReactComponent as ClockIcon } from "../../../assets/icons/clock.svg";
 import { ReactComponent as FemaleIcon } from "../../../assets/icons/female.svg";
 import { ReactComponent as MaleIcon } from "../../../assets/icons/male.svg";
-import PetPhoto from "../../../assets/images/petsImages/cat1.jpg"; 
+import PetPhoto from "../../../assets/images/petsImages/cat1.jpg";
 import { theme } from "../../../shared/styles/theme";
 import { useState } from "react";
 import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal";
-import {NoticeModalMore} from "../NoticeModals/NoticeModalMore.jsx";
+import { NoticeModalMore } from "../NoticeModals/NoticeModalMore.jsx";
+import { useDispatch, useSelector } from "react-redux";
+import { infoNotices } from "../../../redux/notices/selectorsNotices.js";
+import { useEffect } from "react";
+import {
+  getAllNotices
+
+} from "../../../redux/notices/operationsNotices.js";
+
+
 export const NoticeCard = (item) => {
   const [isModal, setIsModal] = useState(false);
-  //   const [isFavorite, setIsFavorite] = useState(item.isFavorite);
-  // const [card] = useState({});
-  //   const { user } = useAuth();
+  const [idNotice, setIdNotice] = useState('')
 
-  //   useEffect(() => {
-  //     if (!user.name && !user.email) {
-  //       setIsFavorite(false);
-  //     }
-  //   }, [user]);
 
-  //     useEffect(() => {
-  //     if (Object.keys(card).length === 0) {
-  //       return;
-  //     }
-  //   });
+  function calculateAge(dateOfBirth) {
+    const dob = new Date(dateOfBirth);
+    const today = new Date();
 
-  const handleModal = ()=>{
-    console.log(isModal);
-    setIsModal(prev=>!prev);
+    let age = today.getFullYear() - dob.getFullYear();
+    const monthDiff = today.getMonth() - dob.getMonth();
+
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+      age--;
+    }
+
+    return age;
   }
+  const { notices } = useSelector(infoNotices);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllNotices());
+  }, [dispatch]);
+
+
+  const handleModal = (id) => {
+    setIdNotice(id);
+    setIsModal((prev) => !prev);
+  };
 
   return (
     <>
-      <Item key={item.id}>
-        <ContainerPetInfo>
-          <Image
-            src={PetPhoto}
-            alt="pet"
-            loading="lazy"
-          ></Image>
-          <ContainerPetStatus>
-            <TextStatus>in good hands</TextStatus>
-            <ContainerButton>
-              <Button aria-label="add to favorites">
-                <HeartIcon
-                  width={"24px"}
-                  height={"24px"}
-                  stroke={theme.colors.blueLink}
-                />
+      {notices.length > 0 ? (
+        notices.map((notice) => (
+          <Item key={notice._id}>
+            <ContainerPetInfo>
+              <Image src={PetPhoto} alt="pet" loading="lazy"></Image>
+              <ContainerPetStatus>
+                <TextStatus>{notice.category}</TextStatus>
+                <ContainerButton>
+                  <Button aria-label="add to favorites">
+                    <HeartIcon
+                      width={"24px"}
+                      height={"24px"}
+                      stroke={theme.colors.blueLink}
+                    />
 
-                <HeartIcon
-                  width={"24px"}
-                  height={"24px"}
-                  fill={theme.colors.blueLink}
-                />
-              </Button>
+                    <HeartIcon
+                      width={"24px"}
+                      height={"24px"}
+                      fill={theme.colors.blueLink}
+                    />
+                  </Button>
 
-              <Button aria-label="delete from favorites">
-                <TrashIcon
-                  width={"24px"}
-                  height={"24px"}
-                  stroke={theme.colors.blueLink}
-                  fill={theme.colors.lightBlue}
-                />
-              </Button>
-            </ContainerButton>
-          </ContainerPetStatus>
-          <ListPetInfo>
-            <ItemPetInfo>
-              <LocationIcon />
-              <SpanPetText>Location</SpanPetText>
-            </ItemPetInfo>
-            <ItemPetInfo>
-              <ClockIcon />
-              <SpanPetText>Age</SpanPetText>
-            </ItemPetInfo>
-            <ItemPetInfo>
-              <FemaleIcon />
-              <MaleIcon />
-              <SpanPetText>Gender</SpanPetText>
-            </ItemPetInfo>
-          </ListPetInfo>
-        </ContainerPetInfo>
-        <TextPetName>Cute pet looking for a home</TextPetName>
-        <LearnMoreBtn aria-label="show more options" onClick={handleModal} >Learn more</LearnMoreBtn>
-      </Item>
-      <UniversalModal isModalOpen={isModal} evt="children" onClick={handleModal} >
-          <NoticeModalMore />
+                  <Button aria-label="delete from favorites">
+                    <TrashIcon
+                      width={"24px"}
+                      height={"24px"}
+                      stroke={theme.colors.blueLink}
+                      fill={theme.colors.lightBlue}
+                    />
+                  </Button>
+                </ContainerButton>
+              </ContainerPetStatus>
+              <ListPetInfo>
+                <ItemPetInfo>
+                  <LocationIcon />
+                  <SpanPetText>{notice.location}</SpanPetText>
+                </ItemPetInfo>
+                <ItemPetInfo>
+                  <ClockIcon />
+                  <SpanPetText>
+                    {calculateAge(notice.birthday)} year
+                  </SpanPetText>
+                </ItemPetInfo>
+                <ItemPetInfo>
+                  <FemaleIcon />
+                  <MaleIcon />
+                  <SpanPetText>{notice.sex}</SpanPetText>
+                </ItemPetInfo>
+              </ListPetInfo>
+            </ContainerPetInfo>
+            <TextPetName>{notice.title}</TextPetName>
+            <LearnMoreBtn
+              aria-label="show more options"
+              onClick={() => handleModal(notice._id)}
+            >
+              Learn more
+            </LearnMoreBtn>
+          </Item>
+        ))
+      ) : (
+        <div></div>
+      )}
+
+      <UniversalModal
+        isModalOpen={isModal}
+        evt="children"
+        onClick={handleModal}
+      >
+        <NoticeModalMore noticeId={idNotice} />
       </UniversalModal>
     </>
   );
