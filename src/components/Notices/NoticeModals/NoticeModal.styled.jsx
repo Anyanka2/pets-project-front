@@ -45,7 +45,7 @@ export const Type = styled.p`
   background: ${theme.colors.lightBlue};
   border-radius: 0px 16px 16px 0px;
   border: none;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.semiBold};
   font-weight: ${theme.fontWeights.semiBold};
   font-size: 14px;
   line-height: 1.357;
@@ -105,7 +105,7 @@ export const Title = styled.h2`
   margin-bottom: 20px;
   text-align: justify;
   width: 198px;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.bold};
   font-weight: ${theme.fontWeights.bold};
   font-size: 24px;
   line-height: 1.357;
@@ -131,7 +131,7 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   margin: 0;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.semiBold};
   font-weight: ${theme.fontWeights.semiBold};
   font-size: 14px;
   line-height: 1.357;
@@ -147,7 +147,7 @@ export const Item = styled.li`
 `;
 export const ItemWrap = styled.li`
   margin: 0;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.regular};
   font-weight: ${theme.fontWeights.regular};
   font-size: 14px;
   line-height: 1.357;
@@ -172,7 +172,7 @@ export const Comment = styled.p`
   margin: 12px 0;
   padding: 0 12px;
   width: 256px;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.regular};
   font-weight: ${theme.fontWeights.regular};
   font-size: 14px;
   line-height: 1.357;
@@ -204,7 +204,7 @@ export const ContactLink = styled.a`
   border: 2px solid ${theme.colors.blueLink};
   background: transparent;
   border-radius: 40px;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.regular};
   font-weight: ${theme.fontWeights.regular};
   font-size: 16px;
   line-height: 1.357;
@@ -236,7 +236,7 @@ export const AddToFavBtn = styled.button`
   background: ${theme.colors.blueLink};
   border-radius: 40px;
   border: none;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.regular};
   font-style: normal;
   font-weight: ${theme.fontWeights.regular};
   font-size: 16px;
