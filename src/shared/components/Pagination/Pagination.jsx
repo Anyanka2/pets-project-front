@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PaginationContainer, 
         LeftArrowImg, 
         RightArrowImg, 
@@ -6,41 +6,53 @@ import { PaginationContainer,
         CurrentCircle,  } from "./Pagination.styles.jsx";
 import leftArrow from "../../../assets/icons/leftArrow.svg";
 import rightArrow from "../../../assets/icons/rightArrow.svg";
-import { useEffect } from "react";
 
 export default function Pagination (props) {
 
     const [counter, setCounter] = useState([]);
+
+    const pageHandler = (event) => {
+        // console.dir(event.target.dataset.index);
+        const index = event.target.dataset.index;
+        switch (index) {
+            case "leftArrow":
+                if (Number(props.page) <= 1 ) {
+                    return;
+                }
+                props.paginationHandler(props.page - 1);
+                // console.log(props.page);
+                break;
+            case "rightArrow":
+                // console.log(props.page);
+                props.paginationHandler(props.page + 1);
+                break;
+            default:
+                props.paginationHandler(event.target.textContent);
+                break;
+        }
+    }
     
     useEffect(() => {
         const collection = [];
-        let current = props.page;
-        console.log(props.page)
-        if(current === 0 ) {
-            current = 1;
-        }
+       
 
         for (let i = 1; i <= 5; i++ ){
            
-            if (i === Number(current)){
-                collection.push(<CurrentCircle onClick={pageHandler}>{i}</CurrentCircle>)
+            if (i === Number(props.page)){
+                collection.push(<CurrentCircle data-index={i} key={i} >{i}</CurrentCircle>)
             }else {
-                collection.push(<DefaultCircle onClick={pageHandler}>{i}</DefaultCircle>); 
+                collection.push(<DefaultCircle data-index={i} key={i}>{i}</DefaultCircle>); 
             }  
         }
         setCounter(collection);
         
     },[props.page]);
 
-    const  pageHandler = (event) => {
-        props.paginationHandler(event.target.textContent);
-    }
-
     return (<>
-        <PaginationContainer>
-            <LeftArrowImg src={leftArrow} />
+        <PaginationContainer onClick={pageHandler}>
+            <LeftArrowImg src={leftArrow} alt="leftArrow" data-index="leftArrow" />
              {counter}
-            <RightArrowImg src={rightArrow} />
+            <RightArrowImg src={rightArrow}  alt="rightArrow" data-index="rightArrow" />
         </PaginationContainer>
     </>);
 }

@@ -55,7 +55,7 @@ const NewsPage = () => {
             const month = dateObj.getUTCMonth() + 1;
             const year = dateObj.getUTCFullYear();
 
-            return(<NewsCard>
+            return(<NewsCard key={material.nytID}>
                     <NewsBlueHeader />
                     <NewsBody>
                       <NewsImg src={material.imgUrl} alt={material.title} />
