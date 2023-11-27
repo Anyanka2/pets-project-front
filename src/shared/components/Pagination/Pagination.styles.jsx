@@ -22,7 +22,7 @@ export const RightArrowImg = styled.img`
   
 `;
 
-export const DefaultCircle = styled.p`
+export const DefaultCircle = styled.div`
    width: 35px;
    height: 35px;
    border-radius: 50%;
@@ -38,7 +38,7 @@ export const DefaultCircle = styled.p`
    font-weight: 400;
 `;
 
-export const CurrentCircle = styled.p`
+export const CurrentCircle = styled.div`
     width: 35px;
    height: 35px;
    border-radius: 50%;

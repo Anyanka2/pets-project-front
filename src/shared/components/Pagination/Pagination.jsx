@@ -34,11 +34,28 @@ export default function Pagination (props) {
     
     useEffect(() => {
         const collection = [];
-       
+        let startCount = 1;
+        let maxCount = 5;
+        const total = Number(props.totalPages);
+        const current = Number(props.page);
 
-        for (let i = 1; i <= 5; i++ ){
+        if (window.innerWidth < 768){
+            maxCount = 4;
+        }
+        
+        if (current > 3 ){
+            startCount = current - 2;
+            maxCount = current + 2;
+        }
+
+        if ( total === current) {
+            startCount= current - 2;
+            maxCount = current;
+        }
+        
+        for (let i = startCount; i <= maxCount; i++ ){
            
-            if (i === Number(props.page)){
+            if (i === current){
                 collection.push(<CurrentCircle data-index={i} key={i} >{i}</CurrentCircle>)
             }else {
                 collection.push(<DefaultCircle data-index={i} key={i}>{i}</DefaultCircle>); 
@@ -46,7 +63,7 @@ export default function Pagination (props) {
         }
         setCounter(collection);
         
-    },[props.page]);
+    },[props.page, props.totalPages]);
 
     return (<>
         <PaginationContainer onClick={pageHandler}>
