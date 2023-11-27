@@ -81,6 +81,7 @@ const LoginForm = () => {
         navigate("/login");
       } else {
         await dispatch(getCurrentUser());
+        
         navigate("/user");
       }
     } catch (error) {

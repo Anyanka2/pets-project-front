@@ -20,7 +20,7 @@ export const AddPetBtn = () => {
   //   };
   return (
     <AddPetLink to="/add-pet">
-      Add Pet
+     <span>Add Pet</span> 
       <PlusIcon>
         <svg xmlns="http://www.w3.org/2000/svg" fill="none">
           <path

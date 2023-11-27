@@ -24,7 +24,7 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
 
   const isNameFieldValid = Boolean(!errors.name && !!formData.name);
   const isBirthdayFieldValid = Boolean(!errors.birthday && !!formData.birthday);
-  const isBreedFieldValid = Boolean(!errors.breed && !!formData.breed);
+  const isBreedFieldValid = Boolean(!errors.type && !!formData.type);
   const isTitleFieldValid = Boolean(!errors.title && !!formData.title);
 
   useEffect(() => {
@@ -135,19 +135,19 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
         {!!errors.birthday && <ErrorMessage message={errors.birthday} />}
       </AddFormLabelWrapper>
       <AddFormLabelWrapper>
-        <AddFormLabel htmlFor="breed">
+        <AddFormLabel htmlFor="type">
           Type
           <AddFormInput
             placeholder="Type of pet"
             type="text"
-            name="breed"
+            name="type"
             onChange={handleInputChange}
-            value={formData.breed}
-            onBlur={() => validateField('breed', formData, setErrors)}
-            className={errors.breed ? 'invalid' : ''}
+            value={formData.type}
+            onBlur={() => validateField('type', formData, setErrors)}
+            className={errors.type ? 'invalid' : ''}
           />
         </AddFormLabel>
-        {!!errors.breed && <ErrorMessage message={errors.breed} />}
+        {!!errors.type && <ErrorMessage message={errors.type} />}
       </AddFormLabelWrapper>
       </ContainerForInput>
       <AddFormButtonWrapper>

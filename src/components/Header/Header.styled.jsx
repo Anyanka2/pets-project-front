@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import {theme} from '../../shared/styles/theme';
 
-// Стилизация Header
+
 export const HeaderContainer = styled.div`
 display: flex;
 align-items: center;
 justify-content: space-between;
+padding-top: 20px;
 
 @media screen and (min-width: 768px){
 
@@ -21,7 +22,11 @@ justify-content: space-between;
 `;
 
 export const LogoLink = styled(Link)`
-  margin-right: 159px;
+  z-index:1001;
+  
+  @media screen and (min-width: 1280px){
+    margin-right: 159px;
+  }
 `;
 
 export const Image = styled.img`
@@ -48,6 +53,7 @@ export const ButtonsContainer = styled.div`
   min-width: 320px;
   display: none;
 
+
 @media screen and (min-width: 768px){
   display: flex;
   gap: 20px;
@@ -72,13 +78,10 @@ export const LinkLogin = styled(Link)`
   line-height: 1.5;
   gap: 8px;
 
-&:hover {
+&:hover  {
     background: ${({theme}) => theme.colors.yellow};
     color : ${theme.colors.white};
     border:none;
-  /*   letter-spacing: 1px;
-    box-shadow: ${({theme}) => theme.shadows.shadowHover};
-    transition: all 0.4s ease 0s; */
   }
 &:hover svg {
   fill:${theme.colors.white};
@@ -107,3 +110,24 @@ gap: 8px;
   border:none;
 }
 `;
+
+export const BurgerButton = styled.button`
+margin-left: 140px;
+
+&:hover svg {
+  fill: black;
+}
+
+@media screen and (min-width: 769px){
+  display: none;
+}
+ 
+`;
+
+export const CloseIcon = styled.div`
+position: absolute;
+top: 20px;
+right: 20px;
+z-index: 1001;
+`
+

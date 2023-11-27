@@ -48,7 +48,8 @@ export const AddFormTextAreaLabel = styled(AddFormLabel)`
 
 export const AddFormTextArea = styled(AddFormInput)`
   resize: none;
-  height: 92px;
+  /* height: 92px; */
+ 
   flex-grow: 1;
 
   border-radius: 20px;

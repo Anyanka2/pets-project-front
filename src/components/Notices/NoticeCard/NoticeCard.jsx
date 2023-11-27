@@ -71,6 +71,7 @@ export const NoticeCard = (item) => {
                   width={"24px"}
                   height={"24px"}
                   fill={theme.colors.blueLink}
+                  stroke={theme.colors.blueLink}
                 />
               </Button>
 

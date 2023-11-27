@@ -139,3 +139,22 @@ export const updateCurrentUser = createAsyncThunk(
     }
   }
 );
+
+export const addMyPet = createAsyncThunk(
+  'api/users/addPet',
+  async (credentials, thunkAPI) => {
+    const state = thunkAPI.getState();     
+    const token = state.auth.token;
+    try {
+      const response = await axios.post('api/users/pets', credentials,{
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }); 
+      
+      return response.data
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+); 

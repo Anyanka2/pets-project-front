@@ -1,6 +1,8 @@
 import styled from "styled-components";
+import { theme } from "../../styles/theme";
 
-export const SearchForm = styled.form``;
+export const SearchForm = styled.form`
+`;
 
 export const SearchLabel = styled.label`
   display: flex;
@@ -10,12 +12,19 @@ export const SearchLabel = styled.label`
   gap: 10px;
   border-radius: 20px;
   height: 44px;
+  margin: 0 auto;
   padding-left: 20px;
-  padding-right: 10px;
-  background-color: #ffffff;
-  box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
-  @media screen and (max-width: 479px) {
+  padding-right: 20px;
+  background-color: ${theme.colors.white};
+  box-shadow: ${theme.shadows.shadowDefault};
+
+    @media screen and (max-width: 479px) {
+    min-width: 280px;
     border-radius: 24px;
+  }
+  &:hover,
+  &:focus {
+    box-shadow: ${theme.shadows.shadowHover};
   }
 `;
 
@@ -23,11 +32,10 @@ export const SearchInput = styled.input`
   font: Inter;
   font-weight: 400;
   font-size: 20px;
-  color: #888888;
+  color: ${theme.colors.grey};
   width: 100%;
   border: none;
   @media screen and (max-width: 479px) {
-    min-width: 280px;
     font-size: 14px;
   }
 `;
@@ -51,7 +59,7 @@ export const SearchIconStyle = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
-  fill: #54adff;
+  fill: ${theme.colors.blueLink};
 `;
 
 export const CloseIconStyle = styled.span`

@@ -4,15 +4,15 @@ import { Form } from 'formik';
 export const FormBackground = styled.div`
   display: flex;
   justify-content: center;
-  padding-top: 40px;
+  padding-top: 20px;
   height: 100vh;
 
-  @media screen and (max-width: 1279px) {
+  @media screen and (min-width: 768px) {
     padding-top: 60px;
   }
 
-  @media screen and (max-width: 767px) {
-    padding-top: 20px;
+  @media screen and (min-width: 1280px) {
+    padding-top: 40px;
   }
 `;
 
@@ -20,11 +20,11 @@ export const AddFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 20px 8px 16px;
-  width: 100%;
+  width: 280px;
   height: fit-content;
   min-height: 496px;
   background: ${({ theme }) => theme.colors.white};
-  box-shadow: ${({ theme }) => theme.shadowDefault};
+  box-shadow: ${({ theme }) => theme.shadows.shadowDefault};
   border-radius: 40px;
 
   @media screen and (min-width: 768px) {
@@ -32,8 +32,15 @@ export const AddFormWrapper = styled.div`
     padding: 20px 32px;
     width: fit-content;
     min-width: 458px;
-  }
 
+    & h1 {
+      text-align: ${({ step, category }) => step < '2' ? ' left' : 'center' && category === 'my-pet' ? 'left' : 'center'};
+    }
+
+    & textarea {
+      height: ${({ category }) => category === 'lost-found' ? '182px' : '92px' && category === 'for-free' ? '182px' : '92px'};
+    }
+  }
   @media screen and (min-width: 1280px) {
     padding: ${({ step, category }) =>
       step === 2 && category !== 'my-pet' ? '20px 74px' : '20px 32px'};
@@ -57,7 +64,6 @@ export const AddFormTitle = styled.h1`
 
   @media screen and (min-width: 768px) {
     font-size: 28px;
-    text-align: center;
 
     padding-left: 0;
     }
