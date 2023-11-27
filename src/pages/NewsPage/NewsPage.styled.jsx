@@ -9,15 +9,22 @@ export const StaledDiv = styled.div`
     margin-top: 40px;
     margin-bottom: 40px;
   }
-  @media only screen and (min-width: 1280px) {
-    margin-bottom: 60px;
-  }
+  
 `;
 
 export const NewsBox = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+  justify-content: center;
+  gap: 24px;
+  @media only screen and (min-width: 768px) {
+    gap: 24px 32px;
+  }
+  @media only screen and (min-width: 1280px) {
+    gap: 24px 32px;
+  }
+
 `;
 
 export const NewsCard = styled.div`
@@ -26,7 +33,7 @@ export const NewsCard = styled.div`
 
 export const NewsBlueHeader = styled.div`
   height: 8px;
-  background-color: ${theme.colors.blueLink};
+  background: ${theme.colors.blueGradient};
   margin-bottom: 12px;
   border-radius: 20px;
 `;
@@ -62,6 +69,8 @@ export const NewsTitle = styled.h3`
   padding-left: 12px;
   padding-right: 12px;
   margin-bottom: 16px;
+  height: 56px;
+  overflow-y: hidden;
 `;
 
 export const NewsDescription = styled.p`

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Pagination from "../../shared/components/Pagination/Pagination";
 import { SearchBar } from "../../shared/components/SearchBar/SearchBar";
 import { TitlePage } from "../../shared/components/TitlePage.styled";
@@ -15,37 +16,58 @@ import {
   NewsReadMoreLink,
   NewsTitle,
 } from "./NewsPage.styled.jsx";
+import axios from "axios";
 
 const NewsPage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [materials, setMaterials] = useState([]);
+  const [totalPages, setTotalPages] =useState();
+  useEffect(()=>{
+    const getMaterials = async (pageNumber, itemsPerPage = 10) =>{
+      try {
+        const respons = await axios.get(`/api/news?offset=${pageNumber}&limit=${itemsPerPage}`);
+        console.log(respons.data.data.resourses);
+        setMaterials(respons.data.data.resourses);
+        setTotalPages(respons.data.data.totalPages);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    getMaterials(currentPage, 6);
+  }, [currentPage]);
+
+  const paginationHandler = (pageNumber) => {
+
+    setCurrentPage(pageNumber);
+  } 
+
   return (
     <>
       <StyledContainer>
               <TitlePage>News</TitlePage>
              <StaledDiv><SearchBar /></StaledDiv> 
         <NewsBox>
-          <NewsCard>
-            <NewsBlueHeader />
-            <NewsBody>
-              <NewsImg src="" />
-              <NewsTitle>This is a News Title</NewsTitle>
-              <NewsDescription>
-                This is a News description. About Bla. Bla-Bla. Bla-bla-bla.
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Totam
-                dicta et dignissimos beatae fuga consequuntur quasi id nostrum,
-                obcaecati non quaerat eius praesentium quis officia laboriosam.
-                Minima aperiam atque exercitationem itaque accusantium totam rem
-                consequuntur iure aliquid provident inventore non, cumque
-                doloremque cupiditate praesentium. Quidem, similique. Molestias
-                perspiciatis placeat alias.
-              </NewsDescription>
-              <NewsMore>
-                <NewsDate>15/03/2023</NewsDate>
-                <NewsReadMoreLink href="#">Read more</NewsReadMoreLink>
-              </NewsMore>
-            </NewsBody>
-          </NewsCard>
+          {materials.map((material) => {
+            return(<NewsCard>
+                    <NewsBlueHeader />
+                    <NewsBody>
+                      <NewsImg src={material.imgUrl} alt={material.title} />
+                      <NewsTitle>{material.title}</NewsTitle>
+                      <NewsDescription>
+                        {material.text}
+                      </NewsDescription>
+                      <NewsMore>
+                        <NewsDate>{}</NewsDate>
+                        <NewsReadMoreLink href={material.url} target="_blank">Read more</NewsReadMoreLink>
+                      </NewsMore>
+                    </NewsBody>
+                  </NewsCard>)
+            })
+          }
         </NewsBox>
-        <Pagination allPages="" currentPage="" />
+        <Pagination totalPages={totalPages}
+                    page={currentPage} 
+                    paginationHandler={paginationHandler} />
       </StyledContainer>
     </>
   );
