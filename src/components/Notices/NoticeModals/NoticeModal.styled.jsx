@@ -266,3 +266,8 @@ export const BtnContainer = styled.div`
     padding-bottom: 24px;
   }
 `;
+export const HeartIcon = styled.svg`
+  width: 24px;
+  height: 24px;
+  stroke: ${theme.colors.white};
+`;
