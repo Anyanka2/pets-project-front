@@ -1,30 +1,30 @@
 import Box from "@mui/material/Box";
 import {
-  List,
-  Item,
-  Name,
-  ImgThumb,
-  Image,
-  Contacts,
-  ContactsLink,
+  StyledList,
+  StyledItem,
+  StyledName,
+  StyledImgThumb,
+  StyledImage,
+  StyledContacts,
+  StyledContactsLink,
 } from "./OurFriends.styled";
 
 export const OurFriends = ({ ourFriends }) => {
-  function formatPhone(number) {
+  const formatPhone = (number) => {
     if (number === "email only") {
-      return 0;
+      return "N/A";
     }
     return number.split(" ").join("");
-  }
+  };
 
   return (
-    <List>
+    <StyledList>
       {ourFriends.length > 0 &&
         ourFriends.map((friend) => (
-          <Item key={friend.id}>
-            <Name href={friend.link} target="_blank">
+          <StyledItem key={friend.id}>
+            <StyledName href={friend.link} target="_blank">
               {friend.name}
-            </Name>
+            </StyledName>
             <Box
               sx={{
                 display: "flex",
@@ -32,46 +32,46 @@ export const OurFriends = ({ ourFriends }) => {
                 justifyContent: "space-between",
               }}
             >
-              <ImgThumb>
-                <Image src={friend.image} alt={friend.name} />
-              </ImgThumb>
+              <StyledImgThumb>
+                <StyledImage src={friend.image} alt={friend.name} />
+              </StyledImgThumb>
               <Box
                 sx={{
                   width: "50%",
                   textAlign: "left",
                 }}
               >
-                <Contacts>
+                <StyledContacts>
                   Time
                   <br />
                   {friend.time}
-                </Contacts>
-                <Contacts>
+                </StyledContacts>
+                <StyledContacts>
                   Address
                   <br />
                   {friend.address}
-                </Contacts>
-                <Contacts>
+                </StyledContacts>
+                <StyledContacts>
                   Email
                   <br />
-                  <ContactsLink href={`mailto:${friend.email}`}>
+                  <StyledContactsLink href={`mailto:${friend.email}`}>
                     {" "}
                     {friend.email}
-                  </ContactsLink>
-                </Contacts>
-                <Contacts>
+                  </StyledContactsLink>
+                </StyledContacts>
+                <StyledContacts>
                   Phone
                   <br />
-                  <ContactsLink href={`tel:${formatPhone(friend.phone)}`}>
+                  <StyledContactsLink href={`tel:${formatPhone(friend.phone)}`}>
                     {" "}
                     {friend.phone}
-                  </ContactsLink>
-                </Contacts>
+                  </StyledContactsLink>
+                </StyledContacts>
               </Box>
             </Box>
-          </Item>
+          </StyledItem>
         ))}
-    </List>
+    </StyledList>
   );
 };
 

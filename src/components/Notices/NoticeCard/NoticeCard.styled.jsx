@@ -181,5 +181,6 @@ export const LearnMoreBtn = styled.button`
   &:focus {
     background: ${theme.colors.blueGradient};
     color: ${theme.colors.white};
+    border: none;
   }
 `;

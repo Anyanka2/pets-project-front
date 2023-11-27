@@ -18,7 +18,7 @@ export const AddPetLink = styled(Link)`
   border-radius: 50px;
   border: none;
   background: ${theme.colors.blueLink};
-  box-shadow: ${theme.shadows.shadowDefault};
+  filter: drop-shadow(3px 8px 14px rgba(136, 198, 253, 0.19));
   font-family: ${theme.fonts.manrope};
   font-weight: ${theme.fontWeights.semiBold};
   font-size: 12px;
@@ -30,6 +30,15 @@ export const AddPetLink = styled(Link)`
   &:hover {
     background: ${theme.colors.blueGradient};
     transform: scale(1.07);
+  }
+  span {
+    position: absolute;
+    top: 45px;
+    left: 17px;
+    
+    @media screen and (min-width: 768px){
+    position: unset;
+  }
   }
 
   @media screen and (min-width: 768px) {
@@ -48,7 +57,14 @@ export const AddPetLink = styled(Link)`
   }
 `;
 export const PlusIcon = styled.svg`
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   stroke: ${theme.colors.white};
+  position: absolute;
+  top: 20px;
+  left: 28px;
+
+  @media screen and (min-width: 768px){
+    position: unset;
+  }
 `;

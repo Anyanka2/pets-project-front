@@ -258,6 +258,7 @@ export const AddToFavBtn = styled.button`
 
   @media screen and (min-width: 768px) {
     width: 129px;
+    
   }
 `;
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { theme } from "../../shared/styles/theme.jsx";
+import { theme } from "../../../shared/styles/theme";
 
 export const CustomSvg = styled.svg`
   fill: ${theme.colors.white};
@@ -28,6 +28,7 @@ export const StyledLink = styled(Link)`
   cursor: pointer;
   gap: 8px;
   position: relative;
+  
 
   &:hover,
   &:focus {

@@ -1,5 +1,6 @@
 import { TitlePage } from "../../shared/components/TitlePage.styled";
 import { SearchBar } from "../../shared/components/SearchBar/SearchBar";
+import { MainAttention } from "../../shared/components/Attentions/MainAttention/MainAttention";
 import { NoticesList } from "../../components/Notices/NoticesList/NoticesList";
 import { Container } from "../../shared/components/Container";
 import { StaledDiv } from "./NoticePage.styled";
@@ -15,6 +16,9 @@ const NoticesPage = () => {
           <SearchBar />
           </StaledDiv>
         <>
+            <SearchBar />
+            <MainAttention />
+        <TitlePage>This is the Notices Page!</TitlePage>
           <div>
             <NoticesCategoryNav />
               {/* <li>sell</li>
