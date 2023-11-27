@@ -18,7 +18,7 @@ export const validatePetSchema = Yup.object().shape({
       /^(\d{2})\.(\d{2})\.(\d{4})$/,
       'Invalid date format. Use DD.MM.YYYY'
     ),
-  breed: Yup.string()
+  type: Yup.string()
     .required('Breed is required')
     .min(2, 'Breed must be at least 2 characters')
     .max(30, 'Breed must not exceed 30 characters'),
