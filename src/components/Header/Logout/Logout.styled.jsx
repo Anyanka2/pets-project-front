@@ -8,7 +8,7 @@ export const CustomSvg = styled.svg`
   height: 24px;
 `;
 export const StyledLink = styled(Link)`
-  display: none;/* chacnge flex */
+  display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
