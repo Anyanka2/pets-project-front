@@ -23,7 +23,7 @@ export const StyledPicture = styled.picture`
 
 export const StyledTittle = styled.h1`
   margin-left: 20px;
-  //margin-bottom: 27px;
+  margin-top: 60px;
   font-size: 32px;
   font-family: "Manrope", sans-serif;
   font-weight: ${theme.fontWeights.bold};
