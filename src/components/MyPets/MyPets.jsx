@@ -22,7 +22,7 @@ export default function MyPets() {
         <TitlePet>My Pets:</TitlePet>
         {petsData.length === 0 ? <ImageFon src={imgFon}></ImageFon> : ""}
         {petsData?.map((info) => (
-          <ContainerItem key={info.id}>
+          <ContainerItem key={info._id}>
             <Image src={ImgPet} alt="photo pets" width={240} height={240} />
             <InfoContainer>
               <DeleteIcon>
