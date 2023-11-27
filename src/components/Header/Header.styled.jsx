@@ -21,7 +21,11 @@ justify-content: space-between;
 `;
 
 export const LogoLink = styled(Link)`
-  margin-right: 159px;
+  z-index:1001;
+  
+  @media screen and (min-width: 1280px){
+    margin-right: 159px;
+  }
 `;
 
 export const Image = styled.img`
@@ -48,6 +52,7 @@ export const ButtonsContainer = styled.div`
   min-width: 320px;
   display: none;
 
+
 @media screen and (min-width: 768px){
   display: flex;
   gap: 20px;
@@ -72,7 +77,7 @@ export const LinkLogin = styled(Link)`
   line-height: 1.5;
   gap: 8px;
 
-&:hover {
+&:hover  {
     background: ${({theme}) => theme.colors.yellow};
     color : ${theme.colors.white};
     border:none;
@@ -106,12 +111,22 @@ gap: 8px;
 `;
 
 export const BurgerButton = styled.button`
+margin-left: 140px;
+
+&:hover svg {
+  fill: black;
+}
+
+@media screen and (min-width: 769px){
+  display: none;
+}
+ 
 `;
 
 export const CloseIcon = styled.div`
 position: absolute;
-top: 10px;
-right: 10px;
-font-size: 24px;
-color: black;
+top: 20px;
+right: 20px;
+z-index: 1001;
 `
+
