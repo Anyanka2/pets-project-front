@@ -2,10 +2,12 @@ import styled from "styled-components";
 import { theme } from "../../shared/styles/theme";
 
 export const AllCardsPet = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
-
+  width: 100%; 
+  height: 100%;
   @media screen and (min-width: 768px) {
   }
 `;
@@ -33,9 +35,10 @@ export const TitlePet = styled.h2`
   font-weight: 500;
   line-height: 1.36;
   margin-bottom: 31px;
-
+  font-family: ${theme.fonts.manrope.medium};
   @media screen and (min-width: 768px) {
     margin-bottom: 22px;
+    font-size: 28px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -123,4 +126,17 @@ export const ContainerUser = styled.div`
   @media screen and (min-width: 1280px) {
     display: flex;
   }
+`;
+
+export const ImageFon = styled.img`
+position: relative;
+  width: 100%;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  border-radius: 20px;
+  object-fit: cover;
+
+
 `;

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Navigation from '../Navigation/Navigation';
-import Burger from './Burger/Burger';
+import MobileMenu from './Burger/Burger';
 import { 
 HeaderContainer,
 LogoLink, 
@@ -40,12 +40,15 @@ const Header = () => {
             <LinkReg to='register'>Registration</LinkReg>
         </ButtonsContainer>
         <BurgerButton onClick={toggleMenu}>
-          <CustomSvg>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"><path stroke="#54ADFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 7h16M4 12h16M4 17h16"/></svg>
-          </CustomSvg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill='yellow'><path stroke="#54ADFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 7h16M4 12h16M4 17h16"/></svg>
         </BurgerButton>
-        {isMenuOpen ? <Burger toggleMenu={toggleMenu} /> : <Navigation />}
-        {isMenuOpen && <CloseIcon onClick={toggleMenu}>X</CloseIcon>}
+        <MobileMenu toggleMenu={toggleMenu} isOpen={isMenuOpen} />
+        {isMenuOpen && <CloseIcon onClick={toggleMenu}>
+          <svg width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+          <path d="M15 1L1 15M1.00004 1L15 15" stroke="#FFC107" 
+          strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </CloseIcon>}
         </HeaderContainer>
 
     </Container>
