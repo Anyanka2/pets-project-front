@@ -12,7 +12,7 @@ export const StaledDiv = styled.div`
   
 `;
 
-export const NewsBox = styled.div`
+export const NewsBox = styled.ul`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -27,7 +27,7 @@ export const NewsBox = styled.div`
 
 `;
 
-export const NewsCard = styled.div`
+export const NewsCard = styled.li`
   width: 280px;
   @media only screen and (min-width: 768px) {
     width: 336px;
