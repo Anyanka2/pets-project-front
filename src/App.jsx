@@ -5,7 +5,6 @@ import PublicRoute from "../src/routes/PublicRoute";
 import PrivateRoute from "../src/routes/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
 import { GlobalStyle } from "./shared/styles/GlobalStyles";
-
 import { SearchBar } from "./shared/components/SearchBar/SearchBar";
 import ScrollToTopButton from "./components/Scroll-up-btn/ScrollBtnUp";
 
@@ -46,7 +45,9 @@ const App = () => {
             </Route>
 
             <Route element={<PrivateRoute />}>
+
               <Route path="" element={<SearchBar />} />
+
             </Route>
 
             <Route path="news" element={<NewsPage />} />
