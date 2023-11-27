@@ -38,8 +38,7 @@ const authenticate = createSlice({
       })
       .addCase(refreshUser.rejected, (state) => {
         state.isRefreshing = false;
-      })
-      
+      });
   },
 });
 
