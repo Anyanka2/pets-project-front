@@ -27,16 +27,11 @@ import { NoticeModalMore } from "../NoticeModals/NoticeModalMore.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { infoNotices } from "../../../redux/notices/selectorsNotices.js";
 import { useEffect } from "react";
-import {
-  getAllNotices
-
-} from "../../../redux/notices/operationsNotices.js";
-
+import { getAllNotices } from "../../../redux/notices/operationsNotices.js";
 
 export const NoticeCard = (item) => {
   const [isModal, setIsModal] = useState(false);
-  const [idNotice, setIdNotice] = useState('')
-
+  const [idNotice, setIdNotice] = useState("");
 
   function calculateAge(dateOfBirth) {
     const dob = new Date(dateOfBirth);
@@ -56,7 +51,6 @@ export const NoticeCard = (item) => {
   useEffect(() => {
     dispatch(getAllNotices());
   }, [dispatch]);
-
 
   const handleModal = (id) => {
     setIdNotice(id);
@@ -86,7 +80,6 @@ export const NoticeCard = (item) => {
                       fill={theme.colors.blueLink}
                     />
                   </Button>
-
 
                   <Button aria-label="delete from favorites">
                     <TrashIcon
@@ -128,15 +121,6 @@ export const NoticeCard = (item) => {
       ) : (
         <div></div>
       )}
-
-                <HeartIcon
-                  width={"24px"}
-                  height={"24px"}
-                  fill={theme.colors.blueLink}
-                  stroke={theme.colors.blueLink}
-                />
-              </Button>
-
 
       <UniversalModal
         isModalOpen={isModal}
