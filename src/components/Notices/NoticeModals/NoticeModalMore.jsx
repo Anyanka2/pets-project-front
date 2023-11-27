@@ -12,11 +12,10 @@ import {
   ContactLink,
   AddToFavBtn,
   BtnContainer,
+  HeartIcon,
 } from "./NoticeModal.styled";
-import { ReactComponent as HeartIcon } from "../../../assets/icons/heart.svg";
-//import { ReactComponent as IconClose } from "../../../assets/icons/close.svg";
 import PetPhoto from "../../../assets/images/petsImages/cat1.jpg";
-import { theme } from "../../../shared/styles/theme";
+//import { theme } from "../../../shared/styles/theme";
 
 export const NoticeModalMore = ({
   //avatar,
@@ -35,8 +34,6 @@ export const NoticeModalMore = ({
     <>
       <Content>
         <ContainerInfo>
-         
-                  
           <ImageContainer>
             <Image src={PetPhoto} alt="dog" />
             <Type>{category}sell</Type>
@@ -64,12 +61,12 @@ export const NoticeModalMore = ({
                 <ItemWrap>{location}Lviv</ItemWrap>
                 <ItemWrap>{sex}male</ItemWrap>
                 <ItemWrap>
-                  <a style={{ color: "#FFC107" }} href={`mailto:user@mail.com`}>
+                  <a href={`mailto:user@mail.com`}>
                     user@mail.com
                   </a>
                 </ItemWrap>
                 <ItemWrap>
-                  <a style={{ color: "#FFC107" }} href={`tel:+380971234567`}>
+                  <a href={`tel:+380971234567`}>
                     +380971234567
                   </a>
                 </ItemWrap>
@@ -85,11 +82,21 @@ export const NoticeModalMore = ({
         <BtnContainer>
           <AddToFavBtn type="button">
             <span>Add to</span>
-            <HeartIcon
-              width={"20px"}
-              height={"20px"}
-              fill={theme.colors.white}
-            />
+            <HeartIcon>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                fill="none"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                  d="M4.331 12.047 12 20l7.669-7.953A4.804 4.804 0 0 0 21 8.714C21 6.111 18.965 4 16.454 4a4.465 4.465 0 0 0-3.214 1.38L12 6.668 10.76 5.38A4.465 4.465 0 0 0 7.546 4C5.036 4 3 6.11 3 8.714c0 1.25.479 2.45 1.331 3.333Z"
+                />
+              </svg>
+            </HeartIcon>
           </AddToFavBtn>
           <ContactLink href={`tel:+380971234567`}>Contact</ContactLink>
         </BtnContainer>
