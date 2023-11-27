@@ -37,7 +37,7 @@ const NewsPage = () => {
   }, [currentPage]);
 
   const paginationHandler = (pageNumber) => {
-
+    console.log("this is pagination handler action")
     setCurrentPage(pageNumber);
   } 
 
