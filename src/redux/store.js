@@ -11,10 +11,9 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
-// import { newsReducer } from './news/slice';
-// import { friendsReducer } from './friends/slice';
-// import { noticesReducer } from './notices/slice';
-// import { teamReducer } from './team/slice';
+import { userReducer } from './auth/userSlice';
+import { noticesReducer } from './notices/sliceNotices';
+
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -30,13 +29,16 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const userPersistConfig = {
+  key: "user",
+  storage,
+  whitelist: ["user", "isLoggedIn", "isRefreshing"], 
+};
 export const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    // news: newsReducer,
-    // friends: friendsReducer,
-    // notices: noticesReducer,
-    // team: teamReducer,
+    user: persistReducer(userPersistConfig, userReducer),
+    notices: noticesReducer,
   },
   middleware,
 });
