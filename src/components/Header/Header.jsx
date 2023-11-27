@@ -13,8 +13,10 @@ BurgerButton,
 CloseIcon
 } from './Header.styled';
 import svg from '../../assets/icons/logo.svg';
-
+import { ReactComponent as CrossIcon } from "../../assets/icons/cross-small.svg";
+import { ReactComponent as BurgerIcon } from "../../assets/icons/menu.svg";
 import { Container } from "../../shared/components/Container";
+import {MyButton} from '../Header/Logout/Logout'
 
 const Header = () => {
     const [isMenuOpen, setMenuOpen] = useState(false);
@@ -38,20 +40,17 @@ const Header = () => {
               </CustomSvg>
             </LinkLogin>
             <LinkReg to='register'>Registration</LinkReg>
+            <MyButton/>
         </ButtonsContainer>
         <BurgerButton onClick={toggleMenu}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill='yellow'><path stroke="#54ADFF" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <BurgerIcon/>
         </BurgerButton>
         <MobileMenu toggleMenu={toggleMenu} isOpen={isMenuOpen} />
         {isMenuOpen && <CloseIcon onClick={toggleMenu}>
-          <svg width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-          <path d="M15 1L1 15M1.00004 1L15 15" stroke="#FFC107" 
-          strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+        <CrossIcon />
         </CloseIcon>}
         </HeaderContainer>
-
-    </Container>
+      </Container>
   );
 };
 
