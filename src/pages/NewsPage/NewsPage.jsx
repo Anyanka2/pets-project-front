@@ -17,6 +17,7 @@ import {
   NewsTitle,
 } from "./NewsPage.styled.jsx";
 import axios from "axios";
+import { Loader } from "../../components/Loader/Loader.jsx";
 
 const NewsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -26,7 +27,7 @@ const NewsPage = () => {
     const getMaterials = async (pageNumber, itemsPerPage = 10) =>{
       try {
         const respons = await axios.get(`/api/news?offset=${pageNumber}&limit=${itemsPerPage}`);
-        console.log(respons.data.data.resourses);
+        
         setMaterials(respons.data.data.resourses);
         setTotalPages(respons.data.data.totalPages);
       } catch (error) {
@@ -37,7 +38,7 @@ const NewsPage = () => {
   }, [currentPage]);
 
   const paginationHandler = (pageNumber) => {
-    console.log("this is pagination handler action")
+    
     setCurrentPage(pageNumber);
   } 
 
@@ -47,14 +48,14 @@ const NewsPage = () => {
               <TitlePage>News</TitlePage>
              <StaledDiv><SearchBar /></StaledDiv> 
         <NewsBox>
-          {materials.map((material) => {
+          {materials.length === 0 ? <Loader /> : materials.map((material) => {
             
             const dateObj = new Date(material.date);
             const day = dateObj.getUTCDate();
             const month = dateObj.getUTCMonth() + 1;
             const year = dateObj.getUTCFullYear();
 
-            return(<NewsCard>
+            return(<NewsCard key={material.nytID}>
                     <NewsBlueHeader />
                     <NewsBody>
                       <NewsImg src={material.imgUrl} alt={material.title} />

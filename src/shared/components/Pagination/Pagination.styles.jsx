@@ -5,6 +5,9 @@ export const PaginationContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 8px;
+    padding-top: 68px;
+    padding-bottom: 68px;
 `;
 
 export const LeftArrowImg = styled.img`
@@ -19,7 +22,7 @@ export const RightArrowImg = styled.img`
   
 `;
 
-export const DefaultCircle = styled.div`
+export const DefaultCircle = styled.p`
    width: 35px;
    height: 35px;
    border-radius: 50%;
@@ -34,3 +37,20 @@ export const DefaultCircle = styled.div`
    line-height: 0.93 ;
    font-weight: 400;
 `;
+
+export const CurrentCircle = styled.p`
+    width: 35px;
+   height: 35px;
+   border-radius: 50%;
+   border: 1px solid ${theme.colors.white};
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: ${theme.colors.black};
+   background-color: ${theme.colors.blueLink};
+   font-family: ${theme.fonts.inter.regular};
+   font-size: 16px;
+   font-style: normal;
+   line-height: 0.93 ;
+   font-weight: 400;
+`
