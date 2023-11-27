@@ -5,6 +5,7 @@ import PublicRoute from "../src/routes/PublicRoute";
 import PrivateRoute from "../src/routes/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
 import { GlobalStyle } from "./shared/styles/GlobalStyles";
+// import { MainAttention } from "./shared/components/Attentions/MainAttention/MainAttention";
 // import { SearchBar } from "./shared/components/SearchBar/SearchBar";
 // import { Button } from "./shared/components/Buttons/Button";
 
@@ -41,7 +42,7 @@ const App = () => {
             </Route>
 
             <Route element={<PrivateRoute />}>
-              {/* <Route path="" element={<SearchBar />} /> */}
+              {/* <Route path="" element={<MainAttention />} /> */}
               {/* <Route path="" element={<Button />} /> */}
             </Route>
 
