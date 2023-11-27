@@ -61,12 +61,12 @@ export const NoticeModalMore = ({
                 <ItemWrap>{location}Lviv</ItemWrap>
                 <ItemWrap>{sex}male</ItemWrap>
                 <ItemWrap>
-                  <a style={{ color: "#FFC107" }} href={`mailto:user@mail.com`}>
+                  <a href={`mailto:user@mail.com`}>
                     user@mail.com
                   </a>
                 </ItemWrap>
                 <ItemWrap>
-                  <a style={{ color: "#FFC107" }} href={`tel:+380971234567`}>
+                  <a href={`tel:+380971234567`}>
                     +380971234567
                   </a>
                 </ItemWrap>

@@ -160,6 +160,12 @@ export const ItemWrap = styled.li`
     font-size: 16px;
     line-height: 1.37;
   }
+  a {
+    color: ${theme.colors.yellow};
+    &:hover {
+      color: ${theme.colors.blueLink};
+    }
+  }
 `;
 
 export const Comment = styled.p`
@@ -211,7 +217,6 @@ export const ContactLink = styled.a`
     background: ${theme.colors.blueGradient};
     color: ${theme.colors.white};
     border: none;
-
   }
 
   @media screen and (min-width: 768px) {
@@ -244,7 +249,7 @@ export const AddToFavBtn = styled.button`
   }
 
   cursor: pointer;
-  
+
   &:focus,
   &:hover {
     background: ${theme.colors.blueGradient};
