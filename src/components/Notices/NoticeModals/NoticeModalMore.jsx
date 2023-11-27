@@ -16,12 +16,11 @@ import {
 } from "./NoticeModal.styled";
 import PetPhoto from "../../../assets/images/petsImages/cat1.jpg";
 
-import { theme } from "../../../shared/styles/theme";
+// import { theme } from "../../../shared/styles/theme";
 import { useDispatch } from "react-redux";
 import { getOneNotice } from "../../../redux/notices/operationsNotices";
 import { useEffect } from "react";
 import { useState } from "react";
-
 
 export const NoticeModalMore = ({
   //avatar,
@@ -94,7 +93,6 @@ export const NoticeModalMore = ({
                 <ItemWrap>{infoOnePet.location}</ItemWrap>
                 <ItemWrap>{infoOnePet.sex}</ItemWrap>
                 <ItemWrap>
-
                   <a
                     style={{ color: "#FFC107" }}
                     href={`mailto:${infoOnePet.email}`}
@@ -108,14 +106,6 @@ export const NoticeModalMore = ({
                     href={`tel:+${infoOnePet.phone}`}
                   >
                     {infoOnePet.phone}
-
-                  <a href={`mailto:user@mail.com`}>
-                    user@mail.com
-                  </a>
-                </ItemWrap>
-                <ItemWrap>
-                  <a href={`tel:+380971234567`}>
-                    +380971234567
                   </a>
                 </ItemWrap>
               </List>
