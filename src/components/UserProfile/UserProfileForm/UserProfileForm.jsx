@@ -37,7 +37,7 @@ export default function UserProfileForm(props) {
   const handleSubmit = async (values) => {
     try {
       const response = await dispatch(updateCurrentUser(values));
-      console.log(response);
+      
       props.editHandler((prev) => !prev);
       return response;
     } catch (error) {
