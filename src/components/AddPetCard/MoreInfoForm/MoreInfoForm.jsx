@@ -32,6 +32,7 @@ import AddFormButtonNext from '../AddFormButton/AddFormButtonNext';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import { useDispatch } from 'react-redux';
 import { addMyPet, getCurrentUser } from '../../../redux/auth/operation';
+import { addNotices } from '../../../redux/notices/operationsNotices';
 
 const MoreInfo = ({ formData, setFormData, backStep }) => {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -114,12 +115,15 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
   const dispatch = useDispatch ();
 
   const submit = async () => {
-    console.log(collectedData);
+    
     if (collectedData.category === "my-pet") {
       await dispatch(addMyPet(collectedData));
       await dispatch(getCurrentUser());
+    } else {
+      await dispatch(addNotices(collectedData));
+
     }
-  console.log(`Працює тільки your-pet`)
+
   };
 
   return (
