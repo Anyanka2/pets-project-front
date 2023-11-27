@@ -10,13 +10,15 @@ justify-content: space-between;
 padding-top: 20px;
 
 @media screen and (min-width: 768px){
-
+   padding-top: 24px;
+   justify-content: normal;
 }
 
 @media screen and (min-width: 1280px){
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-top: 20px;
 }
 
 `;
@@ -43,7 +45,7 @@ export const Image = styled.img`
 
 
 export const CustomSvg = styled.svg`
-  fill: ${({theme}) => theme.colors.yellow};
+  fill: ${({theme}) => theme.colors.white};
   width: 24px;
   height: 24px;
 `;
@@ -57,7 +59,14 @@ export const ButtonsContainer = styled.div`
 @media screen and (min-width: 768px){
   display: flex;
   gap: 20px;
+  margin-left: auto;
+  margin-right: 24px;
 }
+
+@media screen and (min-width: 1280px){
+  margin-right: 0px;
+}
+
 
 
  
@@ -67,24 +76,25 @@ export const LinkLogin = styled(Link)`
   padding: 8px 20px 8px 20px;
   border: 2px solid ${({theme}) => theme.colors.yellow};
   cursor: pointer;
-  color: ${({theme}) => theme.colors.yellow};
+  color: ${({theme}) => theme.colors.white};
   width: 165px;
   border-radius: 40px;
-  background-color: ${({theme}) => theme.colors.white};
+  background-color: ${({theme}) => theme.colors.yellow};
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 16px;
   line-height: 1.5;
   gap: 8px;
+  font-weight: 700;
 
 &:hover  {
-    background: ${({theme}) => theme.colors.yellow};
-    color : ${theme.colors.white};
-    border:none;
+    background: ${({theme}) => theme.colors.white};
+    color : ${theme.colors.yellow};
+    border:2px solid ${({theme}) => theme.colors.yellow};
   }
 &:hover svg {
-  fill:${theme.colors.white};
+  fill:${theme.colors.yellow};
 }
 `;
 
@@ -103,6 +113,7 @@ justify-content: center;
 font-size: 16px;
 line-height: 1.5;
 gap: 8px;
+font-weight: 600;
 
 &:hover {
   background: ${({theme}) => theme.colors.yellow};
@@ -112,13 +123,10 @@ gap: 8px;
 `;
 
 export const BurgerButton = styled.button`
-margin-left: 140px;
+stroke:${({theme}) => theme.colors.yellow};
 
-&:hover svg {
-  fill: black;
-}
 
-@media screen and (min-width: 769px){
+@media screen and (min-width: 1280px){
   display: none;
 }
  
@@ -129,5 +137,11 @@ position: absolute;
 top: 20px;
 right: 20px;
 z-index: 1001;
+stroke: ${({theme}) => theme.colors.yellow};
+
+@media screen and (min-width: 768px){
+  top:34px;
+  right:32px;
+}
 `
 
