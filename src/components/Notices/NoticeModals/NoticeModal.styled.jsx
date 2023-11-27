@@ -207,8 +207,11 @@ export const ContactLink = styled.a`
 
   &:hover,
   &:focus {
+    transform: scale(1.07);
     background: ${theme.colors.blueGradient};
     color: ${theme.colors.white};
+    border: none;
+
   }
 
   @media screen and (min-width: 768px) {
@@ -240,10 +243,13 @@ export const AddToFavBtn = styled.button`
     stroke-width: 0.3px;
   }
 
-  /* :hover,
-  :focus {
-    
-  } */
+  cursor: pointer;
+  
+  &:focus,
+  &:hover {
+    background: ${theme.colors.blueGradient};
+    transform: scale(1.07);
+  }
 
   @media screen and (min-width: 768px) {
     width: 129px;
