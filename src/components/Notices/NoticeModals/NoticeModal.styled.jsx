@@ -14,17 +14,13 @@ export const Backdrop = styled.div`
 `;
 
 export const Content = styled.div`
-  /* position: relative;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, -50%); */
   min-height: 300px;
   width: 280px;
   background-color: ${theme.colors.white};
   border-radius: 20px;
   padding-top: 40px;
   padding-bottom: 16px;
-  overflow: auto;
+  overflow: 0;
 
   @media screen and (min-width: 768px) {
     top: 50%;
