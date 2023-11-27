@@ -17,7 +17,6 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post("api/auth/registration", credentials);
-      /* setAuthHeader(res.data.token); */
       if (res) {
         toast("Welcome to Phone Book", {
           position: "top-right",
@@ -158,3 +157,4 @@ export const addMyPet = createAsyncThunk(
     }
   }
 ); 
+

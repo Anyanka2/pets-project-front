@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { userInfo } from "../../../redux/auth/selectors";
 import { getCurrentUser, updateCurrentUser } from "../../../redux/auth/operation.js";
 
+
 export default function UserProfileForm(props) {
   const currentUserInfo = useSelector(userInfo);
 
@@ -38,7 +39,7 @@ export default function UserProfileForm(props) {
     try {
       const response = await dispatch(updateCurrentUser(values));
       await dispatch(getCurrentUser());
-
+      
       props.editHandler((prev) => !prev);
       return response;
     } catch (error) {

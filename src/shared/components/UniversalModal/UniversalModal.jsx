@@ -5,44 +5,35 @@ import {
   ModalBox,
 } from "./UniversalModal.styled.jsx";
 import crossSmallBlue from "../../../assets/icons/cross-small-blue.svg";
-// import LogoutModalContent from "./LogoutModalContent.jsx";
-// import CongratsModalContent from "./CongratsModalContent.jsx";
-// import { useEffect, useState } from "react";
 
-export default function UniversalModal(props) {
+import { useEffect } from "react";
 
-// const [targetComponent, setTargetComponent ] = useState();
+export default function UniversalModal({ onClick, isModalOpen, children }) {
 
+    useEffect(() => {
+      const escapeWatcher = (event) => {
+        if (event.code === "Escape") {
+          onClick();
+        }
+      };
 
-// useEffect(()=>{
-//     switch (props.evt) {
-//         case "logout":
-//             setTargetComponent(<LogoutModalContent />);
-//           break;
-//         case "congrats":
-//             setTargetComponent(<CongratsModalContent />);
-//           break;
-//         case "learnmore":
-//           setTargetComponent(props.children);
-//         break;
-//         default:
-//             setTargetComponent("Nothing to do!");
-//             break;
-//     }
-    
-// }, [props.evt, props.children])
+      if (isModalOpen) {
+        window.addEventListener("keyup", escapeWatcher);
+      }
+
+      return () => {
+        window.removeEventListener("keyup", escapeWatcher);
+      };
+    }, [isModalOpen, onClick]);
 
   return (
     <>
-      {props.isModalOpen ? (
-        <ModalBackdrop>
+      {isModalOpen ? (
+        <ModalBackdrop id="modalBackdrop" onClick={onClick}>
           <ModalBox>
-            <ModalBody >
-                
-                {props.children}
-            </ModalBody>
-            <CloseModalBtn onClick={props.onClick}>
-              <img src={crossSmallBlue} alt="close button" />
+            <ModalBody>{children}</ModalBody>
+            <CloseModalBtn onClick={onClick} >
+              <img src={crossSmallBlue} alt="close button"  />
             </CloseModalBtn>
           </ModalBox>
         </ModalBackdrop>
