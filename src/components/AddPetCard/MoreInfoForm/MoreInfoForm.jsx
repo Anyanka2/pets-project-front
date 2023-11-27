@@ -30,6 +30,8 @@ import { AddFormButtonWrapper } from '../PetPageForm/PetPageForm.styled';
 import AddFormButtonBack from '../AddFormButton/AddFormButtonBack';
 import AddFormButtonNext from '../AddFormButton/AddFormButtonNext';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import { useDispatch } from 'react-redux';
+import { addMyPet, getCurrentUser } from '../../../redux/auth/operation';
 
 const MoreInfo = ({ formData, setFormData, backStep }) => {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -109,8 +111,14 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
     }));
   };
 
-  const submit = () => {
-    console.log('Collected Data:', collectedData);
+  const dispatch = useDispatch ();
+
+  const submit = async () => {
+    if(collectedData.category === 'my-ads') {
+    await dispatch (addMyPet(collectedData))
+    await dispatch (getCurrentUser());
+  }
+  console.log(`Працює тільки your-pet`)
   };
 
   return (
