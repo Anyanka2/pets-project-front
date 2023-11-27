@@ -14,7 +14,7 @@ export default function Pagination (props) {
     
     useEffect(() => {
         const collection = [];
-        const current = props.page;
+        let current = props.page;
         console.log(props.page)
         if(current === 0 ) {
             current = 1;
@@ -22,7 +22,7 @@ export default function Pagination (props) {
 
         for (let i = 1; i <= 5; i++ ){
            
-            if (i === current){
+            if (i === Number(current)){
                 collection.push(<CurrentCircle onClick={pageHandler}>{i}</CurrentCircle>)
             }else {
                 collection.push(<DefaultCircle onClick={pageHandler}>{i}</DefaultCircle>); 
