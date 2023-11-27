@@ -7,77 +7,51 @@ import {
   Text,
   DeleteIcon,
   TitlePet,
-  AllCardsPet
+  AllCardsPet,
+  ImageFon,
 } from "./MyPets.styled";
+import { useSelector } from "react-redux";
+import imgFon from "../../assets/images/petsImages/cat6.jpg"
+import { userInfo } from "../../redux/auth/selectors";
 
 export default function MyPets() {
+  const { petsData } = useSelector(userInfo);
   return (
     <>
-      
       <AllCardsPet>
-      <TitlePet>My Pets:</TitlePet>
-        <ContainerItem>
-          <Image src={ImgPet} alt="photo pets" width={240} height={240} />
-          <InfoContainer>
-            <DeleteIcon>
-              <Icon
-                iconName={"icon-trash"}
-                width={"24px"}
-                height={"24px"}
-                stroke={"#54ADFF"}
-              />
-            </DeleteIcon>
-            <Text>
-              <b>{"Name"}: </b>
-              Murka
-            </Text>
-            <Text>
-              <b>{"Date of birth"}: </b>
-              22.04.2018
-            </Text>
-            <Text>
-              <b>{"Type"}: </b>
-              Persian cat
-            </Text>
-            <Text>
-              <b>{"Comments"}: </b>
-              Jack is a gray Persian cat with green eyes. He loves to be
-              pampered and groomed, and enjoys playing with toys. Although a
-              bitshy, he's a loyal and affectionate lap cat.
-            </Text>
-          </InfoContainer>
-        </ContainerItem>
-        <ContainerItem>
-          <Image src={ImgPet} alt="photo pets" width={240} height={240} />
-          <InfoContainer>
-            <DeleteIcon>
-              <Icon
-                iconName={"icon-trash"}
-                width={"24px"}
-                height={"24px"}
-                stroke={"#54ADFF"}
-              />
-            </DeleteIcon>
-            <Text>
-              <b>{"Name"}: </b>
-              Murka
-            </Text>
-            <Text>
-              <b>{"Date of birth"}: </b>
-              22.04.2018
-            </Text>
-            <Text>
-              <b>{"Type"}: </b>
-              Persian cat
-            </Text>
-            <Text>
-              <b>{"Comments"}: </b>
-              Jack is a gray Persian cat with green eyes. He loves to be
-              pampered and groomed, and enjoys playing with toys. Although a
-              bitshy, he's a loyal and affectionate lap cat.
-            </Text>
-          </InfoContainer>
-        </ContainerItem>
+        <TitlePet>My Pets:</TitlePet>
+        {petsData.length === 0 ? <ImageFon src={imgFon}></ImageFon> : ""}
+        {petsData.map((info) => (
+          <ContainerItem key={info.id}>
+            <Image src={ImgPet} alt="photo pets" width={240} height={240} />
+            <InfoContainer>
+              <DeleteIcon>
+                <Icon
+                  iconName={"icon-trash"}
+                  width={"24px"}
+                  height={"24px"}
+                  stroke={"#54ADFF"}
+                />
+              </DeleteIcon>
+              <Text>
+                <b>{"Name"}: </b>
+                {info.name}
+              </Text>
+              <Text>
+                <b>{"Date of birth"}: </b>
+                {info.birthday}
+              </Text>
+              <Text>
+                <b>{"Type"}: </b>
+                {info.type}
+              </Text>
+              <Text>
+                <b>{"Comments"}: </b>
+                {info.comments}
+              </Text>
+            </InfoContainer>
+          </ContainerItem>
+        ))}
       </AllCardsPet>
     </>
   );
