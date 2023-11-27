@@ -8,9 +8,9 @@ export default function Pagination ({totalPages = 0, currentPage = 0}) {
     // const [currentPage, setCurrentPage] = useState();
     // const [totalPage, setTotalPage] = useState();
     const [counter, setCounter] = useState();
-
+    console.log(counter);
     useEffect(() => {
-        let total = totalPages;
+        // let total = totalPages;
         let current = currentPage;
         const collection = []; 
 
@@ -20,6 +20,7 @@ export default function Pagination ({totalPages = 0, currentPage = 0}) {
 
         for (let i = 0; i > 4; i + 1 ){
             if(current >= 4) {
+                
                return  collection
             }
         }
