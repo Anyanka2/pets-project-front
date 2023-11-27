@@ -14,7 +14,7 @@ import UniversalModal from "../../../shared/components/UniversalModal/UniversalM
 import { ModalAlreaadyLeaving } from "../ModalAlreadyLeaving/ModalAlreadyLeaving.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { userInfo } from "../../../redux/auth/selectors";
-import { updateCurrentUser } from "../../../redux/auth/operation.js";
+import { getCurrentUser, updateCurrentUser } from "../../../redux/auth/operation.js";
 
 export default function UserProfileForm(props) {
   const currentUserInfo = useSelector(userInfo);
@@ -37,6 +37,7 @@ export default function UserProfileForm(props) {
   const handleSubmit = async (values) => {
     try {
       const response = await dispatch(updateCurrentUser(values));
+      await dispatch(getCurrentUser());
       console.log(response);
       props.editHandler((prev) => !prev);
       return response;
