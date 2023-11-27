@@ -48,6 +48,12 @@ const NewsPage = () => {
              <StaledDiv><SearchBar /></StaledDiv> 
         <NewsBox>
           {materials.map((material) => {
+            
+            const dateObj = new Date(material.date);
+            const day = dateObj.getUTCDate();
+            const month = dateObj.getUTCMonth() + 1;
+            const year = dateObj.getUTCFullYear();
+
             return(<NewsCard>
                     <NewsBlueHeader />
                     <NewsBody>
@@ -57,7 +63,7 @@ const NewsPage = () => {
                         {material.text}
                       </NewsDescription>
                       <NewsMore>
-                        <NewsDate>{}</NewsDate>
+                        <NewsDate>{`${day}/${month}/${year}`}</NewsDate>
                         <NewsReadMoreLink href={material.url} target="_blank">Read more</NewsReadMoreLink>
                       </NewsMore>
                     </NewsBody>
