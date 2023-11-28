@@ -219,10 +219,10 @@ export const ContactLink = styled.a`
 
   &:hover,
   &:focus {
-    transform: scale(1.07);
     background: ${theme.colors.blueGradient};
     color: ${theme.colors.white};
-    border: none;
+    //border: transparent;
+    border: 2px solid transparent;
   }
 
   @media screen and (min-width: 768px) {
@@ -259,7 +259,7 @@ export const AddToFavBtn = styled.button`
   &:focus,
   &:hover {
     background: ${theme.colors.blueGradient};
-    transform: scale(1.07);
+    //transform: scale(1.07);
   }
 
   @media screen and (min-width: 768px) {
