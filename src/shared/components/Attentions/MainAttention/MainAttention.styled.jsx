@@ -12,7 +12,7 @@ export const AttentionForm = styled.div`
   padding: 60px 40px;
   border-radius: 40px;
   background-color: ${theme.colors.white};
-  box-shadow: ${theme.shadows.shadowDefault};
+  //box-shadow: ${theme.shadows.shadowDefault};
 
   @media screen and (max-width: 479px) {
     width: 280px;
@@ -48,7 +48,7 @@ export const AttentionText = styled.p`
   font-weight: ${theme.fontWeights.medium};
   font-size: 20px;
   line-height: 1.4;
-  letter-spacing: 0, 8px;
+  letter-spacing: 0.8px;
   margin-bottom: 40px;
 
   @media screen and (max-width: 479px) {

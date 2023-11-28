@@ -60,6 +60,7 @@ const NoticesPage = () => {
         <UniversalModal isModalOpen={isModalOpen} onClick={handleModal}>
           <MainAttention />
         </UniversalModal>
+        <MainAttention />
       </Container>
     </>
   );

@@ -2,10 +2,10 @@ import {
   AttentionForm,
   AttenitonTitle,
   AttentionText,
-  CloseButton,
-  CloseIconStyle,
+ // CloseButton,
+  //CloseIconStyle,
 } from "./MainAttention.styled";
-import { ReactComponent as CloseIcon } from "../../../../assets/icons/close.svg";
+//import { ReactComponent as CloseIcon } from "../../../../assets/icons/close.svg";
 import {
   ButtonsContainer,
   ImgLogin,
@@ -43,11 +43,11 @@ export const MainAttention = () => {
         </LinkLogin>
         <LinkReg to="register">Registration</LinkReg>
       </ButtonsContainer>
-      <CloseButton type="button">
+      {/* <CloseButton type="button">
         <CloseIconStyle>
           <CloseIcon />
         </CloseIconStyle>
-      </CloseButton>
+      </CloseButton> */}
     </AttentionForm>
   );
 };
