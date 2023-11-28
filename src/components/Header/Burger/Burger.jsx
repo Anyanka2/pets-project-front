@@ -1,20 +1,29 @@
 import React from "react";
-import { MobileMenuContainer, MobileMenuItem, BurgerLogOutButton,UserIconBurger } from "./Burger.styled";
+import { MobileMenuContainer, MobileMenuItem, BurgerLogOutButton,UserIconBurger, LogoLinkBurger, CloseIcon} from "./Burger.styled";
 import {
   ButtonsBurger,
   LinkBurgerLogin,
   LinkBurgerReg,
-  BurgerNavContainer,
+  BurgerNavContainer
 } from "./Burger.styled";
-import { CustomSvg } from "../Header.styled";
+import { CustomSvg, Image} from "../Header.styled";
 import { ReactComponent as UserIcon } from "../../../assets/icons/user.svg";
 import { useSelector } from "react-redux";
 import { selectToken } from "../../../redux/auth/selectors";
+import svg from "../../../assets/icons/logo.svg";
+import { ReactComponent as CrossIcon } from "../../../assets/icons/cross-small.svg";
 
-const MobileMenu = ({ toggleMenu, isOpen }) => {
+
+const MobileMenu = ({ toggleMenu, isOpen}) => {
   const token = useSelector(selectToken);
   return (
     <MobileMenuContainer open={isOpen}>
+      <LogoLinkBurger to="/main" onClick={toggleMenu}>
+        <Image src={`${svg}`} />
+      </LogoLinkBurger>
+      <CloseIcon onClick={toggleMenu}>
+        <CrossIcon />
+      </CloseIcon>
       {token === null ? (
         <>
           <ButtonsBurger>
@@ -41,7 +50,10 @@ const MobileMenu = ({ toggleMenu, isOpen }) => {
         </>
       ) : (
         <>
-          <BurgerLogOutButton to="/main">
+        <UserIconBurger to="/user" onClick={toggleMenu}>
+            <UserIcon/>
+          </UserIconBurger>
+          <BurgerLogOutButton to="/main" onClick={toggleMenu}>
             Log out
             <CustomSvg>
               <svg
@@ -60,9 +72,6 @@ const MobileMenu = ({ toggleMenu, isOpen }) => {
               </svg>
             </CustomSvg>
           </BurgerLogOutButton>
-          <UserIconBurger to="/user" onClick={toggleMenu}>
-            <UserIcon/>
-          </UserIconBurger>
         </>
       )}
       <BurgerNavContainer>

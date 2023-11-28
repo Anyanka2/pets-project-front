@@ -10,10 +10,10 @@ import {
   LinkReg,
   LinkLogin,
   BurgerButton,
-  CloseIcon,
+  LogOutContainer
 } from "./Header.styled";
 import svg from "../../assets/icons/logo.svg";
-import { ReactComponent as CrossIcon } from "../../assets/icons/cross-small.svg";
+
 import { ReactComponent as BurgerIcon } from "../../assets/icons/menu.svg";
 import { Container } from "../../shared/components/Container";
 import { MyButton } from "../Header/Logout/Logout";
@@ -71,8 +71,10 @@ const Header = () => {
             </>
           ) : (
             <>
-              <MyButton onClick={logOutUser} /> 
+            <LogOutContainer>
+              <MyButton onClick={logOutUser} />
               <UserButton />
+            </LogOutContainer>
             </>
           )}
         </ButtonsContainer>
@@ -80,11 +82,6 @@ const Header = () => {
           <BurgerIcon />
         </BurgerButton>
         <MobileMenu toggleMenu={toggleMenu} isOpen={isMenuOpen} />
-        {isMenuOpen && (
-          <CloseIcon onClick={toggleMenu}>
-            <CrossIcon />
-          </CloseIcon>
-        )}
       </HeaderContainer>
     </Container>
   );

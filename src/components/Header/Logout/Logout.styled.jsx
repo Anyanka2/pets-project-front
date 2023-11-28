@@ -62,9 +62,8 @@ export const StyledLink = styled(Link)`
     line-height: 21.86px;
     cursor: pointer;
     gap: 8px;
-    position: absolute;
-    top: 20px;
-    left: 84%;
+    position: static;
+    margin-right: 24px;
 
     &:hover,
     &:focus {
@@ -74,3 +73,5 @@ export const StyledLink = styled(Link)`
     }
   }
 `;
+
+
