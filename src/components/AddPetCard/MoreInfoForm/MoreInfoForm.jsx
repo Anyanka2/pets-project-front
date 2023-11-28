@@ -1,47 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { validateField } from '../vaidatePet';
-import { ReactComponent as PlusIcon } from '../../../assets/icons/plus-big.svg';
-import { ReactComponent as MaleIcon } from '../../../assets/icons/male.svg';
-import { ReactComponent as FemaleIcon } from '../../../assets/icons/female.svg';
-import { ReactComponent as PawPrintIcon } from '../../../assets/icons/pawprint.svg';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { validateField } from "../vaidatePet";
+import { ReactComponent as PlusIcon } from "../../../assets/icons/plus-big.svg";
+import { ReactComponent as MaleIcon } from "../../../assets/icons/male.svg";
+import { ReactComponent as FemaleIcon } from "../../../assets/icons/female.svg";
+import { ReactComponent as PawPrintIcon } from "../../../assets/icons/pawprint.svg";
 import {
-    AddFormInput,
-    AddFormLabel,
-    AddFormLabelWrapper,
-  } from '../PersonalForm/PersonalForm.styled';
-  import {
-    AddFormTextArea,
-    AddFormSexWrapper,
-    AddFormSexLabelFemale,
-    AddFormSexLabelMale,
-    ContainerSex,
-    AddFormImageWrapper,
-    AddFormImageLabel,
-    FileInput,
-    FirstPartFormWrapper,
-    SecondPartFormWrapper,
-    MoreInfoFormWrapper,
-    AddFormRadioWrapper,
-    AddFormTextAreaLabel,
-  } from './MoreInfoForm.styled';
-  import { AddFormRadioButton } from '../ChooseForm/ChooseForm.styled';
-import { AddFormButtonWrapper } from '../PetPageForm/PetPageForm.styled';
-import AddFormButtonBack from '../AddFormButton/AddFormButtonBack';
-import AddFormButtonNext from '../AddFormButton/AddFormButtonNext';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { useDispatch } from 'react-redux';
-import { addMyPet, getCurrentUser } from '../../../redux/auth/operation';
-import { addNotices } from '../../../redux/notices/operationsNotices';
+  AddFormInput,
+  AddFormLabel,
+  AddFormLabelWrapper,
+} from "../PersonalForm/PersonalForm.styled";
+import {
+  AddFormTextArea,
+  AddFormSexWrapper,
+  AddFormSexLabelFemale,
+  AddFormSexLabelMale,
+  ContainerSex,
+  AddFormImageWrapper,
+  AddFormImageLabel,
+  FileInput,
+  FirstPartFormWrapper,
+  SecondPartFormWrapper,
+  MoreInfoFormWrapper,
+  AddFormRadioWrapper,
+  AddFormTextAreaLabel,
+} from "./MoreInfoForm.styled";
+import { AddFormRadioButton } from "../ChooseForm/ChooseForm.styled";
+import { AddFormButtonWrapper } from "../PetPageForm/PetPageForm.styled";
+import AddFormButtonBack from "../AddFormButton/AddFormButtonBack";
+import AddFormButtonNext from "../AddFormButton/AddFormButtonNext";
+import ErrorMessage from "../ErrorMessage/ErrorMessage";
+import { useDispatch } from "react-redux";
+import { addMyPet, getCurrentUser } from "../../../redux/auth/operation";
+import { addNotices } from "../../../redux/notices/operationsNotices";
 
 const MoreInfo = ({ formData, setFormData, backStep }) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [errors, setErrors] = useState({});
   const [collectedData, setCollectedData] = useState({});
-  const [imageValue, setImageValue] = useState('');
+  const [imageValue, setImageValue] = useState(null);
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 
-  const isPetPhotoFieldValid = Boolean(!errors.petPhoto && !!formData.petPhoto);
+  const isPetPhotoFieldValid = Boolean(
+    !errors.notice_image && !!formData.notice_image
+  );
   const isCommentsFieldValid = Boolean(!errors.comments);
   const isLocationFieldValid = Boolean(!errors.location && !!formData.location);
   const isSexFieldValid = Boolean(!errors.sex && !!formData.sex);
@@ -51,15 +53,15 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
     const handleResize = () => {
       setViewportWidth(window.innerWidth);
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   useEffect(() => {
-    if (formData.category === 'sell') {
+    if (formData.category === "sell") {
       setIsDisabled(
         !(
           isPetPhotoFieldValid &&
@@ -70,7 +72,7 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
         )
       );
     }
-    if (formData.category === 'my-pet') {
+    if (formData.category === "my-pet") {
       setIsDisabled(!(isPetPhotoFieldValid && isCommentsFieldValid));
     } else {
       setIsDisabled(
@@ -98,11 +100,11 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
 
   const handleInputChange = (e) => {
     const { name, value, type, files } = e.target;
-    const fieldValue = type === 'file' ? files[0] : value;
+    const fieldValue = type === "file" ? files[0] : value;
 
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
 
-    if (type === 'file') {
+    if (type === "file") {
       setImageValue(value);
     }
 
@@ -112,88 +114,86 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
     }));
   };
 
-  const dispatch = useDispatch ();
+  const dispatch = useDispatch();
 
   const submit = async () => {
-    
+    console.log(collectedData);
     if (collectedData.category === "my-pet") {
       await dispatch(addMyPet(collectedData));
       await dispatch(getCurrentUser());
     } else {
       await dispatch(addNotices(collectedData));
-
     }
-
   };
-
+  
   return (
     <>
       <MoreInfoFormWrapper category={formData.category}>
-         <FirstPartFormWrapper category={formData.category}>
-           {formData.category !== 'my-pet' && (
+        <FirstPartFormWrapper category={formData.category}>
+          {formData.category !== "my-pet" && (
             <AddFormSexWrapper>
               <p>The Sex</p>
               <AddFormRadioWrapper>
-                  <AddFormRadioButton
-                    type="radio"
-                    id="female"
-                    name="sex"
-                    value="female"
-                    onChange={handleInputChange}
-                    checked={formData.sex === 'female'}
-                    onBlur={() => validateField('sex', formData, setErrors)}
-                  />
-                  <AddFormSexLabelFemale htmlFor="female">
-                    <FemaleIcon />
-                      <ContainerSex>
-                        Female
-                      </ContainerSex>
-                  </AddFormSexLabelFemale>
-                  <AddFormRadioButton
-                    type="radio"
-                    id="male"
-                    name="sex"
-                    value="male"
-                    onChange={handleInputChange}
-                    checked={formData.sex === 'male'}
-                    onBlur={() => validateField('sex', formData, setErrors)}
-                  />
-                  <AddFormSexLabelMale htmlFor="male">
-                    <MaleIcon />
-                      <ContainerSex>
-                        Male
-                      </ContainerSex>
-                  </AddFormSexLabelMale>
+                <AddFormRadioButton
+                  type="radio"
+                  id="female"
+                  name="sex"
+                  value="female"
+                  onChange={handleInputChange}
+                  checked={formData.sex === "female"}
+                  onBlur={() => validateField("sex", formData, setErrors)}
+                />
+                <AddFormSexLabelFemale htmlFor="female">
+                  <FemaleIcon />
+                  <ContainerSex>Female</ContainerSex>
+                </AddFormSexLabelFemale>
+                <AddFormRadioButton
+                  type="radio"
+                  id="male"
+                  name="sex"
+                  value="male"
+                  onChange={handleInputChange}
+                  checked={formData.sex === "male"}
+                  onBlur={() => validateField("sex", formData, setErrors)}
+                />
+                <AddFormSexLabelMale htmlFor="male">
+                  <MaleIcon />
+                  <ContainerSex>Male</ContainerSex>
+                </AddFormSexLabelMale>
               </AddFormRadioWrapper>
             </AddFormSexWrapper>
           )}
           <AddFormImageLabel htmlFor="pet-image" category={formData.category}>
-            {formData.category === 'my-pet' || viewportWidth < 768
-              ? <>Load the <br/> pet’s image:</>
-              : 'Load the pet’s image:'}
+            {formData.category === "my-pet" || viewportWidth < 768 ? (
+              <>
+                Load the <br /> pet’s image:
+              </>
+            ) : (
+              "Load the pet’s image:"
+            )}
             <AddFormImageWrapper>
-              {!formData.petPhoto && <PlusIcon width="30" height="30" />}
-              {!!formData.petPhoto && (
+              {!formData.notice_image && <PlusIcon width="30" height="30" />}
+              {!!formData.notice_image && (
                 <img
                   id="image"
-                  src={URL.createObjectURL(formData.petPhoto)}
-                  alt={formData.petPhoto.name}
+                  src={URL.createObjectURL(formData.notice_image)}
+                  alt={formData.notice_image.name}
                 />
               )}
             </AddFormImageWrapper>
             <FileInput
               type="file"
               id="pet-image"
-              name="petPhoto"
+              name="notice_image"
               accept=".png, .jpg, .jpeg, .webp"
               onChange={handleInputChange}
               value={imageValue}
-              onBlur={() => validateField('petPhoto', formData, setErrors)}
+              onBlur={() => validateField("notice_image", formData, setErrors)}
             />
           </AddFormImageLabel>
         </FirstPartFormWrapper>
         <SecondPartFormWrapper>
-          {formData.category !== 'my-pet' && (
+          {formData.category !== "my-pet" && (
             <AddFormLabelWrapper>
               <AddFormLabel htmlFor="location">
                 Location
@@ -203,14 +203,14 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
                   name="location"
                   onChange={handleInputChange}
                   value={formData.location}
-                  onBlur={() => validateField('location', formData, setErrors)}
-                  className={errors.location ? 'invalid' : ''}
+                  onBlur={() => validateField("location", formData, setErrors)}
+                  className={errors.location ? "invalid" : ""}
                 />
               </AddFormLabel>
               {!!errors.location && <ErrorMessage message={errors.location} />}
             </AddFormLabelWrapper>
           )}
-          {formData.category === 'sell' && (
+          {formData.category === "sell" && (
             <AddFormLabelWrapper>
               <AddFormLabel htmlFor="price">
                 Price
@@ -220,8 +220,8 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
                   name="price"
                   onChange={handleInputChange}
                   value={formData.price}
-                  onBlur={() => validateField('price', formData, setErrors)}
-                  className={errors.price ? 'invalid' : ''}
+                  onBlur={() => validateField("price", formData, setErrors)}
+                  className={errors.price ? "invalid" : ""}
                 />
               </AddFormLabel>
               {!!errors.price && <ErrorMessage message={errors.price} />}
@@ -236,8 +236,8 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
                 name="comments"
                 onChange={handleInputChange}
                 value={formData.comments}
-                onBlur={() => validateField('comments', formData, setErrors)}
-                className={errors.comments ? 'invalid' : ''}
+                onBlur={() => validateField("comments", formData, setErrors)}
+                className={errors.comments ? "invalid" : ""}
               />
             </AddFormTextAreaLabel>
             {!!errors.comments && <ErrorMessage message={errors.comments} />}
