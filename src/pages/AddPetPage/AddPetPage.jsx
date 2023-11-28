@@ -1,10 +1,8 @@
-const AddPetPage = () => {
+import React from 'react';
+import AddPetPageForm from '../../components/AddPetCard/PetPageForm/PetPageForm';
 
-    return (
-        <>
-        <div>This is the Add Pet Page!</div>
-        </>
-    )
-}
+const AddPetPage = () => {
+    return <AddPetPageForm />;
+};
 
 export default AddPetPage;
