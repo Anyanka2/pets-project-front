@@ -10,6 +10,7 @@ import { NoticesCategoryNav } from "../../components/Notices/NoticeCategoryPanel
 import { AddPetBtn } from "../../components/AddPetBtn/AddPetBtn";
 import {Button} from "../../shared/components/Buttons/Button.styled"
 import { NoticeCard } from "../../components/Notices/NoticeCard/NoticeCard";
+import { MainAttention } from "../../shared/components/Attentions/MainAttention/MainAttention";
 
 const NoticesPage = () => {
   return (
@@ -20,7 +21,7 @@ const NoticesPage = () => {
           <SearchBar />
         </StaledDiv>
         <>
-          {/* <MainAttention /> */}
+            
           <NoticePanelLeft>
             <NoticesCategoryNav />
           </NoticePanelLeft>
@@ -32,6 +33,7 @@ const NoticesPage = () => {
             <NoticeCard />
           </div>
         </>
+        <MainAttention />
       </Container>
     </>
   );

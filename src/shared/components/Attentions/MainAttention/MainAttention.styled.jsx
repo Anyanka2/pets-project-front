@@ -13,6 +13,7 @@ export const AttentionForm = styled.div`
   border-radius: 40px;
   background-color: ${theme.colors.white};
   box-shadow: ${theme.shadows.shadowDefault};
+
   @media screen and (max-width: 479px) {
     width: 280px;
     border-radius: 20px;
@@ -31,6 +32,7 @@ export const AttenitonTitle = styled.h1`
   line-height: 1.37;
   letter-spacing: 0.8px;
   margin-bottom: 40px;
+
   @media screen and (max-width: 479px) {
     font-size: 24px;
     line-height: 1.29;
@@ -48,6 +50,7 @@ export const AttentionText = styled.p`
   line-height: 1.4;
   letter-spacing: 0, 8px;
   margin-bottom: 40px;
+
   @media screen and (max-width: 479px) {
     font-size: 14px;
     line-height: 1.29;
@@ -65,12 +68,12 @@ export const ButtonsContainer = styled.div`
 
 export const LinkLogin = styled(Link)`
   padding: 8px 20px 8px 20px;
-  border: 2px solid ${({ theme }) => theme.colors.yellow};
+  border: 2px solid ${theme.colors.yellow};
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.white};
+  color: ${theme.colors.white};
   width: 165px;
   border-radius: 40px;
-  background-color: ${({ theme }) => theme.colors.yellow};
+  background-color: ${theme.colors.yellow};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,15 +86,15 @@ export const LinkLogin = styled(Link)`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.colors.orangeGradient};
+    background: ${theme.colors.orangeGradient};
     border: none;
     letter-spacing: 1px;
-    box-shadow: ${({ theme }) => theme.shadows.shadowHover};
-    transition: all 0.4s ease 0s;
+    box-shadow: ${theme.shadows.shadowHover};
+    transition: ${theme.transitions.transitionRegular};
   }
 `;
 
-export const ImgLogin = styled.img`
+export const ImgLogin = styled.svg`
   width: 24px;
   height: 24px;
   padding: 0;
@@ -100,12 +103,12 @@ export const ImgLogin = styled.img`
 
 export const LinkReg = styled(Link)`
   padding: 8px 20px 8px 20px;
-  border: 2px solid ${({ theme }) => theme.colors.yellow};
+  border: 2px solid ${theme.colors.yellow};
   cursor: pointer;
-  color: ${({ theme }) => theme.colors.yellow};
+  color: ${theme.colors.yellow};
   width: 165px;
   border-radius: 40px;
-  background-color: ${({ theme }) => theme.colors.white};
+  background-color: ${theme.colors.white};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -118,12 +121,12 @@ export const LinkReg = styled(Link)`
   }
 
   &:hover {
-    background: ${({ theme }) => theme.colors.orangeGradient};
-    color: ${({ theme }) => theme.colors.white};
+    background: ${theme.colors.orangeGradient};
+    color: ${theme.colors.white};
     border: none;
     letter-spacing: 1px;
-    box-shadow: ${({ theme }) => theme.shadows.shadowHover};
-    transition: all 0.4s ease 0s;
+    box-shadow: ${theme.shadows.shadowHover};
+    transition: ${theme.transitions.transitionRegular};
   }
 `;
 
@@ -133,6 +136,7 @@ export const CloseButton = styled.button`
   right: 24px;
   width: 24px;
   height: 24px;
+  
   @media screen and (max-width: 479px) {
     top: 16px;
     right: 16px;
