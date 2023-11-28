@@ -49,13 +49,12 @@ export const NoticeCard = (props) => {
     return age;
   }
   const { notices } = useSelector(infoNotices);
+  setDataAtr({page: 2, items: 12})
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllNotices(dataAtr));
-  }, [dispatch, setDataAtr]);
+  }, [dispatch, dataAtr]);
 
-  
-console.log(notices);
  
   // console.log(props);
 
