@@ -22,10 +22,10 @@ const authenticate = createSlice({
         state.token = action.payload.token;
         state.isLoggedIn = true;
       })
-      .addCase(logOut.fulfilled, (state) => {
-        state.user = { name: null, email: null };
+      .addCase(logOut.fulfilled, (state, { payload }) => {
+        state.user = {};
         state.token = null;
-        state.isLoggedIn = false;
+
       })
       .addCase(refreshUser.pending, (state) => {
         state.isRefreshing = true;

@@ -17,14 +17,21 @@ import { ReactComponent as CrossIcon } from "../../assets/icons/cross-small.svg"
 import { ReactComponent as BurgerIcon } from "../../assets/icons/menu.svg";
 import { Container } from "../../shared/components/Container";
 import { MyButton } from "../Header/Logout/Logout";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectToken } from "../../redux/auth/selectors";
-import {UserButton} from '../Header/User/User'
+import { UserButton } from "../Header/User/User";
+import { logOut } from "../../redux/auth/operation";
 
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
   const token = useSelector(selectToken);
+
+  const dispatch = useDispatch();
+
+  const logOutUser = async () => {
+    dispatch(logOut);
+  };
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -64,11 +71,10 @@ const Header = () => {
             </>
           ) : (
             <>
-            <MyButton />
-            <UserButton/>
+              <MyButton onClick={logOutUser} /> 
+              <UserButton />
             </>
           )}
-          
         </ButtonsContainer>
         <BurgerButton onClick={toggleMenu}>
           <BurgerIcon />
