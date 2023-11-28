@@ -39,8 +39,26 @@ export const getAllNotices = createAsyncThunk(
 export const getOneNotice = createAsyncThunk(
   "api/notice/id",
   async (id, thunkAPI) => {
+      const state = thunkAPI.getState();
+      const token = state.auth.token;
     try {
-      const response = await axios.get(`api/notices/${id}`);
+     const response = await axios.post(`api/notices/${id}`, {
+       headers: {
+         Authorization: `Bearer ${token}`,
+       },
+     });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const deleteNotice = createAsyncThunk(
+  "api/notice/delete",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.delete(`api/notices/${id}`);
 
       return response.data;
     } catch (error) {

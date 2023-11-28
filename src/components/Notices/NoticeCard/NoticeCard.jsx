@@ -25,15 +25,16 @@ import { theme } from "../../../shared/styles/theme";
 import { useDispatch, useSelector } from "react-redux";
 import { infoNotices } from "../../../redux/notices/selectorsNotices.js";
 import { useEffect } from "react";
-import { getAllNotices } from "../../../redux/notices/operationsNotices.js";
+import {
+  deleteNotice,
+  getAllNotices,
+} from "../../../redux/notices/operationsNotices.js";
 
 import { Loader } from "../../Loader/Loader.jsx";
+import { userInfo } from "../../../redux/auth/selectors.js";
 
 export const NoticeCard = (props) => {
-  
-  
   // const [currentPage, setCurrentPage] = useState(1);
-
 
   function calculateAge(dateOfBirth) {
     const dob = new Date(dateOfBirth);
@@ -49,15 +50,22 @@ export const NoticeCard = (props) => {
     return age;
   }
   const { notices } = useSelector(infoNotices);
+  const  {_id:idUser}  = useSelector(userInfo);
+ 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllNotices());
   }, [dispatch]);
 
+  const heandelRemoveNotice = (owner, noticeId) => {
   
-
- 
-  // console.log(props);
+    if (idUser === owner) {
+      dispatch(deleteNotice(noticeId));
+    }else{
+      console.log("You are not authorized to delete this notice or this notice don't your.");
+    }
+   
+  };
 
   return (
     <>
@@ -83,7 +91,10 @@ export const NoticeCard = (props) => {
                     />
                   </Button>
 
-                  <Button aria-label="delete from favorites">
+                  <Button
+                    aria-label="delete from favorites"
+                    onClick={() => heandelRemoveNotice(notice.owner, notice._id)}
+                  >
                     <TrashIcon
                       width={"24px"}
                       height={"24px"}
@@ -114,15 +125,15 @@ export const NoticeCard = (props) => {
             <TextPetName>{notice.title}</TextPetName>
             <LearnMoreBtn
               aria-label="show more options"
-              onClick={()=>props.handleModal(notice._id)}
+              onClick={() => props.handleModal(notice._id)}
             >
               Learn more
             </LearnMoreBtn>
           </Item>
         ))
-      ) :  <Loader /> }
-
-     
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };
