@@ -24,14 +24,14 @@ import { theme } from "../../../shared/styles/theme";
 // import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { infoNotices } from "../../../redux/notices/selectorsNotices.js";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAllNotices } from "../../../redux/notices/operationsNotices.js";
 
 import { Loader } from "../../Loader/Loader.jsx";
 
 export const NoticeCard = (props) => {
   
-  
+  const [dataAtr, setDataAtr] = useState({page: 1, items: 12})
   // const [currentPage, setCurrentPage] = useState(1);
 
 
@@ -51,11 +51,11 @@ export const NoticeCard = (props) => {
   const { notices } = useSelector(infoNotices);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllNotices());
-  }, [dispatch]);
+    dispatch(getAllNotices(dataAtr));
+  }, [dispatch, setDataAtr]);
 
   
-
+console.log(notices);
  
   // console.log(props);
 

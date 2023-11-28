@@ -25,12 +25,12 @@ export const addNotices = createAsyncThunk(
 );
 export const getAllNotices = createAsyncThunk(
   "api/notice/all",
-  async (_, thunkAPI) => {
+  async (data, thunkAPI) => {
 
     try {
-      const response = await axios.get("api/notices/");
+      const response = await axios.get(`api/notices?offset=${data.page}&limit=${data.items}`);
 
-      return response.data;
+      return response.data.data.resourses;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
