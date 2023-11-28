@@ -23,16 +23,18 @@ import { ReactComponent as MaleIcon } from "../../../assets/icons/male.svg";
 import PetPhoto from "../../../assets/images/petsImages/cat1.jpg";
 import { theme } from "../../../shared/styles/theme";
 // import { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 // import { infoNotices } from "../../../redux/notices/selectorsNotices.js";
 import { useEffect, useState } from "react";
-// import { getAllNotices } from "../../../redux/notices/operationsNotices.js";
+import { deleteNotice, getAllNotices } from "../../../redux/notices/operationsNotices.js";
 
 import { Loader } from "../../Loader/Loader.jsx";
 import Pagination from "../../../shared/components/Pagination/Pagination.jsx";
 import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal.jsx";
 import { NoticeModalMore } from "../NoticeModals/NoticeModalMore.jsx";
 import axios from "axios";
+
+import {userInfo} from "../../../redux/auth/selectors.js"
 
 export const NoticeCard = (props) => {
   // const [dataAtr, setDataAtr] = useState({ page: 1, items: 12 });
@@ -56,44 +58,64 @@ export const NoticeCard = (props) => {
     return age;
   }
   // const { notices } = useSelector(infoNotices);
- 
 
-  
   // const dispatch = useDispatch();
   // useEffect(() => {
   //   dispatch(getAllNotices({page: currentPage, limit: 12}));
   // }, [dispatch, currentPage]);
-  
-  useEffect(()=>{
+
+  useEffect(() => {
     const getMaterials = async (pageNumber, itemsPerPage = 12) => {
       try {
-        const response = await axios.get(`/api/notices?offset=${pageNumber}&limit=${itemsPerPage}`);
+        const response = await axios.get(
+          `/api/notices?offset=${pageNumber}&limit=${itemsPerPage}`
+        );
 
         setMaterials(response.data.data.resourses);
         setTotalPages(response.data.data.totalPages);
       } catch (error) {
         console.log(error);
       }
-    }
+    };
 
     getMaterials(currentPage, 12);
-      
   }, [currentPage]);
 
   const paginationHandler = (pageNumber) => {
-    
     setCurrentPage(pageNumber);
-  } 
+  };
 
   const handleModal = (id) => {
-    if (typeof(id) === "string"){
+    if (typeof id === "string") {
       setNoticeId(id);
     }
 
     setIsModal((prev) => !prev);
   };
-  
-console.log(materials)
+
+
+
+
+const { _id: idUser } = useSelector(userInfo);
+
+const dispatch = useDispatch();
+useEffect(() => {
+  dispatch(getAllNotices());
+}, [dispatch]);
+
+const heandelRemoveNotice = (owner, noticeId) => {
+  console.log(owner);
+  console.log(idUser);
+    console.log(noticeId);
+      
+  if (idUser === owner) {
+    dispatch(deleteNotice(noticeId));
+  } else {
+    console.log(
+      "You are not authorized to delete this notice or this notice don't your."
+    );
+  }
+};
 
   return (
     <>
@@ -120,7 +142,12 @@ console.log(materials)
                       />
                     </Button>
 
-                    <Button aria-label="delete from favorites">
+                    <Button
+                      aria-label="delete from favorites"
+                      onClick={() =>
+                        heandelRemoveNotice(notice.owner, notice._id)
+                      }
+                    >
                       <TrashIcon
                         width={"24px"}
                         height={"24px"}
