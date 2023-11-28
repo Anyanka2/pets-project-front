@@ -1,7 +1,5 @@
 import { TitlePage } from "../../shared/components/TitlePage.styled";
 import { SearchBar } from "../../shared/components/SearchBar/SearchBar";
-//import { MainAttention } from "../../shared/components/Attentions/MainAttention/MainAttention";
-import { NoticesList } from "../../components/Notices/NoticesList/NoticesList";
 import { Container } from "../../shared/components/Container";
 import {
   StaledDiv,
@@ -11,6 +9,7 @@ import {
 import { NoticesCategoryNav } from "../../components/Notices/NoticeCategoryPanel/NoticesCategoryNav";
 import { AddPetBtn } from "../../components/AddPetBtn/AddPetBtn";
 import {Button} from "../../shared/components/Buttons/Button.styled"
+import { NoticeCard } from "../../components/Notices/NoticeCard/NoticeCard";
 
 const NoticesPage = () => {
   return (
@@ -30,7 +29,7 @@ const NoticesPage = () => {
             <AddPetBtn />
           </NoticePanelRigth>
           <div>
-            <NoticesList />
+            <NoticeCard />
           </div>
         </>
       </Container>

@@ -1,6 +1,12 @@
 import { styled } from "styled-components";
 import { theme } from "../../../shared/styles/theme";
 
+export const NoticeListWrapper = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+`;
+
 export const List = styled.ul`
   display: flex;
   align-items: center;
