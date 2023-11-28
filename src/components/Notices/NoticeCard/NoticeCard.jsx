@@ -21,17 +21,19 @@ import { ReactComponent as FemaleIcon } from "../../../assets/icons/female.svg";
 import { ReactComponent as MaleIcon } from "../../../assets/icons/male.svg";
 import PetPhoto from "../../../assets/images/petsImages/cat1.jpg";
 import { theme } from "../../../shared/styles/theme";
-import { useState } from "react";
-import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal";
-import { NoticeModalMore } from "../NoticeModals/NoticeModalMore.jsx";
+// import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { infoNotices } from "../../../redux/notices/selectorsNotices.js";
 import { useEffect } from "react";
 import { getAllNotices } from "../../../redux/notices/operationsNotices.js";
 
-export const NoticeCard = (item) => {
-  const [isModal, setIsModal] = useState(false);
-  const [idNotice, setIdNotice] = useState("");
+import { Loader } from "../../Loader/Loader.jsx";
+
+export const NoticeCard = (props) => {
+  
+  
+  // const [currentPage, setCurrentPage] = useState(1);
+
 
   function calculateAge(dateOfBirth) {
     const dob = new Date(dateOfBirth);
@@ -52,10 +54,10 @@ export const NoticeCard = (item) => {
     dispatch(getAllNotices());
   }, [dispatch]);
 
-  const handleModal = (id) => {
-    setIdNotice(id);
-    setIsModal((prev) => !prev);
-  };
+  
+
+ 
+  // console.log(props);
 
   return (
     <>
@@ -112,23 +114,15 @@ export const NoticeCard = (item) => {
             <TextPetName>{notice.title}</TextPetName>
             <LearnMoreBtn
               aria-label="show more options"
-              onClick={() => handleModal(notice._id)}
+              onClick={()=>props.handleModal(notice._id)}
             >
               Learn more
             </LearnMoreBtn>
           </Item>
         ))
-      ) : (
-        <div></div>
-      )}
+      ) :  <Loader /> }
 
-      <UniversalModal
-        isModalOpen={isModal}
-        evt="children"
-        onClick={handleModal}
-      >
-        <NoticeModalMore noticeId={idNotice} />
-      </UniversalModal>
+     
     </>
   );
 };

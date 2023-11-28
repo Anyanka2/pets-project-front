@@ -11,13 +11,13 @@ export const PaginationContainer = styled.div`
 `;
 
 export const LeftArrowImg = styled.img`
-  
+   cursor: pointer;
    margin-right: 23px ;
   
 `;
 
 export const RightArrowImg = styled.img`
-   
+   cursor: pointer;
     margin-left: 23px;
   
 `;
@@ -36,6 +36,7 @@ export const DefaultCircle = styled.div`
    font-style: normal;
    line-height: 0.93 ;
    font-weight: 400;
+   cursor: pointer;
 `;
 
 export const CurrentCircle = styled.div`
@@ -53,4 +54,5 @@ export const CurrentCircle = styled.div`
    font-style: normal;
    line-height: 0.93 ;
    font-weight: 400;
-`
+   cursor: pointer;
+`;
