@@ -2,6 +2,16 @@ import {
   AttentionForm,
   AttenitonTitle,
   AttentionText,
+  CloseButton,
+  CloseIconStyle,
+} from "./MainAttention.styled";
+import pawprint from "../../../../assets/icons/pawprint.svg";
+import { ReactComponent as CloseIcon } from "../../../../assets/icons/close.svg";
+import {
+  ButtonsContainer,
+  ImgLogin,
+  LinkLogin,
+  LinkReg,
 } from "./MainAttention.styled";
 
 export const MainAttention = () => {
@@ -14,10 +24,18 @@ export const MainAttention = () => {
         credentials. If you do not already have an account, you must register to
         access these features.
       </AttentionText>
-      <div>
-        <button>Log IN</button>
-        <button>Registration</button>
-      </div>
+      <ButtonsContainer>
+        <LinkLogin to="login">
+          LOG IN
+          <ImgLogin src={`${pawprint}`} />
+        </LinkLogin>
+        <LinkReg to="register">Registration</LinkReg>
+      </ButtonsContainer>
+      <CloseButton type="button">
+        <CloseIconStyle>
+          <CloseIcon />
+        </CloseIconStyle>
+      </CloseButton>
     </AttentionForm>
   );
 };
