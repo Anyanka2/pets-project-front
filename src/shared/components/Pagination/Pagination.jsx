@@ -52,6 +52,10 @@ export default function Pagination (props) {
             startCount= current - 2;
             maxCount = current;
         }
+
+        if (current > total) {
+            return;
+        }
         
         for (let i = startCount; i <= maxCount; i++ ){
            
