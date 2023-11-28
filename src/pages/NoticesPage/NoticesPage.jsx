@@ -7,24 +7,19 @@ import {
   NoticePanelRigth,
   FilterIcon,
 } from "./NoticePage.styled";
+import { useState } from "react";
 import { NoticesCategoryNav } from "../../components/Notices/NoticeCategoryPanel/NoticesCategoryNav";
 import { AddPetBtn } from "../../components/AddPetBtn/AddPetBtn";
 import { Button } from "../../shared/components/Buttons/Button.styled";
 import { NoticeCard } from "../../components/Notices/NoticeCard/NoticeCard";
 import { MainAttention } from "../../shared/components/Attentions/MainAttention/MainAttention";
 import UniversalModal from "../../shared/components/UniversalModal/UniversalModal";
-import { useState } from "react";
 
 const NoticesPage = () => {
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleModal = () => {
-    setIsModalOpen(prev => !prev);
-  }
-
-
-
-
+    setIsModalOpen((prev) => !prev);
+  };
   return (
     <>
       <Container>
@@ -47,7 +42,7 @@ const NoticesPage = () => {
                   fill="transparent"
                 >
                   <path
-                  stroke="#54ADFF"
+                    stroke="#54ADFF"
                     stroke-linecap="round"
                     stroke-linejoin="round"
                     stroke-width="1.5"
@@ -62,9 +57,9 @@ const NoticesPage = () => {
             <NoticeCard />
           </div>
         </>
-        <UniversalModal isModalOpen={isModalOpen}>
+        <UniversalModal isModalOpen={isModalOpen} onClick={handleModal}>
           <MainAttention />
-          </UniversalModal>
+        </UniversalModal>
       </Container>
     </>
   );
