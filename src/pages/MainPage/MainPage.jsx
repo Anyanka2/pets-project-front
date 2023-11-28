@@ -4,7 +4,7 @@ import mainImgMobileRetina from "../../assets/images/mainPage/main-img-mobile@2x
 import mainImgTab from "../../assets/images/mainPage/main-img-tablet@1x.png";
 import mainImgTabRetina from "../../assets/images/mainPage/main-img-tablet@2x.png";
 import mainImgDesc from "../../assets/images/mainPage/main-img-desktop@1x.png";
-import mainImgDescRetina from "../../assets/images/mainPage/main-img-desktop@1x.png";
+import mainImgDescRetina from "../../assets/images/mainPage/main-img-desktop@2x.png";
 
 const MainPage = () => {
   return (
