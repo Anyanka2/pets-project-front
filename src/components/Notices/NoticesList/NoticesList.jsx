@@ -26,9 +26,7 @@ export const NoticesList = () => {
     if (typeof(id) === "string"){
       setNoticeId(id);
     }
-    
-    // console.dir(event)
-    console.log(id);
+
     setIsModal((prev) => !prev);
   };
 
