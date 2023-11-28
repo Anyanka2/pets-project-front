@@ -1,10 +1,10 @@
 {
   "files": {
     "main.css": "/pets-project-front/static/css/main.ed116860.css",
-    "main.js": "/pets-project-front/static/js/main.2c821cc3.js",
+    "main.js": "/pets-project-front/static/js/main.fbc66dc5.js",
     "static/js/807.28a484e4.chunk.js": "/pets-project-front/static/js/807.28a484e4.chunk.js",
     "static/css/367.c0714d49.chunk.css": "/pets-project-front/static/css/367.c0714d49.chunk.css",
-    "static/js/367.e8433b58.chunk.js": "/pets-project-front/static/js/367.e8433b58.chunk.js",
+    "static/js/367.27e0046c.chunk.js": "/pets-project-front/static/js/367.27e0046c.chunk.js",
     "static/js/446.8051c16f.chunk.js": "/pets-project-front/static/js/446.8051c16f.chunk.js",
     "static/js/994.41b753ef.chunk.js": "/pets-project-front/static/js/994.41b753ef.chunk.js",
     "static/js/516.40301040.chunk.js": "/pets-project-front/static/js/516.40301040.chunk.js",
@@ -62,10 +62,10 @@
     "static/media/cross-small.svg": "/pets-project-front/static/media/cross-small.5a754ef7f04a6293efa72408fae4dac8.svg",
     "static/media/menu.svg": "/pets-project-front/static/media/menu.65156b8b0db5266d38ec2651ac840922.svg",
     "main.ed116860.css.map": "/pets-project-front/static/css/main.ed116860.css.map",
-    "main.2c821cc3.js.map": "/pets-project-front/static/js/main.2c821cc3.js.map",
+    "main.fbc66dc5.js.map": "/pets-project-front/static/js/main.fbc66dc5.js.map",
     "807.28a484e4.chunk.js.map": "/pets-project-front/static/js/807.28a484e4.chunk.js.map",
     "367.c0714d49.chunk.css.map": "/pets-project-front/static/css/367.c0714d49.chunk.css.map",
-    "367.e8433b58.chunk.js.map": "/pets-project-front/static/js/367.e8433b58.chunk.js.map",
+    "367.27e0046c.chunk.js.map": "/pets-project-front/static/js/367.27e0046c.chunk.js.map",
     "446.8051c16f.chunk.js.map": "/pets-project-front/static/js/446.8051c16f.chunk.js.map",
     "994.41b753ef.chunk.js.map": "/pets-project-front/static/js/994.41b753ef.chunk.js.map",
     "516.40301040.chunk.js.map": "/pets-project-front/static/js/516.40301040.chunk.js.map",
@@ -80,6 +80,6 @@
   },
   "entrypoints": [
     "static/css/main.ed116860.css",
-    "static/js/main.2c821cc3.js"
+    "static/js/main.fbc66dc5.js"
   ]
 }
