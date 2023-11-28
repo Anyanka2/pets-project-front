@@ -1,26 +1,35 @@
 import { AddPetLink, PlusIcon } from "./AddPetBtn.styled";
 //import { theme } from "../../shared/styles/theme";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 //import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectToken } from "../../redux/user/userSelectors";
 
-export const AddPetBtn = () => {
+
+export const AddPetBtn = (props) => {
   const isAuthorized = useSelector(selectToken);
   const navigate = useNavigate();
 
   const handleClick = () => {
-      if (!isAuthorized) {
-        toast.info("You need to sign in!", {
-          position: toast.POSITION.BOTTOM_CENTER,
+    if (!isAuthorized) {
+      props.onClick();
+      console.log(props);
+      console.dir(toast);
+        toast.error("You need to sign in!", {
+          position: toast.POSITION.TOP_CENTER,
+        
         });
-      } else {
+    } else {
+      console.log(!isAuthorized);
         navigate("/add-pet");
     }
   };
+
   return (
+    <>
+    <ToastContainer />
     <AddPetLink onClick={handleClick}>
      <span>Add Pet</span> 
       <PlusIcon>
@@ -33,6 +42,7 @@ export const AddPetBtn = () => {
           />
         </svg>
       </PlusIcon>
-    </AddPetLink>
+      </AddPetLink>
+      </>
   );
 };

@@ -12,8 +12,19 @@ import { AddPetBtn } from "../../components/AddPetBtn/AddPetBtn";
 import { Button } from "../../shared/components/Buttons/Button.styled";
 import { NoticeCard } from "../../components/Notices/NoticeCard/NoticeCard";
 import { MainAttention } from "../../shared/components/Attentions/MainAttention/MainAttention";
+import UniversalModal from "../../shared/components/UniversalModal/UniversalModal";
+import { useState } from "react";
 
 const NoticesPage = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleModal = () => {
+    setIsModalOpen(prev => !prev);
+  }
+
+
+
+
   return (
     <>
       <Container>
@@ -45,13 +56,15 @@ const NoticesPage = () => {
                 </svg>
               </FilterIcon>
             </Button>
-            <AddPetBtn />
+            <AddPetBtn onClick={handleModal} />
           </NoticePanelRigth>
           <div>
             <NoticeCard />
           </div>
         </>
-        <MainAttention />
+        <UniversalModal isModalOpen={isModalOpen}>
+          <MainAttention />
+          </UniversalModal>
       </Container>
     </>
   );

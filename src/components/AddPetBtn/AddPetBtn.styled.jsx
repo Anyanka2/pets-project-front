@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 import { theme } from "../../shared/styles/theme";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
-export const AddPetLink = styled(Link)`
+export const AddPetLink = styled.button`
   position: fixed;
   z-index: 99;  
   top: 50%;
