@@ -28,7 +28,7 @@ export const getAllNotices = createAsyncThunk(
   async (data, thunkAPI) => {
 
     try {
-      const response = await axios.get(`api/notices?offset=${data.page}&limit=${data.items}`);
+      const response = await axios.get(`api/notices?offset=${data.page}&limit=${data.limit}`);
 
       return response.data.data.resourses;
     } catch (error) {

@@ -48,7 +48,7 @@ export default function Pagination (props) {
             maxCount = current + 2;
         }
 
-        if ( total === current) {
+        if ( total  === current ) {
             startCount= current - 2;
             maxCount = current;
         }
