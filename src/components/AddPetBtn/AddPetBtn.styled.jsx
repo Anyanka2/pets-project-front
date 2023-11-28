@@ -42,9 +42,9 @@ export const AddPetLink = styled(Link)`
   }
 
   @media screen and (min-width: 768px) {
-    position: static;
+    position: unset;
     //margin-top: 60px;
-    margin-left: auto;
+   // margin-left: auto;
     gap: 8px;
     flex-direction: row;
     width: 129px;

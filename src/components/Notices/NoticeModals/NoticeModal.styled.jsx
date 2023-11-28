@@ -50,6 +50,12 @@ export const Type = styled.p`
   font-size: 14px;
   line-height: 1.357;
 `;
+export const CommentAccent = styled.span`
+  font-family: ${theme.fonts.manrope.bold};
+  font-weight: ${theme.fontWeights.bold};
+  font-size: 14px;
+  line-height: 1.357;
+`;
 
 export const Image = styled.img`
   display: block;
@@ -258,7 +264,6 @@ export const AddToFavBtn = styled.button`
 
   @media screen and (min-width: 768px) {
     width: 129px;
-    
   }
 `;
 

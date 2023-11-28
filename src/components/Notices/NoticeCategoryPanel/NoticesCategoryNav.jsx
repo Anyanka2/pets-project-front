@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../../redux/auth/selectors";
+//import { useSelector } from "react-redux";
+//import { selectToken } from "../../../redux/user/userSelectors";
 import { List, Button, ListItem } from "./NoticesCategoryNav.styled";
 
 export const filters = [
@@ -11,13 +11,13 @@ export const filters = [
 ];
 
 export const NoticesCategoryNav = () => {
-  const isUser = useSelector(selectIsLoggedIn);
+ // const token = useSelector(selectToken);
   const items = filters.map(({ filter, path }, item) => {
-    const isAuthorized = path === "favorite" || path === "my-pets";
+    //const isAuthorized = path === "favorite" || path === "my-pets";
 
-    if (!isUser && isAuthorized) {
-      return null;
-    }
+    // if (!token ? () : ()) {
+    //   return null;
+    // }
 
     return (
       <ListItem key={item}>

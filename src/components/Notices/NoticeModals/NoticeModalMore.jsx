@@ -8,6 +8,7 @@ import {
   List,
   ItemWrap,
   Item,
+  CommentAccent,
   Comment,
   ContactLink,
   AddToFavBtn,
@@ -112,7 +113,7 @@ export const NoticeModalMore = ({
             </div>
           </div>
         </ContainerInfo>
-        <Comment>Comments: {infoOnePet.comments}</Comment>
+        <Comment><CommentAccent>Comments:&nbsp;</CommentAccent>{infoOnePet.comments}</Comment>
         <BtnContainer>
           <AddToFavBtn type="button">
             <span>Add to</span>
