@@ -26,14 +26,20 @@ export default function UniversalModal({ onClick, isModalOpen, children }) {
       };
     }, [isModalOpen, onClick]);
 
+    const backdropHandler = (event) => {
+      if(event.target.id === "modalBackdrop"){
+        onClick();
+      }  
+    }
+
   return (
     <>
       {isModalOpen ? (
-        <ModalBackdrop id="modalBackdrop" onClick={onClick}>
+        <ModalBackdrop id="modalBackdrop" onClick={backdropHandler}>
           <ModalBox>
             <ModalBody>{children}</ModalBody>
-            <CloseModalBtn onClick={onClick} >
-              <img src={crossSmallBlue} alt="close button"  />
+            <CloseModalBtn  >
+              <img src={crossSmallBlue} alt="close button" onClick={onClick} />
             </CloseModalBtn>
           </ModalBox>
         </ModalBackdrop>
