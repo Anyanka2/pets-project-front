@@ -1,16 +1,17 @@
-import { StyledPicture, StyledTittle, Wrapper } from "./MainPage.styled";
-import mainImgMobile from "../../assets/images/mainPage/main-img-mobile@1x.png";
-import mainImgMobileRetina from "../../assets/images/mainPage/main-img-mobile@2x.png";
-import mainImgTab from "../../assets/images/mainPage/main-img-tablet@1x.png";
-import mainImgTabRetina from "../../assets/images/mainPage/main-img-tablet@2x.png";
-import mainImgDesc from "../../assets/images/mainPage/main-img-desktop@1x.png";
-import mainImgDescRetina from "../../assets/images/mainPage/main-img-desktop@2x.png";
-
+import {  StyledTittle, Wrapper } from "./MainPage.styled";
+// import mainImgMobile from "../../assets/images/mainPage/main-img-mobile@1x.png";
+// import mainImgMobileRetina from "../../assets/images/mainPage/main-img-mobile@2x.png";
+// import mainImgTab from "../../assets/images/mainPage/main-img-tablet@1x.png";
+// import mainImgTabRetina from "../../assets/images/mainPage/main-img-tablet@2x.png";
+// import mainImgDesc from "../../assets/images/mainPage/main-img-desktop@1x.png";
+// import mainImgDescRetina from "../../assets/images/mainPage/main-img-desktop@2x.png";
+import { Container } from "../../shared/components/Container";
 const MainPage = () => {
   return (
     <Wrapper>
+      <Container>
       <StyledTittle>Take good care of your small pets</StyledTittle>
-      <StyledPicture>
+      {/* <StyledPicture>
         <source
           media="(min-width: 1280px)"
           srcSet={`${mainImgDesc} 1x, ${mainImgDescRetina} 2x`}
@@ -28,7 +29,8 @@ const MainPage = () => {
         />
 
         <img src={mainImgDescRetina} alt="Pets" width={917} height={670} />
-      </StyledPicture>
+      </StyledPicture> */}
+      </Container>
     </Wrapper>
   );
 };
