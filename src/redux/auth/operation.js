@@ -27,6 +27,7 @@ export const register = createAsyncThunk(
           draggable: true,
         });
       }
+    
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
@@ -43,12 +44,23 @@ export const register = createAsyncThunk(
     }
   }
 );
+export const verifyEmailUser = createAsyncThunk(
+  "api/auth/verify",
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.get(`api/auth/verify/${id}`);
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
 export const logIn = createAsyncThunk(
   "api/auth/login",
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post("/api/auth/login", credentials);
-      console.log(res);
       setAuthHeader(res.data.token);
 
       return res.data;
@@ -193,7 +205,7 @@ export const uploadImg = createAsyncThunk(
           "Content-Type": "multipart/form-data",
         },
       });
-
+      
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

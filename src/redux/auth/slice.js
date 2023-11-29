@@ -3,6 +3,7 @@ import { logIn, logOut, refreshUser, register } from "./operation";
 
 const initialState = {
   token: null,
+  user:{},
   isLoggedIn: false,
   isRefreshing: false,
 };
@@ -14,7 +15,7 @@ const authenticate = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
+        state.auth = action.payload.user;
         state.isLoggedIn = true;
       })
       .addCase(logIn.fulfilled, (state, action) => {

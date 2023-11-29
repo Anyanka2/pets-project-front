@@ -18,7 +18,7 @@ const UserPage = lazy(() => import("./pages/UserPage/UserPage"));
 const AddPetPage = lazy(() => import("./pages/AddPetPage/AddPetPage"));
 const NewsPage = lazy(() => import("./pages/NewsPage/NewsPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
-const VerifyPage = lazy(()=> import("./pages/VerifyPage/VerifyPage"));
+const VerifyPage = lazy(() => import("./pages/VerifyPage/VerifyPage"));
 
 const App = () => {
   return (
@@ -36,7 +36,7 @@ const App = () => {
             <Route element={<PublicRoute />}>
               <Route path="register" element={<RegisterPage />} />
               <Route path="login" element={<LoginPage />} />
-              <Route path="verify" element={<VerifyPage /> } />
+              <Route path="verify/:verifyToken" element={<VerifyPage />} />
             </Route>
 
             <Route element={<PrivateRoute />}>
@@ -45,9 +45,7 @@ const App = () => {
             </Route>
 
             <Route element={<PrivateRoute />}>
-
               <Route path="" element={<SearchBar />} />
-
             </Route>
 
             <Route path="news" element={<NewsPage />} />

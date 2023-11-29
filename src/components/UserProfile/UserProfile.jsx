@@ -27,7 +27,7 @@ export default function UserProfile() {
   };
 
   const infoAboutUser = useSelector(userInfo);
-console.log(infoAboutUser.avatarURL);
+
   const memoizedPhotoUrlHandler = useMemo(() => {
     return (url) => {
       setUserPhotoUrl(url);
