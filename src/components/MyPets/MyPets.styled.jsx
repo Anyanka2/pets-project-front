@@ -18,6 +18,7 @@ export const ContainerItem = styled.div`
   padding: 20px;
   border-radius: 40px;
   position: relative;
+  display: flex;
 &:last-child {
       margin-bottom: 42px;
     }
@@ -93,6 +94,16 @@ export const Image = styled.img`
 export const InfoContainer = styled.div`
   padding-top: 20px;
   padding-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    margin-left: 20px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  @media screen and (min-width: 1280px) {
+
+  }
+
 `;
 
 export const Text = styled.p`
@@ -122,7 +133,7 @@ export const Text = styled.p`
     letter-spacing: 0.64px;
 
     &:not(:last-child) {
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
   }
 `;
