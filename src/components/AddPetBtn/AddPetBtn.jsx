@@ -5,10 +5,14 @@ import { AddPetLink, PlusIcon } from "./AddPetBtn.styled";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectToken } from "../../redux/user/userSelectors";
+import { useWindowSize } from '../../hooks/useResize';
+import { ReactComponent as PlusBig } from "../../assets/icons/plus-big.svg";
+import { ReactComponent as PlusSmall } from "../../assets/icons/plus-small.svg";
 
 export const AddPetBtn = (props) => {
   const isAuthorized = useSelector(selectToken);
   const navigate = useNavigate();
+  const [screenWidth] = useWindowSize();
 
   const handleClick = () => {
     if (!isAuthorized) {
@@ -23,18 +27,15 @@ export const AddPetBtn = (props) => {
 
   return (
     <>
-      {/* <ToastContainer /> */}
       <AddPetLink onClick={handleClick}>
         <span>Add Pet</span>
         <PlusIcon>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none">
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M12 7v10m-5-5h10"
-            />
-          </svg>
+        {screenWidth <= 767 && (
+              <PlusBig />
+        )}
+        {screenWidth >= 768 && (
+             <PlusSmall />
+        )}
         </PlusIcon>
       </AddPetLink>
     </>

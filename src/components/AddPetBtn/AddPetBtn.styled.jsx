@@ -5,9 +5,9 @@ import { theme } from "../../shared/styles/theme";
 export const AddPetLink = styled.button`
   position: fixed;
   z-index: 99;  
-  top: 50%;
-  /* translate: 0 -50%; */
+  top: 85%;
   right: 20px;
+  /* translate: -20%, -50%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,7 +26,7 @@ export const AddPetLink = styled.button`
   color: ${theme.colors.white};
   cursor: pointer;
 
-  margin-bottom: auto;
+  
 
   &:focus,
   &:hover {
@@ -40,6 +40,7 @@ export const AddPetLink = styled.button`
     
     @media screen and (min-width: 768px){
     position: unset;
+    /* position: absolute; */
   }
   }
 
@@ -59,8 +60,8 @@ export const AddPetLink = styled.button`
   }
 `;
 export const PlusIcon = styled.svg`
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   stroke: ${theme.colors.white};
   position: absolute;
   top: 20px;

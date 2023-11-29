@@ -42,8 +42,8 @@ const AddPetPageForm = () => {
     const titles = {
       'my-pet': 'Add pet',
       'sell': 'Add pet for sale',
-      'lost-found': 'Add to lost or found pet',
-      'for-free': 'Add your pet',
+      'lost/found': 'Add to lost or found pet',
+      'in good hands': 'Add your pet',
       '': 'Add pet',
     };
     return titles[formData.category] || 'Add pet';

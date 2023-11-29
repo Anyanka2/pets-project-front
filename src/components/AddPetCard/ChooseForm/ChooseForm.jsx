@@ -54,21 +54,21 @@ const ChooseForm = ({ formData, setFormData, nextStep, cancel }) => {
       <AddFormRadioButton
         type="radio"
         name="category"
-        value="lost-found"
-        id="lost-found"
-        checked={formData.category === 'lost-found'}
+        value="lost/found"
+        id="lost/found"
+        checked={formData.category === 'lost/found'}
         onChange={handleCategoryChange}
       />
-      <RadioCategoryLabel htmlFor="lost-found">lost/found</RadioCategoryLabel>
+      <RadioCategoryLabel htmlFor="lost/found">lost/found</RadioCategoryLabel>
       <AddFormRadioButton
         type="radio"
         name="category"
-        value="for-free"
-        id="for-free"
-        checked={formData.category === 'for-free'}
+        value="in good hands"
+        id="in good hands"
+        checked={formData.category === 'in good hands'}
         onChange={handleCategoryChange}
       />
-      <RadioCategoryLabel htmlFor="for-free">in good hands</RadioCategoryLabel>
+      <RadioCategoryLabel htmlFor="in good hands">in good hands</RadioCategoryLabel>
       </ContainerForInput>
       <AddFormButtonWrapper>
         <AddFormButtonNext
