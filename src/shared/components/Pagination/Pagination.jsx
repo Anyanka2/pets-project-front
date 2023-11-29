@@ -12,6 +12,10 @@ export default function Pagination (props) {
     const [counter, setCounter] = useState([]);
 
     const pageHandler = (event) => {
+        if (!event.target.dataset.index) {
+            console.log("Exists:", event.target);
+            return;
+        }
         // console.dir(event.target.dataset.index);
         const index = event.target.dataset.index;
         switch (index) {
@@ -27,7 +31,8 @@ export default function Pagination (props) {
                 props.paginationHandler(props.page + 1);
                 break;
             default:
-                props.paginationHandler(event.target.textContent);
+                // console.dir(event.target);
+                props.paginationHandler(event.target.dataset.index);
                 break;
         }
     }
