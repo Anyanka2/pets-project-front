@@ -3,8 +3,6 @@ import { styled } from "styled-components";
 export const Modal = styled.div`
 width: 232px;
 text-align: center;
-align-items: center;
-justify-content: center;
 padding-top: 44px;
 padding-bottom: 36px;
 
