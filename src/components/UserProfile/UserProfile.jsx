@@ -3,7 +3,7 @@ import crossSmallBlue from "../../assets/icons/cross-small-blue.svg";
 // import crossSmallRed from "../../assets/icons/cross-small-red.svg";
 // import greenCheck from "../../assets/icons/check.svg";
 import edit from "../../assets/icons/edit.svg";
-import UserPhotoDefault from "../../assets/icons/user_photo_default.svg";
+// import UserPhotoDefault from "../../assets/icons/user_photo_default.svg";
 
 import {
   UserProfileContainer,
@@ -48,10 +48,7 @@ console.log(infoAboutUser.avatarURL);
         <h2>My information:</h2>
         <UserProfileContainer>
           <UserPhotoBox>
-            <UserImg
-              src={infoAboutUser.avatarURL ? infoAboutUser.avatarURL : UserPhotoDefault}
-              alt="User profile"
-            />
+            <UserImg src={renderUserPhoto} alt="User profile" />
 
             {editable ? (
               <CancelEditBtn onClick={editHandler}>
