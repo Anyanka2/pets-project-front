@@ -14,6 +14,7 @@ export const OurFriends = ({ ourFriends }) => {
     if (number === "email only") {
       return "N/A";
     }
+    
     return number.split(" ").join("");
   };
 

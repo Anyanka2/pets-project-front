@@ -69,8 +69,11 @@ export const StyledContacts = styled.p`
   font-size: 12px;
   font-weight: ${theme.fontWeights.medium};
   color: ${theme.colors.black};
-  margin-top: 12px;
-
+  
+  :not(:first-of-type) {
+    margin-top: 12px;
+  }
+  
   @media screen and (min-width: 748px) and (max-width: 1279px) {
     font-size: 14px;
   }
