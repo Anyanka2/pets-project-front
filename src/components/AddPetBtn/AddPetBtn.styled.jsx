@@ -6,7 +6,7 @@ export const AddPetLink = styled.button`
   position: fixed;
   z-index: 99;  
   top: 50%;
-  translate: 0 -50%;
+  /* translate: 0 -50%; */
   right: 20px;
   display: flex;
   align-items: center;
@@ -25,6 +25,8 @@ export const AddPetLink = styled.button`
   line-height: 1.33;
   color: ${theme.colors.white};
   cursor: pointer;
+
+  margin-bottom: auto;
 
   &:focus,
   &:hover {
