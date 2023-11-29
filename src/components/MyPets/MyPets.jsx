@@ -9,19 +9,29 @@ import {
   TitlePet,
   AllCardsPet,
   ImageFon,
+  TitleWithoutPet,
 } from "./MyPets.styled";
 import { useSelector } from "react-redux";
-import imgFon from "../../assets/images/petsImages/cat6.jpg"
+import imgFon from "../../assets/images/petsImages/black-white-cat.png";
 import { userInfo } from "../../redux/auth/selectors";
 
 export default function MyPets() {
   const { petsData = [] } = useSelector(userInfo);
-  
+
   return (
     <>
       <AllCardsPet>
         <TitlePet>My Pets:</TitlePet>
-        {petsData.length === 0 ? <ImageFon src={imgFon}></ImageFon> : ""}
+        {petsData.length === 0 ? (
+          <div>
+            <TitleWithoutPet>
+              There are no pets added to your list yet
+            </TitleWithoutPet>
+            <ImageFon src={imgFon}></ImageFon>
+          </div>
+        ) : (
+          ""
+        )}
         {petsData?.map((info) => (
           <ContainerItem key={info._id}>
             <Image src={ImgPet} alt="photo pets" width={240} height={240} />
