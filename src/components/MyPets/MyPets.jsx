@@ -8,8 +8,8 @@ import {
   AllCardsPet,
   ImageFon,
   TitleWithoutPet,
+  ButtonTrash
 } from "./MyPets.styled";
-import { Button } from "../Notices/NoticeCard/NoticeCard.styled";
 import { theme } from "../../shared/styles/theme";
 import { ReactComponent as TrashIcon } from "../../assets/icons/trash.svg";
 import { useSelector } from "react-redux";
@@ -59,15 +59,16 @@ export default function MyPets() {
                   {info.comments}
                 </Text>
               </InfoContainer>
-            </ContainerItem>
-            <Button aria-label="delete from favorites">
+              <ButtonTrash aria-label="delete from favorites">
               <TrashIcon
                 width={"24px"}
                 height={"24px"}
                 stroke={theme.colors.blueLink}
                 fill={theme.colors.lightBlue}
               />
-            </Button>
+            </ButtonTrash>
+            </ContainerItem>
+           
           </>
         ))}
       </AllCardsPet>
