@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import crossSmallBlue from "../../assets/icons/cross-small-blue.svg";
 // import crossSmallRed from "../../assets/icons/cross-small-red.svg";
 // import greenCheck from "../../assets/icons/check.svg";
@@ -23,14 +23,24 @@ export default function UserProfile() {
   const [userPhotoUrl, setUserPhotoUrl] = useState("");
 
   const editHandler = () => {
-    setEditable((pervState) => !pervState);
+    setEditable((prevState) => !prevState);
   };
 
-  const { avatarURL } = useSelector(userInfo);
-  
-  const photoUrlHandler = (url) => {
-    setUserPhotoUrl(url);
-  };
+  const infoAboutUser = useSelector(userInfo);
+console.log(infoAboutUser.avatarURL);
+  const memoizedPhotoUrlHandler = useMemo(() => {
+    return (url) => {
+      setUserPhotoUrl(url);
+    };
+  }, []);
+
+  const renderUserPhoto = useMemo(() => {
+    if (infoAboutUser.avatarURL && userPhotoUrl) {
+      return userPhotoUrl;
+    } else {
+      return infoAboutUser.avatarURL;
+    }
+  }, [infoAboutUser.avatarURL, userPhotoUrl]);
 
   return (
     <>
@@ -39,7 +49,7 @@ export default function UserProfile() {
         <UserProfileContainer>
           <UserPhotoBox>
             <UserImg
-              src={avatarURL ? userPhotoUrl : UserPhotoDefault}
+              src={infoAboutUser.avatarURL ? infoAboutUser.avatarURL : UserPhotoDefault}
               alt="User profile"
             />
 
@@ -52,12 +62,12 @@ export default function UserProfile() {
                 <img src={edit} alt="Pencil" />
               </EditBtn>
             )}
-            {editable ? (
-              <UserProfilePhotoEdit photoUrlHandler={photoUrlHandler} />
-            ) : (
-              ""
+
+            {editable && (
+              <UserProfilePhotoEdit photoUrlHandler={memoizedPhotoUrlHandler} />
             )}
           </UserPhotoBox>
+
           <UserProfileForm editable={editable} editHandler={editHandler} />
         </UserProfileContainer>
       </UserProfileSection>

@@ -92,7 +92,7 @@ export const NoticeCard = (props) => {
     setIsModal((prev) => !prev);
   };
 
-console.log(materials);
+
 
 
 const { _id: idUser } = useSelector(userInfo);

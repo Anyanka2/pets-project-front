@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   HiddenInputFile,
   ImgAcceptBox,
@@ -7,49 +7,42 @@ import {
   LableForHiddenInput,
 } from "./UserProfilePhotoEdit.styled.jsx";
 import { useDispatch } from "react-redux";
-import { updateCurrentUser, uploudImg } from "../../../redux/auth/operation.js";
+import { updateCurrentUser, uploadImg } from "../../../redux/auth/operation.js";
 
 export default function UserProfilePhotoEdit(props) {
   const [openDownload, setOpenDownload] = useState(false);
-//   const [objUrl, setObjUrl] = useState({});
-  const [url, setUrl] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+
   const openPhotoHandler = (event) => {
     const file = event.target.files[0];
-    setUrl(file);
-    const obj = window.URL.createObjectURL(file);
-    // setObjUrl(obj);
-    props.photoUrlHandler(obj);
-
-    setOpenDownload((prev) => !prev);
+    if (file) {
+      setSelectedFile(file);
+      const obj = URL.createObjectURL(file);
+      props.photoUrlHandler(obj);
+      setOpenDownload(true);
+    }
   };
 
   const handleDecline = () => {
     setOpenDownload(false);
     props.photoUrlHandler("");
+    setSelectedFile(null); // Clear selected file
   };
+
   const dispatch = useDispatch();
+
   const handleAccept = async () => {
-  
-    await dispatch(uploudImg(url));
-    await dispatch(updateCurrentUser());
-    // Пасхалка для Володимира
-
-    // const sendObjUrlToServer = async (objUrl) => {
-    //     try {
-    //       const response = await fetch('http://your-server-url/api/upload', {
-    //         method: 'POST',
-    //         headers: {
-    //           'Content-Type': 'application/json', // або 'multipart/form-data', залежно від вашого випадку
-    //         },
-    //         body: JSON.stringify({ objUrl }),
-    //       });
-
-    //       const result = await response.json();
-    //       console.log(result);
-    //     } catch (error) {
-    //       console.error('Error sending objUrl to server:', error);
-    //     }
-    //   };
+    if (selectedFile) {
+      try {
+        await dispatch(uploadImg(selectedFile));
+        await dispatch(updateCurrentUser());
+        setOpenDownload(false);
+        setSelectedFile(null); // Clear selected file
+      } catch (error) {
+        console.error("Error occurred while uploading image:", error);
+        // Handle error, show message to the user, etc.
+      }
+    }
   };
 
   return (
@@ -61,16 +54,14 @@ export default function UserProfilePhotoEdit(props) {
           <ImgBtnDecline type="button" onClick={handleDecline} />
         </ImgAcceptBox>
       ) : (
-        <LableForHiddenInput
-          htmlFor="hiddenInputFile"
-          onChange={openPhotoHandler}
-        >
+        <LableForHiddenInput htmlFor="hiddenInputFile">
           <p>Edit photo</p>
           <HiddenInputFile
             type="file"
             name="user_avatar"
             id="hiddenInputFile"
             accept="image/*"
+            onChange={openPhotoHandler}
           />
         </LableForHiddenInput>
       )}

@@ -178,7 +178,7 @@ export const deleteMyPet = createAsyncThunk(
   }
 );
 
-export const uploudImg = createAsyncThunk(
+export const uploadImg = createAsyncThunk(
   "api/user/img",
   async (file, thunkAPI) => {
     const state = thunkAPI.getState();
