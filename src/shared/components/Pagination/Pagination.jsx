@@ -13,26 +13,27 @@ export default function Pagination (props) {
 
     const pageHandler = (event) => {
         if (!event.target.dataset.index) {
-            console.log("Exists:", event.target);
             return;
         }
-        // console.dir(event.target.dataset.index);
         const index = event.target.dataset.index;
         switch (index) {
             case "leftArrow":
                 if (Number(props.page) <= 1 ) {
                     return;
                 }
-                props.paginationHandler(props.page - 1);
-                // console.log(props.page);
+                props.paginationHandler(Number(props.page) - 1);
+                
                 break;
             case "rightArrow":
-                // console.log(props.page);
-                props.paginationHandler(props.page + 1);
+                
+                if (Number(props.page) >= Number(props.totalPages) ) {
+                    return;
+                }
+                props.paginationHandler(Number(props.page) + 1);
                 break;
             default:
-                // console.dir(event.target);
-                props.paginationHandler(event.target.dataset.index);
+                
+                props.paginationHandler(Number(index));
                 break;
         }
     }
@@ -53,9 +54,9 @@ export default function Pagination (props) {
             maxCount = current + 2;
         }
 
-        if ( total  === current ) {
-            startCount= current - 2;
-            maxCount = current;
+        if ( total  <= current || total <= (current + 4) ) {
+            startCount= current ;
+            maxCount = total;
         }
 
         if (current > total || current < 0) {
