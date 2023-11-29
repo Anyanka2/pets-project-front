@@ -17,19 +17,18 @@ export const ContainerItem = styled.div`
   box-shadow: ${theme.shadows.shadowDefault};
   padding: 20px;
   border-radius: 40px;
-&:last-child {
-      margin-bottom: 42px;
-    }
+  &:last-child {
+    margin-bottom: 42px;
   }
+
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: flex-start;
     gap: 20px;
-    
 
-  @media screen and (min-width: 1280px) {
-    width: 821px;
-  }
+    @media screen and (min-width: 1280px) {
+      width: 821px;
+    }
   }
 `;
 
