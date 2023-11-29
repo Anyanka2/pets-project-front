@@ -26,7 +26,10 @@ import { theme } from "../../../shared/styles/theme";
 import { useDispatch, useSelector } from "react-redux";
 // import { infoNotices } from "../../../redux/notices/selectorsNotices.js";
 import { useEffect, useState } from "react";
-import { deleteNotice, getAllNotices } from "../../../redux/notices/operationsNotices.js";
+import {
+  deleteNotice,
+  getAllNotices,
+} from "../../../redux/notices/operationsNotices.js";
 
 import { Loader } from "../../Loader/Loader.jsx";
 import Pagination from "../../../shared/components/Pagination/Pagination.jsx";
@@ -34,7 +37,7 @@ import UniversalModal from "../../../shared/components/UniversalModal/UniversalM
 import { NoticeModalMore } from "../NoticeModals/NoticeModalMore.jsx";
 import axios from "axios";
 
-import {userInfo} from "../../../redux/auth/selectors.js"
+import { userInfo } from "../../../redux/auth/selectors.js";
 
 export const NoticeCard = (props) => {
   // const [dataAtr, setDataAtr] = useState({ page: 1, items: 12 });
@@ -93,29 +96,22 @@ export const NoticeCard = (props) => {
     setIsModal((prev) => !prev);
   };
 
+  const { _id: idUser } = useSelector(userInfo);
 
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getAllNotices());
+  }, [dispatch]);
 
-
-const { _id: idUser } = useSelector(userInfo);
-
-const dispatch = useDispatch();
-useEffect(() => {
-  dispatch(getAllNotices());
-}, [dispatch]);
-
-const heandelRemoveNotice = (owner, noticeId) => {
-  console.log(owner);
-  console.log(idUser);
-    console.log(noticeId);
-      
-  if (idUser === owner) {
-    dispatch(deleteNotice(noticeId));
-  } else {
-    console.log(
-      "You are not authorized to delete this notice or this notice don't your."
-    );
-  }
-};
+  const heandelRemoveNotice = (owner, noticeId) => {
+    if (idUser === owner) {
+      dispatch(deleteNotice(noticeId));
+    } else {
+      console.log(
+        "You are not authorized to delete this notice or this notice don't your."
+      );
+    }
+  };
 
   return (
     <>

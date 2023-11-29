@@ -6,7 +6,7 @@ export const AllCardsPet = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 100%; 
+  width: 100%;
   height: 100%;
   @media screen and (min-width: 768px) {
   }
@@ -30,6 +30,24 @@ export const ContainerItem = styled.div`
 `;
 
 export const TitlePet = styled.h2`
+  color: #111111;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.36;
+  margin-bottom: 31px;
+  font-family: ${theme.fonts.manrope.medium};
+  @media screen and (min-width: 768px) {
+    margin-bottom: 22px;
+    font-size: 28px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 0;
+  }
+`;
+
+export const TitleWithoutPet = styled.h2`
+  text-align: center;
   color: #111111;
   font-size: 20px;
   font-weight: 500;
@@ -129,14 +147,12 @@ export const ContainerUser = styled.div`
 `;
 
 export const ImageFon = styled.img`
-position: relative;
+  position: relative;
   width: 100%;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   border-radius: 20px;
   object-fit: cover;
-
-
 `;

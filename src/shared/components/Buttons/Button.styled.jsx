@@ -13,10 +13,19 @@ export const Button = styled.button`
   border: 2px solid ${theme.colors.blueLink};
   background: transparent;
   margin: 0 auto;
+  font-weight: ${theme.fontWeights.bold};
+  font-size: 16px;
+  line-height: 1.375;
+  gap: 8px;
 
   &:hover,
   &:focus {
     background: ${theme.colors.blueGradient};
     color: ${theme.colors.white};
+    border: none;
+    /* svg{
+      stroke: white;
+      fill: transparent;
+    } */
   }
 `;

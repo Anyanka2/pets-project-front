@@ -25,7 +25,7 @@ export const StyledTittle = styled.h1`
   margin-left: 20px;
   margin-top: 60px;
   font-size: 32px;
-  font-family: "Manrope", sans-serif;
+  font-family: ${theme.fonts.manrope.bold};
   font-weight: ${theme.fontWeights.bold};
   line-height: 1.375;
 
