@@ -7,23 +7,31 @@ import {
   TitlePet,
   AllCardsPet,
   ImageFon,
+  TitleWithoutPet,
 } from "./MyPets.styled";
 import { Button } from "../Notices/NoticeCard/NoticeCard.styled";
 import { theme } from "../../shared/styles/theme";
 import { ReactComponent as TrashIcon } from "../../assets/icons/trash.svg";
 import { useSelector } from "react-redux";
-import imgFon from "../../assets/images/petsImages/cat6.jpg";
+import imgFon from "../../assets/images/petsImages/black-white-cat.png";
 import { userInfo } from "../../redux/auth/selectors";
 
 export default function MyPets() {
   const { petsData = [] } = useSelector(userInfo);
-  // const dispatch = useDispatch();
-console.log(petsData);
   return (
     <>
       <AllCardsPet>
         <TitlePet>My Pets:</TitlePet>
-        {petsData.length === 0 ? <ImageFon src={imgFon}></ImageFon> : ""}
+        {petsData.length === 0 ? (
+          <div>
+            <TitleWithoutPet>
+              There are no pets added to your list yet
+            </TitleWithoutPet>
+            <ImageFon src={imgFon}></ImageFon>
+          </div>
+        ) : (
+          ""
+        )}
         {petsData?.map((info) => (
           <>
             <ContainerItem key={info._id}>

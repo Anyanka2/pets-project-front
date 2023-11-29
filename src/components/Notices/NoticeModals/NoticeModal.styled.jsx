@@ -1,17 +1,20 @@
 import styled from "styled-components";
 import { theme } from "../../../shared/styles/theme";
 
+
 export const Backdrop = styled.div`
   position: fixed;
   z-index: 1000;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  left:0;
+  right:0;
+  bottom:0;
   background-color: ${theme.colors.backdrop};
   backdrop-filter: blur(4px);
   overflow: auto;
   overflow-y: auto;
 `;
+
 
 export const Content = styled.div`
   min-height: 300px;

@@ -2,7 +2,7 @@ import { CustomSvg, StyledLink } from "./Logout.styled";
 
 export const MyButton = () => {
   return (
-    <StyledLink to="/main">
+    <StyledLink>
       Log out
       <CustomSvg>
         <svg

@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
 import { theme } from "../../shared/styles/theme";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
-export const AddPetLink = styled(Link)`
+export const AddPetLink = styled.button`
   position: fixed;
-  z-index: 99;
+  z-index: 99;  
   top: 50%;
-  translate: 0 -50%;
+  /* translate: 0 -50%; */
   right: 20px;
   display: flex;
   align-items: center;
@@ -25,6 +25,8 @@ export const AddPetLink = styled(Link)`
   line-height: 1.33;
   color: ${theme.colors.white};
   cursor: pointer;
+
+  margin-bottom: auto;
 
   &:focus,
   &:hover {
