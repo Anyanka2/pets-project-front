@@ -1,17 +1,20 @@
 import styled from "styled-components";
 import { theme } from "../../../shared/styles/theme";
 
+
 export const Backdrop = styled.div`
   position: fixed;
   z-index: 1000;
   top: 0;
-  width: 100vw;
-  height: 100vh;
+  left:0;
+  right:0;
+  bottom:0;
   background-color: ${theme.colors.backdrop};
   backdrop-filter: blur(4px);
   overflow: auto;
   overflow-y: auto;
 `;
+
 
 export const Content = styled.div`
   min-height: 300px;
@@ -45,8 +48,14 @@ export const Type = styled.p`
   background: ${theme.colors.lightBlue};
   border-radius: 0px 16px 16px 0px;
   border: none;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.semiBold};
   font-weight: ${theme.fontWeights.semiBold};
+  font-size: 14px;
+  line-height: 1.357;
+`;
+export const CommentAccent = styled.span`
+  font-family: ${theme.fonts.manrope.bold};
+  font-weight: ${theme.fontWeights.bold};
   font-size: 14px;
   line-height: 1.357;
 `;
@@ -105,7 +114,7 @@ export const Title = styled.h2`
   margin-bottom: 20px;
   text-align: justify;
   width: 198px;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.bold};
   font-weight: ${theme.fontWeights.bold};
   font-size: 24px;
   line-height: 1.357;
@@ -131,7 +140,7 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   margin: 0;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.semiBold};
   font-weight: ${theme.fontWeights.semiBold};
   font-size: 14px;
   line-height: 1.357;
@@ -147,7 +156,7 @@ export const Item = styled.li`
 `;
 export const ItemWrap = styled.li`
   margin: 0;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.regular};
   font-weight: ${theme.fontWeights.regular};
   font-size: 14px;
   line-height: 1.357;
@@ -172,7 +181,7 @@ export const Comment = styled.p`
   margin: 12px 0;
   padding: 0 12px;
   width: 256px;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.regular};
   font-weight: ${theme.fontWeights.regular};
   font-size: 14px;
   line-height: 1.357;
@@ -204,7 +213,7 @@ export const ContactLink = styled.a`
   border: 2px solid ${theme.colors.blueLink};
   background: transparent;
   border-radius: 40px;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.regular};
   font-weight: ${theme.fontWeights.regular};
   font-size: 16px;
   line-height: 1.357;
@@ -213,10 +222,10 @@ export const ContactLink = styled.a`
 
   &:hover,
   &:focus {
-    transform: scale(1.07);
     background: ${theme.colors.blueGradient};
     color: ${theme.colors.white};
-    border: none;
+    //border: transparent;
+    border: 2px solid transparent;
   }
 
   @media screen and (min-width: 768px) {
@@ -236,7 +245,7 @@ export const AddToFavBtn = styled.button`
   background: ${theme.colors.blueLink};
   border-radius: 40px;
   border: none;
-  font-family: ${theme.fonts.manrope};
+  font-family: ${theme.fonts.manrope.regular};
   font-style: normal;
   font-weight: ${theme.fontWeights.regular};
   font-size: 16px;
@@ -253,12 +262,11 @@ export const AddToFavBtn = styled.button`
   &:focus,
   &:hover {
     background: ${theme.colors.blueGradient};
-    transform: scale(1.07);
+    //transform: scale(1.07);
   }
 
   @media screen and (min-width: 768px) {
     width: 129px;
-    
   }
 `;
 

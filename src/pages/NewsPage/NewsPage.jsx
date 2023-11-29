@@ -41,7 +41,7 @@ const NewsPage = () => {
     
     setCurrentPage(pageNumber);
   } 
-
+  
   return (
     <>
       <StyledContainer>
@@ -55,7 +55,7 @@ const NewsPage = () => {
             const month = dateObj.getUTCMonth() + 1;
             const year = dateObj.getUTCFullYear();
 
-            return(<NewsCard key={material.nytID}>
+            return(<NewsCard key={material._id}>
                     <NewsBlueHeader />
                     <NewsBody>
                       <NewsImg src={material.imgUrl} alt={material.title} />

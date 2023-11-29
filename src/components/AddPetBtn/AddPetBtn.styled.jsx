@@ -1,13 +1,13 @@
 import { styled } from "styled-components";
 import { theme } from "../../shared/styles/theme";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
-export const AddPetLink = styled(Link)`
+export const AddPetLink = styled.button`
   position: fixed;
-  z-index: 99;
-  top: 50%;
-  translate: 0 -50%;
+  z-index: 99;  
+  top: 85%;
   right: 20px;
+  /* translate: -20%, -50%; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,6 +26,8 @@ export const AddPetLink = styled(Link)`
   color: ${theme.colors.white};
   cursor: pointer;
 
+  
+
   &:focus,
   &:hover {
     background: ${theme.colors.blueGradient};
@@ -38,13 +40,14 @@ export const AddPetLink = styled(Link)`
     
     @media screen and (min-width: 768px){
     position: unset;
+    /* position: absolute; */
   }
   }
 
   @media screen and (min-width: 768px) {
-    position: static;
-    margin-top: 60px;
-    margin-left: auto;
+    position: unset;
+    //margin-top: 60px;
+   // margin-left: auto;
     gap: 8px;
     flex-direction: row;
     width: 129px;
@@ -57,8 +60,8 @@ export const AddPetLink = styled(Link)`
   }
 `;
 export const PlusIcon = styled.svg`
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   stroke: ${theme.colors.white};
   position: absolute;
   top: 20px;

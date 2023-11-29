@@ -1,9 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
 axios.defaults.baseURL = "https://pet-web-server.onrender.com/";
-
 
 export const addNotices = createAsyncThunk(
   "api/notice/addPet",
@@ -14,6 +12,7 @@ export const addNotices = createAsyncThunk(
       const response = await axios.post("api/notices/addNotice", credentials, {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
         },
       });
 
@@ -25,12 +24,13 @@ export const addNotices = createAsyncThunk(
 );
 export const getAllNotices = createAsyncThunk(
   "api/notice/all",
-  async (_, thunkAPI) => {
-
+  async (data, thunkAPI) => {
     try {
-      const response = await axios.get("api/notices/");
+      const response = await axios.get(
+        `api/notices?offset=${data.page}&limit=${data.limit}`
+      );
 
-      return response.data;
+      return response.data.data.resourses;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -41,6 +41,24 @@ export const getOneNotice = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await axios.get(`api/notices/${id}`);
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const deleteNotice = createAsyncThunk(
+  "api/notice/delete",
+  async (noticeId, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    try {
+      const response = await axios.delete(`api/notices/${noticeId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       return response.data;
     } catch (error) {
