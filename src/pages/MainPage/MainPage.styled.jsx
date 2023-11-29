@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../shared/styles/theme";
-import mainImgMob from "../../assets/images/mainPage/main-img-mobile@2x.png";
-import mainImgTab from "../../assets/images/mainPage/main-img-tablet@2x.png";
-import mainImgDesk from "../../assets/images/mainPage/main-img-desktop@2x.png";
+import mainImgMob from "../../assets/images/mainPage/main_page_mob@1x.webp";
+import mainImgMob2 from "../../assets/images/mainPage/main_page_mob@2x.webp";
+import mainImgTab from "../../assets/images/mainPage/main_page_tablet@1x.webp";
+import mainImgTab2 from "../../assets/images/mainPage/main_page_tablet@2x.webp";
+import mainImgDesk from "../../assets/images/mainPage/main_page_desktop@1x.webp";
+import mainImgDesk2 from "../../assets/images/mainPage/main_page_desktop@2x.webp";
 
 export const Wrapper = styled.div`
   /* position: relative; */
@@ -11,23 +14,44 @@ export const Wrapper = styled.div`
   padding-top: 100px;
   /* margin: 0 auto; */
   background: url(${mainImgMob}) no-repeat;
-  background-position-x: right;
-  background-position-y: bottom;
-  background-size: contain;
+  background-position-x: 50% ;
+  background-position-y: 100%;
+  background-size: 137%;
+  @media (min-resolution: 150dpi){
+    background: url(${mainImgMob2}) no-repeat;
+    background-position-x: 50% ;
+    background-position-y: 100%;
+    background-size: 137%;
+  }
 
   @media only screen and (min-width: 768px) {
     /* max-width: 768px; */
     background: url(${mainImgTab}) no-repeat;
-    background-position: right bottom;
-    background-size: contain;
+    background-position-x: center;
+    background-position-y: 220px;
+    background-size: 137%;
     padding-top: 60px;
+    @media (min-resolution: 150dpi){
+    background: url(${mainImgTab2}) no-repeat;
+    background-position-x: center;
+    background-position-y: 220px;
+    background-size: 137%;
+    }
   }
   @media only screen and (min-width: 1280px) {
     background: url(${mainImgDesk}) no-repeat;
-    background-position: right bottom;
+    background-position-x: 70%;
+    background-position-y: -25px ;
     background-size: contain;
     /* max-width: 1280px; */
     padding-top: 200px;
+    @media (min-resolution: 150dpi){
+      background: url(${mainImgDesk2}) no-repeat;
+      background-position-x: 70%;
+      background-position-y: -25px ;
+      background-size: contain;
+    }
+
   }
 `;
 
