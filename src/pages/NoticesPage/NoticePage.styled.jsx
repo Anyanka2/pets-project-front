@@ -22,6 +22,7 @@ export const NoticePanelLeft = styled.div`
   justify-content: space-between;
 
   align-items: center;
+  z-index: 2;
 
   @media only screen and (min-width: 768px) {
     gap: 12px;
