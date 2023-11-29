@@ -19,10 +19,10 @@ export default function VerifyPage(props) {
   return (
     <>
       <TitlePage>Verification page</TitlePage>
-      {verifyComplete ? (
-        <TitlePage>Your email not verify</TitlePage>
-      ) : (
+      {verifyToken ? (
         <TitlePage>Your email verification success</TitlePage>
+      ) : (
+        <TitlePage>Your email not verify</TitlePage>
       )}
     </>
   );
