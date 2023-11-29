@@ -40,16 +40,16 @@ export const Wrapper = styled.div`
   }
   @media only screen and (min-width: 1280px) {
     background: url(${mainImgDesk}) no-repeat;
-    background-position-x: 70%;
+    background-position-x: 60%;
     background-position-y: -25px ;
-    background-size: contain;
+    background-size: 917px;
     /* max-width: 1280px; */
     padding-top: 200px;
     @media (min-resolution: 150dpi){
       background: url(${mainImgDesk2}) no-repeat;
-      background-position-x: 70%;
+      background-position-x: 60%;
       background-position-y: -25px ;
-      background-size: contain;
+      background-size: 917px;
     }
 
   }
