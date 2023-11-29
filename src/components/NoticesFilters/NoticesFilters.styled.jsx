@@ -124,7 +124,8 @@ const Filters = styled.div`
   top: 40px;
   right: 0;
 
-  display: flex;
+  /* display: flex; */
+  display: ${({ isOpen }) => isOpen ? 'flex' : 'none'};
   flex-direction: column;
   gap: 8px;
 
@@ -134,7 +135,7 @@ const Filters = styled.div`
   background-color: #fff;
   border-radius: 20px;
 
-  ${({ isOpen }) => isOpen && 'pointer-events: none'}
+  z-index: ${({ isOpen }) => isOpen && '100'};
 
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   will-change: opacity, max-height;
