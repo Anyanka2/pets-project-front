@@ -1,7 +1,7 @@
 export const filters = [
-    { filter: 'sell', path: 'sell' },
-    { filter: 'lost/found', path: 'lost-found' },
-    { filter: 'in good hands', path: 'in-good-hands' },
-    { filter: 'favorite ads', path: 'favorite' },
-    { filter: 'my ads', path: 'my-pets' },
+    { filter: 'sell', isPublic: 'sell' },
+    { filter: 'lost/found', isPublic: 'lost-found' },
+    { filter: 'in good hands', isPublic: 'in-good-hands' },
+    { filter: 'favorite ads', isPublic: 'favorite' },
+    { filter: 'my ads', isPublic: 'my-pets' },
   ];
