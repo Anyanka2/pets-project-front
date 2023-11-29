@@ -145,7 +145,7 @@ export const BurgerNavContainer = styled.div`
   }
 `;
 
-export const BurgerLogOutButton = styled(Link)`
+export const BurgerLogOutButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -120,14 +120,12 @@ export const BurgerButton = styled.button`
 `;
 
 export const LogOutContainer = styled.div`
-@media screen and (min-width: 768px){
-margin-left: auto;
-}
+  @media screen and (min-width: 768px) {
+    margin-left: auto;
+  }
 
-
-@media screen and (min-width: 1280px){
-  display: flex;
-  align-items: center;
-}
-
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    align-items: center;
+  }
 `;
