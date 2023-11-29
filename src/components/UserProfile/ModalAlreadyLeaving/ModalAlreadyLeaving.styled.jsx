@@ -1,18 +1,26 @@
 import { styled } from "styled-components";
+import { theme } from "../../../shared/styles/theme";
 
 export const Modal = styled.div`
-width: 232px;
+width: 280px;
+height: 302px;
 text-align: center;
-align-items: center;
-justify-content: center;
 padding-top: 53px;
 padding-bottom: 36px;
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+background-color:#fff;
+border-radius: 20px;
 
   @media screen and (min-width: 768px) {
-    width: 536px;
+    width: 608px;
+    height: 354px;
     padding-top: 84px;
     padding-bottom: 85px;
-  }
+    border-radius: 40px;
+  } 
 `;
 
 export const TitleText = styled.h2`
@@ -34,6 +42,7 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 gap: 8px;
+align-items: center;
 
   @media screen and (min-width: 768px) {
     flex-direction: row;
@@ -80,10 +89,19 @@ export const LogoutButtonText = styled.p`
   line-height: 1.36;
   letter-spacing: 0.04em;
   color: #FEF9F9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 
   padding-top: 9px;
   padding-bottom: 9px;
 `;
 
-export const LogoutIconSVG = styled.div`
+export const CustomSvgModalLogOut = styled.svg`
+width:24px;
+height:24px;
+fill: transparent;
+stroke: ${theme.colors.white};
+}
 `;

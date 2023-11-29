@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../shared/styles/theme";
 
@@ -7,7 +6,7 @@ export const CustomSvg = styled.svg`
   width: 24px;
   height: 24px;
 `;
-export const StyledLink = styled(Link)`
+export const StyledLink = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,8 +37,8 @@ export const StyledLink = styled(Link)`
     fill: ${theme.colors.white};
   }
 
-  @media screen and (min-width: 768px){
-   display:none;
+  @media screen and (min-width: 768px) {
+    display: none;
   }
 
   @media screen and (min-width: 1280px) {
@@ -73,5 +72,3 @@ export const StyledLink = styled(Link)`
     }
   }
 `;
-
-
