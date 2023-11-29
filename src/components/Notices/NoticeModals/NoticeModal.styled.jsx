@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { theme } from "../../../shared/styles/theme";
 
+
 export const Backdrop = styled.div`
   position: fixed;
   z-index: 1000;
@@ -13,6 +14,7 @@ export const Backdrop = styled.div`
   overflow: auto;
   overflow-y: auto;
 `;
+
 
 export const Content = styled.div`
   min-height: 300px;

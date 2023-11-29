@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ImgLoader = styled.img`
   position: absolute;
   top: calc(50% - 90px);
-  left: calc(50% - 160px);
+  left: calc(50% - 260px);
 `;
 
 export const Loading = styled.div`
