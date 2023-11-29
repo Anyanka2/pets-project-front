@@ -15,7 +15,7 @@ import {
   BtnContainer,
   HeartIcon,
 } from "./NoticeModal.styled";
-import PetPhoto from "../../../assets/images/petsImages/cat1.jpg";
+
 
 // import { theme } from "../../../shared/styles/theme";
 import { useDispatch } from "react-redux";
@@ -55,6 +55,7 @@ export const NoticeModalMore = ({
         if (noticeId) {
           const response = await dispatch(getOneNotice(noticeId));
           setInfoOnePet(response.payload);
+          console.log(response);
         }
         return;
       } catch (error) {}
@@ -67,7 +68,7 @@ export const NoticeModalMore = ({
       <Content>
         <ContainerInfo>
           <ImageContainer>
-            <Image src={PetPhoto} alt="dog" />
+            <Image src={infoOnePet.imageUrl} alt="dog" />
             <Type>{category}sell</Type>
           </ImageContainer>
           <div style={{ width: "321px", padding: "0 12px" }}>
@@ -113,7 +114,10 @@ export const NoticeModalMore = ({
             </div>
           </div>
         </ContainerInfo>
-        <Comment><CommentAccent>Comments:&nbsp;</CommentAccent>{infoOnePet.comments}</Comment>
+        <Comment>
+          <CommentAccent>Comments:&nbsp;</CommentAccent>
+          {infoOnePet.comments}
+        </Comment>
         <BtnContainer>
           <AddToFavBtn type="button">
             <span>Add to</span>
