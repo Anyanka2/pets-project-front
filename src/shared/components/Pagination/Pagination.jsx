@@ -53,7 +53,7 @@ export default function Pagination (props) {
             maxCount = current;
         }
 
-        if (current > total) {
+        if (current > total || current < 0) {
             return;
         }
         
