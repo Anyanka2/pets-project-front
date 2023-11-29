@@ -20,7 +20,6 @@ import { ReactComponent as LocationIcon } from "../../../assets/icons/location.s
 import { ReactComponent as ClockIcon } from "../../../assets/icons/clock.svg";
 import { ReactComponent as FemaleIcon } from "../../../assets/icons/female.svg";
 import { ReactComponent as MaleIcon } from "../../../assets/icons/male.svg";
-import PetPhoto from "../../../assets/images/petsImages/cat1.jpg";
 import { theme } from "../../../shared/styles/theme";
 // import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -120,7 +119,7 @@ export const NoticeCard = (props) => {
           materials.map((notice) => (
             <Item key={notice._id}>
               <ContainerPetInfo>
-                <Image src={PetPhoto} alt="pet" loading="lazy"></Image>
+                <Image src={notice.imageUrl} alt="pet" loading="lazy"></Image>
                 <ContainerPetStatus>
                   <TextStatus>{notice.category}</TextStatus>
                   <ContainerButton>

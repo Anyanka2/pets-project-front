@@ -17,15 +17,19 @@ export const ContainerItem = styled.div`
   box-shadow: ${theme.shadows.shadowDefault};
   padding: 20px;
   border-radius: 40px;
-
+&:last-child {
+      margin-bottom: 42px;
+    }
+  }
   @media screen and (min-width: 768px) {
     display: flex;
     align-items: flex-start;
     gap: 20px;
-  }
+    
 
   @media screen and (min-width: 1280px) {
     width: 821px;
+  }
   }
 `;
 
@@ -97,6 +101,7 @@ export const Text = styled.p`
   font-size: 14px;
   line-height: 1.57;
   letter-spacing: 0.56px;
+  font-family: "Manrope", sans-serif;
 
   &:not(:last-child) {
     margin-bottom: 12px;

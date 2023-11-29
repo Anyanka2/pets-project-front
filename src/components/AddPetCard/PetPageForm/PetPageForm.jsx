@@ -20,16 +20,16 @@ import {
 
 const AddPetPageForm = () => {
   const [formData, setFormData] = useState({
-    category: '',
-    name: '',
-    title: '',
-    birthday: '',
-    type: '',
-    location: '',
-    comments: '',
-    petPhoto: null,
-    sex: '',
-    price: '',
+    category: "",
+    name: "",
+    title: "",
+    birthday: "",
+    type: "",
+    location: "",
+    comments: "",
+    notice_image: null,
+    sex: "",
+    price: "",
   });
   const [step, setStep] = useState(0);
   const [title, setTitle] = useState('');
