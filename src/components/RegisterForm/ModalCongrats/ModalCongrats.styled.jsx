@@ -1,17 +1,16 @@
 import { styled } from "styled-components";
 
 export const Modal = styled.div`
-/* width: 232px; */
+width: 232px;
 text-align: center;
 align-items: center;
 justify-content: center;
-/* padding-top: 53px;
-padding-bottom: 36px; */
+padding-top: 44px;
+padding-bottom: 36px;
 
   @media screen and (min-width: 768px) {
-    /* width: 536px;
-    padding-top: 84px;
-    padding-bottom: 85px; */
+    width: 536px;
+    padding-top: 36px;
   }
 `;
 
