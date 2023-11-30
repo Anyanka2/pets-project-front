@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import {theme} from '../../shared/styles/theme'
 
 
 export const NavigationContainer = styled.nav`
@@ -25,6 +26,9 @@ export const StylesLink = styled(NavLink)`
   font-weight: 500;
 
   &:hover {
-    color: ${({theme}) => theme.colors.yellow};
+    color: ${theme.colors.yellow};
+  }
+  &.active {
+    color: ${theme.colors.yellow}
   }
 `;
