@@ -20,9 +20,9 @@ export default function VerifyPage(props) {
     <>
       <TitlePage>Email verification</TitlePage>
       {verifyToken ? (
-        <p>Your email was verified. For continue using the application please log in.</p>
+        <p style={{fontSize:"32px", textAlign: "center"}}>Your email was verified. For continue using the application please log in.</p>
       ) : (
-        <p>Your email was not verify</p>
+        <p style={{fontSize:"32px",textAlign: "center"}}>Your email was not verify</p>
       )}
     </>
   );
