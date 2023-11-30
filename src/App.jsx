@@ -6,6 +6,8 @@ import PrivateRoute from "../src/routes/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
 import { GlobalStyle } from "./shared/styles/GlobalStyles";
 import { SearchBar } from "./shared/components/SearchBar/SearchBar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage"));
@@ -52,6 +54,7 @@ const App = () => {
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
+        <ToastContainer position="top-right" />
       </Suspense>
     </>
   );

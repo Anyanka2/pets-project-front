@@ -22,6 +22,7 @@ import { useDispatch } from "react-redux";
 import { getOneNotice } from "../../../redux/notices/operationsNotices";
 import { useEffect } from "react";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 
 export const NoticeModalMore = ({
   //avatar,
@@ -119,6 +120,7 @@ export const NoticeModalMore = ({
           {infoOnePet.comments}
         </Comment>
         <BtnContainer>
+          <ToastContainer />
           <AddToFavBtn type="button">
             <span>Add to</span>
             <HeartIcon>

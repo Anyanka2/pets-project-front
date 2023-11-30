@@ -1,7 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 import { toast } from "react-toastify";
+import { selectVerifyToken } from "./selectors";
 axios.defaults.baseURL = "https://pet-web-server.onrender.com/";
 
 const setAuthHeader = (token) => {
@@ -18,14 +20,22 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post("api/auth/registration", credentials);
       if (res) {
-        toast("Welcome to Phone Book", {
+        toast("Registration Succses", {
           position: "top-right",
-          autoClose: 3000,
+          autoClose: 1500,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
         });
+         toast(`A verification email has been sent to ${credentials.email}`, {
+           position: "top-right",
+           autoClose: 3000,
+           hideProgressBar: false,
+           closeOnClick: true,
+           pauseOnHover: true,
+           draggable: true,
+         });
       }
     
       return res.data;
@@ -59,15 +69,17 @@ export const verifyEmailUser = createAsyncThunk(
 export const logIn = createAsyncThunk(
   "api/auth/login",
   async (credentials, thunkAPI) => {
+    const Info = useSelector(selectVerifyToken);
+    console.log(Info);
     try {
       const res = await axios.post("/api/auth/login", credentials);
       setAuthHeader(res.data.token);
-
+    
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
         error.message,
-        toast("the entered login or password is incorrect.", {
+        toast('Email or Password is Incorrect ', {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
