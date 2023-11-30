@@ -26,7 +26,7 @@ export const UserProfileSection = styled.div`
     @media screen and (min-width: 768px) {
       font-size: 28px;
       margin-bottom: 24px;
-      margin-top: 62px;
+      margin-top: 60px;
     }
   }
 `;
@@ -45,7 +45,7 @@ export const UserProfileContainer = styled.div`
     max-width: 704px;
     flex-direction: row-reverse;
     justify-content: flex-end;
-    gap: 71px;
+    gap: 63px;
     padding: 20px;
   }
 

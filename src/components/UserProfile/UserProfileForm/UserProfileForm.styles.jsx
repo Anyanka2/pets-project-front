@@ -125,6 +125,8 @@ export const LogoutBtn = styled.button`
     letter-spacing: 0.64px;
     color: ${theme.colors.grey};
 
+    margin-top: 9px;
+
       &::before{
         content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' fill='none'%3E%3Cpath stroke='%2354ADFF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4M3 12h12M3 12l4-4m-4 4 4 4'/%3E%3C/svg%3E");
         width: 24px;
@@ -132,4 +134,13 @@ export const LogoutBtn = styled.button`
         
         fill: #54ADFF;
     }
+
+    @media screen and (min-width: 768px) {
+      margin-top: 5px;
+    
+  }
+  @media screen and (min-width: 1280px) {
+      margin-top: 13px;
+    
+  }
 `;
