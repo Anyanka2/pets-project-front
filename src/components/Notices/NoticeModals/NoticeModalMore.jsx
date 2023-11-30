@@ -14,8 +14,8 @@ import {
   AddToFavBtn,
   BtnContainer,
   HeartIcon,
+  ItemWrapHover,
 } from "./NoticeModal.styled";
-
 
 // import { theme } from "../../../shared/styles/theme";
 import { useDispatch } from "react-redux";
@@ -95,20 +95,16 @@ export const NoticeModalMore = ({
                 <ItemWrap>{infoOnePet.location}</ItemWrap>
                 <ItemWrap>{infoOnePet.sex}</ItemWrap>
                 <ItemWrap>
-                  <a
-                    style={{ color: "#FFC107" }}
-                    href={`mailto:${infoOnePet.email}`}
-                  >
-                    {infoOnePet.email}
-                  </a>
+                  <ItemWrapHover>
+                    <a href={`mailto:${infoOnePet.email}`}>
+                      {infoOnePet.email}
+                    </a>
+                  </ItemWrapHover>
                 </ItemWrap>
                 <ItemWrap>
-                  <a
-                    style={{ color: "#FFC107" }}
-                    href={`tel:+${infoOnePet.phone}`}
-                  >
-                    {infoOnePet.phone}
-                  </a>
+                  <ItemWrapHover>
+                    <a href={`tel:+${infoOnePet.phone}`}>{infoOnePet.phone}</a>
+                  </ItemWrapHover>
                 </ItemWrap>
               </List>
             </div>
