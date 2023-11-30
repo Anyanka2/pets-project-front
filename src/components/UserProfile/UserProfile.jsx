@@ -1,9 +1,8 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import crossSmallBlue from "../../assets/icons/cross-small-blue.svg";
-// import crossSmallRed from "../../assets/icons/cross-small-red.svg";
-// import greenCheck from "../../assets/icons/check.svg";
+
 import edit from "../../assets/icons/edit.svg";
-// import UserPhotoDefault from "../../assets/icons/user_photo_default.svg";
+import UserPhotoDefault from "../../assets/icons/user_photo_default.svg";
 
 import {
   UserProfileContainer,
@@ -17,30 +16,38 @@ import UserProfileForm from "./UserProfileForm/UserProfileForm";
 import UserProfilePhotoEdit from "./UserProfilePhotoEdit/UserProfilePhotoEdit.jsx";
 import { useSelector } from "react-redux";
 import { userInfo } from "../../redux/auth/selectors.js";
+import { useEffect } from "react";
 
 export default function UserProfile() {
   const [editable, setEditable] = useState(false);
   const [userPhotoUrl, setUserPhotoUrl] = useState("");
+  const [newAvatarUrl, setNewAvatarUrl] = useState("");
 
   const editHandler = () => {
     setEditable((prevState) => !prevState);
   };
 
-  const infoAboutUser = useSelector(userInfo);
+  const {avatarURL} = useSelector(userInfo);
+  console.log("userProfileComponent: ", avatarURL);
 
-  const memoizedPhotoUrlHandler = useMemo(() => {
-    return (url) => {
-      setUserPhotoUrl(url);
-    };
-  }, []);
+  const photoUrlHandler = (url) => {
+    setUserPhotoUrl(url)
+  }
 
-  const renderUserPhoto = useMemo(() => {
-    if (infoAboutUser.avatarURL && userPhotoUrl) {
-      return userPhotoUrl;
+  const newAvatarHandler = (url) => {
+    setNewAvatarUrl(url);
+  }
+
+  useEffect(()=>{
+    if (newAvatarUrl) {
+      setUserPhotoUrl(newAvatarUrl);
+    } else if (avatarURL){
+      setUserPhotoUrl(avatarURL);
     } else {
-      return infoAboutUser.avatarURL;
+      setUserPhotoUrl(UserPhotoDefault);
     }
-  }, [infoAboutUser.avatarURL, userPhotoUrl]);
+  }, [avatarURL, userPhotoUrl, newAvatarUrl])
+ 
 
   return (
     <>
@@ -48,7 +55,7 @@ export default function UserProfile() {
         <h3>My information:</h3>
         <UserProfileContainer>
           <UserPhotoBox>
-            <UserImg src={renderUserPhoto} alt="User profile" />
+            <UserImg src={userPhotoUrl} alt="User profile" />
 
             {editable ? (
               <CancelEditBtn onClick={editHandler}>
@@ -61,7 +68,7 @@ export default function UserProfile() {
             )}
 
             {editable && (
-              <UserProfilePhotoEdit photoUrlHandler={memoizedPhotoUrlHandler} />
+              <UserProfilePhotoEdit photoUrlHandler={photoUrlHandler} newAvatarHandler={newAvatarHandler} />
             )}
           </UserPhotoBox>
 

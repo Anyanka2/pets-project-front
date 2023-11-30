@@ -7,7 +7,7 @@ import {
   LableForHiddenInput,
 } from "./UserProfilePhotoEdit.styled.jsx";
 import { useDispatch } from "react-redux";
-import { updateCurrentUser, uploadImg } from "../../../redux/auth/operation.js";
+import { uploadImg } from "../../../redux/auth/operation.js";
 
 export default function UserProfilePhotoEdit(props) {
   const [openDownload, setOpenDownload] = useState(false);
@@ -18,7 +18,7 @@ export default function UserProfilePhotoEdit(props) {
     if (file) {
       setSelectedFile(file);
       const obj = URL.createObjectURL(file);
-      props.photoUrlHandler(obj);
+      props.newAvatarHandler(obj);
       setOpenDownload(true);
     }
   };
@@ -34,8 +34,9 @@ export default function UserProfilePhotoEdit(props) {
   const handleAccept = async () => {
     if (selectedFile) {
       try {
-        await dispatch(uploadImg(selectedFile));
-        await dispatch(updateCurrentUser());
+        const response = await dispatch(uploadImg(selectedFile));
+        console.log("handleAccept: ", response.payload.avatarURL);
+        props.newAvatarHandler(response.payload.avatarURL);
         setOpenDownload(false);
         setSelectedFile(null); // Clear selected file
       } catch (error) {
