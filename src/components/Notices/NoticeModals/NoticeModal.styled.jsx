@@ -21,8 +21,7 @@ export const Content = styled.div`
   width: 280px;
   background-color: ${theme.colors.white};
   border-radius: 20px;
-  padding-top: 40px;
-  padding-bottom: 16px;
+  /* padding: 44px 20px 16px 20px; */
   overflow: 0;
 
   @media screen and (min-width: 768px) {
@@ -58,6 +57,11 @@ export const CommentAccent = styled.span`
   font-weight: ${theme.fontWeights.bold};
   font-size: 14px;
   line-height: 1.357;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: auto;
+    margin-top: 3px;
+  }
 `;
 
 export const Image = styled.img`
@@ -77,6 +81,10 @@ export const Image = styled.img`
 export const ImageContainer = styled.div`
   position: relative;
   margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+  }
 `;
 
 export const ContainerInfo = styled.div`
@@ -84,10 +92,12 @@ export const ContainerInfo = styled.div`
   gap: 12px;
   flex-direction: column;
 
+  margin-bottom: 12px;
+
   @media screen and (min-width: 768px) {
     flex-direction: row;
     gap: 24px;
-    padding: 32px 32px 24px;
+    margin-bottom: 28px;
   }
 `;
 
@@ -129,6 +139,14 @@ export const Title = styled.h2`
   }
 `;
 
+export const ListContainer = styled.div`
+  gap: 20px;
+
+  @media screen and (min-width: 768px) {
+    gap: 51px;
+  }
+`
+
 export const List = styled.ul`
   margin: 0;
   padding: 0;
@@ -157,7 +175,7 @@ export const Item = styled.li`
 export const ItemWrap = styled.li`
   margin: 0;
   font-family: ${theme.fonts.manrope.regular};
-  font-weight: ${theme.fontWeights.regular};
+  font-weight: ${theme.fontWeights.medium};
   font-size: 14px;
   line-height: 1.357;
   display: flex;
@@ -184,11 +202,10 @@ export const ItemWrapHover = styled.div`
 ` ;
 
 export const Comment = styled.p`
-  margin: 12px 0;
-  padding: 0 12px;
+  margin-bottom: 12px;
   width: 256px;
   font-family: ${theme.fonts.manrope.regular};
-  font-weight: ${theme.fontWeights.regular};
+  font-weight: ${theme.fontWeights.medium};
   font-size: 14px;
   line-height: 1.357;
   text-align: justify;
@@ -203,7 +220,7 @@ export const Comment = styled.p`
     letter-spacing: 0.64px;
     text-align: left;
     width: 618px;
-    margin: 0 auto;
+    margin-bottom: 70px;
     padding: 0;
   }
 `;
@@ -220,7 +237,7 @@ export const ContactLink = styled.a`
   background: transparent;
   border-radius: 40px;
   font-family: ${theme.fonts.manrope.regular};
-  font-weight: ${theme.fontWeights.regular};
+  font-weight: ${theme.fontWeights.bold};
   font-size: 16px;
   line-height: 1.357;
   letter-spacing: 0.64px;
@@ -253,7 +270,7 @@ export const AddToFavBtn = styled.button`
   border: none;
   font-family: ${theme.fonts.manrope.regular};
   font-style: normal;
-  font-weight: ${theme.fontWeights.regular};
+  font-weight: ${theme.fontWeights.bold};
   font-size: 16px;
   line-height: 1.37;
   letter-spacing: 0.64px;
@@ -287,9 +304,7 @@ export const BtnContainer = styled.div`
     gap: 17px;
     margin: 0 auto;
     justify-content: flex-end;
-    margin-top: 70px;
-    padding-right: 31px;
-    padding-bottom: 24px;
+    padding: 0;
   }
 `;
 export const HeartIcon = styled.svg`
