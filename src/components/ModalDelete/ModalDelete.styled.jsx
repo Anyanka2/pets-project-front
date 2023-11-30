@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import { theme } from "../../../shared/styles/theme";
 
 export const Modal = styled.div`
 width: 280px;
@@ -24,11 +23,28 @@ border-radius: 20px;
 `;
 
 export const TitleText = styled.h2`
-  font-weight: 500;
+  font-weight: 700;
   font-size: 24px;
   line-height: 1.36;
   letter-spacing: 0.04em;
   color: #111111;
+  margin-bottom: 14px;
+  width: 200px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
+    letter-spacing: -0.01em;
+    margin-bottom: 40px;
+    width: 288px;
+  }
+`;
+
+export const DeleteText = styled.p`
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.36;
+  letter-spacing: -0.01em;
+  color: #000000;
   margin-bottom: 44px;
 
   @media screen and (min-width: 768px) {
@@ -37,18 +53,8 @@ export const TitleText = styled.h2`
   }
 `;
 
-export const DeleteText = styled.p`
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 1.36;
-  letter-spacing: 0.04em;
-  color: #111111;
-  margin-bottom: 44px;
-
-  @media screen and (min-width: 768px) {
-    font-size: 36px;
-    margin-bottom: 48px;
-  }
+export const DeleteTextSpan = styled.span`
+  font-weight: 700;
 `;
 
 export const ButtonContainer = styled.div`
@@ -110,11 +116,4 @@ export const DeleteButtonText = styled.p`
 
   padding-top: 9px;
   padding-bottom: 9px;
-`;
-
-export const CustomSvgModalLogOut = styled.svg`
-width:24px;
-height:24px;
-fill: transparent;
-stroke: ${theme.colors.white};
 `;

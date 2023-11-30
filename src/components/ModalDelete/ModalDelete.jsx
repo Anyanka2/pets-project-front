@@ -2,6 +2,7 @@ import {
   Modal,
   TitleText,
   DeleteText,
+  DeleteTextSpan,
   CancelButton,
   DeleteButton,
   DeleteButtonText,
@@ -15,8 +16,8 @@ export const ModalDelete = () => {
         <Modal>
           <TitleText>Delete adverstiment?</TitleText>
           <DeleteText>
-                Are you sure you want to delete  “Cute dog looking for a home”? 
-                You can`t undo this action.    
+                Are you sure you want to delete <DeleteTextSpan>“Cute dog looking for a home”?</DeleteTextSpan>   
+                You can't undo this action.    
           </DeleteText>
           <ButtonContainer>
             <CancelButton>Cancel</CancelButton>
