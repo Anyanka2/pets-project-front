@@ -152,7 +152,6 @@ export const ContainerUser = styled.div`
 
 export const ImageFon = styled.img`
   position: absolute;
-  //width: 100%;
   top: 0px;
   left: 0px;
   object-fit: cover;
@@ -188,15 +187,23 @@ export const ButtonTrash = styled.button`
     top: 18px;
   }
 `;
-export const TrashIconPet = styled.svg``;
 
 export const StyledDiv = styled.div`
-  width: 330px;
-  height: 330px;
+  width: 290px;
+  height: 290px;
   background: #ffc107a9;
   border-radius: 50%;
   position: relative;
-  //width: 100%;
   top: 40px;
-  left: 200px;
+  left: 0;
+
+  @media screen and (min-width: 768px) {
+    width: 330px;
+    height: 330px;
+    top: 40px;
+    left: 190px;
+  }
+  @media screen and (min-width: 1280px) {
+    left: 190px;
+  }
 `;
