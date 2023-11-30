@@ -3,7 +3,7 @@ import {
   MobileMenuContainer,
   MobileMenuItem,
   BurgerLogOutButton,
-  NavLinkContainer,
+  UserIconBurger,
   LogoLinkBurger,
   CloseIcon,
 } from "./Burger.styled";
@@ -14,9 +14,9 @@ import {
   BurgerNavContainer,
 } from "./Burger.styled";
 import { CustomSvg, Image } from "../Header.styled";
-import { UserButton } from "../../Header/User/User";
+import { ReactComponent as UserIcon } from "../../../assets/icons/user.svg";
 import { useSelector } from "react-redux";
-import { selectToken, userInfo } from "../../../redux/auth/selectors";
+import { selectToken } from "../../../redux/auth/selectors";
 import svg from "../../../assets/icons/logo.svg";
 import { ReactComponent as CrossIcon } from "../../../assets/icons/cross-small.svg";
 import { ModalAlreaadyLeaving } from "../../UserProfile/ModalAlreadyLeaving/ModalAlreadyLeaving";
@@ -28,8 +28,6 @@ const MobileMenu = ({ toggleMenu, isOpen }) => {
     setOpenlogout(!openLogout);
   };
   const token = useSelector(selectToken);
-
-  const { name } = useSelector(userInfo);
   return (
     <>
       <MobileMenuContainer open={isOpen}>
@@ -69,12 +67,9 @@ const MobileMenu = ({ toggleMenu, isOpen }) => {
           </>
         ) : (
           <>
-          <NavLinkContainer to="/user" onClick={toggleMenu}>
-            
-            <UserButton />
-            {name}
-        
-        </NavLinkContainer>
+            <UserIconBurger to="/user" onClick={toggleMenu}>
+              <UserIcon />
+            </UserIconBurger>
             <BurgerLogOutButton onClick={logOutUser}>
               Log out
               <CustomSvg>

@@ -11,14 +11,13 @@ import {
   LinkLogin,
   BurgerButton,
   LogOutContainer,
-  NavLinkContainer
 } from "./Header.styled";
 import svg from "../../assets/icons/logo.svg";
 
 import { ReactComponent as BurgerIcon } from "../../assets/icons/menu.svg";
 import { Container } from "../../shared/components/Container";
 import { useSelector } from "react-redux";
-import { selectToken, userInfo } from "../../redux/auth/selectors";
+import { selectToken } from "../../redux/auth/selectors";
 import { UserButton } from "../Header/User/User";
 import { StyledLink } from "./Logout/Logout.styled";
 import { ModalAlreaadyLeaving } from "../UserProfile/ModalAlreadyLeaving/ModalAlreadyLeaving";
@@ -26,8 +25,6 @@ import { ModalAlreaadyLeaving } from "../UserProfile/ModalAlreadyLeaving/ModalAl
 const Header = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const [openLogout, setOpenlogout] = useState(false);
-
-  const { name } = useSelector(userInfo);
 
   const token = useSelector(selectToken);
 
@@ -94,12 +91,7 @@ const Header = () => {
                       </svg>
                     </CustomSvg>
                   </StyledLink>
-                  <NavLinkContainer to="/user">
-            
-                      <UserButton />
-                      {name}
-                  
-                  </NavLinkContainer>
+                  <UserButton />
                 </LogOutContainer>
               </>
             )}
@@ -107,7 +99,7 @@ const Header = () => {
           <BurgerButton onClick={toggleMenu}>
             <BurgerIcon />
           </BurgerButton>
-          <MobileMenu toggleMenu={toggleMenu} isOpen={isMenuOpen} />
+          <MobileMenu toggleMenu={toggleMenu} isOpen={isMenuOpen}/>
         </HeaderContainer>
       </Container>
       {openLogout ? (

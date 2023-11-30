@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../shared/styles/theme";
-import { NavLink} from 'react-router-dom';
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -120,7 +119,7 @@ export const BurgerButton = styled.button`
   }
 `;
 
-export const LogOutContainer = styled.div`  
+export const LogOutContainer = styled.div`
   @media screen and (min-width: 768px) {
     margin-left: auto;
   }
@@ -130,15 +129,3 @@ export const LogOutContainer = styled.div`
     align-items: center;
   }
 `;
-
-export const NavLinkContainer = styled(NavLink)`
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 12px;
-color: ${theme.colors.yellow};
-font-weight: 500;
-font-size: 16px;
-line-height: 1.36;
-letter-spacing: 0.64px;
-`
