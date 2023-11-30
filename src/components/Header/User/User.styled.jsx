@@ -1,8 +1,9 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const UserIconLink = styled(Link) `
+export const UserIconLink = styled.div `
   display: block;
+  width: 28px;
+  height: 28px;
 
 @media screen and (min-width: 768px){
    margin-left: auto;

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../shared/styles/theme";
 
@@ -129,3 +129,16 @@ export const LogOutContainer = styled.div`
     align-items: center;
   }
 `;
+
+
+export const NavLinkContainer = styled(NavLink)`
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 12px;
+color: ${theme.colors.yellow};
+font-weight: 500;
+font-size: 16px;
+line-height: 1.36;
+letter-spacing: 0.64px;
+`
