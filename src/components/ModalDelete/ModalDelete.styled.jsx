@@ -2,9 +2,9 @@ import { styled } from "styled-components";
 
 export const Modal = styled.div`
 width: 280px;
-height: 302px;
+height: 389px;
 text-align: center;
-padding-top: 53px;
+padding-top: 36px;
 padding-bottom: 36px;
 position: fixed;
 top: 50%;
@@ -15,9 +15,7 @@ border-radius: 20px;
 
   @media screen and (min-width: 768px) {
     width: 608px;
-    height: 354px;
-    padding-top: 84px;
-    padding-bottom: 85px;
+    height: 352px;
     border-radius: 40px;
   } 
 `;
@@ -46,10 +44,12 @@ export const DeleteText = styled.p`
   letter-spacing: -0.01em;
   color: #000000;
   margin-bottom: 44px;
+  width: 240px;
 
   @media screen and (min-width: 768px) {
     font-size: 36px;
     margin-bottom: 48px;
+    width: 393px;
   }
 `;
 

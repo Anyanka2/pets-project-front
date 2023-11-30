@@ -9,6 +9,8 @@ import {
   ButtonContainer,
 } from "./ModalDelete.styled";
 
+import { ReactComponent as DeleteIconSVG } from "../../assets/icons/trash.svg";
+
 export const ModalDelete = () => {
   return (
     <>
@@ -16,8 +18,9 @@ export const ModalDelete = () => {
         <Modal>
           <TitleText>Delete adverstiment?</TitleText>
           <DeleteText>
-                Are you sure you want to delete <DeleteTextSpan>“Cute dog looking for a home”?</DeleteTextSpan>   
-                You can't undo this action.    
+            Are you sure you want to delete <DeleteTextSpan>“Cute dog looking for a home”?</DeleteTextSpan>
+            {"\n"}
+            You can't undo this action.    
           </DeleteText>
           <ButtonContainer>
             <CancelButton>Cancel</CancelButton>
