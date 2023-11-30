@@ -138,6 +138,8 @@ export const Text = styled.p`
 `;
 
 export const ContainerUser = styled.div`
+position: relative;
+
   @media screen and (min-width: 768px) {
   }
 

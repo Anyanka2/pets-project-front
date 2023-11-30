@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-export const StyledBtn = styled.button`
+export const StyledBtn = styled.div`
   position: absolute;
   
   @media screen and (min-width: 768px){
-    top: 489px;
-    right: 33px
+    top: 373px;
+    right: 4px
   }
   
   @media screen and (min-width: 1280px) {
-    top: 127px;
-    right: 24px;
+    top: 58px;
+    right: 0;
   }
 `;
