@@ -7,6 +7,10 @@ export const StyledBtn = styled.div`
     top: 373px;
     right: 4px
   }
+  @media screen and (min-width: 1023){
+    top: 523px;
+    right: 160px
+  }
   
   @media screen and (min-width: 1280px) {
     top: 58px;

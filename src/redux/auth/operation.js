@@ -37,19 +37,10 @@ export const register = createAsyncThunk(
            draggable: true,
          });
       }
-    
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.message,
-        toast.error("This email address is in use or does not exist", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        })
+        error.message
       );
     }
   }

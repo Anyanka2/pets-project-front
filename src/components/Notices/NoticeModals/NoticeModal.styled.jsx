@@ -176,6 +176,12 @@ export const ItemWrap = styled.li`
     }
   }
 `;
+export const ItemWrapHover = styled.div`
+  color: ${theme.colors.yellow};
+    &:hover {
+      color: ${theme.colors.blueLink};
+    }
+` ;
 
 export const Comment = styled.p`
   margin: 12px 0;
