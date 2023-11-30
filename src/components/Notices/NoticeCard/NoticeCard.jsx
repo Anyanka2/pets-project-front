@@ -47,10 +47,17 @@ export const NoticeCard = (props) => {
   const [materials, setMaterials] = useState([]);
 
   function calculateAge(dateOfBirth) {
-    const dob = new Date(dateOfBirth);
+    const parts = dateOfBirth.split(".");
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const year = parseInt(parts[2], 10);
+
+    const dob = new Date(year, month, day);
+
     const today = new Date();
 
     let age = today.getFullYear() - dob.getFullYear();
+
     const monthDiff = today.getMonth() - dob.getMonth();
 
     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
@@ -59,12 +66,6 @@ export const NoticeCard = (props) => {
 
     return age;
   }
-  // const { notices } = useSelector(infoNotices);
-
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getAllNotices({page: currentPage, limit: 12}));
-  // }, [dispatch, currentPage]);
 
   useEffect(() => {
     const getMaterials = async (pageNumber, itemsPerPage = 12) => {
