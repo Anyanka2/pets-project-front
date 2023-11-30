@@ -69,6 +69,7 @@ const LoginForm = () => {
   };
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    console.log(values)
     if (loading) {
       return;
     }

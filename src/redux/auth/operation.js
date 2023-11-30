@@ -1,9 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useSelector } from "react-redux";
+
 
 import { toast } from "react-toastify";
-import { selectVerifyToken } from "./selectors";
+
 axios.defaults.baseURL = "https://pet-web-server.onrender.com/";
 
 const setAuthHeader = (token) => {
@@ -60,8 +60,6 @@ export const verifyEmailUser = createAsyncThunk(
 export const logIn = createAsyncThunk(
   "api/auth/login",
   async (credentials, thunkAPI) => {
-    const Info = useSelector(selectVerifyToken);
-    console.log(Info);
     try {
       const res = await axios.post("/api/auth/login", credentials);
       setAuthHeader(res.data.token);

@@ -4,10 +4,11 @@ import { AddPetLink, PlusIcon } from "./AddPetBtn.styled";
 // import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectToken } from "../../redux/user/userSelectors";
+
 import { useWindowSize } from '../../hooks/useResize';
 import { ReactComponent as PlusBig } from "../../assets/icons/plus-big.svg";
 import { ReactComponent as PlusSmall } from "../../assets/icons/plus-small.svg";
+import { selectToken } from "../../redux/auth/selectors";
 
 export const AddPetBtn = (props) => {
   const isAuthorized = useSelector(selectToken);
