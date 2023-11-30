@@ -22,6 +22,7 @@ import { useDispatch } from "react-redux";
 import { getOneNotice } from "../../../redux/notices/operationsNotices";
 import { useEffect } from "react";
 import { useState } from "react";
+import { ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
 import { selectToken } from "../../../redux/user/userSelectors";
 import { ToastContainer, toast } from "react-toastify";
@@ -144,4 +145,3 @@ export const NoticeModalMore = ({
       </>
     );
   }
-
