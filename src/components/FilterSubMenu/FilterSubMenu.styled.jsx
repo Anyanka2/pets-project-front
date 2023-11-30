@@ -97,16 +97,6 @@ const ItemCheckbox = styled.input`
   overflow: hidden;
 `;
 
-const KotikiBtn = styled(MenuBtn)`
-  min-height: 32px;
-  padding-left: 10px;
-
-  & svg {
-    stroke: none;
-    fill: ${({ theme }) => theme.colors.blueLink};
-  }
-`;
-
 export {
   Menu,
   MenuBtn,
@@ -116,5 +106,4 @@ export {
   CheckedIcon,
   ItemText,
   ItemCheckbox,
-  KotikiBtn,
 };

@@ -182,6 +182,7 @@ export const LearnMoreBtn = styled.button`
   border: 2px solid ${theme.colors.blueLink};
   background: transparent;
   margin: 0 auto;
+  margin-top: auto;
 
   &:hover,
   &:focus {

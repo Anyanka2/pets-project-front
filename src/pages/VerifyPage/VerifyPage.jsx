@@ -1,7 +1,29 @@
-import { TitlePage } from "../../shared/components/TitlePage.styled"
-export default function VerifyPage (props) {
+import { useDispatch } from "react-redux";
+import { TitlePage } from "../../shared/components/TitlePage.styled";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { verifyEmailUser } from "../../redux/auth/operation";
 
-    return(<>
-        <TitlePage>This is verification page</TitlePage>
-    </>)
+export default function VerifyPage(props) {
+  const verifyComplete = (state) => state.auth.token;
+  console.log(verifyComplete);
+  const { verifyToken } = useParams();
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(verifyEmailUser(verifyToken));
+    
+  });
+
+  return (
+    <>
+      <TitlePage>Email verification</TitlePage>
+      {verifyToken ? (
+        <p style={{fontSize:"32px", textAlign: "center"}}>Your email was verified. For continue using the application please log in.</p>
+      ) : (
+        <p style={{fontSize:"32px",textAlign: "center"}}>Your email was not verify</p>
+      )}
+    </>
+  );
 }
