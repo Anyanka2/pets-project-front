@@ -11,7 +11,7 @@ import {
 } from "./SearchBar.styled";
 import PropTypes from "prop-types";
 
-export const SearchBar = (props) => {
+export const SearchBar = ({ value, onChange }) => {
   const [value, setValue] = useState("");
 
   const onSubmit = (value) => {
@@ -27,7 +27,7 @@ export const SearchBar = (props) => {
     if (value.trim() === "") {
       return;
     }
-    // props.onSubmit(value);
+    props.onSubmit(value);
     onSubmit(value);
     setValue("");
   };
@@ -39,7 +39,7 @@ export const SearchBar = (props) => {
           autoComplete="off"
           autoFocus
           placeholder="Search"
-          onChange={handleValueChange}
+          onChange={(e) => onChange(e.target.value)}
           value={value}
         ></SearchInput>
         <SearchButton type="submit">

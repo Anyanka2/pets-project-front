@@ -1,3 +1,7 @@
+import { useSearchParams } from "react-router-dom";
+import { userInfo } from "../../redux/auth/selectors";
+import { useSelector } from "react-redux";
+
 import { TitlePage } from "../../shared/components/TitlePage.styled";
 import { SearchBar } from "../../shared/components/SearchBar/SearchBar";
 import { Container } from "../../shared/components/Container";
@@ -10,8 +14,8 @@ import {
 } from "./NoticePage.styled";
 import { useState } from "react";
 // import { NoticesCategoryNav } from "../../components/Notices/NoticeCategoryPanel/NoticesCategoryNav";
-import NoticesFilters from '../../components/NoticesFilters/NoticesFilters';
-import NoticesCategoriesNav from '../../components/NoticesCategoriesNav/NoticesCategoriesNav'
+import NoticesFilters from "../../components/NoticesFilters/NoticesFilters";
+import NoticesCategoriesNav from "../../components/NoticesCategoriesNav/NoticesCategoriesNav";
 import { AddPetBtn } from "../../components/AddPetBtn/AddPetBtn";
 // import { Button } from "../../shared/components/Buttons/Button.styled";
 import { NoticeCard } from "../../components/Notices/NoticeCard/NoticeCard";
@@ -23,12 +27,25 @@ const NoticesPage = () => {
   const handleModal = () => {
     setIsModalOpen((prev) => !prev);
   };
+  const [searchParams, setSearchParams] = useSearchParams();
+  const petName = searchParams.get("name") ?? "";
+  const { petsData = [] } = useSelector(userInfo);
+  const pets = petsData;
+
+  const visiblePets = pets.filter((pet) =>
+    pet.name.toLowerCase().includes(petName.toLowerCase())
+  );
+
+  const updateQueryString = (name) => {
+    const nextParams = name !== "" ? { name } : {};
+    setSearchParams(nextParams);
+  };
   return (
     <>
       <Container>
         <TitlePage>Find your favorite pet</TitlePage>
         <StaledDiv>
-          <SearchBar />
+          <SearchBar value={petName} onChange={updateQueryString} />
         </StaledDiv>
         <>
           <FilterContainer>
@@ -60,7 +77,7 @@ const NoticesPage = () => {
             </NoticePanelRigth>
           </FilterContainer>
           <div>
-            <NoticeCard />
+            <NoticeCard pets={visiblePets} />
           </div>
         </>
         <UniversalModal isModalOpen={isModalOpen} onClick={handleModal}>
