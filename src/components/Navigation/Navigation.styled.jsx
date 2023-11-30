@@ -24,7 +24,13 @@ export const StylesLink = styled(NavLink)`
   font-size: 20px;
   font-weight: 500;
 
-  &:hover {
+  &:hover  {
     color: ${({theme}) => theme.colors.yellow};
   }
+
+
+  &.active {
+    color: ${({theme}) => theme.colors.yellow} ;
+  }
 `;
+

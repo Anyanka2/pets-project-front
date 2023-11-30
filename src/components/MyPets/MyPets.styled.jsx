@@ -101,9 +101,7 @@ export const InfoContainer = styled.div`
     padding-bottom: 0;
   }
   @media screen and (min-width: 1280px) {
-
   }
-
 `;
 
 export const Text = styled.p`
@@ -174,32 +172,30 @@ export const ImageFon = styled.img`
   object-fit: cover;
 `;
 
-
 export const ButtonTrash = styled.button`
-display: flex;
-align-items: center;
-justify-content: center;
-outline: transparent;
-width: 40px;
-height: 40px;
-margin: 0;
-padding: 0;
-border: none;
-border-radius: 50%;
-line-height: 0;
-background-color: #CCE4FB;
-transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
-position: absolute;
-top: 272px;
-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: transparent;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  line-height: 0;
+  background-color: #cce4fb;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  position: absolute;
+  top: 272px;
+  right: 16px;
 
-@media screen and (min-width: 768px) {
-  top: 20px;
-  right: 20px;
-}
+  @media screen and (min-width: 768px) {
+    top: 20px;
+    right: 20px;
+  }
 
-@medis screen and (min-width: 1280px) {
-  top: 18px;
-}
-
-`
+  @medis screen and (min-width: 1280px) {
+    top: 18px;
+  }
+`;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { theme } from "../../../shared/styles/theme";
 
 export const MobileMenuContainer = styled.div`
@@ -62,6 +62,10 @@ export const MobileMenuItem = styled(Link)`
   line-height: 1.36;
 
   &:hover {
+    color: ${({ theme }) => theme.colors.yellow};
+  }
+
+  &.active {
     color: ${({ theme }) => theme.colors.yellow};
   }
 
@@ -186,3 +190,15 @@ export const UserIconBurger = styled(Link)`
     display: none;
   }
 `;
+
+export const NavLinkContainer = styled(NavLink)`
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 12px;
+color: ${theme.colors.yellow};
+font-weight: 500;
+font-size: 16px;
+line-height: 1.36;
+letter-spacing: 0.64px;
+`
