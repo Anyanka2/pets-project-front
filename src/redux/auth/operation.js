@@ -17,29 +17,10 @@ export const register = createAsyncThunk(
   async (credentials, thunkAPI) => {
     try {
       const res = await axios.post("api/auth/registration", credentials);
-      if (res) {
-        toast("Welcome to Phone Book", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        });
-      }
-    
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(
-        error.message,
-        toast.error("This email address is in use or does not exist", {
-          position: "top-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-        })
+        error.message
       );
     }
   }

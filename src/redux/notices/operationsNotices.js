@@ -5,11 +5,11 @@ axios.defaults.baseURL = "https://pet-web-server.onrender.com/";
 
 export const addNotices = createAsyncThunk(
   "api/notice/addPet",
-  async (credentials, thunkAPI) => {
+  async (data, thunkAPI) => {
     const state = thunkAPI.getState();
     const token = state.auth.token;
     try {
-      const response = await axios.post("api/notices/addNotice", credentials, {
+      const response = await axios.post("api/notices/addNotice", data, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -22,6 +22,26 @@ export const addNotices = createAsyncThunk(
     }
   }
 );
+export const addNoticesToFavorite = createAsyncThunk(
+  "api/notice/addPet",
+  async (noticeId, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    try {
+      const response = await axios.patch(`/api/users/favoriteNotices/${noticeId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getAllNotices = createAsyncThunk(
   "api/notice/all",
   async (data, thunkAPI) => {
