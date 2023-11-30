@@ -10,6 +10,7 @@ import {
 } from "./ModalDelete.styled";
 
 import { ReactComponent as DeleteIconSVG } from "../../assets/icons/trash.svg";
+import { Backdrop } from "../../shared/components/Backdrop.styled";
 
 export const ModalDelete = () => {
   return (
