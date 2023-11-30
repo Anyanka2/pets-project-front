@@ -164,8 +164,7 @@ export const NoticeCard = (props) => {
                     </SpanPetText>
                   </ItemPetInfo>
                   <ItemPetInfo>
-                    <FemaleIcon />
-                    <MaleIcon />
+                    {notice.sex === "male" ? <MaleIcon /> : <FemaleIcon />}
                     <SpanPetText>{notice.sex}</SpanPetText>
                   </ItemPetInfo>
                 </ListPetInfo>

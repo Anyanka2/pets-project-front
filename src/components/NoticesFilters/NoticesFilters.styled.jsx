@@ -64,6 +64,7 @@ const Btn = styled.button`
   &:focus {
     color: ${({ theme }) => theme.colors.white};
     background-color: ${({ theme }) => theme.colors.blueLink};
+    /* background: ${({ theme }) => theme.colors.blueGradient}; */
   }
 
   &::before {
@@ -116,6 +117,16 @@ const Btn = styled.button`
       isOpen ? 'transparent' : theme.colors.blueLink};
     border-style: solid;
     border-radius: 40px;
+    transition: background ${({ theme }) => theme.transitions.transitionRegular},
+    color ${({ theme }) => theme.transitions.transitionRegular};
+    
+
+    &:hover,
+    &:focus {
+      color: ${({ theme }) => theme.colors.white};
+      background: ${({ theme }) => theme.colors.blueGradient};
+      border: none;
+    }
   }
 `;
 
@@ -124,7 +135,7 @@ const Filters = styled.div`
   top: 40px;
   right: 0;
 
-  display: flex;
+  display: ${({ isOpen }) => isOpen ? 'flex' : 'none'};
   flex-direction: column;
   gap: 8px;
 
@@ -134,7 +145,7 @@ const Filters = styled.div`
   background-color: #fff;
   border-radius: 20px;
 
-  ${({ isOpen }) => isOpen && 'pointer-events: none'}
+  z-index: ${({ isOpen }) => isOpen && '100'};
 
   opacity: ${({ isOpen }) => (isOpen ? 1 : 0)};
   will-change: opacity, max-height;

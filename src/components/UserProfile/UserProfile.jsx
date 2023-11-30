@@ -27,7 +27,7 @@ export default function UserProfile() {
   };
 
   const infoAboutUser = useSelector(userInfo);
-console.log(infoAboutUser.avatarURL);
+
   const memoizedPhotoUrlHandler = useMemo(() => {
     return (url) => {
       setUserPhotoUrl(url);
@@ -45,7 +45,7 @@ console.log(infoAboutUser.avatarURL);
   return (
     <>
       <UserProfileSection>
-        <h2>My information:</h2>
+        <h3>My information:</h3>
         <UserProfileContainer>
           <UserPhotoBox>
             <UserImg src={renderUserPhoto} alt="User profile" />

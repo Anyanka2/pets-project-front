@@ -3,15 +3,19 @@ import UserProfile from "../../components/UserProfile/UserProfile";
 import MyPets from "../../components/MyPets/MyPets";
 import { ContainerUser } from "../../components/MyPets/MyPets.styled";
 import { AddPetBtn } from "../../components/AddPetBtn/AddPetBtn";
+import { StyledBtn } from "../UserPage/UserPage.styled";
 
 const UserPage = () => {
   return (
     <>
-          <Container>
-              <AddPetBtn />
+      <Container>
+       
         <ContainerUser>
           <UserProfile />
           <MyPets />
+          <StyledBtn>
+          <AddPetBtn />
+          </StyledBtn>
         </ContainerUser>
           </Container>
           

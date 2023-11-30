@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   /* position: relative; */
   /* width: 100vw; */
   height: 100vh;
-  padding-top: 100px;
+  padding-top: 75px;
   /* margin: 0 auto; */
   background: url(${mainImgMob}) no-repeat;
   background-position-x: 50% ;
@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
   }
 
   @media only screen and (min-width: 768px) {
-    /* max-width: 768px; */
+    padding-top: 80px;
     background: url(${mainImgTab}) no-repeat;
     background-position-x: center;
     background-position-y: 220px;
@@ -40,28 +40,28 @@ export const Wrapper = styled.div`
   }
   @media only screen and (min-width: 1280px) {
     background: url(${mainImgDesk}) no-repeat;
-    background-position-x: 70%;
+    background-position-x: 60%;
     background-position-y: -25px ;
-    background-size: contain;
+    background-size: 917px;
     /* max-width: 1280px; */
     padding-top: 200px;
     @media (min-resolution: 150dpi){
       background: url(${mainImgDesk2}) no-repeat;
-      background-position-x: 70%;
+      background-position-x: 60%;
       background-position-y: -25px ;
-      background-size: contain;
+      background-size: 917px;
     }
 
   }
 `;
 
-export const StyledPicture = styled.picture`
-  @media only screen and (min-width: 1280px) {
+// export const StyledPicture = styled.picture`
+//   @media only screen and (min-width: 1280px) {
     /* display: block; */
     /* margin-left: 363px; */
-    
+/*     
   }
-`;
+`; */
 
 export const StyledTittle = styled.h1`
   /* margin-left: 20px; */

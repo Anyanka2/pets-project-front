@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -8,12 +8,11 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-import { authReducer } from './auth/slice';
-import { userReducer } from './auth/userSlice';
-import { noticesReducer } from './notices/sliceNotices';
-
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { authReducer } from "./auth/slice";
+import { userReducer } from "./auth/userSlice";
+import { noticesReducer } from "./notices/sliceNotices";
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -24,15 +23,15 @@ const middleware = [
 ];
 
 const authPersistConfig = {
-  key: 'auth',
+  key: "auth",
   storage,
-  whitelist: ['token'],
+  whitelist: ["token", "verify"],
 };
 
 const userPersistConfig = {
   key: "user",
   storage,
-  whitelist: ["user", "isLoggedIn", "isRefreshing"], 
+  whitelist: ["user", "isLoggedIn", "isRefreshing"],
 };
 export const store = configureStore({
   reducer: {

@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { Formik } from 'formik';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { Formik } from "formik";
 
-import { register } from '../../redux/auth/operation';
+import { register } from "../../redux/auth/operation";
 
-import { ReactComponent as OpenEyeIcon } from '../../assets/icons/eye-open.svg';
-import { ReactComponent as CloseEyeIcon } from '../../assets/icons/eye-closed.svg';
-import { ReactComponent as CrossIcon } from '../../assets/icons/cross-small.svg';
-import { ReactComponent as CheckIcon } from '../../assets/icons/check.svg';
+import { ReactComponent as OpenEyeIcon } from "../../assets/icons/eye-open.svg";
+import { ReactComponent as CloseEyeIcon } from "../../assets/icons/eye-closed.svg";
+import { ReactComponent as CrossIcon } from "../../assets/icons/cross-small.svg";
+import { ReactComponent as CheckIcon } from "../../assets/icons/check.svg";
 
 import {
   RegisterFormEl,
@@ -30,48 +30,49 @@ import {
   RegisterErrorMessage,
   LoginText,
   LoginLink,
-} from './RegisterForm.styled';
+} from "./RegisterForm.styled";
+
 
 const initialValues = {
-  username: '',
-  email: '',
-  password: '',
-  confirmPassword: '',
+  username: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
 };
 
-const fieldValidation = values => {
+const fieldValidation = (values) => {
   const errors = {};
 
   if (!values.username) {
-    errors.username = 'This field is required';
+    errors.username = "This field is required";
   } else if (/^\s+$/.test(values.username)) {
-    errors.username = 'Username cannot be empty';
+    errors.username = "Username cannot be empty";
   } else if (values.username.length < 2) {
-    errors.username = 'Username must be at least 2 characters long';
-  }  
+    errors.username = "Username must be at least 2 characters long";
+  }
 
   if (!values.email) {
-    errors.email = 'This field is required';
+    errors.email = "This field is required";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-    errors.email = 'Enter a valid Email';
+    errors.email = "Enter a valid Email";
   }
 
   if (!values.password) {
-    errors.password = 'This field is required';
+    errors.password = "This field is required";
   } else if (values.password.length < 8) {
-    errors.password = 'Password must be at least 8 characters long';
+    errors.password = "Password must be at least 8 characters long";
   } else if (!/[A-Za-z]/.test(values.password)) {
-    errors.password = 'Password must contain at least one letter';
+    errors.password = "Password must contain at least one letter";
   } else if (!/\d/.test(values.password)) {
-    errors.password = 'Password must contain at least one digit';
+    errors.password = "Password must contain at least one digit";
   }
 
   if (!values.confirmPassword) {
-    errors.confirmPassword = 'This field is required';
+    errors.confirmPassword = "This field is required";
   } else if (values.confirmPassword.length < 8) {
-    errors.confirmPassword = 'Password must be at least 8 characters long';
+    errors.confirmPassword = "Password must be at least 8 characters long";
   } else if (values.password !== values.confirmPassword) {
-    errors.confirmPassword = 'Passwords do not match';
+    errors.confirmPassword = "Passwords do not match";
   }
 
   return errors;
@@ -87,12 +88,13 @@ const RegisterForm = () => {
   const navigate = useNavigate();
 
   const togglePasswordVisibility = () => {
-    setShowPassword(prevState => !prevState);
+    setShowPassword((prevState) => !prevState);
   };
 
   const toggleConfirmPasswordVisibility = () => {
-    setShowConfirmPassword(prevState => !prevState);
+    setShowConfirmPassword((prevState) => !prevState);
   };
+
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     if (loading) {
@@ -106,22 +108,22 @@ const RegisterForm = () => {
       password: values.password,
     };
 
-  try {
-    const response = await dispatch(register(credentials));
-    if (response.error) {
-      setEmailAvailable(false);
-    } else {
-      setEmailAvailable(true);
-      navigate('/login');
+    try {
+      const response = await dispatch(register(credentials));
+
+      if (response.error) {
+        setEmailAvailable(false);
+      } else {
+        setEmailAvailable(true);
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
+      setSubmitting(false);
     }
-  } catch (error) {
-    console.error('Error:', error);
-   
-  } finally {
-    setLoading(false);
-    setSubmitting(false);
-  }
-};
+  };
 
   return (
     <Formik
@@ -141,24 +143,30 @@ const RegisterForm = () => {
         isSubmitting,
         resetForm,
       }) => {
-
         if (!values.password) {
-            errors.password = 'This field is required';
-          } else if (values.password.length < 8) {
-            errors.password = 'Password must be at least 8 characters long';
-          } else if (!/[A-Za-z]/.test(values.password)) {
-            errors.password = 'Password must contain at least one letter';
-          } else if (!/\d/.test(values.password)) {
-            errors.password = 'Password must contain at least one digit';
-          }
+          errors.password = "This field is required";
+        } else if (values.password.length < 8) {
+          errors.password = "Password must be at least 8 characters long";
+        } else if (!/[A-Za-z]/.test(values.password)) {
+          errors.password = "Password must contain at least one letter";
+        } else if (!/\d/.test(values.password)) {
+          errors.password = "Password must contain at least one digit";
+        }
 
-        const isPasswordValid = values.password && values.password.length >= 8 && /[A-Za-z]/.test(values.password) && /\d/.test(values.password);
-        const isPasswordMatch = values.password && values.password === values.confirmPassword;
+        const isPasswordValid =
+          values.password &&
+          values.password.length >= 8 &&
+          /[A-Za-z]/.test(values.password) &&
+          /\d/.test(values.password);
+        const isPasswordMatch =
+          values.password && values.password === values.confirmPassword;
         const isUsernameValid = values.username && values.username.length >= 2;
-        const isEmailValid = values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email);
-        const handleFieldChange = e => {
+        const isEmailValid =
+          values.email &&
+          !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email);
+        const handleFieldChange = (e) => {
           const { name } = e.target;
-          setErrors({ ...errors, [name]: '' });
+          setErrors({ ...errors, [name]: "" });
           handleChange(e);
         };
 
@@ -174,7 +182,7 @@ const RegisterForm = () => {
                 secure={isUsernameValid}
                 style={{
                   borderColor:
-                    errors.username && touched.username ? '#F43F5E' : '#54ADFF',
+                    errors.username && touched.username ? "#F43F5E" : "#54ADFF",
                 }}
               >
                 <RegisterFormInput
@@ -187,14 +195,14 @@ const RegisterForm = () => {
                   disabled={loading}
                 />
                 {isUsernameValid && (
-                    <CheckMarkIcon>
-                      <CheckIcon />
-                    </CheckMarkIcon>
-                  )}
+                  <CheckMarkIcon>
+                    <CheckIcon />
+                  </CheckMarkIcon>
+                )}
                 {errors.username && touched.username && values.username && (
                   <ErrorIcon
                     onClick={() => {
-                      resetForm({ values: { ...values, username: '' } });
+                      resetForm({ values: { ...values, username: "" } });
                     }}
                   >
                     <CrossIcon />
@@ -206,16 +214,16 @@ const RegisterForm = () => {
               )}
             </RegisterFormUsernameContainer>
 
-            <RegisterFormEmailContainer 
-            error={errors.email && touched.email}
-            secure={isEmailValid}
+            <RegisterFormEmailContainer
+              error={errors.email && touched.email}
+              secure={isEmailValid}
             >
               <RegisterFormEmailInputContainer
                 error={errors.email && touched.email}
                 secure={isEmailValid}
                 style={{
                   borderColor:
-                    errors.email && touched.email ? '#F43F5E' : '#54ADFF',
+                    errors.email && touched.email ? "#F43F5E" : "#54ADFF",
                 }}
               >
                 <RegisterFormInput
@@ -227,15 +235,18 @@ const RegisterForm = () => {
                   onBlur={handleBlur}
                   disabled={loading}
                 />
-                {values.email && /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email) && (
+                {values.email &&
+                  /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(
+                    values.email
+                  ) && (
                     <CheckMarkIcon>
-                    <CheckIcon />
+                      <CheckIcon />
                     </CheckMarkIcon>
-                )}
+                  )}
                 {errors.email && touched.email && values.email && (
                   <ErrorIcon
                     onClick={() => {
-                      resetForm({ values: { ...values, email: '' } });
+                      resetForm({ values: { ...values, email: "" } });
                     }}
                   >
                     <CrossIcon />
@@ -258,14 +269,14 @@ const RegisterForm = () => {
                 style={{
                   borderColor:
                     errors.password && touched.password
-                      ? '#F43F5E'
+                      ? "#F43F5E"
                       : isPasswordValid
-                      ? '#00C3AD'
-                      : '#54ADFF',
+                      ? "#00C3AD"
+                      : "#54ADFF",
                 }}
               >
                 <RegisterFormInput
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   name="password"
                   placeholder="Password"
                   value={values.password}
@@ -289,7 +300,7 @@ const RegisterForm = () => {
                   {errors.password && touched.password && values.password && (
                     <ErrorIcon
                       onClick={() => {
-                        resetForm({ values: { ...values, password: '' } });
+                        resetForm({ values: { ...values, password: "" } });
                       }}
                     >
                       <CrossIcon />
@@ -317,12 +328,12 @@ const RegisterForm = () => {
                 style={{
                   borderColor:
                     errors.confirmPassword && touched.confirmPassword
-                      ? '#F43F5E'
-                      : '#54ADFF',
+                      ? "#F43F5E"
+                      : "#54ADFF",
                 }}
               >
                 <RegisterFormInput
-                  type={showConfirmPassword ? 'text' : 'password'}
+                  type={showConfirmPassword ? "text" : "password"}
                   name="confirmPassword"
                   placeholder="Confirm password"
                   value={values.confirmPassword}
@@ -348,7 +359,7 @@ const RegisterForm = () => {
                       <ErrorIcon
                         onClick={() => {
                           resetForm({
-                            values: { ...values, confirmPassword: '' },
+                            values: { ...values, confirmPassword: "" },
                           });
                         }}
                       >
@@ -379,8 +390,8 @@ const RegisterForm = () => {
               Registration
             </RegisterBtn>
             <LoginText>
-              Already have an account?{' '}
-              <LoginLink to={'/login'}>Log In</LoginLink>
+              Already have an account?{" "}
+              <LoginLink to={"/login"}>Log In</LoginLink>
             </LoginText>
           </RegisterFormEl>
         );

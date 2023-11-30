@@ -103,5 +103,4 @@ width:24px;
 height:24px;
 fill: transparent;
 stroke: ${theme.colors.white};
-}
 `;

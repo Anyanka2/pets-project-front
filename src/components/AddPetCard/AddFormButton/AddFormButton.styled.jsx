@@ -1,5 +1,6 @@
-import styled, { keyframes, css } from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled, { keyframes, css } from "styled-components";
+import { theme } from "../../../shared/styles/theme";
+import { Link } from "react-router-dom";
 
 const moveArrow = keyframes`
 0% {
@@ -21,21 +22,17 @@ const buttonBack = css`
   align-items: center;
   justify-content: center;
   gap: 12px;
-
-  padding: ${({ theme }) => 2 * 2 + 'px'} 0;
-
+  padding: ${({ theme }) => 2 * 2 + "px"} 0;
   max-height: 40px;
-
-  font-family: 'Manrope';
+  font-family: ${theme.fonts.manrope.regular};
   font-size: 16px;
-  font-weight: 700;
+  font-weight: ${theme.fontWeights.regular};
   line-height: 1.38;
-
-  color: ${({ theme }) => theme.colors.blueLink};
+  color: ${theme.colors.blueLink};
   background-color: transparent;
   border: none;
 
-  transition: color 300ms ${({ theme }) => theme.transitionRegular};
+  transition: color 300ms ${theme.transitionRegular};
 
   & svg {
     stroke: currentColor;
@@ -53,38 +50,38 @@ const buttonNext = css`
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding: 9px 0;
   gap: 12px;
-
   min-width: 248px;
-
-  font-family: 'Manrope';
+  font-family: ${theme.fonts.manrope.regular};
   font-size: 16px;
-  font-weight: 700;
+  font-weight: ${theme.fontWeights.regular};
   line-height: 1.38;
 
-  color: ${({ theme }) => theme.colors.white};
-  background-color: #54ADFF;
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.blueLink};
   border: none;
   border-radius: 40px;
-  transition: color ${({ theme }) => theme.transitions.transitionRegular},
-    background-color ${({ theme }) => theme.transitions.transitionRegular};
+  transition: color ${theme.transitions.transitionRegular},
+    background-color ${theme.transitions.transitionRegular};
   overflow: hidden;
-
   margin-bottom: 20px;
 
   &::before {
-    content: '';
+    content: "";
     z-index: -1;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(290.46deg, rgb(65, 158, 241) 0%, rgb(155, 208, 255) 107.89%);
+    background-image: linear-gradient(
+      290.46deg,
+      rgb(65, 158, 241) 0%,
+      rgb(155, 208, 255) 107.89%
+    );
     opacity: 0;
-    transition: opacity ${({ theme }) => theme.transitions.transitionRegular};
+    transition: opacity ${theme.transitions.transitionRegular};
   }
 
   &:hover::before,
@@ -97,9 +94,9 @@ const buttonNext = css`
   }
 
   &:disabled {
-    color: ${({ theme }) => theme.colors.grey};
-    background-color: ${({ theme }) => theme.colors.lightBlue};
-    border-color: ${({ theme }) => theme.colors.lightBlue};
+    color: ${theme.colors.grey};
+    background-color: ${theme.colors.lightBlue};
+    border-color: ${theme.colors.lightBlue};
     pointer-events: none;
   }
 
