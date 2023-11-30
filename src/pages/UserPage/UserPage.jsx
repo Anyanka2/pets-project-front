@@ -9,12 +9,13 @@ const UserPage = () => {
   return (
     <>
       <Container>
-        <StyledBtn>
-          <AddPetBtn />
-          </StyledBtn>
+       
         <ContainerUser>
           <UserProfile />
           <MyPets />
+          <StyledBtn>
+          <AddPetBtn />
+          </StyledBtn>
         </ContainerUser>
           </Container>
           
