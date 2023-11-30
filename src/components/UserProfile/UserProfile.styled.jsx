@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../shared/styles/theme.jsx";
 
-
 export const UserProfileSection = styled.div`
   margin-bottom: 46px;
 
@@ -14,13 +13,20 @@ export const UserProfileSection = styled.div`
     margin-right: 32px;
   }
 
-  h2 {
-    margin-bottom: 24px;
+  h3 {
     font-family: ${theme.fonts.manrope.medium};
+    color: ${theme.colors.black};
     font-size: 20px;
-    font-weight: 500;
+    font-weight: ${theme.fontWeights.medium};
+    line-height: 1.37;
+    margin-bottom: 16px;
+    margin-top:40px;
+    
+
     @media screen and (min-width: 768px) {
       font-size: 28px;
+      margin-bottom: 24px;
+      margin-top: 62px;
     }
   }
 `;
@@ -31,7 +37,6 @@ export const UserProfileContainer = styled.div`
   background-color: white;
   box-shadow: 3px 8px 14px 0px rgba(136, 198, 253, 0.19);
   padding: 20px 8px 25px 8px;
-
   display: flex;
   flex-direction: column;
   gap: 59px;
@@ -109,7 +114,7 @@ export const CancelEditBtn = styled.button`
   position: absolute;
   top: -6px;
   right: -29px;
-  
+
   @media screen and (min-width: 768px) {
     right: -52px;
   }
@@ -120,8 +125,8 @@ export const CancelEditBtn = styled.button`
 `;
 
 export const Modal = styled.div`
-background-color: #222;
-z-index: 100;
+  background-color: #222;
+  z-index: 100;
   position: absolute;
   top: 0;
   right: 0;
