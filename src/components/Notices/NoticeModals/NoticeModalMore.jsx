@@ -17,16 +17,14 @@ import {
   ItemWrapHover,
 } from "./NoticeModal.styled";
 
-// import { theme } from "../../../shared/styles/theme";
 import { useDispatch } from "react-redux";
 import { getOneNotice } from "../../../redux/notices/operationsNotices";
 import { useEffect } from "react";
 import { useState } from "react";
-import { ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
 import { selectToken } from "../../../redux/user/userSelectors";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+//import "react-toastify/dist/ReactToastify.css";
 
 export const NoticeModalMore = ({
   noticeId,
@@ -66,7 +64,6 @@ export const NoticeModalMore = ({
       
     }
   }
-
 
       return (
       <>
@@ -120,7 +117,7 @@ export const NoticeModalMore = ({
             {infoOnePet.comments}
           </Comment>
           <BtnContainer>
-            <ToastContainer />
+            {/* <ToastContainer /> */}
             <AddToFavBtn type="button" onClick={handleClick}>
               <span>Add to</span>
               <HeartIcon>
