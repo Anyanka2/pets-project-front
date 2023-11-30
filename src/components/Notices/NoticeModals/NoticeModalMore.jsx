@@ -22,8 +22,9 @@ import { getOneNotice } from "../../../redux/notices/operationsNotices";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { selectToken } from "../../../redux/user/userSelectors";
+
 import { toast } from "react-toastify";
+import { selectToken } from "../../../redux/auth/selectors";
 //import "react-toastify/dist/ReactToastify.css";
 
 export const NoticeModalMore = ({
@@ -117,7 +118,6 @@ export const NoticeModalMore = ({
             {infoOnePet.comments}
           </Comment>
           <BtnContainer>
-            {/* <ToastContainer /> */}
             <AddToFavBtn type="button" onClick={handleClick}>
               <span>Add to</span>
               <HeartIcon>

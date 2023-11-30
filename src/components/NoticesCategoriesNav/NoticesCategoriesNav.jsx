@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import { useSelector } from "react-redux";
 import { filters } from './filtersData';
-import { selectToken } from "../../redux/user/userSelectors";
 import { List, ListItem, Btn } from './NoticesCategoriesNav.styled';
+import { selectToken } from '../../redux/auth/selectors';
 
 export const NoticesCategoriesNav = () => {
   const isAuthorized = useSelector(selectToken);
