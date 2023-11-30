@@ -63,3 +63,4 @@ SearchBar.propTypes = {
   onChange: PropTypes.func,
   value: PropTypes.string,
 };
+//fix
