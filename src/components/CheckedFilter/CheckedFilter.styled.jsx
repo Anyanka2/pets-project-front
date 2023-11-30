@@ -13,9 +13,19 @@ const Wrapper = styled.div`
   padding-left: 16px;
   padding-right: 16px;
 
+  margin-bottom: 4px;
+
   background-color: #fff;
   box-shadow: ${({ theme }) => theme.shadows.shadowDefault};
   border-radius: 20px;
+  &:last-child {
+    margin: 0;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin: 0;
+    margin-left: 6px;
+  }
 `;
 
 const Text = styled.p`
