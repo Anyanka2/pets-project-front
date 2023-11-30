@@ -11,8 +11,9 @@ import {
   LinkBurgerLogin,
   LinkBurgerReg,
   BurgerNavContainer,
+  NavLinkBurger
 } from "./Burger.styled";
-import { CustomSvg, Image, NavLinkContainer } from "../Header.styled";
+import { CustomSvg, Image} from "../Header.styled";
 import { useSelector } from "react-redux";
 import { selectToken, userInfo } from "../../../redux/auth/selectors";
 import svg from "../../../assets/icons/logo.svg";
@@ -69,10 +70,10 @@ const MobileMenu = ({ toggleMenu, isOpen }) => {
           </>
         ) : (
           <>
-            <NavLinkContainer to="/user" onClick={toggleMenu}>
+            <NavLinkBurger to="/user" onClick={toggleMenu}>
               <UserButton />
               {name}
-            </NavLinkContainer>
+            </NavLinkBurger>
 
             <BurgerLogOutButton onClick={logOutUser}>
               Log out

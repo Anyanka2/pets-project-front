@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { theme } from "../../../shared/styles/theme";
 
 export const MobileMenuContainer = styled.div`
@@ -186,3 +186,19 @@ export const UserIconBurger = styled(Link)`
     display: none;
   }
 `;
+
+export const NavLinkBurger = styled(NavLink)`
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 12px;
+color: ${theme.colors.yellow};
+font-weight: 500;
+font-size: 16px;
+line-height: 1.36;
+letter-spacing: 0.64px;
+ 
+@media screen and (min-width: 768px) {
+  display: none;
+}
+`
