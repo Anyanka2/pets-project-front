@@ -57,24 +57,6 @@ export const TitlePet = styled.h3`
   }
 `;
 
-// export const TitleWithoutPet = styled.h2`
-//   text-align: center;
-//   color: #111111;
-//   font-size: 20px;
-//   font-weight: 500;
-//   line-height: 1.36;
-//   margin-bottom: 31px;
-//   font-family: ${theme.fonts.manrope.medium};
-//   @media screen and (min-width: 768px) {
-//     margin-bottom: 22px;
-//     font-size: 28px;
-//   }
-
-//   @media screen and (min-width: 1280px) {
-//     margin-bottom: 0;
-//   }
-// `;
-
 export const Image = styled.img`
   width: 100%;
   border-radius: 20px;
@@ -97,7 +79,6 @@ export const Image = styled.img`
 `;
 
 export const InfoContainer = styled.div`
-
   @media screen and (min-width: 768px) {
     padding-top: 0;
     padding-bottom: 0;
@@ -138,7 +119,7 @@ export const Text = styled.p`
 `;
 
 export const ContainerUser = styled.div`
-position: relative;
+  position: relative;
 
   @media screen and (min-width: 768px) {
   }
