@@ -45,7 +45,7 @@ export default function UserProfile() {
   return (
     <>
       <UserProfileSection>
-        <h2>My information:</h2>
+        <h3>My information:</h3>
         <UserProfileContainer>
           <UserPhotoBox>
             <UserImg src={renderUserPhoto} alt="User profile" />
