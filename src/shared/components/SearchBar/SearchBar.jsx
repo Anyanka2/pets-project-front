@@ -11,7 +11,7 @@ import {
 } from "./SearchBar.styled";
 import PropTypes from "prop-types";
 
-export const SearchBar = ({ value, onChange }) => {
+export const SearchBar = ({ petValue, onChange }) => {
   const [value, setValue] = useState("");
 
   const onSubmit = (value) => {
@@ -27,7 +27,7 @@ export const SearchBar = ({ value, onChange }) => {
     if (value.trim() === "") {
       return;
     }
-    props.onSubmit(value);
+    // props.onSubmit(value);
     onSubmit(value);
     setValue("");
   };
@@ -40,7 +40,7 @@ export const SearchBar = ({ value, onChange }) => {
           autoFocus
           placeholder="Search"
           onChange={(e) => onChange(e.target.value)}
-          value={value}
+          value={petValue}
         ></SearchInput>
         <SearchButton type="submit">
           <SearchIconStyle>
