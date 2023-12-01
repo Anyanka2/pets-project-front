@@ -24,7 +24,7 @@ const NewsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [materials, setMaterials] = useState([]);
   const [totalPages, setTotalPages] =useState();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams({newsTitle:""});
 
   const searchHandler = (searchValue) => {
     setSearchParams({newsTitle: searchValue })
