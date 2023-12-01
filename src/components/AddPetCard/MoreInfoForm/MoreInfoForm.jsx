@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate  } from "react-router-dom";
 import PropTypes from "prop-types";
 import { validateField } from "../vaidatePet";
 import { ReactComponent as PlusIcon } from "../../../assets/icons/plus-big.svg";
@@ -40,6 +41,7 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
   const [collectedData, setCollectedData] = useState({});
   const [imageValue, setImageValue] = useState(null);
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
+  const navigate = useNavigate();
 
   const isPetPhotoFieldValid = Boolean(
     !errors.notice_image && !!formData.notice_image
@@ -116,15 +118,30 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
 
   const dispatch = useDispatch();
 
+  // const submit = async () => {
+  //   console.log(collectedData);
+  //   if (collectedData.category === "my-pet") {
+  //     await dispatch(addMyPet(collectedData));
+  //     await dispatch(getCurrentUser());
+  //   } else {
+  //     await dispatch(addNotices(collectedData));
+  //   }
+  //   navigate("/user");
+  // };
+
   const submit = async () => {
     console.log(collectedData);
     if (collectedData.category === "my-pet") {
-      await dispatch(addMyPet(collectedData));
-      await dispatch(getCurrentUser());
-    } else {
-      await dispatch(addNotices(collectedData));
+        await dispatch(addMyPet(collectedData));
+        await dispatch(getCurrentUser());
+        navigate("/user");
+    } 
+    else if (["sell", "lost/found", "in good hands"].includes(collectedData.category)) {
+        await dispatch(addNotices(collectedData));
+        navigate("/notices");
     }
-  };
+};
+
   
   return (
     <>

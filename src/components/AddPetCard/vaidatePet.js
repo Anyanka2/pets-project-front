@@ -38,7 +38,9 @@ export const validatePetSchema = Yup.object().shape({
   price: Yup.number()
     .positive('Price must be greater than 0')
     .required('Price is required'),
-  comments: Yup.string().test(
+  comments: Yup.string()
+  .required('Comments is required')
+  .test(
     'comments',
     'Comments must be between 8 and 120 characters',
     value => {
