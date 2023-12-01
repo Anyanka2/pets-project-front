@@ -17,7 +17,7 @@ import {
   NewsTitle,
 } from "./NewsPage.styled.jsx";
 import axios from "axios";
-import { Loader } from "../../components/Loader/Loader.jsx";
+// import { Loader } from "../../components/Loader/Loader.jsx";
 import { useSearchParams } from "react-router-dom";
 
 const NewsPage = () => {
