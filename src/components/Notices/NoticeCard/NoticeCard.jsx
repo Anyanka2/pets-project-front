@@ -57,14 +57,9 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
   const [isRefresh, setIsRefresh] = useState(false);
 
   function calculateAge(dateOfBirth) {
-    const parts = dateOfBirth.split(".");
-    const day = parseInt(parts[0], 10);
-    const month = parseInt(parts[1], 10) - 1;
-    const year = parseInt(parts[2], 10);
-
-    const dob = new Date(year, month, day);
-
-    const today = new Date();
+    console.log(dateOfBirth);
+    const dob = new Date(dateOfBirth); // Создаем объект Date из строки с датой рождения
+    const today = new Date(); // Создаем объект Date для текущей даты
 
     let age = today.getFullYear() - dob.getFullYear();
 
@@ -76,7 +71,6 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
 
     return age;
   }
-
   const heandelRemoveNotice = (owner, noticeId) => {
     if (idUser === owner) {
       dispatch(deleteNotice(noticeId));
