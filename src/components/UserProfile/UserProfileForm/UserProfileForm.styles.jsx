@@ -144,3 +144,30 @@ export const LogoutBtn = styled.button`
     
   }
 `;
+
+export const ReactDatePicker = styled(Field)`
+width: 190px;
+  height: 24px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid ${theme.colors.blueLink};
+
+  font-family: ${theme.fonts.manrope.regular};
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.48px;
+  color: ${theme.colors.black};
+  @media screen and (min-width: 768px) {
+    width: 255px;
+    font-size: 16px;
+    letter-spacing: 0.64px;
+
+    height: 30px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    
+    
+  }
+`
