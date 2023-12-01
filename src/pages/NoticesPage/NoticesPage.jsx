@@ -6,41 +6,38 @@ import {
   NoticePanelLeft,
   NoticePanelRigth,
   FilterContainer,
-  // FilterIcon,
 } from "./NoticePage.styled";
 import { useState } from "react";
-// import { NoticesCategoryNav } from "../../components/Notices/NoticeCategoryPanel/NoticesCategoryNav";
-import NoticesFilters from '../../components/NoticesFilters/NoticesFilters';
-import NoticesCategoriesNav from '../../components/NoticesCategoriesNav/NoticesCategoriesNav'
+import NoticesFilters from "../../components/NoticesFilters/NoticesFilters";
+import NoticesCategoriesNav from "../../components/NoticesCategoriesNav/NoticesCategoriesNav";
 import { AddPetBtn } from "../../components/AddPetBtn/AddPetBtn";
-// import { Button } from "../../shared/components/Buttons/Button.styled";
 import { NoticeCard } from "../../components/Notices/NoticeCard/NoticeCard";
 import { MainAttention } from "../../shared/components/Attentions/MainAttention/MainAttention";
 import UniversalModal from "../../shared/components/UniversalModal/UniversalModal";
 
 const NoticesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [keyword, setKeyword] = useState('');
-  const [category, setCategory] = useState('');
+  const [keyword, setKeyword] = useState("");
+  const [category, setCategory] = useState("");
 
   const handleModal = () => {
     setIsModalOpen((prev) => !prev);
   };
 
-  const onSearchSubmit = (value) => {
+  const searchHandler = (value) => {
     setKeyword(value);
   };
 
   const onCategorySelect = (value) => {
     setCategory(value);
   };
-  
+
   return (
     <>
       <Container>
         <TitlePage>Find your favorite pet</TitlePage>
         <StaledDiv>
-          <SearchBar onSubmit={onSearchSubmit} />
+          <SearchBar searchHandler={searchHandler} />
         </StaledDiv>
         <>
           <FilterContainer>
@@ -48,25 +45,6 @@ const NoticesPage = () => {
               <NoticesCategoriesNav onChange={onCategorySelect} />
             </NoticePanelLeft>
             <NoticePanelRigth>
-              {/* <Button>
-                Filter
-                <FilterIcon>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="transparent"
-                  >
-                    <path
-                      stroke="#54ADFF"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="1.5"
-                      d="m4 4 5 8v6l6 3v-9l5-8H4Z"
-                    />
-                  </svg>
-                </FilterIcon>
-              </Button> */}
               <NoticesFilters />
               <AddPetBtn onClick={handleModal} />
             </NoticePanelRigth>
