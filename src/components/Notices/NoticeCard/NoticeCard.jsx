@@ -34,12 +34,14 @@ import { Loader } from "../../Loader/Loader.jsx";
 import Pagination from "../../../shared/components/Pagination/Pagination.jsx";
 import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal.jsx";
 import { NoticeModalMore } from "../NoticeModals/NoticeModalMore.jsx";
+//import { selectToken } from '../../../redux/auth/selectors';
 import axios from "axios";
 
 import { userInfo } from "../../../redux/auth/selectors.js";
 // import { getCurrentUser } from "../../../redux/auth/operation.js";
 
 export const NoticeCard = ({ searchKeyword, searchCategory }) => {
+  //const isAuthorized = useSelector(selectToken);
   // const [dataAtr, setDataAtr] = useState({ page: 1, items: 12 });
   const [currentPage, setCurrentPage] = useState(1);
   //const [keyword, setKeyword] = useState(searchKeyword);
@@ -108,14 +110,15 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
   useEffect(() => {
     const getMaterials = async (pageNumber, itemsPerPage = 12) => {
       try {
-        const response = await axios.post(`/api/notices`, {
-          keyword:
-            searchKeyword || searchKeyword !== ""
-              ? searchKeyword.toLowerCase()
-              : null,
-          page: pageNumber,
-          limit: itemsPerPage,
-        });
+
+        const response = await axios.post(
+          `/api/notices`, {
+            category: searchCategory || searchCategory !=="" ? searchCategory : null,
+            keyword: searchKeyword || searchKeyword !=="" ? searchKeyword.toLowerCase() : null,
+            page: pageNumber,
+            limit: itemsPerPage
+        }
+        );
 
         setMaterials(response.data.notices);
         setTotalPages(response.data.totalPages);
@@ -126,7 +129,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
     };
     setIsRefresh(false);
     getMaterials(currentPage, 12);
-  }, [currentPage, searchKeyword, isRefresh]);
+  }, [currentPage, searchKeyword, searchCategory,isRefresh]);
 
   const paginationHandler = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -187,6 +190,23 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
                             : "none"
                         }
                       />
+
+                    </Button>
+
+                    { isAuthorized && ( <Button
+                      aria-label="delete from favorites"
+                      onClick={() =>
+                        heandelRemoveNotice(notice.owner, notice._id)
+                      }
+                    >
+                      <TrashIcon
+                        width={"24px"}
+                        height={"24px"}
+                        stroke={theme.colors.blueLink}
+                        fill={theme.colors.lightBlue}
+                      />
+                    </Button>)}
+
                     </Button> */}
                     {notice.owner === idUser ? (
                       <Button
@@ -205,6 +225,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
                     ) : (
                       <></>
                     )}
+
                   </ContainerButton>
                 </ContainerPetStatus>
                 <ListPetInfo>
