@@ -56,10 +56,11 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
   const [likedItemIds, setLikedItemIds] = useState([]);
   const [isRefresh, setIsRefresh] = useState(false);
 
-  function calculateAge(dateOfBirth) {
-    console.log(dateOfBirth);
-    const dob = new Date(dateOfBirth); // Создаем объект Date из строки с датой рождения
-    const today = new Date(); // Создаем объект Date для текущей даты
+  function calculateAgeFromUnixTimestamp(timestamp) {
+    const milliseconds = timestamp * 1000; // Преобразование секунд в миллисекунды
+    const dob = new Date(milliseconds); // Создание объекта Date из Unix Timestamp
+
+    const today = new Date();
 
     let age = today.getFullYear() - dob.getFullYear();
 
@@ -208,7 +209,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
                   <ItemPetInfo>
                     <ClockIcon />
                     <SpanPetText>
-                      {calculateAge(notice.birthday)} year
+                      {calculateAgeFromUnixTimestamp(notice.birthday)} year
                     </SpanPetText>
                   </ItemPetInfo>
                   <ItemPetInfo>
@@ -230,11 +231,15 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
           <Loader />
         )}
       </NoticeListWrapper>
-      {totalPages !== 0 ? <Pagination
-        totalPages={totalPages}
-        page={currentPage}
-        paginationHandler={paginationHandler}
-      />: " "}
+      {totalPages !== 0 ? (
+        <Pagination
+          totalPages={totalPages}
+          page={currentPage}
+          paginationHandler={paginationHandler}
+        />
+      ) : (
+        " "
+      )}
       <UniversalModal
         isModalOpen={isModal}
         evt="children"
