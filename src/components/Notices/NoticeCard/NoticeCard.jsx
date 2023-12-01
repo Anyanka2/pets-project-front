@@ -258,11 +258,11 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
           <Loader />
         )}
       </NoticeListWrapper>
-      <Pagination
+      {totalPages !== 0 ? <Pagination
         totalPages={totalPages}
         page={currentPage}
         paginationHandler={paginationHandler}
-      />
+      />: " "}
       <UniversalModal
         isModalOpen={isModal}
         evt="children"

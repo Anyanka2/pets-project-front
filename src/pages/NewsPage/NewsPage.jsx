@@ -84,9 +84,9 @@ const NewsPage = () => {
             }))
           }
         </NewsBox>
-        <Pagination totalPages={totalPages}
+        {totalPages !== 0 ? <Pagination totalPages={totalPages}
                     page={currentPage} 
-                    paginationHandler={paginationHandler} />
+                    paginationHandler={paginationHandler} /> : ""}
       </StyledContainer>
     </>
   );

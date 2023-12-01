@@ -59,12 +59,12 @@ export default function Pagination (props) {
             maxCount = total;
         }
 
-        if (current > total || current < 0) {
+        if (current > total || current < 0  ) {
             return;
         }
         
         for (let i = startCount; i <= maxCount; i++ ){
-           
+            
             if (i === current){
                 collection.push(<CurrentCircle data-index={i} key={i} >{i}</CurrentCircle>)
             }else {
