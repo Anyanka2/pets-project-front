@@ -13,23 +13,17 @@ import PropTypes from "prop-types";
 
 export const SearchBar = (props) => {
   const [value, setValue] = useState("");
-  // const onSubmit = (value) => {
-  //   setValue(value);
-  // };
 
   const handleValueChange = (event) => {
-    setValue(event.currentTarget.value.toLowerCase());
+    setValue(event.currentTarget.value);
+  };
+
+  const doSearch = () => {
+    props.onSubmit(value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // if (value.trim() === "") {
-    //   return;
-    // }
-   
-    // props.onSubmit(value);
-    // onSubmit(value);
-    // setValue("");
     props.searchHandler(value);
   };
   return (

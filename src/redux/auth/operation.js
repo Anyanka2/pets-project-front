@@ -154,11 +154,11 @@ export const addMyPet = createAsyncThunk(
 
 export const deleteMyPet = createAsyncThunk(
   "api/user/deletePet",
-  async (id, thunkAPI) => {
+  async (_id, thunkAPI) => {
     const state = thunkAPI.getState();
     const token = state.auth.token;
     try {
-      const response = await axios.delete(`api/users/pets/${id}`, {
+      const response = await axios.delete(`api/users/pets/${_id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

@@ -28,7 +28,6 @@ export default function UserProfile() {
   };
 
   const {avatarURL} = useSelector(userInfo);
-  console.log("userProfileComponent: ", avatarURL);
 
   const photoUrlHandler = (url) => {
     setUserPhotoUrl(url)

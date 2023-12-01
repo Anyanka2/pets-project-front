@@ -7,18 +7,24 @@ import {
   StyledLabel,
   StyledSubmitBtn,
 } from "./UserProfileForm.styles.jsx";
+/* import ReactDatePicker from "react-datepicker"; */
+import "react-datepicker/dist/react-datepicker.module.css"
 import { ErrorMessage, Formik } from "formik";
-import { useState } from "react";
+import {  useState } from "react";
 import * as Yup from "yup";
 import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal.jsx";
 import { ModalAlreaadyLeaving } from "../ModalAlreadyLeaving/ModalAlreadyLeaving.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { userInfo } from "../../../redux/auth/selectors";
-import { getCurrentUser, updateCurrentUser } from "../../../redux/auth/operation.js";
-
+import {
+  getCurrentUser,
+  updateCurrentUser,
+} from "../../../redux/auth/operation.js";
 
 export default function UserProfileForm(props) {
   const currentUserInfo = useSelector(userInfo);
+  
+  const [startDate, setStartDate] = useState(new Date());
 
   const [isModal, setIsModal] = useState(false);
   const initialValues = {
@@ -39,7 +45,6 @@ export default function UserProfileForm(props) {
     try {
       const response = await dispatch(updateCurrentUser(values));
       await dispatch(getCurrentUser());
-      
       props.editHandler((prev) => !prev);
       return response;
     } catch (error) {
@@ -96,9 +101,11 @@ export default function UserProfileForm(props) {
             <StyledInputWrapper>
               <StyledField
                 id="birthday"
-                type="text"
+                type="date"
                 name="birthday"
                 disabled={!props.editable}
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
               />
               <StyledErrorMessage>
                 <ErrorMessage name="birthday" />

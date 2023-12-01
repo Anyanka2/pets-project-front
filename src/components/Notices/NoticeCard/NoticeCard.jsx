@@ -38,9 +38,10 @@ import axios from "axios";
 
 import { userInfo } from "../../../redux/auth/selectors.js";
 
-export const NoticeCard = (props) => {
+export const NoticeCard = ({ searchKeyword, searchCategory }) => {
   // const [dataAtr, setDataAtr] = useState({ page: 1, items: 12 });
   const [currentPage, setCurrentPage] = useState(1);
+  //const [keyword, setKeyword] = useState(searchKeyword);
   const [totalPages, setTotalPages] = useState();
   const [isModal, setIsModal] = useState(false);
   const [noticeId, setNoticeId] = useState();
@@ -70,19 +71,24 @@ export const NoticeCard = (props) => {
   useEffect(() => {
     const getMaterials = async (pageNumber, itemsPerPage = 12) => {
       try {
-        const response = await axios.get(
-          `/api/notices?offset=${pageNumber}&limit=${itemsPerPage}`
+        const response = await axios.post(
+          `/api/notices`, {
+            keyword: searchKeyword || searchKeyword !=="" ? searchKeyword.toLowerCase() : null,
+            page: pageNumber,
+            limit: itemsPerPage
+        }
         );
 
-        setMaterials(response.data.data.resourses);
-        setTotalPages(response.data.data.totalPages);
+        setMaterials(response.data.notices);
+        setTotalPages(response.data.totalPages);
       } catch (error) {
-        console.log(error);
+        setMaterials([]);
+        setTotalPages(1);
       }
     };
 
     getMaterials(currentPage, 12);
-  }, [currentPage]);
+  }, [currentPage, searchKeyword]);
 
   const paginationHandler = (pageNumber) => {
     setCurrentPage(pageNumber);
