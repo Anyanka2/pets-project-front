@@ -18,24 +18,33 @@ import {
 } from "./NewsPage.styled.jsx";
 import axios from "axios";
 import { Loader } from "../../components/Loader/Loader.jsx";
+import { useSearchParams } from "react-router-dom";
 
 const NewsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [materials, setMaterials] = useState([]);
   const [totalPages, setTotalPages] =useState();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchHandler = (searchValue) => {
+    setSearchParams({newsTitle: searchValue })
+  }
+
   useEffect(()=>{
     const getMaterials = async (pageNumber, itemsPerPage = 10) =>{
       try {
-        const respons = await axios.get(`/api/news?offset=${pageNumber}&limit=${itemsPerPage}`);
+        const searchValue = searchParams.get("newsTitle");
+        const respons = await axios.get(`/api/news?offset=${pageNumber}&limit=${itemsPerPage}&title=${searchValue}`);
         
         setMaterials(respons.data.data.resourses);
         setTotalPages(respons.data.data.totalPages);
+
       } catch (error) {
         console.error(error);
       }
     }
     getMaterials(currentPage, 6);
-  }, [currentPage]);
+  }, [currentPage, searchParams]);
 
   const paginationHandler = (pageNumber) => {
     
@@ -46,7 +55,7 @@ const NewsPage = () => {
     <>
       <StyledContainer>
               <TitlePage>News</TitlePage>
-             <StaledDiv><SearchBar /></StaledDiv> 
+             <StaledDiv><SearchBar searchHandler={searchHandler} /></StaledDiv> 
         <NewsBox>
           {materials.length === 0 ? <Loader /> : materials.map((material) => {
             
