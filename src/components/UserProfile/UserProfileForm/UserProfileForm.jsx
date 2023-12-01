@@ -8,7 +8,7 @@ import {
   StyledSubmitBtn,
 } from "./UserProfileForm.styles.jsx";
 import { ErrorMessage, Formik } from "formik";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import * as Yup from "yup";
 import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal.jsx";
 import { ModalAlreaadyLeaving } from "../ModalAlreadyLeaving/ModalAlreadyLeaving.jsx";
