@@ -14,11 +14,6 @@ import PropTypes from "prop-types";
 export const SearchBar = (props) => {
   const [value, setValue] = useState("");
 
-  const onSubmit = (value) => {
-    setValue(value);
-    doSearch();
-  };
-
   const handleValueChange = (event) => {
     setValue(event.currentTarget.value);
   };
@@ -29,8 +24,7 @@ export const SearchBar = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-  
-    onSubmit(value);
+    props.searchHandler(value);
   };
   return (
     <SearchForm onSubmit={handleSubmit}>
@@ -49,7 +43,7 @@ export const SearchBar = (props) => {
           </SearchIconStyle>
         </SearchButton>
         {value.length > 0 && (
-          <SearchButton onClick={() => onSubmit('')}>
+          <SearchButton onClick={() => {setValue(""); props.searchHandler("") }}>
             <CloseIconStyle>
               <CloseIcon />
             </CloseIconStyle>
