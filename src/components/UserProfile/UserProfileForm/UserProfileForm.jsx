@@ -23,8 +23,7 @@ import {
 
 export default function UserProfileForm(props) {
   const currentUserInfo = useSelector(userInfo);
-  
-  const [startDate, setStartDate] = useState(new Date());
+console.log(currentUserInfo);
 
   const [isModal, setIsModal] = useState(false);
   const initialValues = {
@@ -42,6 +41,7 @@ export default function UserProfileForm(props) {
   const dispatch = useDispatch();
 
   const handleSubmit = async (values) => {
+    console.log(values)
     try {
       const response = await dispatch(updateCurrentUser(values));
       await dispatch(getCurrentUser());
@@ -104,8 +104,6 @@ export default function UserProfileForm(props) {
                 type="date"
                 name="birthday"
                 disabled={!props.editable}
-                selected={startDate}
-                onChange={(date) => setStartDate(date)}
               />
               <StyledErrorMessage>
                 <ErrorMessage name="birthday" />
