@@ -15,18 +15,16 @@ export const ModalBackdrop = styled.div`
 `;
 
 export const ModalBox = styled.div`
-  border-radius: 40px;
+  position: relative;
+  border-radius: 20px;
   background-color: ${theme.colors.white};
-  /* min-width: 200px;
-  min-height: 150px; */
-  padding: 24px;
+  padding: 44px 12px 16px 12px;
   display: flex;
   align-items: start;
   justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
   -webkit-animation: anvil 0.3s cubic-bezier(0.38, 0.1, 0.36, 0.9) forwards;
-
 
   @keyframes anvil {
     0% {
@@ -44,7 +42,11 @@ export const ModalBox = styled.div`
       opacity: 1;
       box-shadow: 0 0 500px rgba(241, 241, 241, 0);
     }
-  }
+    }
+
+   @media screen and (min-width: 768px) {
+    padding: 32px 32px 24px 32px;
+    }
 `;
 
 export const ModalBody = styled.div`
@@ -54,6 +56,14 @@ export const ModalBody = styled.div`
 `;
 
 export const CloseModalBtn = styled.button`
+position: absolute;
+top: 12px;
+right: 12px;
   width: 24px;
   height: 24px;
+
+  @media screen and (min-width: 768px) {
+    top: 23px;
+    right: 26px;
+  }
 `;

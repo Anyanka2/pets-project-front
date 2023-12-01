@@ -5,6 +5,7 @@ import {
   ContainerInfo,
   Title,
   Type,
+  ListContainer,
   List,
   ItemWrap,
   Item,
@@ -74,9 +75,9 @@ export const NoticeModalMore = ({
               <Image src={infoOnePet.imageUrl} alt="dog" />
               <Type>{infoOnePet.category}</Type>
             </ImageContainer>
-            <div style={{ width: "321px", padding: "0 12px" }}>
+            <div>
               <Title>{infoOnePet.title}</Title>
-              <div style={{ display: "flex", gap: "50px" }}>
+              <ListContainer style={{ display: "flex"}}>
                 <List>
                   <Item>Name: </Item>
                   <Item>Birthday: </Item>
@@ -110,7 +111,7 @@ export const NoticeModalMore = ({
                     </ItemWrapHover>
                   </ItemWrap>
                 </List>
-              </div>
+              </ListContainer>
             </div>
           </ContainerInfo>
           <Comment>
