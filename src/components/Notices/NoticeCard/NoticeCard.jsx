@@ -34,11 +34,13 @@ import { Loader } from "../../Loader/Loader.jsx";
 import Pagination from "../../../shared/components/Pagination/Pagination.jsx";
 import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal.jsx";
 import { NoticeModalMore } from "../NoticeModals/NoticeModalMore.jsx";
+import { selectToken } from '../../../redux/auth/selectors';
 import axios from "axios";
 
 import { userInfo } from "../../../redux/auth/selectors.js";
 
 export const NoticeCard = ({ searchKeyword, searchCategory }) => {
+  const isAuthorized = useSelector(selectToken);
   // const [dataAtr, setDataAtr] = useState({ page: 1, items: 12 });
   const [currentPage, setCurrentPage] = useState(1);
   //const [keyword, setKeyword] = useState(searchKeyword);
@@ -73,6 +75,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
       try {
         const response = await axios.post(
           `/api/notices`, {
+            category: searchCategory || searchCategory !=="" ? searchCategory : null,
             keyword: searchKeyword || searchKeyword !=="" ? searchKeyword.toLowerCase() : null,
             page: pageNumber,
             limit: itemsPerPage
@@ -88,7 +91,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
     };
 
     getMaterials(currentPage, 12);
-  }, [currentPage, searchKeyword]);
+  }, [currentPage, searchKeyword, searchCategory]);
 
   const paginationHandler = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -144,7 +147,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
                       />
                     </Button>
 
-                    <Button
+                    { isAuthorized && ( <Button
                       aria-label="delete from favorites"
                       onClick={() =>
                         heandelRemoveNotice(notice.owner, notice._id)
@@ -156,7 +159,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
                         stroke={theme.colors.blueLink}
                         fill={theme.colors.lightBlue}
                       />
-                    </Button>
+                    </Button>)}
                   </ContainerButton>
                 </ContainerPetStatus>
                 <ListPetInfo>
