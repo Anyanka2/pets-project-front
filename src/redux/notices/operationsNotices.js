@@ -47,7 +47,7 @@ export const getAllNotices = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await axios.get(
-        `api/notices?offset=${data.page}&limit=${data.limit}`
+        `api/notices?offset=${data.page}&limit=${data.limit}&ownerId=${data.ownerId}`
       );
 
       return response.data.data.resourses;

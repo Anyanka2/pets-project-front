@@ -1,4 +1,3 @@
-//import { useAuth } from "../../../hooks/useAuth";
 import {
   Item,
   ContainerPetInfo,
@@ -21,13 +20,13 @@ import { ReactComponent as ClockIcon } from "../../../assets/icons/clock.svg";
 import { ReactComponent as FemaleIcon } from "../../../assets/icons/female.svg";
 import { ReactComponent as MaleIcon } from "../../../assets/icons/male.svg";
 import { theme } from "../../../shared/styles/theme";
+import { toast } from "react-toastify";
 // import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { infoNotices } from "../../../redux/notices/selectorsNotices.js";
 import { useEffect, useState } from "react";
 import {
   deleteNotice,
-  getAllNotices,
 } from "../../../redux/notices/operationsNotices.js";
 
 import { Loader } from "../../Loader/Loader.jsx";
@@ -46,7 +45,8 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
   const [isModal, setIsModal] = useState(false);
   const [noticeId, setNoticeId] = useState();
   const [materials, setMaterials] = useState([]);
-
+  const dispatch = useDispatch();
+  const { _id: idUser } = useSelector(userInfo);
   function calculateAge(dateOfBirth) {
     const parts = dateOfBirth.split(".");
     const day = parseInt(parts[0], 10);
@@ -68,6 +68,25 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
     return age;
   }
 
+   const heandelRemoveNotice = (owner, noticeId) => {
+     if (idUser === owner) {
+       dispatch(deleteNotice(noticeId));
+     } else {
+       toast(
+         "You are not authorized to delete this notice or this notice don't your.",
+         {
+           position: "top-right",
+           autoClose: 3000,
+           hideProgressBar: false,
+           closeOnClick: true,
+           pauseOnHover: true,
+           draggable: true,
+         }
+       );
+     }
+   };
+
+
   useEffect(() => {
     const getMaterials = async (pageNumber, itemsPerPage = 12) => {
       try {
@@ -79,6 +98,8 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
         }
         );
 
+       
+
         setMaterials(response.data.notices);
         setTotalPages(response.data.totalPages);
       } catch (error) {
@@ -88,7 +109,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
     };
 
     getMaterials(currentPage, 12);
-  }, [currentPage, searchKeyword]);
+  }, [currentPage, searchKeyword, materials]);
 
   const paginationHandler = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -102,22 +123,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
     setIsModal((prev) => !prev);
   };
 
-  const { _id: idUser } = useSelector(userInfo);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getAllNotices());
-  }, [dispatch]);
-
-  const heandelRemoveNotice = (owner, noticeId) => {
-    if (idUser === owner) {
-      dispatch(deleteNotice(noticeId));
-    } else {
-      console.log(
-        "You are not authorized to delete this notice or this notice don't your."
-      );
-    }
-  };
+  
 
   return (
     <>
@@ -143,20 +149,23 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
                         fill={theme.colors.blueLink}
                       />
                     </Button>
-
-                    <Button
-                      aria-label="delete from favorites"
-                      onClick={() =>
-                        heandelRemoveNotice(notice.owner, notice._id)
-                      }
-                    >
-                      <TrashIcon
-                        width={"24px"}
-                        height={"24px"}
-                        stroke={theme.colors.blueLink}
-                        fill={theme.colors.lightBlue}
-                      />
-                    </Button>
+                    {notice.owner === idUser ? (
+                      <Button
+                        aria-label="delete from favorites"
+                        onClick={() =>
+                          heandelRemoveNotice(notice.owner, notice._id)
+                        }
+                      >
+                        <TrashIcon
+                          width={"24px"}
+                          height={"24px"}
+                          stroke={theme.colors.blueLink}
+                          fill={theme.colors.lightBlue}
+                        />
+                      </Button>
+                    ) : (
+                      <></>
+                    )}
                   </ContainerButton>
                 </ContainerPetStatus>
                 <ListPetInfo>
