@@ -10,7 +10,7 @@ import {
 /* import ReactDatePicker from "react-datepicker"; */
 import "react-datepicker/dist/react-datepicker.module.css"
 import { ErrorMessage, Formik } from "formik";
-import { useState } from "react";
+import {  useState } from "react";
 import * as Yup from "yup";
 import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal.jsx";
 import { ModalAlreaadyLeaving } from "../ModalAlreadyLeaving/ModalAlreadyLeaving.jsx";
@@ -45,7 +45,6 @@ export default function UserProfileForm(props) {
     try {
       const response = await dispatch(updateCurrentUser(values));
       await dispatch(getCurrentUser());
-
       props.editHandler((prev) => !prev);
       return response;
     } catch (error) {

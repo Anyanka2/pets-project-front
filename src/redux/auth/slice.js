@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCurrentUser, logIn, logOut, register, updateCurrentUser, verifyEmailUser } from "./operation";
+import { deleteMyPet, getCurrentUser, logIn, logOut, register, updateCurrentUser, verifyEmailUser } from "./operation";
 
 const initialState = {
   token: null,
@@ -15,13 +15,13 @@ const authenticate = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(register.fulfilled, (state, action) => {
-        state.auth = action.payload.user;
+      .addCase(register.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
         state.isLoggedIn = true;
       })
-      .addCase(logIn.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
+      .addCase(logIn.fulfilled, (state, { payload }) => {
+        state.auth = payload.user;
+        state.token = payload.token;
         state.isLoggedIn = true;
       })
       .addCase(logOut.fulfilled, (state, { payload }) => {
@@ -36,12 +36,22 @@ const authenticate = createSlice({
       })
       .addCase(getCurrentUser.fulfilled, (state, { payload }) => {
         state.user = payload[0];
+       
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(updateCurrentUser.fulfilled, (state, action) => {
-        state.user = action.payload;
-        
+      .addCase(updateCurrentUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
+      })
+      .addCase(deleteMyPet.fulfilled, (state, { payload }) => {
+        const updatedPetsData = state.user.petsData.filter(
+          (pet) => pet._id !== payload._id
+        );
+        state.user.petsData = updatedPetsData;
+        state.user = {
+          ...state.user,
+          petsData: updatedPetsData,
+        };
       });
   },
 });
