@@ -97,7 +97,7 @@ const Header = () => {
                   </StyledLink>
                   <NavLinkContainer to="/user">
                     <UserButton />
-                    {name}
+                    {name ? (name)  : ("user")}
                   </NavLinkContainer>
                 </LogOutContainer>
               </>
