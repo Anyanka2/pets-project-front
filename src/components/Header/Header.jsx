@@ -28,7 +28,7 @@ const Header = () => {
   const [openLogout, setOpenlogout] = useState(false);
 
   const { name } = useSelector(userInfo);
-  console.log(name);
+
 
   const token = useSelector(selectToken);
 
