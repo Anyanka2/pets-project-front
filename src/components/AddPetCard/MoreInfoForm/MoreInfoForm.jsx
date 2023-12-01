@@ -76,13 +76,23 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
     }
     if (formData.category === "my-pet") {
       setIsDisabled(!(isPetPhotoFieldValid && isCommentsFieldValid));
+    } else if (formData.category === "in good hands" || formData.category === "lost/found") {
+      setIsDisabled(
+        !(
+          isPetPhotoFieldValid &&
+          isLocationFieldValid &&
+          isSexFieldValid &&
+          isCommentsFieldValid 
+        )
+      );
     } else {
       setIsDisabled(
         !(
           isPetPhotoFieldValid &&
           isLocationFieldValid &&
           isSexFieldValid &&
-          isCommentsFieldValid
+          isPriceFieldValid &&
+          isCommentsFieldValid 
         )
       );
     }
@@ -118,19 +128,11 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
 
   const dispatch = useDispatch();
 
-  // const submit = async () => {
-  //   console.log(collectedData);
-  //   if (collectedData.category === "my-pet") {
-  //     await dispatch(addMyPet(collectedData));
-  //     await dispatch(getCurrentUser());
-  //   } else {
-  //     await dispatch(addNotices(collectedData));
-  //   }
-  //   navigate("/user");
-  // };
-
   const submit = async () => {
-    console.log(collectedData);
+    if (!collectedData.comments) {
+      validateField("comments", formData, setErrors)
+      return
+    }
     if (collectedData.category === "my-pet") {
         await dispatch(addMyPet(collectedData));
         await dispatch(getCurrentUser());
@@ -205,7 +207,6 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
               accept=".png, .jpg, .jpeg, .webp"
               onChange={handleInputChange}
               value={imageValue}
-              onBlur={() => validateField("notice_image", formData, setErrors)}
             />
           </AddFormImageLabel>
         </FirstPartFormWrapper>
@@ -250,6 +251,7 @@ const MoreInfo = ({ formData, setFormData, backStep }) => {
               <AddFormTextArea
                 component="textarea"
                 placeholder="Type of pet"
+                type="text"
                 name="comments"
                 onChange={handleInputChange}
                 value={formData.comments}

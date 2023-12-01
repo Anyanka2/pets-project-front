@@ -21,7 +21,6 @@ export const Content = styled.div`
   width: 280px;
   background-color: ${theme.colors.white};
   border-radius: 20px;
-  /* padding: 44px 20px 16px 20px; */
   overflow: 0;
 
   @media screen and (min-width: 768px) {
@@ -57,9 +56,10 @@ export const CommentAccent = styled.span`
   font-weight: ${theme.fontWeights.bold};
   font-size: 14px;
   line-height: 1.357;
+  
+  margin-bottom: auto;
 
   @media screen and (min-width: 768px) {
-    margin-bottom: auto;
     margin-top: 3px;
   }
 `;
@@ -247,7 +247,6 @@ export const ContactLink = styled.a`
   &:focus {
     background: ${theme.colors.blueGradient};
     color: ${theme.colors.white};
-    //border: transparent;
     border: 2px solid transparent;
   }
 
@@ -285,7 +284,6 @@ export const AddToFavBtn = styled.button`
   &:focus,
   &:hover {
     background: ${theme.colors.blueGradient};
-    //transform: scale(1.07);
   }
 
   @media screen and (min-width: 768px) {
