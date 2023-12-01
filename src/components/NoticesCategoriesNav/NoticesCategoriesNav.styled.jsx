@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 
 const List = styled.ul`
   display: flex;
@@ -21,7 +20,7 @@ const ListItem = styled.li`
     padding-top: 6px;
     padding-bottom: 6px;
 `
-const Btn = styled(NavLink)`
+const Btn = styled.button`
   position: relative;
 
   font-size: 14px;

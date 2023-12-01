@@ -38,19 +38,27 @@ import axios from "axios";
 
 import { userInfo } from "../../../redux/auth/selectors.js";
 
-export const NoticeCard = (props) => {
+export const NoticeCard = ({ searchKeyword, searchCategory }) => {
   // const [dataAtr, setDataAtr] = useState({ page: 1, items: 12 });
   const [currentPage, setCurrentPage] = useState(1);
+  //const [keyword, setKeyword] = useState(searchKeyword);
   const [totalPages, setTotalPages] = useState();
   const [isModal, setIsModal] = useState(false);
   const [noticeId, setNoticeId] = useState();
   const [materials, setMaterials] = useState([]);
 
   function calculateAge(dateOfBirth) {
-    const dob = new Date(dateOfBirth);
+    const parts = dateOfBirth.split(".");
+    const day = parseInt(parts[0], 10);
+    const month = parseInt(parts[1], 10) - 1;
+    const year = parseInt(parts[2], 10);
+
+    const dob = new Date(year, month, day);
+
     const today = new Date();
 
     let age = today.getFullYear() - dob.getFullYear();
+
     const monthDiff = today.getMonth() - dob.getMonth();
 
     if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
@@ -59,29 +67,28 @@ export const NoticeCard = (props) => {
 
     return age;
   }
-  // const { notices } = useSelector(infoNotices);
-
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getAllNotices({page: currentPage, limit: 12}));
-  // }, [dispatch, currentPage]);
 
   useEffect(() => {
     const getMaterials = async (pageNumber, itemsPerPage = 12) => {
       try {
-        const response = await axios.get(
-          `/api/notices?offset=${pageNumber}&limit=${itemsPerPage}`
+        const response = await axios.post(
+          `/api/notices`, {
+            keyword: searchKeyword || searchKeyword !=="" ? searchKeyword.toLowerCase() : null,
+            page: pageNumber,
+            limit: itemsPerPage
+        }
         );
 
-        setMaterials(response.data.data.resourses);
-        setTotalPages(response.data.data.totalPages);
+        setMaterials(response.data.notices);
+        setTotalPages(response.data.totalPages);
       } catch (error) {
-        console.log(error);
+        setMaterials([]);
+        setTotalPages(1);
       }
     };
 
     getMaterials(currentPage, 12);
-  }, [currentPage]);
+  }, [currentPage, searchKeyword]);
 
   const paginationHandler = (pageNumber) => {
     setCurrentPage(pageNumber);

@@ -69,7 +69,6 @@ const LoginForm = () => {
   };
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    
     if (loading) {
       return;
     }
@@ -81,8 +80,9 @@ const LoginForm = () => {
       if (!response) {
         navigate("/login");
       } else {
-      await dispatch(getCurrentUser());
-      navigate("/user");
+        await dispatch(getCurrentUser());
+
+        navigate("/user");
       }
     } catch (error) {
       console.log(error);
