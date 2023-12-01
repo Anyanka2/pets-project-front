@@ -26,7 +26,6 @@ import { useSelector } from "react-redux";
 
 import { toast } from "react-toastify";
 import { selectToken } from "../../../redux/auth/selectors";
-//import "react-toastify/dist/ReactToastify.css";
 
 export const NoticeModalMore = ({
   noticeId,
