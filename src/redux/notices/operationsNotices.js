@@ -22,25 +22,7 @@ export const addNotices = createAsyncThunk(
     }
   }
 );
-export const addNoticesToFavorite = createAsyncThunk(
-  "api/notice/addPet",
-  async (noticeId, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const token = state.auth.token;
-    try {
-      const response = await axios.patch(`/api/users/favoriteNotices/${noticeId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
 
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
 
 export const getAllNotices = createAsyncThunk(
   "api/notice/all",
@@ -87,18 +69,18 @@ export const deleteNotice = createAsyncThunk(
   }
 );
 export const favoriteNotice = createAsyncThunk(
-  "api/notice/delete",
+  "api/notice/favoriteNotices",
   async (noticeId, thunkAPI) => {
-    const state = thunkAPI.getState();
-    const token = state.auth.token;
+    // const state = thunkAPI.getState();
+    // const token = state.auth.token;
     try {
-      const response = await axios.patch(
-        `api/users/favoriteNotices/${noticeId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+      const response = await axios.post(
+        `api/users/favoriteNotices/${noticeId}`
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //   },
+        // }
       );
 
       return response.data;

@@ -27,21 +27,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import {
   deleteNotice,
-  // favoriteNotice,
+  favoriteNotice,
 } from "../../../redux/notices/operationsNotices.js";
 
 import { Loader } from "../../Loader/Loader.jsx";
 import Pagination from "../../../shared/components/Pagination/Pagination.jsx";
 import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal.jsx";
 import { NoticeModalMore } from "../NoticeModals/NoticeModalMore.jsx";
-//import { selectToken } from '../../../redux/auth/selectors';
+import { selectToken } from "../../../redux/auth/selectors";
 import axios from "axios";
 
 import { userInfo } from "../../../redux/auth/selectors.js";
-// import { getCurrentUser } from "../../../redux/auth/operation.js";
+import { getCurrentUser } from "../../../redux/auth/operation.js";
 
 export const NoticeCard = ({ searchKeyword, searchCategory }) => {
-  //const isAuthorized = useSelector(selectToken);
+  // const isAuthorized = useSelector(selectToken);
   // const [dataAtr, setDataAtr] = useState({ page: 1, items: 12 });
   const [currentPage, setCurrentPage] = useState(1);
   //const [keyword, setKeyword] = useState(searchKeyword);
@@ -51,9 +51,11 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
   const [materials, setMaterials] = useState([]);
   const dispatch = useDispatch();
 
+  const tokenuser = useSelector(selectToken);
   const { _id: idUser } = useSelector(userInfo);
-  // const [likedItemIds, setLikedItemIds] = useState([]);
+  const [likedItemIds, setLikedItemIds] = useState([]);
   const [isRefresh, setIsRefresh] = useState(false);
+
   function calculateAge(dateOfBirth) {
     const parts = dateOfBirth.split(".");
     const day = parseInt(parts[0], 10);
@@ -94,31 +96,32 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
     }
   };
 
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     if (!tokenuser) {
-  //       return;
-  //     }
-  //     const res = await dispatch(getCurrentUser());
+  useEffect(() => {
+    const fetchUser = async () => {
+      if (!tokenuser) {
+        return;
+      }
+      const res = await dispatch(getCurrentUser());
 
-  //     const likesUser = res.payload[0].favoriteNotices;
-  //     setLikedItemIds(likesUser);
-  //   };
-  //   fetchUser();
-  // }, [dispatch]);
+      const likesUser = res.payload[0].favoriteNotices;
+      setLikedItemIds(likesUser);
+    };
+    fetchUser();
+  }, [dispatch, tokenuser]);
 
   useEffect(() => {
     const getMaterials = async (pageNumber, itemsPerPage = 12) => {
       try {
-
-        const response = await axios.post(
-          `/api/notices`, {
-            category: searchCategory || searchCategory !=="" ? searchCategory : null,
-            keyword: searchKeyword || searchKeyword !=="" ? searchKeyword.toLowerCase() : null,
-            page: pageNumber,
-            limit: itemsPerPage
-        }
-        );
+        const response = await axios.post(`/api/notices`, {
+          category:
+            searchCategory || searchCategory !== "" ? searchCategory : null,
+          keyword:
+            searchKeyword || searchKeyword !== ""
+              ? searchKeyword.toLowerCase()
+              : null,
+          page: pageNumber,
+          limit: itemsPerPage,
+        });
 
         setMaterials(response.data.notices);
         setTotalPages(response.data.totalPages);
@@ -129,7 +132,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
     };
     setIsRefresh(false);
     getMaterials(currentPage, 12);
-  }, [currentPage, searchKeyword, searchCategory,isRefresh]);
+  }, [currentPage, searchKeyword, searchCategory, isRefresh]);
 
   const paginationHandler = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -143,16 +146,15 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
     setIsModal((prev) => !prev);
   };
 
-  // const tokenuser = useSelector(selectToken);
+  const handleLike = async (id) => {
+    if (!tokenuser) {
+      console.log("не залогінений");
+      return;
+    }
 
-  // const handleLike = async (id) => {
-  //   if (!tokenuser) {
-  //     console.log("не залогінений");
-  //     return;
-  //   }
-
-  //   await dispatch(favoriteNotice(id));
-  // };
+    const { payload } = await dispatch(favoriteNotice(id));
+    setLikedItemIds(payload);
+  };
 
   return (
     <>
@@ -165,14 +167,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
                 <ContainerPetStatus>
                   <TextStatus>{notice.category}</TextStatus>
                   <ContainerButton>
-                    <Button aria-label="add to favorites">
-                      <HeartIcon
-                        width={"24px"}
-                        height={"24px"}
-                        stroke={theme.colors.blueLink}
-                      />
-                    </Button>
-                    {/* <Button
+                    <Button
                       aria-label="add to favorites"
                       onClick={() => handleLike(notice._id)}
                     >
@@ -190,24 +185,8 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
                             : "none"
                         }
                       />
-
                     </Button>
 
-                    { isAuthorized && ( <Button
-                      aria-label="delete from favorites"
-                      onClick={() =>
-                        heandelRemoveNotice(notice.owner, notice._id)
-                      }
-                    >
-                      <TrashIcon
-                        width={"24px"}
-                        height={"24px"}
-                        stroke={theme.colors.blueLink}
-                        fill={theme.colors.lightBlue}
-                      />
-                    </Button>)}
-
-                    </Button> */}
                     {notice.owner === idUser ? (
                       <Button
                         aria-label="delete from favorites"
@@ -225,7 +204,6 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
                     ) : (
                       <></>
                     )}
-
                   </ContainerButton>
                 </ContainerPetStatus>
                 <ListPetInfo>
