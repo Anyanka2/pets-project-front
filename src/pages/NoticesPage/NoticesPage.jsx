@@ -20,20 +20,32 @@ import UniversalModal from "../../shared/components/UniversalModal/UniversalModa
 
 const NoticesPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [keyword, setKeyword] = useState('');
+  const [category, setCategory] = useState('');
+
   const handleModal = () => {
     setIsModalOpen((prev) => !prev);
   };
+
+  const onSearchSubmit = (value) => {
+    setKeyword(value);
+  };
+
+  const onCategorySelect = (value) => {
+    setCategory(value);
+  };
+  
   return (
     <>
       <Container>
         <TitlePage>Find your favorite pet</TitlePage>
         <StaledDiv>
-          <SearchBar />
+          <SearchBar onSubmit={onSearchSubmit} />
         </StaledDiv>
         <>
           <FilterContainer>
             <NoticePanelLeft>
-              <NoticesCategoriesNav />
+              <NoticesCategoriesNav onChange={onCategorySelect} />
             </NoticePanelLeft>
             <NoticePanelRigth>
               {/* <Button>
@@ -60,7 +72,7 @@ const NoticesPage = () => {
             </NoticePanelRigth>
           </FilterContainer>
           <div>
-            <NoticeCard />
+            <NoticeCard searchKeyword={keyword} searchCategory={category} />
           </div>
         </>
         <UniversalModal isModalOpen={isModalOpen} onClick={handleModal}>

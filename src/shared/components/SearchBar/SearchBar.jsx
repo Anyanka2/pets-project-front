@@ -16,20 +16,21 @@ export const SearchBar = (props) => {
 
   const onSubmit = (value) => {
     setValue(value);
+    doSearch();
   };
 
   const handleValueChange = (event) => {
-    setValue(event.currentTarget.value.toLowerCase());
+    setValue(event.currentTarget.value);
+  };
+
+  const doSearch = () => {
+    props.onSubmit(value);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (value.trim() === "") {
-      return;
-    }
-    // props.onSubmit(value);
+  
     onSubmit(value);
-    setValue("");
   };
   return (
     <SearchForm onSubmit={handleSubmit}>
@@ -48,7 +49,7 @@ export const SearchBar = (props) => {
           </SearchIconStyle>
         </SearchButton>
         {value.length > 0 && (
-          <SearchButton onClick={() => {}}>
+          <SearchButton onClick={() => onSubmit('')}>
             <CloseIconStyle>
               <CloseIcon />
             </CloseIconStyle>
