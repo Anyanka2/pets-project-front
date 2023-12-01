@@ -47,7 +47,7 @@ export const getAllNotices = createAsyncThunk(
   async (data, thunkAPI) => {
     try {
       const response = await axios.get(
-        `api/notices?offset=${data.page}&limit=${data.limit}`
+        `api/notices?offset=${data.page}&limit=${data.limit}&ownerId=${data.ownerId}`
       );
 
       return response.data.data.resourses;
@@ -79,6 +79,27 @@ export const deleteNotice = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
+
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+export const favoriteNotice = createAsyncThunk(
+  "api/notice/delete",
+  async (noticeId, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
+    try {
+      const response = await axios.patch(
+        `api/users/favoriteNotices/${noticeId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       return response.data;
     } catch (error) {
