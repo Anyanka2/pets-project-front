@@ -123,6 +123,30 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
     setIsModal((prev) => !prev);
   };
 
+const tokenuser = useSelector(selectToken);
+const handleLike = async (id) => {
+  if (!tokenuser) {
+    console.log("не залогінений");
+    return;
+  }
+
+  const response = await dispatch(favoriteNotice(id));
+  const payload = response.payload;
+
+  if (!Array.isArray(payload)) {
+    console.log("payload is not an array");
+    return;
+  }
+
+  console.log(payload);
+
+  const updatedIds = payload.filter((itemId) => itemId !== id);
+  setLikedItemIds(updatedIds);
+};
+
+
+
+
   
 
   return (
@@ -136,17 +160,23 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
                 <ContainerPetStatus>
                   <TextStatus>{notice.category}</TextStatus>
                   <ContainerButton>
-                    <Button aria-label="add to favorites">
+                    <Button
+                      aria-label="add to favorites"
+                      onClick={() => handleLike(notice._id)}
+                    >
                       <HeartIcon
                         width={"24px"}
                         height={"24px"}
-                        stroke={theme.colors.blueLink}
-                      />
-
-                      <HeartIcon
-                        width={"24px"}
-                        height={"24px"}
-                        fill={theme.colors.blueLink}
+                        stroke={
+                          likedItemIds.includes(notice._id)
+                            ? "none"
+                            : theme.colors.blueLink
+                        }
+                        fill={
+                          likedItemIds.includes(notice._id)
+                            ? theme.colors.blueLink
+                            : "none"
+                        }
                       />
                     </Button>
                     {notice.owner === idUser ? (
