@@ -26,8 +26,9 @@ export default function MyPets() {
 
   useEffect(() => {
     setLocalPetsData(petsData);
+    //  const response = dispatch(getAllNotices(ownerId));
+    //  setLocalPetsData((prevstate )=> {return [...prevstate, ...response]});
   }, [petsData]);
-  console.log(petsData);
 
   const deletePet = async (_id) => {
     await dispatch(deleteMyPet(_id));
