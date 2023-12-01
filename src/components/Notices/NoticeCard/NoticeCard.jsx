@@ -27,6 +27,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import {
   deleteNotice,
+  // favoriteNotice,
 } from "../../../redux/notices/operationsNotices.js";
 
 import { Loader } from "../../Loader/Loader.jsx";
@@ -36,6 +37,7 @@ import { NoticeModalMore } from "../NoticeModals/NoticeModalMore.jsx";
 import axios from "axios";
 
 import { userInfo } from "../../../redux/auth/selectors.js";
+// import { getCurrentUser } from "../../../redux/auth/operation.js";
 
 export const NoticeCard = ({ searchKeyword, searchCategory }) => {
   // const [dataAtr, setDataAtr] = useState({ page: 1, items: 12 });
@@ -46,7 +48,10 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
   const [noticeId, setNoticeId] = useState();
   const [materials, setMaterials] = useState([]);
   const dispatch = useDispatch();
+
   const { _id: idUser } = useSelector(userInfo);
+  // const [likedItemIds, setLikedItemIds] = useState([]);
+  const [isRefresh, setIsRefresh] = useState(false);
   function calculateAge(dateOfBirth) {
     const parts = dateOfBirth.split(".");
     const day = parseInt(parts[0], 10);
@@ -68,37 +73,49 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
     return age;
   }
 
-   const heandelRemoveNotice = (owner, noticeId) => {
-     if (idUser === owner) {
-       dispatch(deleteNotice(noticeId));
-     } else {
-       toast(
-         "You are not authorized to delete this notice or this notice don't your.",
-         {
-           position: "top-right",
-           autoClose: 3000,
-           hideProgressBar: false,
-           closeOnClick: true,
-           pauseOnHover: true,
-           draggable: true,
-         }
-       );
-     }
-   };
+  const heandelRemoveNotice = (owner, noticeId) => {
+    if (idUser === owner) {
+      dispatch(deleteNotice(noticeId));
+      setIsRefresh(true);
+    } else {
+      toast(
+        "You are not authorized to delete this notice or this notice don't your.",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        }
+      );
+    }
+  };
 
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     if (!tokenuser) {
+  //       return;
+  //     }
+  //     const res = await dispatch(getCurrentUser());
+
+  //     const likesUser = res.payload[0].favoriteNotices;
+  //     setLikedItemIds(likesUser);
+  //   };
+  //   fetchUser();
+  // }, [dispatch]);
 
   useEffect(() => {
     const getMaterials = async (pageNumber, itemsPerPage = 12) => {
       try {
-        const response = await axios.post(
-          `/api/notices`, {
-            keyword: searchKeyword || searchKeyword !=="" ? searchKeyword.toLowerCase() : null,
-            page: pageNumber,
-            limit: itemsPerPage
-        }
-        );
-
-       
+        const response = await axios.post(`/api/notices`, {
+          keyword:
+            searchKeyword || searchKeyword !== ""
+              ? searchKeyword.toLowerCase()
+              : null,
+          page: pageNumber,
+          limit: itemsPerPage,
+        });
 
         setMaterials(response.data.notices);
         setTotalPages(response.data.totalPages);
@@ -107,9 +124,9 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
         setTotalPages(1);
       }
     };
-
+    setIsRefresh(false);
     getMaterials(currentPage, 12);
-  }, [currentPage, searchKeyword, materials]);
+  }, [currentPage, searchKeyword, isRefresh]);
 
   const paginationHandler = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -123,31 +140,16 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
     setIsModal((prev) => !prev);
   };
 
-const tokenuser = useSelector(selectToken);
-const handleLike = async (id) => {
-  if (!tokenuser) {
-    console.log("не залогінений");
-    return;
-  }
+  // const tokenuser = useSelector(selectToken);
 
-  const response = await dispatch(favoriteNotice(id));
-  const payload = response.payload;
+  // const handleLike = async (id) => {
+  //   if (!tokenuser) {
+  //     console.log("не залогінений");
+  //     return;
+  //   }
 
-  if (!Array.isArray(payload)) {
-    console.log("payload is not an array");
-    return;
-  }
-
-  console.log(payload);
-
-  const updatedIds = payload.filter((itemId) => itemId !== id);
-  setLikedItemIds(updatedIds);
-};
-
-
-
-
-  
+  //   await dispatch(favoriteNotice(id));
+  // };
 
   return (
     <>
@@ -160,7 +162,14 @@ const handleLike = async (id) => {
                 <ContainerPetStatus>
                   <TextStatus>{notice.category}</TextStatus>
                   <ContainerButton>
-                    <Button
+                    <Button aria-label="add to favorites">
+                      <HeartIcon
+                        width={"24px"}
+                        height={"24px"}
+                        stroke={theme.colors.blueLink}
+                      />
+                    </Button>
+                    {/* <Button
                       aria-label="add to favorites"
                       onClick={() => handleLike(notice._id)}
                     >
@@ -178,7 +187,7 @@ const handleLike = async (id) => {
                             : "none"
                         }
                       />
-                    </Button>
+                    </Button> */}
                     {notice.owner === idUser ? (
                       <Button
                         aria-label="delete from favorites"
