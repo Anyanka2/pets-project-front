@@ -246,7 +246,7 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
         evt="children"
         onClick={handleModal}
       >
-        <NoticeModalMore noticeId={noticeId} />
+        <NoticeModalMore noticeId={noticeId}/>
       </UniversalModal>
     </>
   );

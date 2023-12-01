@@ -6,8 +6,7 @@ import PrivateRoute from "../src/routes/PrivateRoute";
 import { Loader } from "./components/Loader/Loader";
 import { GlobalStyle } from "./shared/styles/GlobalStyles";
 import { SearchBar } from "./shared/components/SearchBar/SearchBar";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+//import ScrollToTopButton from "./components/Scroll-up-btn/ScrollBtnUp";
 
 const MainPage = lazy(() => import("./pages/MainPage/MainPage"));
 const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage"));
@@ -20,25 +19,21 @@ const UserPage = lazy(() => import("./pages/UserPage/UserPage"));
 const AddPetPage = lazy(() => import("./pages/AddPetPage/AddPetPage"));
 const NewsPage = lazy(() => import("./pages/NewsPage/NewsPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage/NotFoundPage"));
-const VerifyPage = lazy(() => import("./pages/VerifyPage/VerifyPage"));
 
 const App = () => {
   return (
     <>
       <GlobalStyle />
+    
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
-            <Route path="/" element={<MainPage />} />
             <Route path="main" element={<MainPage />} />
-            <Route path="notices" element={<NoticesPage />}>
-              <Route path="add-pet" element={<AddPetPage />} />
-            </Route>
+            <Route path="notices" element={<NoticesPage />} />
             <Route path="friends" element={<OurFriendsPage />} />
             <Route element={<PublicRoute />}>
               <Route path="register" element={<RegisterPage />} />
               <Route path="login" element={<LoginPage />} />
-              <Route path="verify/:verifyToken" element={<VerifyPage />} />
             </Route>
 
             <Route element={<PrivateRoute />}>
@@ -54,7 +49,6 @@ const App = () => {
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
-        <ToastContainer position="top-right" />
       </Suspense>
     </>
   );

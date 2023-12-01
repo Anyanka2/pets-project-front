@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../styles/theme";
 
@@ -66,7 +66,7 @@ export const ButtonsContainer = styled.div`
   }
 `;
 
-export const LinkLogin = styled(Link)`
+export const LinkLogin = styled.button`
   padding: 8px 20px 8px 20px;
   border: 2px solid ${theme.colors.yellow};
   cursor: pointer;
@@ -101,7 +101,7 @@ export const ImgLogin = styled.svg`
   margin: 0;
 `;
 
-export const LinkReg = styled(Link)`
+export const LinkReg = styled.button`
   padding: 8px 20px 8px 20px;
   border: 2px solid ${theme.colors.yellow};
   cursor: pointer;

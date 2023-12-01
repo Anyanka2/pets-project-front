@@ -2,18 +2,25 @@ import {
   AttentionForm,
   AttenitonTitle,
   AttentionText,
- // CloseButton,
-  //CloseIconStyle,
-} from "./MainAttention.styled";
-//import { ReactComponent as CloseIcon } from "../../../../assets/icons/close.svg";
-import {
   ButtonsContainer,
   ImgLogin,
   LinkLogin,
   LinkReg,
 } from "./MainAttention.styled";
+import { useNavigate } from "react-router"; 
 
 export const MainAttention = () => {
+  const navigate = useNavigate();
+  const handleClick = (event) => {
+    if (event.target.id === "forvardLogin") {
+     navigate("/login");
+   }
+    else if (event.target.id === "forvardRegister") {
+      navigate("/register");
+    }
+      
+  }
+ 
   return (
     <AttentionForm>
       <AttenitonTitle>Attention</AttenitonTitle>
@@ -23,8 +30,8 @@ export const MainAttention = () => {
         credentials. If you do not already have an account, you must register to
         access these features.
       </AttentionText>
-      <ButtonsContainer>
-        <LinkLogin to="login">
+      <ButtonsContainer onClick={handleClick}>
+        <LinkLogin id="forvardLogin">
           LOG IN
           <ImgLogin>
             <svg
@@ -41,13 +48,8 @@ export const MainAttention = () => {
             </svg>
           </ImgLogin>
         </LinkLogin>
-        <LinkReg to="register">Registration</LinkReg>
+        <LinkReg id="forvardRegister">Registration</LinkReg>
       </ButtonsContainer>
-      {/* <CloseButton type="button">
-        <CloseIconStyle>
-          <CloseIcon />
-        </CloseIconStyle>
-      </CloseButton> */}
     </AttentionForm>
   );
 };
