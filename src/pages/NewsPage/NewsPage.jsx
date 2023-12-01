@@ -35,12 +35,15 @@ const NewsPage = () => {
       try {
         const searchValue = searchParams.get("newsTitle");
         const respons = await axios.get(`/api/news?offset=${pageNumber}&limit=${itemsPerPage}&title=${searchValue}`);
-        
+        // if(respons.data.data.resourses.length === 0){
+        //   setSearchParams({newsTitle:""});
+        // }
         setMaterials(respons.data.data.resourses);
         setTotalPages(respons.data.data.totalPages);
 
       } catch (error) {
         console.error(error);
+
       }
     }
     getMaterials(currentPage, 6);
@@ -57,7 +60,7 @@ const NewsPage = () => {
               <TitlePage>News</TitlePage>
              <StaledDiv><SearchBar searchHandler={searchHandler} /></StaledDiv> 
         <NewsBox>
-          {materials.length === 0 ? <Loader /> : materials.map((material) => {
+          {materials.length === 0 ? (<div>Not found</div>): (materials.map((material) => {
             
             const dateObj = new Date(material.date);
             const day = dateObj.getUTCDate();
@@ -78,7 +81,7 @@ const NewsPage = () => {
                       </NewsMore>
                     </NewsBody>
                   </NewsCard>)
-            })
+            }))
           }
         </NewsBox>
         <Pagination totalPages={totalPages}
