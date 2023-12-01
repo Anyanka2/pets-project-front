@@ -27,7 +27,7 @@ const NoticesPage = () => {
     setIsModalOpen((prev) => !prev);
   };
 
-  const onSearchSubmit = (value) => {
+  const searchHandler = (value) => {
     setKeyword(value);
   };
 
@@ -40,7 +40,7 @@ const NoticesPage = () => {
       <Container>
         <TitlePage>Find your favorite pet</TitlePage>
         <StaledDiv>
-          <SearchBar onSubmit={onSearchSubmit} />
+          <SearchBar searchHandler={searchHandler} />
         </StaledDiv>
         <>
           <FilterContainer>
