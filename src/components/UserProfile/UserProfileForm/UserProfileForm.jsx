@@ -8,14 +8,16 @@ import {
   StyledSubmitBtn,
 } from "./UserProfileForm.styles.jsx";
 import { ErrorMessage, Formik } from "formik";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as Yup from "yup";
 import UniversalModal from "../../../shared/components/UniversalModal/UniversalModal.jsx";
 import { ModalAlreaadyLeaving } from "../ModalAlreadyLeaving/ModalAlreadyLeaving.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { userInfo } from "../../../redux/auth/selectors";
-import { getCurrentUser, updateCurrentUser } from "../../../redux/auth/operation.js";
-
+import {
+  getCurrentUser,
+  updateCurrentUser,
+} from "../../../redux/auth/operation.js";
 
 export default function UserProfileForm(props) {
   const currentUserInfo = useSelector(userInfo);
@@ -38,8 +40,7 @@ export default function UserProfileForm(props) {
   const handleSubmit = async (values) => {
     try {
       const response = await dispatch(updateCurrentUser(values));
-      await dispatch(getCurrentUser());
-      
+      dispatch(getCurrentUser());
       props.editHandler((prev) => !prev);
       return response;
     } catch (error) {

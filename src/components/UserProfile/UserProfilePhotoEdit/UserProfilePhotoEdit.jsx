@@ -35,7 +35,6 @@ export default function UserProfilePhotoEdit(props) {
     if (selectedFile) {
       try {
         const response = await dispatch(uploadImg(selectedFile));
-        console.log("handleAccept: ", response.payload.avatarURL);
         props.newAvatarHandler(response.payload.avatarURL);
         setOpenDownload(false);
         setSelectedFile(null); // Clear selected file
