@@ -18,10 +18,6 @@ export const SearchBar = (props) => {
     setValue(event.currentTarget.value);
   };
 
-  const doSearch = () => {
-    props.onSubmit(value);
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
     props.searchHandler(value);
