@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { toast } from "react-toastify";
 
-axios.defaults.baseURL = "https://pet-web-server.onrender.com/";
+axios.defaults.baseURL = "https://your-pets-back.awake.tools/";
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
