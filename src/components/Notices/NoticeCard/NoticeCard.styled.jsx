@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+import { styled, css  } from "styled-components";
 import { theme } from "../../../shared/styles/theme";
 
 export const NoticeListWrapper = styled.ul`
@@ -140,6 +140,7 @@ export const ListPetInfo = styled.ul`
 export const ItemPetInfo = styled.li`
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
   justify-content: center;
   gap: 4px;
   width: 80px;
@@ -158,6 +159,25 @@ export const SpanPetText = styled.span`
   font-size: 12px;
   text-align: center;
   letter-spacing: 0.48px;
+
+  width: 50px;
+  white-space: nowrap;
+  overflow: hidden;
+  /* text-overflow: ellipsis; */
+`;
+
+export const TextPet = styled.div`
+  ${props => props.isOverflowing && css`
+    animation: marquee 8s linear infinite;
+  `}
+  animation-delay: 3s;
+  transition: transform 0.5s ease-in-out;
+
+  @keyframes marquee {
+    0% { transform: translateX(1%); }
+    100% { transform: translateX(-170%); }
+    0% { transform: translateX(1%); }
+  }
 `;
 
 export const TextPetName = styled.p`

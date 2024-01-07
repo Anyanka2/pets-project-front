@@ -102,7 +102,7 @@ export const NoticeModalMore = ({
                     </ItemWrap>
                     <ItemWrap>{infoOnePet.type}</ItemWrap>
                     {infoOnePet.price !== "0$" && infoOnePet.price !== "0" && (
-                      <ItemWrap>{infoOnePet?.price || 0}</ItemWrap>
+                      <ItemWrap>{infoOnePet?.price || 0} $</ItemWrap>
                     )}
                     <ItemWrap>{infoOnePet.location}</ItemWrap>
                     <ItemWrap>{infoOnePet.sex}</ItemWrap>

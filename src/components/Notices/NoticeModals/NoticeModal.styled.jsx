@@ -122,7 +122,6 @@ export const BtnClose = styled.button`
 export const Title = styled.h2`
   margin-top: 0;
   margin-bottom: 20px;
-  text-align: justify;
   width: 198px;
   font-family: ${theme.fonts.manrope.bold};
   font-weight: ${theme.fontWeights.bold};

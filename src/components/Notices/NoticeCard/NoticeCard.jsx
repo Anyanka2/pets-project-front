@@ -9,6 +9,7 @@ import {
   ListPetInfo,
   ItemPetInfo,
   SpanPetText,
+  TextPet,
   TextPetName,
   LearnMoreBtn,
   NoticeListWrapper,
@@ -204,7 +205,12 @@ export const NoticeCard = ({ searchKeyword, searchCategory }) => {
                 <ListPetInfo>
                   <ItemPetInfo>
                     <LocationIcon />
-                    <SpanPetText>{notice.location}</SpanPetText>
+                    <SpanPetText>
+                      <TextPet title={notice.location}
+                      isOverflowing={notice.location.length * 8 > 50}>
+                        {notice.location}
+                      </TextPet>
+                    </SpanPetText>
                   </ItemPetInfo>
                   <ItemPetInfo>
                     <ClockIcon />

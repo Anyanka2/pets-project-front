@@ -34,7 +34,7 @@ export const validatePetSchema = Yup.object().shape({
     .oneOf(['male', 'female'], 'Invalid sex'),
   location: Yup.string()
     .required('Location is required')
-    .matches(/^[A-Z][a-zA-Z]*(-[a-zA-Z]+)?$/i, 'Invalid location format'),
+    .matches(/^[A-Za-zА-Яа-яЁёІіЇїҐґ][A-Za-zА-Яа-яЁёІіЇїҐґ-]*(-[A-Za-zА-Яа-яЁёІіЇїҐґ]+)?$/i, 'Invalid location format'),
   price: Yup.number()
     .positive('Price must be greater than 0')
     .required('Price is required'),
