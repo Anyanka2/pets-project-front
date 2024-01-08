@@ -38,7 +38,7 @@ export const NotFoundPage = () => {
         <img src={notFoundImageDesktop} alt="" />
       </StyledPicture>
 
-      <StyledLink to="/main">
+      <StyledLink to="/">
         To main page
         <CustomSvg>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">

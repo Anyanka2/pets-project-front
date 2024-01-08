@@ -44,7 +44,7 @@ const Header = () => {
     <>
       <Container>
         <HeaderContainer>
-          <LogoLink to="/main">
+          <LogoLink to="/">
             <Image src={`${svg}`} />
           </LogoLink>
           <Navigation />
