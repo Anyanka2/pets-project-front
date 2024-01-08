@@ -34,7 +34,7 @@ const MobileMenu = ({ toggleMenu, isOpen }) => {
   return (
     <>
       <MobileMenuContainer open={isOpen}>
-        <LogoLinkBurger to="/main" onClick={toggleMenu}>
+        <LogoLinkBurger to="/" onClick={toggleMenu}>
           <Image src={`${svg}`} />
         </LogoLinkBurger>
         <CloseIcon onClick={toggleMenu}>
