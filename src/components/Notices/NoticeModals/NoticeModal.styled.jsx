@@ -11,8 +11,6 @@ export const Backdrop = styled.div`
   bottom:0;
   background-color: ${theme.colors.backdrop};
   backdrop-filter: blur(4px);
-  overflow: auto;
-  overflow-y: auto;
 `;
 
 
