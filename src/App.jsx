@@ -13,6 +13,7 @@ const NoticesPage = lazy(() => import("./pages/NoticesPage/NoticesPage"));
 const OurFriendsPage = lazy(() =>
   import("./pages/OurFriendsPage/OurFriendsPage")
 );
+const VerifyPage = lazy(() => import("./pages/VerifyPage/VerifyPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 const UserPage = lazy(() => import("./pages/UserPage/UserPage"));
@@ -24,13 +25,14 @@ const App = () => {
   return (
     <>
       <GlobalStyle />
-    
+
       <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<SharedLayout />}>
             <Route index element={<MainPage />} />
             <Route path="notices" element={<NoticesPage />} />
             <Route path="friends" element={<OurFriendsPage />} />
+            <Route path="verify/:verifyToken" element={<VerifyPage />} />
             <Route element={<PublicRoute />}>
               <Route path="register" element={<RegisterPage />} />
               <Route path="login" element={<LoginPage />} />
