@@ -23,7 +23,6 @@ export const addNotices = createAsyncThunk(
   }
 );
 
-
 export const getAllNotices = createAsyncThunk(
   "api/notice/all",
   async (data, thunkAPI) => {
@@ -71,18 +70,18 @@ export const deleteNotice = createAsyncThunk(
 export const favoriteNotice = createAsyncThunk(
   "api/notice/favoriteNotices",
   async (noticeId, thunkAPI) => {
-    // const state = thunkAPI.getState();
-    // const token = state.auth.token;
+    const state = thunkAPI.getState();
+    const token = state.auth.token;
     try {
       const response = await axios.post(
-        `api/users/favoriteNotices/${noticeId}`
-        // {
-        //   headers: {
-        //     Authorization: `Bearer ${token}`,
-        //   },
-        // }
+        `api/users/favoriteNotices/${noticeId}`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
-
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
